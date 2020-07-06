@@ -14,7 +14,6 @@ import HeaderAutoPart from '../../components/shared/headers/HeaderAutoPart';
 import HeaderMobileAutopart from '../../components/shared/headers/HeaderMobileAutopart';
 import SubscribePopup from '../../components/shared/SubscribePopup';
 import FooterAutopart from '../../components/shared/footers/FooterAutopart';
-import '../../scss/autopart.scss';
 import { getCollections } from '../../store/collection/action';
 
 class HomeAutopartPage extends Component {

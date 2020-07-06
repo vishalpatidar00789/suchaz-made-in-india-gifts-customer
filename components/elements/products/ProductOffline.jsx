@@ -150,7 +150,7 @@ class Product extends Component {
                         {product.is_sale === true ? (
                             <p className="ps-product__price sale">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                                 <del className="ml-2">
                                     {currency ? currency.symbol : '$'}
                                     {formatCurrency(product.sale_price)}
@@ -159,7 +159,7 @@ class Product extends Component {
                         ) : (
                             <p className="ps-product__price">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                             </p>
                         )}
                     </div>
@@ -172,7 +172,7 @@ class Product extends Component {
                         {product.is_sale === true ? (
                             <p className="ps-product__price sale">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}{' '}
+                                {formatCurrency(product.bestPrice)}{' '}
                                 <del className="ml-2">
                                     {currency ? currency.symbol : '$'}
                                     {product.sale_price}
@@ -181,7 +181,7 @@ class Product extends Component {
                         ) : (
                             <p className="ps-product__price">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                             </p>
                         )}
                     </div>

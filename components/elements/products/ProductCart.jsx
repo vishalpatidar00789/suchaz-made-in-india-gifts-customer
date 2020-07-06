@@ -13,7 +13,7 @@ const ProductCart = ({ product }) => {
                             <img
                                 src={
                                     isStaticData === false
-                                        ? `${baseUrl}${product.thumbnail.url}`
+                                        ? product.images[0]
                                         : product.thumbnail.url
                                 }
                                 alt="martfury"

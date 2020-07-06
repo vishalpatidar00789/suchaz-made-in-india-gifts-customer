@@ -14,7 +14,6 @@ import HeaderTechnology from '../../components/shared/headers/HeaderTechnology';
 import FooterTechnology from '../../components/shared/footers/FooterTechnology';
 import HeaderMobileTechnology from '../../components/shared/headers/HeaderMobileTechnology';
 import SubscribePopup from '../../components/shared/SubscribePopup';
-import '../../scss/technology.scss';
 import { getCategories, getCollections } from '../../store/collection/action';
 import { connect } from 'react-redux';
 class HomeTechnologyPage extends React.Component {

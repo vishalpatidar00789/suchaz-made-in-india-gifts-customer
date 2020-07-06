@@ -37,7 +37,7 @@ class PanelCartMobile extends Component {
                                                 src={
                                                     isStaticData === true
                                                         ? product.thumbnail.url
-                                                        : `${baseUrl}${product.thumbnail.url}`
+                                                        : product.images[0]
                                                 }
                                                 alt="martfury"
                                             />
@@ -65,7 +65,7 @@ class PanelCartMobile extends Component {
                                         {product.vendor}
                                     </p>
                                     <small>
-                                        {product.quantity} x ${product.price}
+                                        {product.quantity} x ${product.bestPrice}
                                     </small>
                                 </div>
                             </div>

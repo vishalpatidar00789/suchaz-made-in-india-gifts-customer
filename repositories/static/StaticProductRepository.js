@@ -46,8 +46,8 @@ class StaticProductRepository {
     getProductsByPriceRange(payload) {
         return products.filter(
             product =>
-                product.price >= payload.price_gt &&
-                product.price <= payload.price_lt
+                product.bestPrice >= payload.price_gt &&
+                product.bestPrice <= payload.price_lt
         );
     }
     getProductsByKeyword(payload) {

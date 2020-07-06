@@ -14,7 +14,7 @@ class ProductHorizontal extends Component {
         const { product, currency } = this.props;
         let thumbnail;
         if (isStaticData === false) {
-            thumbnail = `${baseUrl}${product.thumbnail.url}`;
+            thumbnail = product.images[0];
         } else {
             thumbnail = product.thumbnail.url;
         }
@@ -37,16 +37,16 @@ class ProductHorizontal extends Component {
                     {product.is_sale === true ? (
                         <p className="ps-product__price sale">
                             {currency ? currency.symbol : '$'}
-                            {formatCurrency(product.price)}
+                            {formatCurrency(product.bestPrice)}
                             <del className="ml-2">
                                 {currency ? currency.symbol : '$'}
-                                {product.sale_price}
+                                {product.sellingPrice}
                             </del>
                         </p>
                     ) : (
                         <p className="ps-product__price">
                             {currency ? currency.symbol : '$'}
-                            {formatCurrency(product.price)}
+                            {formatCurrency(product.bestPrice)}
                         </p>
                     )}
 

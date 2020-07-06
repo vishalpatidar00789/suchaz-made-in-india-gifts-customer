@@ -37,12 +37,12 @@ class ProductDealHot extends React.Component {
                                         {formatCurrency(product.sale_price)}
                                     </del>
                                     {currency ? currency.symbol : '$'}
-                                    {formatCurrency(product.price)}
+                                    {formatCurrency(product.bestPrice)}
                                 </h4>
                             ) : (
                                 <h4 className="ps-product__price">
                                     {currency ? currency.symbol : '$'}
-                                    {formatCurrency(product.price)}
+                                    {formatCurrency(product.bestPrice)}
                                 </h4>
                             )}
                             <div className="ps-product__rating">

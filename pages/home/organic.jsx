@@ -13,7 +13,6 @@ import OrganicDealHot from '../../components/partials/homepage/organic/OrganicDe
 import OrganicClientSay from '../../components/partials/homepage/organic/OrganicClientSay';
 import HeaderMobileOrganic from '../../components/shared/headers/HeaderMobileOrganic';
 import SubscribePopup from '../../components/shared/SubscribePopup';
-import '../../scss/organic.scss';
 import { getCollections } from '../../store/collection/action';
 import { connect } from 'react-redux';
 

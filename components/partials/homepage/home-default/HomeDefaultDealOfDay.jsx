@@ -6,15 +6,15 @@ import Link from 'next/link';
 import Slider from 'react-slick';
 import ProductDealOfDay from '../../../elements/products/ProductDealOfDay';
 import { carouselFullwidth } from '../../../../utilities/carousel-helpers';
-import { getColletionBySlug } from '../../../../utilities/product-helper';
+import { getProductData } from '../../../../utilities/product-helper';
 
 class HomeDefaultDealOfDay extends Component {
     constructor(props) {
         super(props);
     }
     render() {
-        const { collections, collectionSlug } = this.props;
-        const products = getColletionBySlug(collections, collectionSlug);
+        const { collections } = this.props; 
+        const products = getProductData(collections);
         return (
             <div className="ps-deal-of-day">
                 <div className="ps-container">
@@ -44,7 +44,7 @@ class HomeDefaultDealOfDay extends Component {
                             {products.map(product => (
                                 <ProductDealOfDay
                                     product={product}
-                                    key={product.title}
+                                    key={product.id}
                                 />
                             ))}
                         </Slider>

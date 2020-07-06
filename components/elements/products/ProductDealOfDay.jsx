@@ -73,9 +73,9 @@ class ProductDealOfDay extends Component {
         }
         let thumbnail;
         if (isStaticData === false) {
-            thumbnail = `${baseUrl}${product.thumbnail.url}`;
+            thumbnail = product.images[0];
         } else {
-            thumbnail = product.thumbnail.url;
+            thumbnail = product.images[0];
         }
         return (
             <div className="ps-product ps-product--inner">
@@ -83,7 +83,7 @@ class ProductDealOfDay extends Component {
                     <Link href="/product/[pid]" as={`/product/${product.id}`}>
                         <a>
                             <LazyLoad>
-                                <img src={thumbnail} alt="martfury" />
+                                <img height="236" width="236" src={thumbnail} alt="martfury" />
                             </LazyLoad>
                         </a>
                     </Link>
@@ -137,25 +137,35 @@ class ProductDealOfDay extends Component {
                 </div>
                 <div className="ps-product__container">
                     <Link href="/shop">
-                        <a className="ps-product__vendor">Young Shop</a>
+                        <a className="ps-product__vendor">{product.vendor?.shop_name ? product.vendor.shop_name : ' '}</a>
                     </Link>
                     <div className="ps-product__content">
-                        {product.is_sale === true ? (
-                            <p className="ps-product__price sale">
+
+                          <p className="ps-product__price sale">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                                 <del className="ml-2">
                                     {currency ? currency.symbol : '$'}
-                                    {formatCurrency(product.sale_price)}
+                                    {formatCurrency(product.sellingPrice)}
+                                </del>
+                                <small>10% off</small>
+                            </p>
+                        {/* {product.is_sale === true ? (
+                            <p className="ps-product__price sale">
+                                {currency ? currency.symbol : '$'}
+                                {formatCurrency(product.bestPrice)}
+                                <del className="ml-2">
+                                    {currency ? currency.symbol : '$'}
+                                    {formatCurrency(product.sellingPrice)}
                                 </del>
                                 <small>18% off</small>
                             </p>
                         ) : (
                             <p className="ps-product__price">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                             </p>
-                        )}
+                        )} */}
                         <Link
                             href="/product/[pid]"
                             as={`/product/${product.id}`}>
@@ -164,7 +174,7 @@ class ProductDealOfDay extends Component {
 
                         <div className="ps-product__rating">
                             <Rating />
-                            <span>{product.ratingCount}</span>
+                            <span>0</span>
                         </div>
                         <div className="product-buybtn">
                             {/* <div className="btn-group" role="group" aria-label="Basic example" style={{width:'100%'}}>
@@ -173,10 +183,12 @@ class ProductDealOfDay extends Component {
                             </div> */}
 
                             <div className="flexbtn">
-                              <a href="" className="bttn">Add to Cart</a>
+                              <a href="#"
+                                onClick={this.handleAddItemToCart.bind(this)} className="bttn">Add to Cart</a>
                             </div>
                             <div className="flexbtn dark">
-                                <a href="" className="bttn-dark">Buy Now</a>
+                                <a href="#"
+                                onClick={this.handleAddItemToCart.bind(this)} className="bttn-dark">Buy Now</a>
                             </div>
                         </div>
                         

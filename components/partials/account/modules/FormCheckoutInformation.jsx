@@ -187,7 +187,7 @@ class FormCheckoutInformation extends Component {
                                     </div>
                                 </div>
                                 <div className="ps-form__submit">
-                                    <Link href="/account/cart">
+                                    <Link href="/account/shopping-cart">
                                         <a>
                                             <i className="icon-arrow-left mr-2"></i>
                                             Return to shopping cart
@@ -231,7 +231,7 @@ class FormCheckoutInformation extends Component {
                                                         <small>
                                                             $
                                                             {product.quantity *
-                                                            product.price}
+                                                            product.bestPrice}
                                                         </small>
                                                     </a>
                                                 </Link>

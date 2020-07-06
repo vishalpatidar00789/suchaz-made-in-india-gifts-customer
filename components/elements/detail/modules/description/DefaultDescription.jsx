@@ -27,7 +27,7 @@ class DefaultDescription extends Component {
                         <TabPane tab="Vendor" key="3">
                             <PartialVendor />
                         </TabPane>
-                        <TabPane tab="Reviews (1)" key="4">
+                        <TabPane tab="Reviews (0)" key="4">
                             <PartialReview />
                         </TabPane>
                         <TabPane tab="Questions and Answers" key="5">

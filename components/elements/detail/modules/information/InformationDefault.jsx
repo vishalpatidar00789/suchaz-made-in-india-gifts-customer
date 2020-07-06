@@ -56,36 +56,44 @@ class InformationDefault extends Component {
                         Brand:
                         <Link href="/shop">
                             <a className="ml-2 text-capitalize">
-                                {product.vendor}
+                                {/* {product.vendor} */}
                             </a>
                         </Link>
                     </p>
                     <div className="ps-product__rating">
                         <Rating />
-                        <span>(1 review)</span>
+                        <span>(0 review)</span>
                     </div>
                 </div>
-                {product.is_sale === true ? (
+                <h4 className="ps-product__price sale">
+                        <del className="mr-2">
+                            {currency ? currency.symbol : '$'}
+                            {product.sellingPrice}
+                        </del>
+                        {currency ? currency.symbol : '$'}
+                        {product.bestPrice}
+                    </h4>
+                {/* {product.is_sale === true ? (
                     <h4 className="ps-product__price sale">
                         <del className="mr-2">
                             {currency ? currency.symbol : '$'}
                             {product.sale_price}
                         </del>
                         {currency ? currency.symbol : '$'}
-                        {product.price}
+                        {product.bestPrice}
                     </h4>
                 ) : (
                     <h4 className="ps-product__price">
                         {currency ? currency.symbol : '$'}
-                        {product.price}
+                        {product.bestPrice}
                     </h4>
-                )}
+                )} */}
                 <div className="ps-product__desc">
                     <p>
                         Sold By:
                         <Link href="/shop">
                             <a>
-                                <strong> {product.vendor}</strong>
+                                {/* <strong> {product.vendor}</strong> */}
                             </a>
                         </Link>
                     </p>

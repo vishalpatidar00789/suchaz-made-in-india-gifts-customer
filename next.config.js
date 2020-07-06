@@ -1,6 +1,7 @@
 const withPlugins = require('next-compose-plugins');
 const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
+const withPWA = require('next-pwa');
 
 const nextSettings = {
     exportTrailingSlash: true,
@@ -11,4 +12,9 @@ const nextSettings = {
     },
 };
 
-module.exports = withPlugins([[withSass(), withImages()]]);
+module.exports = withPWA({
+    pwa: {
+        dest: 'public'
+    }
+},
+withPlugins([[withSass(), withImages()]]));

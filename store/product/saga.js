@@ -1,6 +1,7 @@
 import { all, put, takeEvery, call } from 'redux-saga/effects';
 import { polyfill } from 'es6-promise';
 import ProductRepository from '../../repositories/ProductRepository';
+import SuchazProductRepository from '../../repositories/SuchazProductRepository';
 import StaticProductRepository from '../../repositories/static/StaticProductRepository';
 
 import {
@@ -18,7 +19,10 @@ polyfill();
 function* getProducts({ payload }) {
     try {
         if (isStaticData === false) {
-            const data = yield call(ProductRepository.getRecords, payload);
+            // const data = yield call(ProductRepository.getRecords, payload);
+            // yield put(getProductsSuccess(data));
+
+            const data = yield call(SuchazProductRepository.getRecords, payload);
             yield put(getProductsSuccess(data));
         } else {
             const data = yield call(StaticProductRepository.getRecords);
@@ -76,7 +80,7 @@ function* getProductCategories() {
 function* getProductById({ id }) {
     try {
         if (isStaticData === false) {
-            const product = yield call(ProductRepository.getProductsById, id);
+            const product = yield call(SuchazProductRepository.getProductsById, id);
             yield put(getSingleProductsSuccess(product));
         } else {
             const product = yield call(

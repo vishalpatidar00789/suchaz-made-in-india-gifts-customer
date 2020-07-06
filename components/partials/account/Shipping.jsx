@@ -99,7 +99,7 @@ class Shipping extends Component {
                                                                 <small>
                                                                     $
                                                                     {product.quantity *
-                                                                        product.price}
+                                                                        product.bestPrice}
                                                                 </small>
                                                             </a>
                                                         </Link>

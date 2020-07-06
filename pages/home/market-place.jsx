@@ -12,7 +12,6 @@ import MarketPlaceHomeBanner from '../../components/partials/homepage/marketplac
 import MarketPlacePromotionHeader from '../../components/partials/homepage/marketplace/MarketPlacePromotionHeader';
 import HeaderMarketPlace from '../../components/shared/headers/HeaderMarketPlace';
 import SubscribePopup from '../../components/shared/SubscribePopup';
-import '../../scss/market-place-1.scss';
 import { getCategories, getCollections } from '../../store/collection/action';
 
 class HomeMarketPlacePage extends Component {

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Link from 'next/link';
 import { getColletionBySlug } from '../../../../utilities/product-helper';
 import CollectionProducts from './modules/CollectionProducts';
+import { getProductData } from '../../../../utilities/product-helper';
+
 class ConsumerElectronics extends Component {
     constructor(props) {
         super(props);
@@ -23,9 +25,12 @@ class ConsumerElectronics extends Component {
     }
 
     render() {
-        const { collections, collectionSlug } = this.props;
+        // const { collections, collectionSlug } = this.props;
         const { currentCollection, items } = this.state;
-        const products = getColletionBySlug(collections, collectionSlug);
+        // const products = getColletionBySlug(collections, collectionSlug);
+
+        const { collections } = this.props; 
+        const products = getProductData(collections);
         const sectionLinks = [
             {
                 title: 'New Arrivals',
@@ -44,15 +49,15 @@ class ConsumerElectronics extends Component {
             },
         ];
         let sectionItems;
-        if (currentCollection !== 'newArrivals') {
-            sectionItems = <CollectionProducts products={items} />;
-        } else {
+        // if (currentCollection !== 'newArrivals') {
+        //     sectionItems = <CollectionProducts products={items} />;
+        // } else {
             if (products && products.length > 0) {
                 sectionItems = <CollectionProducts products={products} />;
             } else {
                 sectionItems = <p>No Record(s)</p>;
             }
-        }
+        // }
         return (
             <div className="ps-product-list ps-garden-kitchen">
                 <div className="ps-container">

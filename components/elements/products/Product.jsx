@@ -78,10 +78,9 @@ class Product extends Component {
                     <Link href="/product/[pid]" as={`/product/${product.id}`}>
                         <a>
                             <LazyLoad>
-                                <img
-                                    src={
+                                <img height="236" width="236" src={
                                         isStaticData === false
-                                            ? `${baseUrl}${product.thumbnail.url}`
+                                            ? product.images[0]
                                             : product.thumbnail.url
                                     }
                                     alt="martfury"
@@ -139,25 +138,19 @@ class Product extends Component {
                 </div>
                 <div className="ps-product__container">
                     <Link href="/shop">
-                        <a className="ps-product__vendor">Young Shop</a>
+                        <a className="ps-product__vendor">{product.vendor?.shop_name ? product.vendor.shop_name : ' '}</a>
                     </Link>
                     <div className="ps-product__content">
-                        {product.is_sale === true ? (
                             <p className="ps-product__price sale">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                                 <del className="ml-2">
                                     {currency ? currency.symbol : '$'}
-                                    {formatCurrency(product.sale_price)}
+                                    {formatCurrency(product.sellingPrice)}
                                 </del>
-                                <small>18% off</small>
+                                <small>10% off</small>
                             </p>
-                        ) : (
-                            <p className="ps-product__price">
-                                {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
-                            </p>
-                        )}
+                       
                         <Link
                             href="/product/[pid]"
                             as={`/product/${product.id}`}>
@@ -166,14 +159,16 @@ class Product extends Component {
 
                         <div className="ps-product__rating">
                             <Rating />
-                            <span>{product.ratingCount}</span>
+                            <span>0</span>
                         </div>
                         <div className="product-buybtn">
                             <div className="flexbtn">
-                              <a href="" className="bttn">Add to Cart</a>
+                              <a href="#"
+                                onClick={this.handleAddItemToCart.bind(this)} className="bttn">Add to Cart</a>
                             </div>
                             <div className="flexbtn dark">
-                                <a href="" className="bttn-dark">Buy Now</a>
+                                <a href="#"
+                                onClick={this.handleAddItemToCart.bind(this)} className="bttn-dark">Buy Now</a>
                             </div>
                         </div>
                         {/* <div

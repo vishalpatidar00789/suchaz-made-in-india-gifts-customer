@@ -26,7 +26,7 @@ const modalWarning = (type) => {
 
 export const calculateAmount = (obj) =>
     Object.values(obj)
-        .reduce((acc, { quantity, price }) => acc + quantity * price, 0)
+        .reduce((acc, { quantity, bestPrice }) => acc + quantity * bestPrice, 0)
         .toFixed(2);
 
 function* getCartSaga() {

@@ -19,6 +19,7 @@ class MiniCart extends Component {
 
     render() {
         const { amount, cartTotal, cartItems } = this.props;
+        console.log(cartItems);
         return (
             <div className="ps-cart--mini">
                 <a className="header__extra" href="#">
@@ -44,7 +45,7 @@ class MiniCart extends Component {
                                                           src={
                                                               isStaticData ===
                                                               false
-                                                                  ? `${baseUrl}${product.thumbnail.url}`
+                                                                  ? product.images[0]
                                                                   : product
                                                                         .thumbnail
                                                                         .url
@@ -72,11 +73,11 @@ class MiniCart extends Component {
                                               </Link>
                                               <p>
                                                   <strong>Sold by:</strong>{' '}
-                                                  {product.vendor}
+                                                  {/* {product.vendor} */}
                                               </p>
                                               <small>
                                                   {product.quantity} x $
-                                                  {product.price}
+                                                  {product.bestPrice}
                                               </small>
                                           </div>
                                       </div>

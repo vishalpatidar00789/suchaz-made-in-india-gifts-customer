@@ -120,7 +120,7 @@ class ProductDetailImageSwatches extends Component {
                             </div>
                         </div>
                         <h4 className="ps-product__price">
-                            ${product.price}
+                            ${product.bestPrice}
                         </h4>
                         <div className="ps-product__desc">
                             <p>

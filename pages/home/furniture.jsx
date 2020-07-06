@@ -13,7 +13,6 @@ import HeaderFurniture from '../../components/shared/headers/HeaderFurniture';
 import FooterFurniture from '../../components/shared/footers/FooterFurniture';
 import HeaderMobileFurniture from '../../components/shared/headers/HeaderMobileFurniture';
 import SubscribePopup from '../../components/shared/SubscribePopup';
-import '../../scss/furniture.scss';
 import { getCollections } from '../../store/collection/action';
 import { connect } from 'react-redux';
 class HomeFurniturePage extends Component {

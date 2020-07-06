@@ -70,7 +70,7 @@ class InformationOnSale extends Component {
                         {product.sale_price}
                     </del>
                     {currency ? currency.symbol : '$'}
-                    {product.price}
+                    {product.bestPrice}
                     <small> (-25%)</small>
                 </h4>
 

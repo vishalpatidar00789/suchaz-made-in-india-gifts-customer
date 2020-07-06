@@ -172,7 +172,7 @@ class InvoiceDetail extends Component {
                                                                 <td className="price">
                                                                     $
                                                                     {
-                                                                        product.price
+                                                                        product.bestPrice
                                                                     }
                                                                 </td>
 
@@ -180,7 +180,7 @@ class InvoiceDetail extends Component {
                                                                 <td className="price">
                                                                     $
                                                                     {
-                                                                        product.price
+                                                                        product.bestPrice
                                                                     }
                                                                 </td>
                                                             </tr>

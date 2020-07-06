@@ -6,6 +6,7 @@ import { carouselFullwidth } from '../../../../utilities/carousel-helpers';
 import { connect } from 'react-redux';
 import { getColletionBySlug } from '../../../../utilities/product-helper';
 import CollectionProducts from './modules/CollectionProducts';
+import { getProductData } from '../../../../utilities/product-helper';
 
 class GardenAndKitchen extends Component {
     constructor(props) {
@@ -27,9 +28,12 @@ class GardenAndKitchen extends Component {
     }
 
     render() {
-        const { collections, collectionSlug } = this.props;
+        // const { collections, collectionSlug } = this.props;
         const { currentCollection, items } = this.state;
-        const products = getColletionBySlug(collections, collectionSlug);
+        // const products = getColletionBySlug(collections, collectionSlug);
+
+        const { collections } = this.props;
+        const products = getProductData(collections);
         const sectionLinks = [
             {
                 title: 'New Arrivals',
@@ -48,22 +52,22 @@ class GardenAndKitchen extends Component {
             },
         ];
         let sectionItems;
-        if (currentCollection !== 'newArrivals') {
-            sectionItems = <CollectionProducts products={items} />;
+        // if (currentCollection !== 'newArrivals') {
+        //     sectionItems = <CollectionProducts products={items} />;
+        // } else {
+        if (products && products.length > 0) {
+            sectionItems = <CollectionProducts products={products} />;
         } else {
-            if (products && products.length > 0) {
-                sectionItems = <CollectionProducts products={products} />;
-            } else {
-                sectionItems = <p>No Record(s)</p>;
-            }
+            sectionItems = <p>No Record(s)</p>;
         }
+        // }
         return (
             <div className="ps-product-list ps-garden-kitchen">
                 <div className="ps-container">
                     <div className="ps-section__header">
                         <h3>Home, Garden & Kitchen</h3>
                         <ul className="ps-section__links">
-                            {sectionLinks.map(link => (
+                            {sectionLinks.map((link) => (
                                 <li
                                     className={
                                         currentCollection === link.name
@@ -72,7 +76,7 @@ class GardenAndKitchen extends Component {
                                     }
                                     key={link.name}>
                                     <a
-                                        onClick={e =>
+                                        onClick={(e) =>
                                             this.handleChangeProduct(
                                                 e,
                                                 link.name,
@@ -97,4 +101,4 @@ class GardenAndKitchen extends Component {
     }
 }
 
-export default connect(state => state.collection)(GardenAndKitchen);
+export default connect((state) => state.collection)(GardenAndKitchen);

@@ -76,7 +76,7 @@ class ProductWide extends Component {
                             <img
                                 src={
                                     isStaticData === false
-                                        ? `${baseUrl}${product.thumbnail.url}`
+                                        ? product.images[0]
                                         : `${product.thumbnail.url}`
                                 }
                                 alt="martfury"
@@ -114,7 +114,7 @@ class ProductWide extends Component {
                         {product.is_sale === true ? (
                             <p className="ps-product__price sale">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                                 <del className="ml-1">
                                     {currency ? currency.symbol : '$'}
                                     {product.sale_price}{' '}
@@ -123,7 +123,7 @@ class ProductWide extends Component {
                         ) : (
                             <p className="ps-product__price">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                             </p>
                         )}
                         <a

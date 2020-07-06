@@ -51,10 +51,10 @@ class InformationQuickView extends Component {
                 </div>
                 {product.is_sale === true ? (
                     <h4 className="ps-product__price sale">
-                        ${product.price} <del>${product.sale_price}</del>
+                        ${product.bestPrice} <del>${product.sale_price}</del>
                     </h4>
                 ) : (
-                    <h4 className="ps-product__price">${product.price}</h4>
+                    <h4 className="ps-product__price">${product.bestPrice}</h4>
                 )}
                 <div className="ps-product__desc">
                     <p>

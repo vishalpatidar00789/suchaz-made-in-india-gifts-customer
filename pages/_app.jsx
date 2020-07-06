@@ -9,6 +9,16 @@ import createStore from '../store/store';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 
 import '../scss/style.scss';
+import '../scss/home-default.scss';
+import '../scss/autopart.scss';
+import '../scss/electronic.scss';
+import '../scss/furniture.scss';
+import '../scss/market-place-1.scss';
+import '../scss/market-place-2.scss';
+import '../scss/market-place-3.scss';
+import '../scss/market-place-4.scss';
+import '../scss/organic.scss';
+import '../scss/technology.scss';
 
 class MyApp extends App {
     constructor(props) {

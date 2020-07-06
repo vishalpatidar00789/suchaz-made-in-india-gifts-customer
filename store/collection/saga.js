@@ -3,6 +3,7 @@ import { polyfill } from 'es6-promise';
 import { actionTypes, getCategoriesSuccess, getCollectionsSuccess } from './action';
 import { isStaticData } from '../../utilities/app-settings';
 import CollectionRepository from '../../repositories/CollectionRepository';
+import SuchazCollectionRepository from '../../repositories/SuchazCollectionRepository';
 import StaticCollectionRepository from '../../repositories/static/StaticCollectionRepository';
 polyfill();
 
@@ -10,7 +11,7 @@ function* getCollections({ payload }) {
     try {
         if (isStaticData === false) {
             const data = yield call(
-                CollectionRepository.getCollections,
+                SuchazCollectionRepository.getCollections,
                 payload
             );
             yield put(getCollectionsSuccess(data));

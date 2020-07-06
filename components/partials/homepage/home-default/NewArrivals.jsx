@@ -3,14 +3,17 @@ import ProductHorizontal from '../../../elements/products/ProductHorizontal';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import { getColletionBySlug } from '../../../../utilities/product-helper';
+import { getProductData } from '../../../../utilities/product-helper';
 
 class NewArrivals extends Component {
     constructor(props) {
         super(props);
     }
     render() {
-        const { collections, collectionSlug } = this.props;
-        const products = getColletionBySlug(collections, collectionSlug);
+        // const { collections, collectionSlug } = this.props;
+        // const products = getColletionBySlug(collections, collectionSlug);
+        const { collections } = this.props;
+        const products = getProductData(collections);
         return (
             <div className="ps-product-list ps-new-arrivals">
                 <div className="ps-container">
@@ -51,7 +54,7 @@ class NewArrivals extends Component {
                     </div>
                     <div className="ps-section__content">
                         <div className="row">
-                            {products.map(product => (
+                            {products.map((product) => (
                                 <div
                                     className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 "
                                     key={product.title}>
@@ -66,4 +69,4 @@ class NewArrivals extends Component {
     }
 }
 
-export default connect(state => state.collection)(NewArrivals);
+export default connect((state) => state.collection)(NewArrivals);

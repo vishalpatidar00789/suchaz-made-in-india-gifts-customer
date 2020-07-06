@@ -90,8 +90,8 @@ class HeaderProduct extends Component {
                                 <img
                                     src={
                                         isStaticData === false
-                                            ? `${baseUrl}${singleProduct.thumbnail.url}`
-                                            : singleProduct.thumbnail.url
+                                            ? '/static/img/products/detail/image-swatches/small-2.jpg'
+                                            : '/static/img/products/detail/image-swatches/small-2.jpg'
                                     }
                                     alt="martfury"
                                 />
@@ -109,14 +109,14 @@ class HeaderProduct extends Component {
                                 <div className="ps-product__shopping">
                                     {singleProduct.sale === true ? (
                                         <span className="ps-product__price">
-                                            <span>${singleProduct.price}</span>
+                                            <span>${singleProduct.bestPrice}</span>
                                             <del>
                                                 ${singleProduct.salePrice}
                                             </del>
                                         </span>
                                     ) : (
                                         <span className="ps-product__price">
-                                            <span>${singleProduct.price}</span>
+                                            <span>${singleProduct.bestPrice}</span>
                                         </span>
                                     )}
                                     <a

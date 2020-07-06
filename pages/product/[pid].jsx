@@ -25,9 +25,9 @@ class ProductDefaultPage extends React.Component {
     componentDidMount() {
         const { pid } = this.props.query;
         const { query } = this.props;
-        if (isNaN(pid)) {
-            Router.push('/page/page-404');
-        }
+        // if (isNaN(pid)) {
+        //     Router.push('/page/page-404');
+        // }
 
         if (query) {
             const collectionsParams = [

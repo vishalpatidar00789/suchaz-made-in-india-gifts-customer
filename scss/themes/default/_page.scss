@@ -180,7 +180,7 @@
                 }
 
                 a.bttn {
-                color:$second;
+                color:$primary;
                 text-decoration:none;
                 -webkit-transition:0.3s all ease;
                 transition:0.3s ease all;
@@ -231,7 +231,7 @@
                     bottom:0;
                     opacity:0;
                     content:'';
-                    background-color:$second;
+                    background-color:$primary;
                     z-index:-2;
                 }
                 &:hover {
@@ -269,7 +269,7 @@
                 width: 100%;
                 font-weight:normal;
                 padding:5px 5px;
-                border:2px solid $primary;
+                border:2px solid $second;
                 border-radius:2px;
                 position:relative;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.1);

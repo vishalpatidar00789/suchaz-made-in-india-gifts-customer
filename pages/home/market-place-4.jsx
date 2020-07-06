@@ -12,7 +12,6 @@ import HeaderMarketPlace4 from '../../components/shared/headers/HeaderMarketPlac
 import FooterMarketPlace2 from '../../components/shared/footers/FooterMarketPlace2';
 import SubscribePopup from '../../components/shared/SubscribePopup';
 
-import '../../scss/market-place-4.scss';
 import { connect } from 'react-redux';
 import { getCategories, getCollections } from '../../store/collection/action';
 class HomeMarketPlace4Page extends Component {

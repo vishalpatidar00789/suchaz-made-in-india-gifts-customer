@@ -93,7 +93,7 @@ class ShoppingCart extends Component {
                                                 </div>*/}
                                             </td>
                                             <td className="price">
-                                                ${product.price}
+                                                ${product.bestPrice}
                                             </td>
                                             <td>
                                                 <div className="form-group--number">
@@ -125,7 +125,7 @@ class ShoppingCart extends Component {
                                             <td>
                                                 $
                                                 {product.quantity *
-                                                    product.price}
+                                                    product.bestPrice}
                                             </td>
                                             <td>
                                                 <a

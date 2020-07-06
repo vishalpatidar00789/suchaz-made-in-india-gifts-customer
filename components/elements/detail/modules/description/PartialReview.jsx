@@ -6,10 +6,10 @@ const PartialReview = () => (
         <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
             <div className="ps-block--average-rating">
                 <div className="ps-block__header">
-                    <h3>4.00</h3>
+                    <h3>0.00</h3>
                     <Rating />
                     
-                    <span>1 Review</span>
+                    <span>0 Review</span>
                 </div>
                 <div className="ps-block__star">
                     <span>5 Star</span>

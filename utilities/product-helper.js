@@ -19,3 +19,16 @@ export function getColletionBySlug(collections, slug) {
         return [];
     }
 }
+
+export function getProductData(collections) {
+    if (collections.status == true) {
+        const result = collections.data.docs;
+        if (result !== undefined) {
+            return result;
+        } else {
+            return [];
+        }
+    } else {
+        return [];
+    }
+}

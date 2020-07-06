@@ -66,12 +66,12 @@ class ProductDetailFullContent extends React.Component {
                                     {product.sale_price}
                                 </del>
                                 {currency ? currency.symbol : '$'}
-                                {product.price}
+                                {product.bestPrice}
                             </h4>
                         ) : (
                             <h4 className="ps-product__price">
                                 {currency ? currency.symbol : '$'}
-                                {product.price}
+                                {product.bestPrice}
                             </h4>
                         )}
 

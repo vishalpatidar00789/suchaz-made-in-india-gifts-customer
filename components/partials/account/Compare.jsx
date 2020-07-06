@@ -128,7 +128,7 @@ class Compare extends Component {
                                                             <h4 className="price sale">
                                                                 $
                                                                 {
-                                                                    product.price
+                                                                    product.bestPrice
                                                                 }
                                                                 <del>
                                                                     ${product.salePrice}
@@ -145,7 +145,7 @@ class Compare extends Component {
                                                             <h4 className="price">
                                                                 ${' '}
                                                                 {
-                                                                    product.price
+                                                                    product.bestPrice
                                                                 }
                                                             </h4>
                                                         </td>

@@ -9,7 +9,6 @@ import MarketPlace2Promotions from '../../components/partials/homepage/marketpla
 import HeaderMarketPlace2 from '../../components/shared/headers/HeaderMarketPlace2';
 import FooterMarketPlace2 from '../../components/shared/footers/FooterMarketPlace2';
 import SubscribePopup from '../../components/shared/SubscribePopup';
-import '../../scss/market-place-2.scss';
 import { getCategories, getCollections } from '../../store/collection/action';
 import { connect } from 'react-redux';
 

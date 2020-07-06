@@ -6,6 +6,7 @@ import { carouselFullwidth } from '../../../../utilities/carousel-helpers';
 import { getColletionBySlug } from '../../../../utilities/product-helper';
 import { connect } from 'react-redux';
 import CollectionProducts from './modules/CollectionProducts';
+import { getProductData } from '../../../../utilities/product-helper';
 
 class Clothings extends Component {
     constructor(props) {
@@ -27,9 +28,12 @@ class Clothings extends Component {
     }
 
     render() {
-        const { collections, collectionSlug } = this.props;
-        const { currentCollection, items } = this.state;
-        const products = getColletionBySlug(collections, collectionSlug);
+         // const { collections, collectionSlug } = this.props;
+         const { currentCollection, items } = this.state;
+         // const products = getColletionBySlug(collections, collectionSlug);
+ 
+         const { collections } = this.props; 
+         const products = getProductData(collections);
         const sectionLinks = [
             {
                 title: 'New Arrivals',
@@ -48,15 +52,15 @@ class Clothings extends Component {
             },
         ];
         let sectionItems;
-        if (currentCollection !== 'newArrivals') {
-            sectionItems = <CollectionProducts products={items} />;
-        } else {
+        // if (currentCollection !== 'newArrivals') {
+        //     sectionItems = <CollectionProducts products={items} />;
+        // } else {
             if (products && products.length > 0) {
                 sectionItems = <CollectionProducts products={products} />;
             } else {
                 sectionItems = <p>No Record(s)</p>;
             }
-        }
+        // }
         return (
             <div className="ps-product-list ps-garden-kitchen">
                 <div className="ps-container">

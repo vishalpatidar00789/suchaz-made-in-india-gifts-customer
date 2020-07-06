@@ -74,7 +74,7 @@ class ProductSimple extends Component {
         }
         let thumbnail;
         if (isStaticData === false) {
-            thumbnail = `${baseUrl}${product.thumbnail.url}`;
+            thumbnail = product.images[0];
         } else {
             thumbnail = product.thumbnail.url;
         }
@@ -146,7 +146,7 @@ class ProductSimple extends Component {
                         {product.is_sale === true ? (
                             <p className="ps-product__price sale">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}{' '}
+                                {formatCurrency(product.bestPrice)}{' '}
                                 <del className="ml-1">
                                     {currency ? currency.symbol : '$'}
                                     {formatCurrency(product.sale_price)}
@@ -155,7 +155,7 @@ class ProductSimple extends Component {
                         ) : (
                             <p className="ps-product__price">
                                 {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.price)}
+                                {formatCurrency(product.bestPrice)}
                             </p>
                         )}
                     </div>

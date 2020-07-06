@@ -77,12 +77,13 @@ class ThumbnailDefault extends Component {
         const { product } = this.props;
         const { photoIndex, isOpen } = this.state;
         const productImages = [];
+        console.log(product);
         product.images.map(variant => {
             if (isStaticData === false) {
-                productImages.push(`${baseUrl}${variant.url}`);
+                productImages.push(variant);
             }
             else {
-                productImages.push(variant.url);
+                productImages.push(variant);
             }
         });
 
@@ -96,13 +97,13 @@ class ThumbnailDefault extends Component {
                             asNavFor={this.state.variantCarousel}
                             className="ps-product__gallery ps-carousel inside">
                             {product.images.map((variant, index) => (
-                                <div className="item" key={variant.id}>
+                                <div className="item" key={variant}>
                                     <a
                                         href="#"
                                         onClick={e =>
                                             this.handleOpenLightbox(e, index)
                                         }>
-                                        <ThumbnailImage url={variant.url} />
+                                        <ThumbnailImage key={index} url={variant} />
                                     </a>
                                 </div>
                             ))}
@@ -120,8 +121,8 @@ class ThumbnailDefault extends Component {
                     {...variantSetting}
                     className="ps-product__variants">
                     {product.images.map(variant => (
-                        <div className="item" key={variant.id}>
-                            <ThumbnailImage url={variant.url} />
+                        <div className="item" key={variant}>
+                            <ThumbnailImage url={variant} />
                         </div>
                     ))}
                 </Slider>

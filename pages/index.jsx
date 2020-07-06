@@ -17,7 +17,6 @@ import NavigationList from '../components/shared/navigation/NavigationList';
 import HomeDefaultDealOfDay from '../components/partials/homepage/home-default/HomeDefaultDealOfDay';
 import HomeDefaultTopCategories from '../components/partials/homepage/home-default/HomeDefaultTopCategories';
 import SubscribePopup from '../components/shared/SubscribePopup';
-import '../scss/home-default.scss';
 import { getCollections } from '../store/collection/action';
 
 class Index extends Component {
@@ -70,7 +69,7 @@ class Index extends Component {
                    
                     <HomeDefaultTopCategories />
                      <HomeAdsColumns />
-                    <ConumerElectronics collectionSlug="consumer_electronics" />
+                    <ConumerElectronics />
                     <Clothings collectionSlug="clothings" />
                     <GardenAndKitchen collectionSlug="garden_and_kitchen" />
                     {/* <HomeAds /> */}

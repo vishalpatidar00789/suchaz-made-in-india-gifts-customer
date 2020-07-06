@@ -65,7 +65,7 @@ class Wishlist extends Component {
                                                     />
                                                 </td>
                                                 <td className="price">
-                                                    ${product.price}
+                                                    ${product.bestPrice}
                                                 </td>
                                                 <td>{product.vendor}</td>
                                                 <td>
