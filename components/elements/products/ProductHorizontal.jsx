@@ -23,7 +23,7 @@ class ProductHorizontal extends Component {
                 <div className="ps-product__thumbnail">
                     <Link href="/shop">
                         <a>
-                            <img src={thumbnail} alt="martfury" />
+                            <img src={thumbnail} alt="MadeInIndiaGifts" />
                         </a>
                     </Link>
                 </div>
@@ -36,16 +36,16 @@ class ProductHorizontal extends Component {
                     </div>
                     {product.is_sale === true ? (
                         <p className="ps-product__price sale">
-                            {currency ? currency.symbol : '$'}
+                            {currency ? currency.symbol : '₹'}
                             {formatCurrency(product.bestPrice)}
                             <del className="ml-2">
-                                {currency ? currency.symbol : '$'}
+                                {currency ? currency.symbol : '₹'}
                                 {product.sellingPrice}
                             </del>
                         </p>
                     ) : (
                         <p className="ps-product__price">
-                            {currency ? currency.symbol : '$'}
+                            {currency ? currency.symbol : '₹'}
                             {formatCurrency(product.bestPrice)}
                         </p>
                     )}

@@ -27,7 +27,7 @@ const ComparePage = () => {
                 <BreadCrumb breacrumb={breadCrumb} />
                 <Compare />
             </div>
-            <Newsletters layout="container" />
+            {/* <Newsletters layout="container" /> */}
             <FooterDefault />
         </div>
     );

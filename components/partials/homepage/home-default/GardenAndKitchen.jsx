@@ -40,16 +40,16 @@ class GardenAndKitchen extends Component {
                 name: 'newArrivals',
                 slug: 'consumer_electronics',
             },
-            {
-                title: 'Best seller',
-                name: 'bestSeller',
-                slug: 'fullwidth_kitchen_best_seller',
-            },
-            {
-                title: 'Most Popular',
-                name: 'mostPopular',
-                slug: 'fullwidth_kitchen_most_popular',
-            },
+            // {
+            //     title: 'Best seller',
+            //     name: 'bestSeller',
+            //     slug: 'fullwidth_kitchen_best_seller',
+            // },
+            // {
+            //     title: 'Most Popular',
+            //     name: 'mostPopular',
+            //     slug: 'fullwidth_kitchen_most_popular',
+            // },
         ];
         let sectionItems;
         // if (currentCollection !== 'newArrivals') {

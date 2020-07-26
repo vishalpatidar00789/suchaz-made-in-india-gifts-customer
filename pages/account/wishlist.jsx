@@ -26,7 +26,7 @@ const WishlistPage = () => {
                 <BreadCrumb breacrumb={breadCrumb} />
                 <Wishlist />
             </div>
-            <Newsletters layout="container" />
+            {/* <Newsletters layout="container" /> */}
             <FooterDefault />
         </div>
     );

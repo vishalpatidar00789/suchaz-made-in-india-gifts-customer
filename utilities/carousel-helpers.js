@@ -77,7 +77,7 @@ export const carouselInSidebar = {
 };
 
 export const carouselFullwidth = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 750,
     slidesToShow: 7,
@@ -86,6 +86,8 @@ export const carouselFullwidth = {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     lazyload: true,
+    autoplay: true,
+    autoplaySpeed: 10000,
     responsive: [
         {
             breakpoint: 1750,
@@ -93,7 +95,7 @@ export const carouselFullwidth = {
                 slidesToShow: 6,
                 slidesToScroll: 3,
                 dots: true,
-                arrows: false,
+                arrows: true,
             },
         },
 
@@ -104,7 +106,7 @@ export const carouselFullwidth = {
                 slidesToScroll: 2,
                 infinite: true,
                 dots: true,
-                arrows: false,
+                arrows: true,
             },
         },
         {
@@ -124,7 +126,7 @@ export const carouselFullwidth = {
                 slidesToScroll: 1,
                 infinite: true,
                 dots: true,
-
+                arrows: true,
             },
         },
         {
@@ -133,7 +135,7 @@ export const carouselFullwidth = {
                 slidesToShow: 3,
                 slidesToScroll: 2,
                 dots: true,
-                arrows: false,
+                arrows: true,
             },
         },
         {
@@ -141,7 +143,7 @@ export const carouselFullwidth = {
             settings: {
                 slidesToShow: 2,
                 dots: true,
-                arrows: false,
+                arrows: true,
             },
         },
     ],

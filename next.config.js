@@ -5,16 +5,19 @@ const withPWA = require('next-pwa');
 
 const nextSettings = {
     exportTrailingSlash: true,
-    exportPathMap: function() {
+    exportPathMap: function () {
         return {
             '/': { page: '/' },
         };
     },
 };
 
-module.exports = withPWA({
-    pwa: {
-        dest: 'public'
-    }
-},
-withPlugins([[withSass(), withImages()]]));
+module.exports = withPWA(
+    {
+        pwa: {
+            dest: 'public',
+        },
+        distDir: 'build',
+    },
+    withPlugins([[withSass(), withImages()]])
+);

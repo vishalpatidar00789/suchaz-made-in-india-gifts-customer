@@ -11,7 +11,7 @@ import {
     getSingleProductsSuccess,
     getTotalProductsSuccess,
     getProductCategoriesSuccess,
-    getBrandsSuccess, getProductByKeywordsSuccess,
+    getBrandsSuccess, getProductByKeywordsSuccess, getFilterCategory, getFilterCategorySuccess,
 } from './action';
 import { isStaticData } from '../../utilities/app-settings';
 polyfill();
@@ -33,11 +33,28 @@ function* getProducts({ payload }) {
     }
 }
 
+function* getFilterCategories({ payload }) {
+    try {
+        if (isStaticData === false) {
+            // const data = yield call(ProductRepository.getRecords, payload);
+            // yield put(getProductsSuccess(data));
+
+            const data = yield call(SuchazProductRepository.getFilterCategories, payload);
+            yield put(getFilterCategorySuccess(data.data.docs));
+        } else {
+            const data = yield call(StaticProductRepository.getRecords);
+            yield put(getProductsSuccess(data));
+        }
+    } catch (err) {
+        yield put(getProductsError(err));
+    }
+}
+
 function* getTotalOfProducts() {
     try {
         if (isStaticData === false) {
-            const result = yield call(ProductRepository.getTotalRecords);
-            yield put(getTotalProductsSuccess(result));
+            const result = yield call(SuchazProductRepository.getFilterCategories);
+            yield put(getTotalProductsSuccess(result.data.totalDocs));
         } else {
             const result = yield call(StaticProductRepository.getTotalRecords);
             yield put(getTotalProductsSuccess(result));
@@ -49,7 +66,7 @@ function* getTotalOfProducts() {
 
 function* getBrands() {
     try {
-        if (isStaticData === false) {
+        if (isStaticData === true) {
             const result = yield call(ProductRepository.getBrands);
             yield put(getBrandsSuccess(result));
         } else {
@@ -65,7 +82,8 @@ function* getProductCategories() {
     try {
         if (isStaticData === false) {
             const result = yield call(ProductRepository.getProductCategories);
-            yield put(getProductCategoriesSuccess(result));
+            // console.log(result);
+            yield put(getProductCategoriesSuccess(result.data));
         } else {
             const result = yield call(
                 StaticProductRepository.getProductCategories
@@ -96,7 +114,7 @@ function* getProductById({ id }) {
 
 function* getProductByCategory({ category }) {
     try {
-        if (isStaticData === false) {
+        if (isStaticData === true) {
             const result = yield call(
                 ProductRepository.getProductsByCategory,
                 category
@@ -118,7 +136,7 @@ function* getProductByCategory({ category }) {
 
 function* getProductByPriceRange({ payload }) {
     try {
-        if (isStaticData === false) {
+        if (isStaticData === true) {
             const products = yield call(
                 ProductRepository.getProductsByPriceRange,
                 payload
@@ -140,7 +158,7 @@ function* getProductByPriceRange({ payload }) {
 
 function* getProductByBrand({ payload }) {
     try {
-        if (isStaticData === false) {
+        if (isStaticData === true) {
             const brands = yield call(
                 ProductRepository.getProductsByBrands,
                 payload
@@ -174,7 +192,7 @@ function* getProductByBrand({ payload }) {
 
 function* getProductByKeyword({ keyword }) {
     try {
-        if (isStaticData === false) {
+        if (isStaticData === true) {
             const searchParams = {
                 title_contains: keyword,
             };
@@ -197,6 +215,7 @@ function* getProductByKeyword({ keyword }) {
 
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.GET_PRODUCTS, getProducts)]);
+    yield all([takeEvery(actionTypes.GET_FILTER_CATEGORY, getFilterCategories)]);
     yield all([
         takeEvery(actionTypes.GET_TOTAL_OF_PRODUCTS, getTotalOfProducts),
     ]);

@@ -19,7 +19,7 @@ class ProductResult extends Component {
                 <div className="ps-product__thumbnail">
                     <Link href="/product/[pid]" as={`/product/${product.id}`}>
                         <a>
-                            <img src={isStaticData === true ? product.thumbnail.url : product.images[0]} alt="martfury" />
+                            <img src={isStaticData === true ? product.thumbnail.url : product.images[0]} alt="MadeInIndiaGifts" />
                         </a>
                     </Link>
                 </div>
@@ -33,16 +33,16 @@ class ProductResult extends Component {
                     </div>
                     {product.is_sale === true ? (
                         <p className="ps-product__price sale">
-                            {currency ? currency.symbol : '$'}
+                            {currency ? currency.symbol : '₹'}
                             {formatCurrency(product.bestPrice)}
                             <del className="ml-1">
-                                {currency ? currency.symbol : '$'}
+                                {currency ? currency.symbol : '₹'}
                                 {formatCurrency(product.sale_price)}
                             </del>
                         </p>
                     ) : (
                         <p className="ps-product__price">
-                            {currency ? currency.symbol : '$'}
+                            {currency ? currency.symbol : '₹'}
                             {formatCurrency(product.bestPrice)}
                         </p>
                     )}

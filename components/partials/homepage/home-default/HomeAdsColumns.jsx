@@ -10,7 +10,7 @@ const HomeAds = () => (
                         <a className="ps-collection">
                             <img
                                 src="/static/img/collection/home-1/1.jpg"
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>
@@ -20,7 +20,7 @@ const HomeAds = () => (
                         <a className="ps-collection">
                             <img
                                 src="/static/img/collection/home-1/2.jpg"
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>
@@ -30,7 +30,7 @@ const HomeAds = () => (
                         <a className="ps-collection">
                             <img
                                 src="/static/img/collection/home-1/3.jpg"
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>

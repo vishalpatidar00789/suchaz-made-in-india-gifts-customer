@@ -31,7 +31,7 @@ class MartketPlace2Banner extends Component {
                                     <a>
                                         <img
                                             src="/static/img/slider/home-4/1.jpg"
-                                            alt="martfury"
+                                            alt="MadeInIndiaGifts"
                                         />
                                     </a>
                                 </Link>
@@ -41,7 +41,7 @@ class MartketPlace2Banner extends Component {
                                     <a>
                                         <img
                                             src="/static/img/slider/home-4/2.jpg"
-                                            alt="martfury"
+                                            alt="MadeInIndiaGifts"
                                         />
                                     </a>
                                 </Link>
@@ -51,7 +51,7 @@ class MartketPlace2Banner extends Component {
                                     <a>
                                         <img
                                             src="/static/img/slider/home-4/3.jpg"
-                                            alt="martfury"
+                                            alt="MadeInIndiaGifts"
                                         />
                                     </a>
                                 </Link>
@@ -63,7 +63,7 @@ class MartketPlace2Banner extends Component {
                             <a className="ps-collection">
                                 <img
                                     src="/static/img/slider/home-4/left.jpg"
-                                    alt="martfury"
+                                    alt="MadeInIndiaGifts"
                                 />
                             </a>
                         </Link>

@@ -6,7 +6,7 @@ import ShopWidget from './modules/ShopWidget';
 import BestSaleItems from './modules/BestSaleItems';
 import RecommendItems from './modules/RecommendItems';
 import { Pagination, Skeleton } from 'antd';
-import { getProducts } from '../../../store/product/action';
+import { getProducts, getFilterCategory } from '../../../store/product/action';
 
 class LayoutShop extends Component {
     constructor(props) {
@@ -15,6 +15,9 @@ class LayoutShop extends Component {
 
     state = {
         listView: true,
+        sortBy: 'latest',
+        page: 1,
+        limit: 20
     };
 
     handleChangeViewMode = (event) => {
@@ -22,23 +25,16 @@ class LayoutShop extends Component {
         this.setState({ listView: !this.state.listView });
     };
 
-    handlePagination(page, pageSize) {
-        const params = {
-            _start: page === 1 ? 0 : page * pageSize,
-            _limit: pageSize,
-        };
-        this.props.dispatch(getProducts(params));
-    }
 
     render() {
-        const { allProducts, totalProducts } = this.props;
+        const { allProducts, totalProducts, sortBy, page, limit } = this.props;
         const products = allProducts;
         const total = totalProducts;
         const viewMode = this.state.listView;
         return (
             <div className="ps-shopping">
-                <BestSaleItems collectionSlug="shop_best_sale_items" />
-                <RecommendItems collectionSlug="shop-recommend-items" />
+                {/* <BestSaleItems collectionSlug="shop_best_sale_items" />
+                <RecommendItems collectionSlug="shop-recommend-items" /> */}
                 <div className="ps-shopping__header">
                     <p>
                         <strong className="mr-2">{total}</strong>
@@ -47,14 +43,16 @@ class LayoutShop extends Component {
                     <div className="ps-shopping__actions">
                         <select
                             className="ps-select form-control"
-                            data-placeholder="Sort Items">
-                            <option>Sort by latest</option>
-                            <option>Sort by popularity</option>
-                            <option>Sort by average rating</option>
-                            <option>Sort by price: low to high</option>
-                            <option>Sort by price: high to low</option>
+                            data-placeholder="Sort Items"
+                            onChange={this.props.handleSortBy}
+                            value={sortBy}>
+                            <option value="latest">Sort by latest</option>
+                            <option value="offer">Sort by offer</option>
+                            <option value="popularity">Sort by popularity</option>
+                            <option value="price_asc">Sort by price: low to high</option>
+                            <option value="price_desc">Sort by price: high to low</option>
                         </select>
-                        <div className="ps-shopping__view">
+                        {/* <div className="ps-shopping__view">
                             <p>View</p>
                             <ul className="ps-tab-list">
                                 <li
@@ -78,7 +76,7 @@ class LayoutShop extends Component {
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="ps-shopping__content">
@@ -110,11 +108,11 @@ class LayoutShop extends Component {
                     )}
                     <div className="ps-shopping__footer text-center pt-40">
                         <Pagination
-                            total={total - 1}
-                            pageSize={12}
+                            total={total}
+                            pageSize={limit}
                             responsive={true}
                             defaultCurrent={1}
-                            onChange={this.handlePagination.bind(this)}
+                            onChange={this.props.handlePagination}
                         />
                     </div>
                 </div>

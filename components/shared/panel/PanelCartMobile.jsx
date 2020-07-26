@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCart, removeItem } from '../../../store/cart/action';
 import Link from 'next/link';
+import { Router } from 'next/router';
 import { isStaticData } from '../../../utilities/app-settings';
 import { baseUrl } from '../../../repositories/Repository';
 
@@ -39,7 +40,7 @@ class PanelCartMobile extends Component {
                                                         ? product.thumbnail.url
                                                         : product.images[0]
                                                 }
-                                                alt="martfury"
+                                                alt="MadeInIndiaGifts"
                                             />
                                         </a>
                                     </Link>
@@ -61,11 +62,13 @@ class PanelCartMobile extends Component {
                                         </a>
                                     </Link>
                                     <p>
-                                        <strong>Sold by:</strong>{' '}
-                                        {product.vendor}
+                                        <strong>Sold by:</strong>
+                                        {product.vendor?.shop_name
+                                                      ? ' ' +product.vendor.shop_name
+                                                      : '\u00A0'}
                                     </p>
                                     <small>
-                                        {product.quantity} x ${product.bestPrice}
+                                        {product.quantity} x ₹{product.bestPrice}
                                     </small>
                                 </div>
                             </div>
@@ -79,7 +82,7 @@ class PanelCartMobile extends Component {
                 {cartItems && cartItems.length > 0 ? (
                     <div className="ps-cart__footer">
                         <h3>
-                            Sub Total:<strong>${amount}</strong>
+                            Sub Total:<strong>₹{amount}</strong>
                         </h3>
                         <figure>
                             <Link href="/account/shopping-cart">

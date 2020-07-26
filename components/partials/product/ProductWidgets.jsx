@@ -13,37 +13,37 @@ class ProductWidgets extends Component{
             <section>
                 <aside className="widget widget_product widget_features">
                     <p>
-                        <i className="icon-network"></i> Shipping worldwide
+                        <i className="icon-network"></i> Shipping all over India
                     </p>
-                    <p>
+                    {/* <p>
                         <i className="icon-3d-rotate"></i> Free 7-day return if
                         eligible, so easy
-                    </p>
+                    </p> */}
                     <p>
                         <i className="icon-receipt"></i> Supplier give bills for this
                         product.
                     </p>
                     <p>
-                        <i className="icon-credit-card"></i> Pay online or when
-                        receiving goods
+                        <i className="icon-credit-card"></i> Secured Pay online
                     </p>
+                    <p> <i className="icon-user"></i> Become an influencer </p>
                 </aside>
                 <aside className="widget widget_sell-on-site">
                     <p>
-                        <i className="icon-store"></i> Sell on Martfury?
-                        <Link href="/account/register">
-                            <a> Register Now !</a>
+                        <i className="icon-store"></i> Sell on MadeInIndiaGifts.in?
+                        <Link href="/account/vendor/register">
+                            <a> Become a seller !</a>
                         </Link>
                     </p>
                 </aside>
                 <aside className="widget widget_ads">
                     <Link href="/shop">
                         <a>
-                            <img src="/static/img/ads/product-ads.png" alt="martfury" />
+                            <img src="/static/img/ads/product-ads.png" alt="MadeInIndiaGifts" />
                         </a>
                     </Link>
                 </aside>
-                <aside className="widget widget_same-brand">
+                {/* <aside className="widget widget_same-brand">
                     <h3>Same Brand</h3>
                     <div className="widget__content">
                         {products &&
@@ -51,7 +51,7 @@ class ProductWidgets extends Component{
                             <Product product={product} key={product.id} />
                         ))}
                     </div>
-                </aside>
+                </aside> */}
             </section>
         );
     }

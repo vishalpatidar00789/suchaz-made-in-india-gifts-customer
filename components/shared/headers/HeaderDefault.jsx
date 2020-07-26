@@ -38,7 +38,7 @@ class HeaderDefault extends Component {
                                 <a className="ps-logo">
                                     <img
                                         src="/static/img/logo_light.png"
-                                        alt="martfury"
+                                        alt="MadeInIndiaGifts"
                                     />
                                 </a>
                             </Link>
@@ -47,7 +47,7 @@ class HeaderDefault extends Component {
                                         <Link href="/">
                                         <img
                                                 src="/static/img/logo_light.png"
-                                                alt="martfury"
+                                                alt="MadeInIndiaGifts"
                                         />
                                         </Link>
                                     </span>
@@ -62,7 +62,7 @@ class HeaderDefault extends Component {
                                         <Link href="/">
                                         <img
                                                 src="/static/img/logo_light.png"
-                                                alt="martfury"
+                                                alt="MadeInIndiaGifts"
                                         />
                                         </Link>
                                     </span>
@@ -73,7 +73,7 @@ class HeaderDefault extends Component {
                             </div> */}
                         </div>
                         <div className="header__center">
-                            <SearchHeader />
+                            {/* <SearchHeader /> */}
                         </div>
                         <div className="header__right">
                             <HeaderActions />

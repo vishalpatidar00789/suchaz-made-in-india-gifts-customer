@@ -24,7 +24,7 @@ class OrganicBanner extends Component {
                         style={{
                             backgroundImage: `url(/static/img/slider/home-9/1.jpg)`,
                         }}>
-                        <img src="/static/img/slider/home-9/1.jpg" alt="martfury" />
+                        <img src="/static/img/slider/home-9/1.jpg" alt="MadeInIndiaGifts" />
                         <div className="ps-banner__content">
                             <h4>Weekend Promotions</h4>
                             <h3>
@@ -42,7 +42,7 @@ class OrganicBanner extends Component {
                         style={{
                             backgroundImage: `url(/static/img/slider/home-9/2.jpg)`,
                         }}>
-                        <img src="/static/img/slider/home-9/2.jpg" alt="martfury" />
+                        <img src="/static/img/slider/home-9/2.jpg" alt="MadeInIndiaGifts" />
                         <div className="ps-banner__content">
                             <h4>Weekend Promotions</h4>
                             <h3>

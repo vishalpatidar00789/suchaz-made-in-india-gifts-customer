@@ -3,6 +3,10 @@ export const actionTypes = {
     GET_PRODUCTS_SUCCESS: 'GET_PRODUCTS_SUCCESS',
     GET_PRODUCTS_ERROR: 'GET_PRODUCTS_ERROR',
 
+    GET_FILTER_CATEGORY: 'GET_FILTER_CATEGORY',
+    GET_FILTER_CATEGORY_SUCCESS: 'GET_FILTER_CATEGORY_SUCCESS',
+    GET_FILTER_CATEGORY_ERROR: 'GET_FILTER_CATEGORY_ERROR',
+
     GET_PRODUCTS_BY_CATEGORY: 'GET_PRODUCTS_BY_CATEGORY',
     GET_PRODUCTS_BY_PRICE_RANGE: 'GET_PRODUCTS_BY_PRICE_RANGE',
     GET_PRODUCTS_BY_BRAND: 'GET_PRODUCTS_BY_BRAND',
@@ -25,6 +29,18 @@ export const actionTypes = {
 
 export function getProducts(payload) {
     return { type: actionTypes.GET_PRODUCTS, payload };
+}
+
+export function getFilterCategory(payload) {
+    return { type: actionTypes.GET_FILTER_CATEGORY, payload };
+}
+
+export function getFilterCategorySuccess(payload) {
+    return { type: actionTypes.GET_FILTER_CATEGORY_SUCCESS, payload };
+}
+
+export function getFilterCategoryError(payload) {
+    return { type: actionTypes.GET_FILTER_CATEGORY_ERROR, payload };
 }
 
 export function getTotalProducts() {

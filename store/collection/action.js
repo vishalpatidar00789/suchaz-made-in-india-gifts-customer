@@ -2,6 +2,9 @@ export const actionTypes = {
     GET_COLLECTIONS: 'GET_COLLECTIONS',
     GET_COLLECTIONS_SUCCESS: 'GET_COLLECTIONS_SUCCESS',
 
+    GET_NEWARRIVALS: 'GET_NEWARRIVALS',
+    GET_NEWARRIVALS_SUCCESS: 'GET_NEWARRIVALS_SUCCESS',
+
     GET_COLLECTION: 'GET_COLLECTION',
     GET_COLLECTION_SUCCESS: 'GET_COLLECTION_SUCCESS',
 
@@ -41,3 +44,15 @@ export function getCollectionSuccess(payload) {
         payload,
     };
 }
+
+export function getNewArrival(payload) {
+    return { type: actionTypes.GET_NEWARRIVALS, payload };
+}
+
+export function getNewArrivalSuccess(payload) {
+    return {
+        type: actionTypes.GET_NEWARRIVALS_SUCCESS,
+        payload,
+    };
+}
+

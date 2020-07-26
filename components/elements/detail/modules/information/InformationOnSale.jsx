@@ -79,7 +79,9 @@ class InformationOnSale extends Component {
                         Sold By:
                         <Link href="/shop">
                             <a>
-                                <strong> {product.vendor}</strong>
+                                <strong> {product.vendor?.shop_name
+                                                      ? product.vendor.shop_name
+                                                      : '\u00A0'}</strong>
                             </a>
                         </Link>
                     </p>

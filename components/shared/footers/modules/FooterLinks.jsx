@@ -3,145 +3,145 @@ import Link from 'next/link';
 const Links = {
     consumerElectric: [
         {
-            text: 'Air Conditioners',
+            text: 'Gift for Men',
             url: '/shop'
         },
         {
-            text: 'Audios & Theaters',
+            text: 'Gift for Women',
             url: '/shop'
         },
         {
-            text: 'Car Electronics',
+            text: 'Gift for Boys',
             url: '/shop'
         },
         {
-            text: 'Office Electronics',
+            text: 'Gift for Girls',
             url: '/shop'
         },
-        {
-            text: 'TV Televisions',
-            url: '/shop'
-        },
-        {
-            text: 'Washing Machines',
-            url: '/shop'
-        }
+        // {
+        //     text: 'TV Televisions',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Washing Machines',
+        //     url: '/shop'
+        // }
     ],
     clothingAndApparel: [
         {
-            text: 'Printers',
+            text: 'Gift for Sporty People',
             url: '/shop'
         },
         {
-            text: 'Projectors',
+            text: 'Gift for Music Lover',
             url: '/shop'
         },
-        {
-            text: 'Scanners',
-            url: '/shop'
-        },
-        {
-            text: 'Store &amp; Business',
-            url: '/shop'
-        },
-        {
-            text: '4K Ultra HD TVs',
-            url: '/shop'
-        },
-        {
-            text: 'LED TVs',
-            url: '/shop'
-        },
-        {
-            text: 'OLED TVs',
-            url: '/shop'
-        }
+        // {
+        //     text: '',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Store &amp; Business',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: '4K Ultra HD TVs',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'LED TVs',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'OLED TVs',
+        //     url: '/shop'
+        // }
     ],
     gardenAndKitchen: [
         {
-            text: 'Cookware',
+            text: 'Gift for Rakhi',
             url: '/shop'
         },
         {
-            text: 'Decoration',
+            text: 'Gift for Diwali',
             url: '/shop'
         },
         {
-            text: 'Furniture',
+            text: 'Gift for Birthday',
             url: '/shop'
         },
-        {
-            text: 'Garden Tools',
-            url: '/shop'
-        },
-        {
-            text: 'Garden Equipments',
-            url: '/shop'
-        },
-        {
-            text: 'Powers And Hand Tools',
-            url: '/shop'
-        },
-        {
-            text: 'Utensil & Gadget',
-            url: '/shop'
-        }
+        // {
+        //     text: 'Garden Tools',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Garden Equipments',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Powers And Hand Tools',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Utensil & Gadget',
+        //     url: '/shop'
+        // }
     ],
     healthAndBeauty: [
         {
-            text: 'Hair Care',
+            text: 'Gift for Girlfriend',
             url: '/shop'
         },
         {
-            text: 'Decoration',
+            text: 'Gift for Boyfriend',
             url: '/shop'
         },
         {
-            text: 'Makeup',
+            text: 'Gift for Wife',
             url: '/shop'
         },
-        {
-            text: 'Body Shower',
-            url: '/shop'
-        },
-        {
-            text: 'Skin Care',
-            url: '/shop'
-        },
-        {
-            text: 'Cologine',
-            url: '/shop'
-        },
-        {
-            text: 'Perfume',
-            url: '/shop'
-        }
+        // {
+        //     text: 'Body Shower',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Skin Care',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Cologine',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Perfume',
+        //     url: '/shop'
+        // }
     ],
     jewelryAndWatch: [
         {
-            text: 'Necklace',
+            text: 'Novelty',
             url: '/shop'
         },
         {
-            text: 'Pendant',
+            text: 'A',
             url: '/shop'
         },
         {
-            text: 'Diamond Ring',
+            text: 'B',
             url: '/shop'
         },
-        {
-            text: 'Sliver Earing',
-            url: '/shop'
-        },
-        {
-            text: 'Leather Watcher',
-            url: '/shop'
-        },
-        {
-            text: 'Gucci',
-            url: '/shop'
-        }
+        // {
+        //     text: 'Sliver Earing',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Leather Watcher',
+        //     url: '/shop'
+        // },
+        // {
+        //     text: 'Gucci',
+        //     url: '/shop'
+        // }
     ],
     computerAndTechnology: [
         {
@@ -178,7 +178,7 @@ const Links = {
 const FooterLinks = () => (
     <div className="ps-footer__links">
         <p>
-            <strong>Consumer Electric:</strong>
+            <strong>Gift by Recipient:</strong>
             {Links.consumerElectric.map(item => (
                 <Link href={item.url} key={item.text}>
                     <a>{item.text}</a>
@@ -186,7 +186,7 @@ const FooterLinks = () => (
             ))}
         </p>
         <p>
-            <strong>Clothing &amp; Apparel:</strong>
+            <strong>Gift by Personality:</strong>
             {Links.clothingAndApparel.map(item => (
                 <Link href={item.url} key={item.text}>
                     <a>{item.text}</a>
@@ -194,7 +194,7 @@ const FooterLinks = () => (
             ))}
         </p>
         <p>
-            <strong>Home, Garden &amp; Kitchen:</strong>
+            <strong>Gift by Occasion:</strong>
             {Links.gardenAndKitchen.map(item => (
                 <Link href={item.url} key={item.text}>
                     <a>{item.text}</a>
@@ -202,7 +202,7 @@ const FooterLinks = () => (
             ))}
         </p>
         <p>
-            <strong>Health &amp; Beauty:</strong>
+            <strong>Gift by Relationship:</strong>
             {Links.healthAndBeauty.map(item => (
                 <Link href={item.url} key={item.text}>
                     <a>{item.text}</a>
@@ -210,21 +210,21 @@ const FooterLinks = () => (
             ))}
         </p>
         <p>
-            <strong>Jewelry &amp; Watches:</strong>
+            <strong>Gift by Category:</strong>
             {Links.jewelryAndWatch.map(item => (
                 <Link href={item.url} key={item.text}>
                     <a>{item.text}</a>
                 </Link>
             ))}
         </p>
-        <p>
+        {/* <p>
             <strong>Computer &amp; Technologies:</strong>
             {Links.computerAndTechnology.map(item => (
                 <Link href={item.url} key={item.text}>
                     <a>{item.text}</a>
                 </Link>
             ))}
-        </p>
+        </p> */}
     </div>
 );
 

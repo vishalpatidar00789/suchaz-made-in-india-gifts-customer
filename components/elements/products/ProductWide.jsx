@@ -79,7 +79,7 @@ class ProductWide extends Component {
                                         ? product.images[0]
                                         : `${product.thumbnail.url}`
                                 }
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>
@@ -94,7 +94,9 @@ class ProductWide extends Component {
                         <p className="ps-product__vendor">
                             Sold by:
                             <Link href="/shop">
-                                <a>{product.vendor}</a>
+                                <a> {product.vendor?.shop_name
+                                                      ? product.vendor.shop_name
+                                                      : '\u00A0'}</a>
                             </Link>
                         </p>
                         <ul className="ps-product__desc">

@@ -6,13 +6,12 @@ const FooterWidgets = () => (
         <aside className="widget widget_footer widget_contact-us">
             <h4 className="widget-title">Contact us</h4>
             <div className="widget_content">
-                <p>Call us 24/7</p>
-                <h3>1800 97 97 69</h3>
+                {/* <p>Call us 24/7</p>
+                <h3>1800 97 97 69</h3> */}
                 <p>
-                    502 New Design Str, Melbourne, Australia <br />
-                    <a href="mailto:contact@martfury.co">contact@martfury.co</a>
+                   Email : <a href="mailto:contactus@madeinindiagifts.in">contactus@madeinindiagifts.in</a>
                 </p>
-                <ul className="ps-list--social">
+                {/* <ul className="ps-list--social">
                     <li>
                         <a className="facebook" href="#">
                             <i className="fa fa-facebook"></i>
@@ -33,7 +32,7 @@ const FooterWidgets = () => (
                             <i className="fa fa-instagram"></i>
                         </a>
                     </li>
-                </ul>
+                </ul> */}
             </div>
         </aside>
         <aside className="widget widget_footer">
@@ -44,7 +43,6 @@ const FooterWidgets = () => (
                         <a>Policy</a>
                     </Link>
                 </li>
-
                 <li>
                     <Link href="/page/blank">
                         <a>Term & Condition</a>
@@ -52,7 +50,7 @@ const FooterWidgets = () => (
                 </li>
                 <li>
                     <Link href="/page/blank">
-                        <a>Term & Condition</a>
+                        <a>Seller Term & Condition</a>
                     </Link>
                 </li>
                 <li>
@@ -80,7 +78,7 @@ const FooterWidgets = () => (
                         <a>About Us</a>
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link href="/page/blank">
                         <a>Affilate</a>
                     </Link>
@@ -89,17 +87,27 @@ const FooterWidgets = () => (
                     <Link href="/page/blank">
                         <a>Career</a>
                     </Link>
+                </li> */}
+                <li>
+                    <Link href="/page/contact-us">
+                        <a>Contact Us</a>
+                    </Link>
                 </li>
                 <li>
                     <Link href="/page/contact-us">
-                        <a>Contact</a>
+                        <a>Blog</a>
                     </Link>
                 </li>
             </ul>
         </aside>
         <aside className="widget widget_footer">
-            <h4 className="widget-title">Bussiness</h4>
+            <h4 className="widget-title">Business</h4>
             <ul className="ps-list--link">
+                <li>
+                    <Link href="/account/vendor/register">
+                        <a>Become a Seller</a>
+                    </Link>
+                </li>
                 <li>
                     <Link href="/page/about-us">
                         <a>Our Press</a>
@@ -112,12 +120,12 @@ const FooterWidgets = () => (
                 </li>
                 <li>
                     <Link href="/account/user-information">
-                        <a>My account</a>
+                        <a>My Account</a>
                     </Link>
                 </li>
                 <li>
-                    <Link href="/shop">
-                        <a>Shop</a>
+                    <Link href="/account/user-information">
+                        <a>Become a Reviewer</a>
                     </Link>
                 </li>
             </ul>

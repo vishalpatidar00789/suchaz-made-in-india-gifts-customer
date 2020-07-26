@@ -7,9 +7,9 @@ export const stickyHeader = () => {
     const header = document.getElementById('headerSticky');
     if (header !== null) {
         if (number >= 300) {
-            header.classList.add('header--sticky');
+           // header.classList.add('header--sticky');
         } else {
-            header.classList.remove('header--sticky');
+           // header.classList.remove('header--sticky');
         }
     }
 };

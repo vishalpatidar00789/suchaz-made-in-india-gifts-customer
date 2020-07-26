@@ -33,15 +33,15 @@ class ProductDealHot extends React.Component {
                             {product.is_sale === true ? (
                                 <h4 className="ps-product__price sale">
                                     <del className="mr-2">
-                                        {currency ? currency.symbol : '$'}
+                                        {currency ? currency.symbol : '₹'}
                                         {formatCurrency(product.sale_price)}
                                     </del>
-                                    {currency ? currency.symbol : '$'}
+                                    {currency ? currency.symbol : '₹'}
                                     {formatCurrency(product.bestPrice)}
                                 </h4>
                             ) : (
                                 <h4 className="ps-product__price">
-                                    {currency ? currency.symbol : '$'}
+                                    {currency ? currency.symbol : '₹'}
                                     {formatCurrency(product.bestPrice)}
                                 </h4>
                             )}

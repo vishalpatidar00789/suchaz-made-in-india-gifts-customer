@@ -5,7 +5,7 @@ import FooterCopyright from './modules/FooterCopyright';
 
 const FooterDefault = () => (
     <footer className="ps-footer">
-        <div className="container">
+        <div className="ps-container">
             <FooterWidgets />
             <FooterLinks />
             <FooterCopyright />

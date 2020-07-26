@@ -22,7 +22,7 @@ const HomeDefaultTopCategories = () => (
                         <Link href="/shop">
                             <a className="ps-block__overlay"></a>
                         </Link>
-                        <img src="/static/img/categories/2.jpg" alt="martfury" />
+                        <img src="/static/img/categories/2.jpg" alt="MadeInIndiaGifts" />
                         <p>Clothings</p>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ const HomeDefaultTopCategories = () => (
                         <Link href="/shop">
                             <a className="ps-block__overlay"></a>
                         </Link>
-                        <img src="/static/img/categories/3.jpg" alt="martfury" />
+                        <img src="/static/img/categories/3.jpg" alt="MadeInIndiaGifts" />
                         <p>Computers</p>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ const HomeDefaultTopCategories = () => (
                         <Link href="/shop">
                             <a className="ps-block__overlay"></a>
                         </Link>
-                        <img src="/static/img/categories/4.jpg" alt="martfury" />
+                        <img src="/static/img/categories/4.jpg" alt="MadeInIndiaGifts" />
                         <p>Home & Kitchen</p>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ const HomeDefaultTopCategories = () => (
                         <Link href="/shop">
                             <a className="ps-block__overlay"></a>
                         </Link>
-                        <img src="/static/img/categories/5.jpg" alt="martfury" />
+                        <img src="/static/img/categories/5.jpg" alt="MadeInIndiaGifts" />
                         <p>Health & Beauty</p>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ const HomeDefaultTopCategories = () => (
                         <Link href="/shop">
                             <a className="ps-block__overlay"></a>
                         </Link>
-                        <img src="/static/img/categories/6.jpg" alt="martfury" />
+                        <img src="/static/img/categories/6.jpg" alt="MadeInIndiaGifts" />
                         <p>Health & Beauty</p>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const HomeDefaultTopCategories = () => (
                         <Link href="/shop">
                             <a className="ps-block__overlay"></a>
                         </Link>
-                        <img src="/static/img/categories/7.jpg" alt="martfury" />
+                        <img src="/static/img/categories/7.jpg" alt="MadeInIndiaGifts" />
                         <p>Jewelry & Watch</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ const HomeDefaultTopCategories = () => (
                         <Link href="/shop">
                             <a className="ps-block__overlay"></a>
                         </Link>
-                        <img src="/static/img/categories/8.jpg" alt="martfury" />
+                        <img src="/static/img/categories/8.jpg" alt="MadeInIndiaGifts" />
                         <p>Technology Toys</p>
                     </div>
                 </div>

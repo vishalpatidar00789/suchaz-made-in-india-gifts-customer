@@ -82,17 +82,17 @@ class ProductDefaultPage extends React.Component {
                                 <ProductWidgets collectionSlug="widget_same_brand" />
                             </div>
                         </div>
-                        <CustomerBought
+                        {/* <CustomerBought
                             layout="fullwidth"
                             collectionSlug="customer_bought"
                         />
                         <RelatedProduct
                             layout="fullwidth"
                             collectionSlug="shop-recommend-items"
-                        />
+                        /> */}
                     </div>
                 </div>
-                <Newletters />
+                {/* <Newletters /> */}
                 <FooterDefault />
             </div>
         );

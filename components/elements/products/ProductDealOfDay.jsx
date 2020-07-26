@@ -5,6 +5,7 @@ import { addItemToCompare } from '../../../store/compare/action';
 import { addItemToWishlist } from '../../../store/wishlist/action';
 import Link from 'next/link';
 import { Modal } from 'antd';
+import Router from 'next/router';
 import ProductDetailQuickView from '../detail/ProductDetailQuickView';
 import Rating from '../Rating';
 import { baseUrl } from '../../../repositories/Repository';
@@ -16,33 +17,45 @@ class ProductDealOfDay extends Component {
         super(props);
         this.state = {
             isQuickView: false,
+            quantity: 1,
         };
     }
 
-    handleAddItemToCart = e => {
+    handleAddItemToCart = (e) => {
         e.preventDefault();
         const { product } = this.props;
+        let tempProduct = product;
+        tempProduct.quantity = this.state.quantity;
         this.props.dispatch(addItem(product));
     };
 
-    handleAddItemToCompare = e => {
+    handleBuyNow = (e) => {
+        e.preventDefault();
+        const { product } = this.props;
+        let tempProduct = product;
+        tempProduct.quantity = this.state.quantity;
+        this.props.dispatch(addItem(product));
+        Router.push('/account/checkout');
+    };
+
+    handleAddItemToCompare = (e) => {
         e.preventDefault();
         const { product } = this.props;
         this.props.dispatch(addItemToCompare(product));
     };
 
-    handleAddItemToWishlist = e => {
+    handleAddItemToWishlist = (e) => {
         e.preventDefault();
         const { product } = this.props;
         this.props.dispatch(addItemToWishlist(product));
     };
 
-    handleShowQuickView = e => {
+    handleShowQuickView = (e) => {
         e.preventDefault();
         this.setState({ isQuickView: true });
     };
 
-    handleHideQuickView = e => {
+    handleHideQuickView = (e) => {
         e.preventDefault();
         this.setState({ isQuickView: false });
     };
@@ -50,8 +63,9 @@ class ProductDealOfDay extends Component {
     render() {
         const { product, currency } = this.props;
         let productBadge = null;
+        const isSamePrice = product.bestPrice == product.sellingPrice;
         if (product.badge && product.badge !== null) {
-            product.badge.map(badge => {
+            product.badge.map((badge) => {
                 if (badge.type === 'sale') {
                     return (productBadge = (
                         <div className="ps-product__badge">{badge.value}</div>
@@ -83,11 +97,11 @@ class ProductDealOfDay extends Component {
                     <Link href="/product/[pid]" as={`/product/${product.id}`}>
                         <a>
                             <LazyLoad>
-                                <img height="236" width="236" src={thumbnail} alt="martfury" />
+                                <img src={thumbnail} alt="MadeInIndiaGifts" />
                             </LazyLoad>
                         </a>
                     </Link>
-                    {product.badge ? productBadge : ''}
+                    {product.badge ? productBadge : '\u00A0'}
                     {/* <ul className="ps-product__actions">
                         <li>
                             <a
@@ -137,43 +151,60 @@ class ProductDealOfDay extends Component {
                 </div>
                 <div className="ps-product__container">
                     <Link href="/shop">
-                        <a className="ps-product__vendor">{product.vendor?.shop_name ? product.vendor.shop_name : ' '}</a>
+                        <a className="ps-product__vendor">
+                            {product.vendor?.shop_name
+                                ? product.vendor.shop_name
+                                : '\u00A0'}
+                        </a>
                     </Link>
                     <div className="ps-product__content">
-
-                          <p className="ps-product__price sale">
-                                {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.bestPrice)}
+                        <p className="ps-product__price sale">
+                            {currency ? currency.symbol : '₹'}
+                            {formatCurrency(product.bestPrice)}
+                            {!isSamePrice ? (
                                 <del className="ml-2">
-                                    {currency ? currency.symbol : '$'}
+                                    {currency ? currency.symbol : '₹'}
                                     {formatCurrency(product.sellingPrice)}
                                 </del>
-                                <small>10% off</small>
-                            </p>
+                            ) : (
+                                <del className="ml-2"></del>
+                            )}
+                            {!isSamePrice ? (
+                                <small>
+                                    {product.discountRate
+                                        ? product.discountRate + '% off'
+                                        : '\u00A0'}
+                                </small>
+                            ) : (
+                                <small>Best price for you!</small>
+                            )}
+                        </p>
                         {/* {product.is_sale === true ? (
                             <p className="ps-product__price sale">
-                                {currency ? currency.symbol : '$'}
+                                {currency ? currency.symbol : '₹'}
                                 {formatCurrency(product.bestPrice)}
                                 <del className="ml-2">
-                                    {currency ? currency.symbol : '$'}
+                                    {currency ? currency.symbol : '₹'}
                                     {formatCurrency(product.sellingPrice)}
                                 </del>
                                 <small>18% off</small>
                             </p>
                         ) : (
                             <p className="ps-product__price">
-                                {currency ? currency.symbol : '$'}
+                                {currency ? currency.symbol : '₹'}
                                 {formatCurrency(product.bestPrice)}
                             </p>
                         )} */}
                         <Link
                             href="/product/[pid]"
                             as={`/product/${product.id}`}>
-                            <a className="ps-product__title">{product.title}</a>
+                            <a className="ps-product__title">
+                                {product.title}
+                            </a>
                         </Link>
 
                         <div className="ps-product__rating">
-                            <Rating />
+                            <Rating rating={product.customerAvgRating} />
                             <span>0</span>
                         </div>
                         <div className="product-buybtn">
@@ -181,17 +212,38 @@ class ProductDealOfDay extends Component {
                                 <button type="button" className="btn btn-primary cart-btn" >Add to cart</button>
                                 <button type="button" className="btn btn-primary shop-btn"   >    Buy now   </button>
                             </div> */}
-
-                            <div className="flexbtn">
-                              <a href="#"
-                                onClick={this.handleAddItemToCart.bind(this)} className="bttn">Add to Cart</a>
-                            </div>
-                            <div className="flexbtn dark">
-                                <a href="#"
-                                onClick={this.handleAddItemToCart.bind(this)} className="bttn-dark">Buy Now</a>
-                            </div>
+                            {product.quantity > 0 ? (
+                                <div className="w-100">
+                                    <div className="flexbtn">
+                                        <a
+                                            href="#"
+                                            onClick={this.handleAddItemToCart.bind(
+                                                this
+                                            )}
+                                            className="bttn">
+                                            Add to Cart
+                                        </a>
+                                    </div>
+                                    <div className="flexbtn dark">
+                                        <a
+                                            href="#"
+                                            onClick={this.handleBuyNow.bind(
+                                                this
+                                            )}
+                                            className="bttn-dark">
+                                            Buy Now
+                                        </a>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="flexbtn" className="w-100">
+                                    <a href="#" className="bttn-dark">
+                                        Coming Soon
+                                    </a>
+                                </div>
+                            )}
                         </div>
-                        
+
                         {/* <div
                             className="ps-product__progress-bar ps-progress"
                             data-value={product.inventory}>
@@ -231,7 +283,7 @@ class ProductDealOfDay extends Component {
         );
     }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return state.setting;
 };
 export default connect(mapStateToProps)(ProductDealOfDay);

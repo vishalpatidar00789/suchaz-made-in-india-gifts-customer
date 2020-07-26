@@ -6,20 +6,45 @@ class SuchazCollectionRepository {
     }
 
     async getCollections(payload) {
-        let query = '';
-        payload.forEach((item) => {
-            if (query === '') {
-                query = `slug_in=${item}`;
-            } else {
-                query = query + `&slug_in=${item}`;
-            }
-        });
+        // let query = '';
+        // payload.forEach((item) => {
+        //     if (query === '') {
+        //         query = `slug_in=${item}`;
+        //     } else {
+        //         query = query + `&slug_in=${item}`;
+        //     }
+        // });
 
         const reponse = await SuchazRepository.post(
             `${suchazBaseUrl}/searchitem`,
             {
                 search: "",
                 action: "dealoftheday",
+                page: 1,
+                limit: 20
+            }
+        )
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => ({ error: JSON.stringify(error) }));
+        return reponse;
+    }
+    async getNewArrivals(payload) {
+        // let query = '';
+        // payload.forEach((item) => {
+        //     if (query === '') {
+        //         query = `slug_in=${item}`;
+        //     } else {
+        //         query = query + `&slug_in=${item}`;
+        //     }
+        // });
+
+        const reponse = await SuchazRepository.post(
+            `${suchazBaseUrl}/searchitem`,
+            {
+                search: "",
+                action: "new_arrivals",
                 page: 1,
                 limit: 20
             }

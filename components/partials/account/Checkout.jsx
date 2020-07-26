@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Router from 'next/router';
 
 import FormCheckoutInformation from './modules/FormCheckoutInformation';
 
@@ -7,9 +8,18 @@ class Checkout extends Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount(){
+        setTimeout(() => {
+            const { cartItems } = this.props;
+            if (cartItems.length == 0){
+                Router.push('/');
+            }
+        },500);
+        
+    }
 
     render() {
-        const { amount, cartTotal, cartItems } = this.props;
+        const { amount, cartTotal, cartItems, giftWrapCharges } = this.props;
         return (
             <div className="ps-checkout ps-section--shopping">
                 <div className="container">
@@ -20,6 +30,7 @@ class Checkout extends Component {
                         <FormCheckoutInformation
                             amount={amount}
                             cartTotal={cartTotal}
+                            giftWrapCharges={giftWrapCharges}
                             cartItems={cartItems}
                         />
                     </div>

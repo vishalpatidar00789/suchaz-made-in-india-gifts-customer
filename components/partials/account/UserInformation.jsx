@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import { Form, Input, Radio, DatePicker } from 'antd';
+import { connect } from 'react-redux';
+import { getAuth } from '../../../store/auth/action';
 
 class UserInformation extends Component {
     constructor(props) {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.dispatch(getAuth());
+    }
+
     render() {
+
+        const { auth } = this.props;
+        const authUser = auth.authUser.data;
         const accountLinks = [
             {
                 text: 'Account Information',
@@ -51,8 +60,8 @@ class UserInformation extends Component {
                                     <div className="ps-widget__header">
                                         <img src="/static/img/users/3.jpg" />
                                         <figure>
-                                            <figcaption>Hello</figcaption>
-                                            <p>username@gmail.com</p>
+                                            <figcaption>{typeof authUser.userProfile != 'undefined' ? authUser.userProfile.fullName : ''}</figcaption>
+                                            <p>{authUser.email}</p>
                                         </figure>
                                     </div>
                                     <div className="ps-widget__content">
@@ -205,4 +214,7 @@ class UserInformation extends Component {
     }
 }
 
-export default UserInformation;
+const mapStateToProps = state => {
+    return state;
+};
+export default connect(mapStateToProps)(UserInformation);

@@ -16,7 +16,7 @@ const ProductCart = ({ product }) => {
                                         ? product.images[0]
                                         : product.thumbnail.url
                                 }
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </LazyLoad>
                     </a>

@@ -71,7 +71,7 @@ const FooterTechnology = () => (
                             </div>
                             <div className="col-md-4 col-sm-6">
                                 <aside className="widget widget_footer">
-                                    <h4 className="widget-title">Bussiness</h4>
+                                    <h4 className="widget-title">Business</h4>
                                     <ul className="ps-list--link">
                                         <li>
                                             <Link href="/blog">
@@ -151,7 +151,7 @@ const FooterTechnology = () => (
                         <a>
                             <img
                                 src="/static/img/payment-method/1.jpg"
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>
@@ -159,7 +159,7 @@ const FooterTechnology = () => (
                         <a>
                             <img
                                 src="/static/img/payment-method/2.jpg"
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>
@@ -167,7 +167,7 @@ const FooterTechnology = () => (
                         <a>
                             <img
                                 src="/static/img/payment-method/3.jpg"
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>
@@ -175,7 +175,7 @@ const FooterTechnology = () => (
                         <a>
                             <img
                                 src="/static/img/payment-method/4.jpg"
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>
@@ -183,7 +183,7 @@ const FooterTechnology = () => (
                         <a>
                             <img
                                 src="/static/img/payment-method/5.jpg"
-                                alt="martfury"
+                                alt="MadeInIndiaGifts"
                             />
                         </a>
                     </Link>

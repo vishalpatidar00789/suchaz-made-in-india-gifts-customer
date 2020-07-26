@@ -8,7 +8,7 @@ class ProductDetailFullwidth extends Component {
     constructor(props) {
         super(props);
     }
-
+ 
     render() {
         const { singleProduct } = this.props;
         if (singleProduct !== null && typeof singleProduct !== 'Array') {
@@ -18,7 +18,7 @@ class ProductDetailFullwidth extends Component {
                         <ThumbnailDefault product={singleProduct}/>
                         <InformationDefault product={singleProduct}/>
                     </div>
-                    <DefaultDescription/>
+                    <DefaultDescription product={singleProduct}/>
                 </div>
             );
         } else {

@@ -27,7 +27,7 @@ const InvoiceDetailPage = () => {
                 <BreadCrumb breacrumb={breadCrumb} />
                 <InvoiceDetail />
             </div>
-            <Newsletters layout="container" />
+            {/* <Newsletters layout="container" /> */}
             <FooterDefault />
         </div>
     );

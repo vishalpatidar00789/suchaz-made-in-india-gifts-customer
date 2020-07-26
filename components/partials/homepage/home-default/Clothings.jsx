@@ -40,16 +40,16 @@ class Clothings extends Component {
                 name: 'newArrivals',
                 slug: 'consumer_electronics',
             },
-            {
-                title: 'Best seller',
-                name: 'bestSeller',
-                slug: 'fullwidth_clothing_bestseller',
-            },
-            {
-                title: 'Most Popular',
-                name: 'mostPopular',
-                slug: 'fullwidth_clothing_most_popular',
-            },
+            // {
+            //     title: 'Best seller',
+            //     name: 'bestSeller',
+            //     slug: 'fullwidth_clothing_bestseller',
+            // },
+            // {
+            //     title: 'Most Popular',
+            //     name: 'mostPopular',
+            //     slug: 'fullwidth_clothing_most_popular',
+            // },
         ];
         let sectionItems;
         // if (currentCollection !== 'newArrivals') {
@@ -100,5 +100,5 @@ class Clothings extends Component {
         );
     }
 }
-
+ 
 export default connect(state => state.collection)(Clothings);

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCart } from '../../../store/cart/action';
-
+import { getCart, giftWrapSelected } from '../../../store/cart/action';
+import Router from 'next/router';
 import Link from 'next/link';
+import { placeOrder } from '../../../store/order/action';
 
 class Shipping extends Component {
     constructor(props) {
@@ -11,10 +12,54 @@ class Shipping extends Component {
 
     componentDidMount() {
         this.props.dispatch(getCart());
+        // setInterval(() => {
+        //     const { cartItems } = this.props;
+        //     console.log(cartItems);
+        //     if (!cartItems){
+        //         Router.back();
+        //     }
+        // },500);
+    }
+
+    handlePlaceOrder() {
+        this.props.dispatch(placeOrder(this.props));
+    }
+
+    totalShippingCharge(cartItems) {
+        let totalShippingCharge = 0.0;
+        if (cartItems) {
+            cartItems.map((product) => {
+                const productShippingCharge =
+                    parseFloat(product.shippingCharge) * product.quantity;
+                totalShippingCharge =
+                    parseFloat(totalShippingCharge) +
+                    parseFloat(productShippingCharge);
+            });
+        }
+        return totalShippingCharge.toFixed(2);
+    }
+
+    totalCharge(amount, shippingCharges, giftWrapCharges) {
+        const totalAmount =
+            parseFloat(amount) +
+            (isNaN(shippingCharges) ? 0 : shippingCharges) +
+            parseFloat(giftWrapCharges);
+        return totalAmount.toFixed(2);
+    }
+
+    setChecked(product) {
+        this.props.dispatch(giftWrapSelected(product));
     }
 
     render() {
-        const { amount, cartItems } = this.props;
+        const { cart, shippingAddress } = this.props;
+        const {
+            amount,
+            cartItems,
+            shippingCharges,
+            gst,
+            giftWrapCharges,
+        } = cart;
         return (
             <div className="ps-checkout ps-section--shopping">
                 <div className="container">
@@ -28,7 +73,7 @@ class Shipping extends Component {
                                     <div className="ps-block__panel">
                                         <figure>
                                             <small>Contact</small>
-                                            <p>test@gmail.com</p>
+                                            <p>{shippingAddress.email}</p>
                                             <Link href="/account/checkout">
                                                 <a>Change</a>
                                             </Link>
@@ -36,35 +81,65 @@ class Shipping extends Component {
                                         <figure>
                                             <small>Ship to</small>
                                             <p>
-                                                2015 South Street, Midland,
-                                                Texas
+                                                {shippingAddress.apartment}{' '}
+                                                {shippingAddress.address},{' '}
+                                                {shippingAddress.city},{' '}
+                                                {shippingAddress.state} -{' '}
+                                                {shippingAddress.postalCode}
                                             </p>
                                             <Link href="/account/checkout">
                                                 <a>Change</a>
                                             </Link>
                                         </figure>
                                     </div>
-                                    <h4>Shipping Method</h4>
-                                    <div className="ps-block__panel">
+                                    {/* <h4>Shipping Method</h4> */}
+                                    {/* <div className="ps-block__panel">
                                         <figure>
                                             <small>
                                                 International Shipping
                                             </small>
-                                            <strong>$20.00</strong>
+                                            <strong>
+                                                {!isNaN(
+                                                    this.totalShippingCharge(
+                                                        cartItems
+                                                    )
+                                                ) ? (
+                                                    <span>
+                                                        ₹
+                                                        {this.totalShippingCharge(
+                                                            cartItems
+                                                        )}
+                                                    </span>
+                                                ) : (
+                                                    <span>Free</span>
+                                                )}
+                                            </strong>
                                         </figure>
-                                    </div>
+                                    </div> */}
                                     <div className="ps-block__footer">
-                                        <Link href="/account/checkout">
-                                            <a>
-                                                <i className="icon-arrow-left mr-2"></i>
-                                                Return to information
+                                        <div className="pl-0 pb-10 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                            <Link href="/account/checkout">
+                                                <a>
+                                                    <i className="icon-arrow-left mr-2"></i>
+                                                    Return to information
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="pr-0 pb-10 col-xl-6 col-lg-6 col-md-6 col-sm-12 text-right">
+                                            <a
+                                                onClick={this.handlePlaceOrder.bind(
+                                                    this
+                                                )}
+                                                className="ps-btn text-white">
+                                                Place Order
                                             </a>
-                                        </Link>
-                                        <Link href="/account/payment">
+                                        </div>
+
+                                        {/* <Link href="/account/payment">
                                             <a className="ps-btn">
                                                 Continue to payment
                                             </a>
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </div>
                             </div>
@@ -80,49 +155,133 @@ class Shipping extends Component {
                                             </figure>
                                             <figure className="ps-block__items">
                                                 {cartItems &&
-                                                    cartItems.map(product => (
-                                                        <Link
-                                                            href="/"
+                                                    cartItems.map((product) => (
+                                                        <React.Fragment
                                                             key={product.id}>
-                                                            <a>
-                                                                <strong>
-                                                                    {
-                                                                        product.title
-                                                                    }
-                                                                    <span>
-                                                                        x
+                                                            <Link href="/">
+                                                                <a>
+                                                                    <strong>
                                                                         {
-                                                                            product.quantity
+                                                                            product.title
                                                                         }
-                                                                    </span>
-                                                                </strong>
-                                                                <small>
-                                                                    $
-                                                                    {product.quantity *
-                                                                        product.bestPrice}
-                                                                </small>
-                                                            </a>
-                                                        </Link>
+                                                                        <span>
+                                                                            x
+                                                                            {
+                                                                                product.quantity
+                                                                            }
+                                                                        </span>
+                                                                    </strong>
+                                                                    <small>
+                                                                        ₹
+                                                                        {product.quantity *
+                                                                            product.bestPrice}
+                                                                    </small>
+                                                                </a>
+                                                            </Link>
+                                                            {product.gift_wrap_available ==
+                                                            'true' ? (
+                                                                <div className="form-group">
+                                                                    <div className="ps-checkbox">
+                                                                        <input
+                                                                            className="form-control"
+                                                                            type="checkbox"
+                                                                            id={
+                                                                                product.id
+                                                                            }
+                                                                            name="giftWrapSelected"
+                                                                            checked={
+                                                                                product.giftWrapSelected
+                                                                            }
+                                                                            onChange={this.setChecked.bind(
+                                                                                this,
+                                                                                product
+                                                                            )}
+                                                                        />
+                                                                        <label
+                                                                            htmlFor={
+                                                                                product.id
+                                                                            }>
+                                                                            Want
+                                                                            to
+                                                                            wrap
+                                                                            your
+                                                                            gift?
+                                                                            <br />
+                                                                            +additional
+                                                                            ₹
+                                                                            {
+                                                                                product.gift_wrap_price
+                                                                            }{' '}
+                                                                            wrapping
+                                                                            charge
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            ) : (
+                                                                ''
+                                                            )}
+                                                        </React.Fragment>
                                                     ))}
                                             </figure>
                                             <figure>
                                                 <figcaption>
                                                     <strong>Subtotal</strong>
-                                                    <small>${amount}</small>
+                                                    <small>₹{amount}</small>
+                                                </figcaption>
+                                                <figcaption>
+                                                    <small
+                                                        style={{
+                                                            fontSize: 12,
+                                                        }}>
+                                                        GST of ₹{gst} Inclusive
+                                                    </small>
                                                 </figcaption>
                                             </figure>
                                             <figure>
                                                 <figcaption>
                                                     <strong>Shipping</strong>
-                                                    <small>$20.00</small>
+                                                    <small>
+                                                        {!isNaN(
+                                                            this.totalShippingCharge(
+                                                                cartItems
+                                                            )
+                                                        ) ? (
+                                                            <span>
+                                                                ₹
+                                                                {
+                                                                    shippingCharges
+                                                                }
+                                                            </span>
+                                                        ) : (
+                                                            <span>Free</span>
+                                                        )}
+                                                    </small>
                                                 </figcaption>
                                             </figure>
+                                            {giftWrapCharges != 0 ? (
+                                                <figure>
+                                                    <figcaption>
+                                                        <strong>
+                                                            Gift Wrap Charge
+                                                        </strong>
+                                                        <small>
+                                                            ₹{giftWrapCharges}
+                                                        </small>
+                                                    </figcaption>
+                                                </figure>
+                                            ) : (
+                                                ''
+                                            )}
                                             <figure className="ps-block__total">
                                                 <h3>
                                                     Total
                                                     <strong>
-                                                        ${parseInt(amount) + 20}
-                                                        .00
+                                                        ₹
+                                                        {this.totalCharge(
+                                                            amount,
+                                                            shippingCharges,
+                                                            giftWrapCharges
+                                                        )}
                                                     </strong>
                                                 </h3>
                                             </figure>
@@ -138,7 +297,7 @@ class Shipping extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return state.cart;
+const mapStateToProps = (state) => {
+    return { cart: state.cart, shippingAddress: state.shippingAddress.address };
 };
 export default connect(mapStateToProps)(Shipping);

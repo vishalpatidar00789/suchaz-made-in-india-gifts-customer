@@ -14,28 +14,41 @@ class DefaultDescription extends Component {
         super(props);
     }
     render() {
+        const { product, currency } = this.props;
+        const specification = JSON.parse(product.specification).filter((spec) => {
+            return spec.key != '';
+        });
+        let specificationTab = '';
+        if (specification.lenght) {
+            return (specificationTab = (
+                <TabPane tab="Specification" key="2">
+                    <PartialSpecification product={product} />
+                </TabPane>
+            ));
+        }
         return (
             <div>
                 <div className="ps-product__content ps-tab-root">
                     <Tabs defaultActiveKey="1">
                         <TabPane tab="Description" key="1">
-                            <PartialDescription />
+                            <PartialDescription product={product} />
                         </TabPane>
-                        <TabPane tab="Specification" key="2">
-                            <PartialSpecification />
-                        </TabPane>
+
+                        {specificationTab}
                         <TabPane tab="Vendor" key="3">
-                            <PartialVendor />
+                            <PartialVendor product={product} />
                         </TabPane>
                         <TabPane tab="Reviews (0)" key="4">
                             <PartialReview />
                         </TabPane>
                         <TabPane tab="Questions and Answers" key="5">
-                            Content of Tab Pane 3
+                            <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
+                                <p>Coming Soon!</p>
+                            </div>
                         </TabPane>
-                        <TabPane tab="More Offers" key="6">
+                        {/* <TabPane tab="More Offers" key="6">
                             <PartialOffer />
-                        </TabPane>
+                        </TabPane> */}
                     </Tabs>
                 </div>
             </div>

@@ -75,7 +75,7 @@ class Compare extends Component {
                                                                         src={
                                                                             product.thumbnail
                                                                         }
-                                                                        alt="martfury"
+                                                                        alt="MadeInIndiaGifts"
                                                                     />
                                                                 </a>
                                                             </Link>

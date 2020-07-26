@@ -7,6 +7,7 @@ import compare from './compare/reducer';
 import auth from './auth/reducer';
 import wishlist from './wishlist/reducer';
 import collection from './collection/reducer';
+import shippingAddress from './shippingAddress/reducer';
 
 export default combineReducers({
     auth,
@@ -17,4 +18,5 @@ export default combineReducers({
     compare,
     wishlist,
     collection,
+    shippingAddress
 });

@@ -103,11 +103,11 @@
 }
 
 .ps-section--shopping {
-    padding: 100px 0;
+    padding: 10px 0;
 
     .ps-section__header {
         text-align: center;
-        padding-bottom: 100px;
+        padding-bottom: 10px;
 
         h1 {
             font-size: 48px;
@@ -307,6 +307,32 @@
 }
 
 .ps-deal-of-day {
+    @extend %list-reset;
+
+    .ps-section__header {
+        margin-bottom: 65px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+
+        > a {
+            display: inline-block;
+            padding-bottom: 2px;
+            color: #000;
+            border-bottom: 1px solid #000;
+            min-width: 60px;
+
+            &:hover {
+                color: $color-1st;
+                border-color: $color-1st;
+            }
+        }
+    }
+}
+.ps-new-arrival {
     @extend %list-reset;
 
     .ps-section__header {

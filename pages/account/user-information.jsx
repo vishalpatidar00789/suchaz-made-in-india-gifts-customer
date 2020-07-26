@@ -28,7 +28,7 @@ const UserInformationPage = () => {
                 <BreadCrumb breacrumb={breadCrumb} />
                 <UserInformation />
             </div>
-            <Newsletters layout="container" />
+            {/* <Newsletters layout="container" /> */}
             <FooterDefault />
         </div>
     );

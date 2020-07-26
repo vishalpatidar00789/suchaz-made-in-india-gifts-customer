@@ -26,7 +26,7 @@ const ShoppingCartPage = () => {
                 <BreadCrumb breacrumb={breadCrumb} />
                 <ShoppingCart />
             </div>
-            <Newsletters layout="container" />
+            {/* <Newsletters layout="container" /> */}
             <FooterDefault />
         </div>
     );

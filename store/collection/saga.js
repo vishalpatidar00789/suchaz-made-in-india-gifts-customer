@@ -1,6 +1,6 @@
 import { all, put, call, takeEvery } from 'redux-saga/effects';
 import { polyfill } from 'es6-promise';
-import { actionTypes, getCategoriesSuccess, getCollectionsSuccess } from './action';
+import { actionTypes, getCategoriesSuccess, getCollectionsSuccess, getNewArrival, getNewArrivalSuccess } from './action';
 import { isStaticData } from '../../utilities/app-settings';
 import CollectionRepository from '../../repositories/CollectionRepository';
 import SuchazCollectionRepository from '../../repositories/SuchazCollectionRepository';
@@ -15,6 +15,26 @@ function* getCollections({ payload }) {
                 payload
             );
             yield put(getCollectionsSuccess(data));
+        } else {
+            const data = yield call(
+                StaticCollectionRepository.getCollections,
+                payload
+            );
+            yield put(getCollectionsSuccess(data));
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function* getNewArrivals({ payload }) {
+    try {
+        if (isStaticData === false) {
+            const data = yield call(
+                SuchazCollectionRepository.getNewArrivals,
+                payload
+            );
+            yield put(getNewArrivalSuccess(data));
         } else {
             const data = yield call(
                 StaticCollectionRepository.getCollections,
@@ -48,5 +68,6 @@ function* getCollectionByCategories({ payload }) {
 
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.GET_COLLECTIONS, getCollections)]);
+    yield all([takeEvery(actionTypes.GET_NEWARRIVALS, getNewArrivals)]);
     yield all([takeEvery(actionTypes.GET_CATEGORIES, getCollectionByCategories)]);
 }

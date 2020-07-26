@@ -26,7 +26,7 @@ const OrderTrackingPage = () => {
                 <BreadCrumb breacrumb={breadCrumb} />
                 <OrderTracking />
             </div>
-            <Newsletters layout="container" />
+            {/* <Newsletters layout="container" /> */}
             <FooterDefault />
         </div>
     );

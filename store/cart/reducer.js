@@ -3,6 +3,9 @@ import { actionTypes } from './action';
 export const initCart = {
     cartItems: [],
     amount: 0,
+    shippingCharges: 0,
+    giftWrapCharges: 0,
+    gst: 0,
     cartTotal: 0,
 };
 
@@ -17,6 +20,9 @@ function reducer(state = initCart, action) {
                 ...state,
                 ...{ cartItems: action.payload.cartItems },
                 ...{ amount: action.payload.amount },
+                ...{ shippingCharges: action.payload.shippingCharges },
+                ...{ giftWrapCharges: action.payload.giftWrapCharges },
+                ...{ gst: action.payload.gst },
                 ...{ cartTotal: action.payload.cartTotal },
             };
         case actionTypes.CLEAR_CART_SUCCESS:
@@ -24,6 +30,9 @@ function reducer(state = initCart, action) {
                 ...state,
                 ...{ cartItems: action.payload.cartItems },
                 ...{ amount: action.payload.amount },
+                ...{ shippingCharges: action.payload.shippingCharges },
+                ...{ giftWrapCharges: action.payload.giftWrapCharges },
+                ...{ gst: action.payload.gst },
                 ...{ cartTotal: action.payload.cartTotal },
             };
         case actionTypes.GET_CART_ERROR:

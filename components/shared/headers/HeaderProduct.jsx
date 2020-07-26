@@ -13,36 +13,41 @@ import { baseUrl } from '../../../repositories/Repository';
 class HeaderProduct extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            quantity: 1,
+        };
     }
 
     componentDidMount() {
         if (process.browser) {
-            window.addEventListener('scroll', stickyHeader);
+          // window.addEventListener('scroll', stickyHeader);
         }
     }
 
     handleAddItemToCart = (e) => {
         e.preventDefault();
         const { productData } = this.props;
+        let tempProduct = productData;
+        tempProduct.quantity = this.state.quantity;
         this.props.dispatch(addItem(productData));
     };
 
     handleScroll = () => {
-        let number =
-            window.pageXOffset ||
-            document.documentElement.scrollTop ||
-            document.body.scrollTop ||
-            0;
+        // let number =
+        //     window.pageXOffset ||
+        //     document.documentElement.scrollTop ||
+        //     document.body.scrollTop ||
+        //     0;
 
-        if (number >= 300) {
-            document
-                .getElementById('headerSticky')
-                .classList.add('header--sticky');
-        } else {
-            document
-                .getElementById('headerSticky')
-                .classList.remove('header--sticky');
-        }
+        // if (number >= 300) {
+        //     document
+        //         .getElementById('headerSticky')
+        //         .classList.add('header--sticky');
+        // } else {
+        //     document
+        //         .getElementById('headerSticky')
+        //         .classList.remove('header--sticky');
+        // }
     };
 
     render() {
@@ -51,28 +56,62 @@ class HeaderProduct extends Component {
         return (
             <header
                 className="header header--1 header--product"
-                data-sticky="true"
+                // data-sticky="true"
                 id="headerSticky">
                 <div className="header__top">
                     <div className="ps-container">
                         <div className="header__left">
-                            <Link href="/">
-                                <a className="ps-logo">
-                                    <img
-                                        src="/static/img/logo_light.png"
-                                        alt="martfury"
-                                    />
-                                </a>
-                            </Link>
-                            <div className="menu--product-categories">
-                                <div className="menu__toggle">
-                                    <i className="icon-menu"></i>
-                                    <span> Shop by Department</span>
+                            <div
+                                className="menu--product-categories"
+                                style={{ display: 'block' }}>
+                                <div
+                                    className="menu__toggle"
+                                    style={{ display: 'block' }}>
+                                    <i
+                                        className="icon-menu"
+                                        style={{ fontSize: '30px' }}></i>
                                 </div>
                                 <div className="menu__content">
                                     <MenuCategories />
                                 </div>
                             </div>
+                            <Link href="/">
+                                <a className="ps-logo">
+                                    <img
+                                        src="/static/img/logo_light.png"
+                                        alt="MadeInIndiaGifts"
+                                    />
+                                </a>
+                            </Link>
+                            <div className="menu--product-categories">
+                                <span>
+                                    <Link href="/">
+                                        <img
+                                            src="/static/img/logo_light.png"
+                                            alt="MadeInIndiaGifts"
+                                        />
+                                    </Link>
+                                </span>
+                                <div className="menu__content">
+                                    <MenuCategories />
+                                </div>
+                            </div>
+                            {/* <div className="menu--product-categories">
+                                <div className="menu__toggle">
+                                    <i className="icon-menu"></i>
+                                    <span> 
+                                        <Link href="/">
+                                        <img
+                                                src="/static/img/logo_light.png"
+                                                alt="MadeInIndiaGifts"
+                                        />
+                                        </Link>
+                                    </span>
+                                </div>
+                                <div className="menu__content">
+                                    <MenuCategories />
+                                </div>
+                            </div> */}
                         </div>
                         <div className="header__center">
                             <SearchHeader />
@@ -82,8 +121,7 @@ class HeaderProduct extends Component {
                         </div>
                     </div>
                 </div>
-                <NavigationDefault />
-                <nav className="navigation navigation--product">
+                <nav className="navigation navigation--product" style={{display: 'none'}}>
                     <div className="container">
                         <article className="ps-product--header-sticky">
                             <div className="ps-product__thumbnail">
@@ -93,7 +131,7 @@ class HeaderProduct extends Component {
                                             ? '/static/img/products/detail/image-swatches/small-2.jpg'
                                             : '/static/img/products/detail/image-swatches/small-2.jpg'
                                     }
-                                    alt="martfury"
+                                    alt="MadeInIndiaGifts"
                                 />
                             </div>
                             <div className="ps-product__wrapper">
@@ -109,14 +147,18 @@ class HeaderProduct extends Component {
                                 <div className="ps-product__shopping">
                                     {singleProduct.sale === true ? (
                                         <span className="ps-product__price">
-                                            <span>${singleProduct.bestPrice}</span>
+                                            <span>
+                                                ₹{singleProduct.bestPrice}
+                                            </span>
                                             <del>
-                                                ${singleProduct.salePrice}
+                                                ₹{singleProduct.salePrice}
                                             </del>
                                         </span>
                                     ) : (
                                         <span className="ps-product__price">
-                                            <span>${singleProduct.bestPrice}</span>
+                                            <span>
+                                                ₹{singleProduct.bestPrice}
+                                            </span>
                                         </span>
                                     )}
                                     <a

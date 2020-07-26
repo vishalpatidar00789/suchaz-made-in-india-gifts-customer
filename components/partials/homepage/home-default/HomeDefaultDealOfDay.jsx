@@ -29,11 +29,11 @@ class HomeDefaultDealOfDay extends Component {
                                     <CountDownSimple
                                         timeTillDate="12 31 2020, 6:00 am"
                                         timeFormat="MM DD YYYY, h:mm a"
-                                    />
+                                     />
                                 </figure>
                             </div> */}
                         </div>
-                        <Link href="/shop">
+                        <Link href="/shop?sort=offer">
                             <a>View all</a>
                         </Link>
                     </div>

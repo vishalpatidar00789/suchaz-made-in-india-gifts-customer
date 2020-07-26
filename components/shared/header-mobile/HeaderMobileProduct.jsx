@@ -17,7 +17,8 @@ class HeaderMobileProduct extends React.Component {
         return (
             <header
                 className="header header--mobile header--mobile-product"
-                data-sticky="true">
+                // data-sticky="true"
+                >
                 <div className="navigation--mobile">
                     <div className="navigation__left">
                         <Link href="/shop">

@@ -77,7 +77,6 @@ class ThumbnailDefault extends Component {
         const { product } = this.props;
         const { photoIndex, isOpen } = this.state;
         const productImages = [];
-        console.log(product);
         product.images.map(variant => {
             if (isStaticData === false) {
                 productImages.push(variant);
@@ -97,7 +96,7 @@ class ThumbnailDefault extends Component {
                             asNavFor={this.state.variantCarousel}
                             className="ps-product__gallery ps-carousel inside">
                             {product.images.map((variant, index) => (
-                                <div className="item" key={variant}>
+                                <div className="item" key={index}>
                                     <a
                                         href="#"
                                         onClick={e =>
@@ -115,13 +114,13 @@ class ThumbnailDefault extends Component {
                     ref={slider => (this.slider2 = slider)}
                     swipeToSlide={true}
                     arrows={false}
-                    slidesToShow={3}
+                    slidesToShow={product.images.length}
                     vertical={true}
                     focusOnSelect={true}
                     {...variantSetting}
                     className="ps-product__variants">
-                    {product.images.map(variant => (
-                        <div className="item" key={variant}>
+                    {product.images.map((variant, index) => (
+                        <div className="item" key={index}>
                             <ThumbnailImage url={variant} />
                         </div>
                     ))}

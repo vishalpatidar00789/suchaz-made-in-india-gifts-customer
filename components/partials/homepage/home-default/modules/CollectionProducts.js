@@ -5,13 +5,26 @@ import Slider from 'react-slick';
 
 const CollectionProducts = ({ products }) => (
     <div>
-        <Slider {...carouselFullwidth} infinite={products.length > 7 ? true: false} className="ps-carousel outside">
-            {products.map(product => (
-                <div className="item" key={product.id}>
-                    <Product product={product} />
-                </div>
-            ))}
-        </Slider>
+        {products.length > 3 ? (
+            <Slider
+                {...carouselFullwidth}
+                infinite={products.length > 3 ? true : false}
+                className="ps-carousel outside">
+                    {products.map((product) => (
+                    <div className="item" key={product.id}>
+                        <Product product={product} />
+                    </div>
+                ))}
+                </Slider>
+        ) : (
+            <div>
+                {/* {products.map((product) => (
+                    <div className="item" key={product.id}>
+                        <Product product={product} />
+                    </div>
+                ))} */}
+            </div>
+        )}
     </div>
 );
 

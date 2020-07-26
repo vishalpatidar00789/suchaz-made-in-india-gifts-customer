@@ -15,9 +15,10 @@ import Newletters from '../components/partials/commons/Newletters';
 import HeaderMobile from '../components/shared/headers/HeaderMobile';
 import NavigationList from '../components/shared/navigation/NavigationList';
 import HomeDefaultDealOfDay from '../components/partials/homepage/home-default/HomeDefaultDealOfDay';
+import HomeDefaultNewArrival from '../components/partials/homepage/home-default/HomeDefaultNewArrival';
 import HomeDefaultTopCategories from '../components/partials/homepage/home-default/HomeDefaultTopCategories';
 import SubscribePopup from '../components/shared/SubscribePopup';
-import { getCollections } from '../store/collection/action';
+import { getCollections, getNewArrival, getCategories } from '../store/collection/action';
 
 class Index extends Component {
     constructor(props) {
@@ -34,20 +35,12 @@ class Index extends Component {
     componentDidMount() {
         const { query } = this.props;
         if (query) {
-            const collectionsSlug = [
-                'deal_of_the_day',
-                'consumer_electronics',
-                'clothings',
-                'garden_and_kitchen',
-                'new_arrivals_products',
-                'fullwidth_consumer_electronic_bestseller',
-                'fullwidth_consumer_electronic_most_popular',
-                'fullwidth_clothing_bestseller',
-                'fullwidth_clothing_most_popular',
-                'fullwidth_kitchen_best_seller',
-                'fullwidth_kitchen_most_popular',
-            ];
-            this.props.dispatch(getCollections(collectionsSlug));
+            // const collectionsSlug = [
+            //     'deal_of_the_day'
+            // ];
+            this.props.dispatch(getCollections('deal_of_the_day'));
+            this.props.dispatch(getNewArrival('new_arrivals'));
+            this.props.dispatch(getCategories('get_categories'));
         }
         setTimeout(() => {
             this.setState({ subscribe: false });
@@ -65,19 +58,22 @@ class Index extends Component {
                 <main id="homepage-1">
                     <HomeBanner />
                     {/* <SiteFeatures /> */}
-                     <HomeDefaultDealOfDay collectionSlug="deal_of_the_day" />
+                     <HomeDefaultNewArrival collectionSlug="new_arrival" />
+                     
                    
-                    <HomeDefaultTopCategories />
+                    {/* <HomeDefaultTopCategories /> */}
                      <HomeAdsColumns />
                     <ConumerElectronics />
-                    <Clothings collectionSlug="clothings" />
-                    <GardenAndKitchen collectionSlug="garden_and_kitchen" />
+                    {/* <Clothings collectionSlug="clothings" />
+                    <GardenAndKitchen collectionSlug="garden_and_kitchen" /> */}
+                    <HomeDefaultDealOfDay collectionSlug="deal_of_the_day" />
                     {/* <HomeAds /> */}
                    {/* <DownLoadApp />   */}
-                    <NewArrivals collectionSlug="new_arrivals_products" />
+                    {/* <NewArrivals collectionSlug="new_arrivals_products" /> */}
                     {/* <Newletters /> */}
                 </main>
                 <FooterFullwidth />
+                <button className="add-button">Add to home screen</button>
             </div>
         );
     }

@@ -117,6 +117,40 @@
             padding: 60px 30px 30px;
         }
     }
+    .ps-new-arrival {
+        margin-bottom: 30px;
+
+        .ps-product {
+            .ps-product__price {
+                color: #690;
+                font-size: 18px;
+
+                del {
+                    margin-left: 10px;
+                    font-size: 14px;
+                }
+
+                small {
+                    margin-left: 10px;
+                    color: red;
+                }
+            }
+        }
+
+        .ps-section__header,
+        .ps-section__content {
+            background-color: #fff;
+        }
+
+        .ps-section__header {
+            margin-bottom: 0;
+            padding: 20px 20px 10px;
+        }
+
+        .ps-section__content {
+            padding: 60px 30px 30px;
+        }
+    }
 
     .ps-home-promotions {
         margin: 0 0 30px;

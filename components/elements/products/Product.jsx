@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import LazyLoad from 'react-lazyload';
 import Link from 'next/link';
 import { Modal } from 'antd';
+import Router from 'next/router';
 import ProductDetailQuickView from '../detail/ProductDetailQuickView';
 import Rating from '../Rating';
 import { baseUrl } from '../../../repositories/Repository';
@@ -17,13 +18,25 @@ class Product extends Component {
         super(props);
         this.state = {
             isQuickView: false,
+            quantity: 1,
         };
     }
 
     handleAddItemToCart = (e) => {
         e.preventDefault();
         const { product } = this.props;
+        let tempProduct = product;
+        tempProduct.quantity = this.state.quantity;
         this.props.dispatch(addItem(product));
+    };
+
+    handleBuyNow = (e) => {
+        e.preventDefault();
+        const { product } = this.props;
+        let tempProduct = product;
+        tempProduct.quantity = this.state.quantity;
+        this.props.dispatch(addItem(product));
+        Router.push('/account/checkout');
     };
 
     handleAddItemToCompare = (e) => {
@@ -51,6 +64,8 @@ class Product extends Component {
     render() {
         const { product, currency } = this.props;
         let productBadge = null;
+        const isSamePrice = product.bestPrice == product.sellingPrice;
+
         if (product.badge && product.badge !== null) {
             product.badge.map((badge) => {
                 if (badge.type === 'sale') {
@@ -78,17 +93,18 @@ class Product extends Component {
                     <Link href="/product/[pid]" as={`/product/${product.id}`}>
                         <a>
                             <LazyLoad>
-                                <img height="236" width="236" src={
+                                <img
+                                    src={
                                         isStaticData === false
                                             ? product.images[0]
                                             : product.thumbnail.url
                                     }
-                                    alt="martfury"
+                                    alt="MadeInIndiaGifts"
                                 />
                             </LazyLoad>
                         </a>
                     </Link>
-                    {product.badge ? productBadge : ''}
+                    {product.badge ? productBadge : '\u00A0'}
                     {/* <ul className="ps-product__actions">
                         <li>
                             <a
@@ -138,23 +154,59 @@ class Product extends Component {
                 </div>
                 <div className="ps-product__container">
                     <Link href="/shop">
-                        <a className="ps-product__vendor">{product.vendor?.shop_name ? product.vendor.shop_name : ' '}</a>
+                        <a className="ps-product__vendor">
+                            {product.vendor?.shop_name
+                                ? product.vendor.shop_name
+                                : '\u00A0'}
+                        </a>
                     </Link>
                     <div className="ps-product__content">
-                            <p className="ps-product__price sale">
-                                {currency ? currency.symbol : '$'}
-                                {formatCurrency(product.bestPrice)}
+                        {/* <p className="ps-product__price sale"> 
+                            {currency ? currency.symbol : '₹'}
+                            {formatCurrency(product.bestPrice)}
+                            {!isSamePrice ? (
                                 <del className="ml-2">
-                                    {currency ? currency.symbol : '$'}
+                                    {currency ? currency.symbol : '₹'}
                                     {formatCurrency(product.sellingPrice)}
                                 </del>
-                                <small>10% off</small>
-                            </p>
-                       
+                            ) : (
+                                <del className="ml-2"></del>
+                            )}
+
+                            <small>
+                                {product.discountRate
+                                    ? product.discountRate + '% off'
+                                    : '\u00A0'}
+                            </small>
+                        </p> */}
+                        <p className="ps-product__price sale">
+                            {currency ? currency.symbol : '₹'}
+                            {formatCurrency(product.bestPrice)}
+                            {!isSamePrice ? (
+                                <del className="ml-2">
+                                    {currency ? currency.symbol : '₹'}
+                                    {formatCurrency(product.sellingPrice)}
+                                </del>
+                            ) : (
+                                <del className="ml-2"></del>
+                            )}
+                            {!isSamePrice ? (
+                                <small>
+                                    {product.discountRate
+                                        ? product.discountRate + '% off'
+                                        : '\u00A0'}
+                                </small>
+                            ) : (
+                                <small>Best price for you!</small>
+                            )}
+                        </p>
+
                         <Link
                             href="/product/[pid]"
                             as={`/product/${product.id}`}>
-                            <a className="ps-product__title">{product.title}</a>
+                            <a className="ps-product__title">
+                                {product.title}
+                            </a>
                         </Link>
 
                         <div className="ps-product__rating">
@@ -162,14 +214,36 @@ class Product extends Component {
                             <span>0</span>
                         </div>
                         <div className="product-buybtn">
-                            <div className="flexbtn">
-                              <a href="#"
-                                onClick={this.handleAddItemToCart.bind(this)} className="bttn">Add to Cart</a>
-                            </div>
-                            <div className="flexbtn dark">
-                                <a href="#"
-                                onClick={this.handleAddItemToCart.bind(this)} className="bttn-dark">Buy Now</a>
-                            </div>
+                            {product.quantity > 0 ? (
+                                <div className="w-100">
+                                    <div className="flexbtn">
+                                        <a
+                                            href="#"
+                                            onClick={this.handleAddItemToCart.bind(
+                                                this
+                                            )}
+                                            className="bttn">
+                                            Add to Cart
+                                        </a>
+                                    </div>
+                                    <div className="flexbtn dark">
+                                        <a
+                                            href="#"
+                                            onClick={this.handleBuyNow.bind(
+                                                this
+                                            )}
+                                            className="bttn-dark">
+                                            Buy Now
+                                        </a>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="flexbtn" className="w-100">
+                                    <a href="#" className="bttn-dark">
+                                        Coming Soon
+                                    </a>
+                                </div>
+                            )}
                         </div>
                         {/* <div
                             className="ps-product__progress-bar ps-progress"

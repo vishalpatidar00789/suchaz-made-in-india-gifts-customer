@@ -19,6 +19,11 @@ function reducer(state = initialState, action) {
                 ...state,
                 ...{ allProducts: action.data, productsLoading: false },
             };
+        case actionTypes.GET_FILTER_CATEGORY_SUCCESS:
+            return {
+                ...state,
+                ...{ allProducts: action.payload, productsLoading: false },
+            };
         case actionTypes.GET_TOTAL_OF_PRODUCTS_SUCCESS:
             return {
                 ...state,

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
+import Router from 'next/router';
 import Rating from '../../../Rating';
 import { addItem } from '../../../../../store/cart/action';
 import { addItemToCompare } from '../../../../../store/compare/action';
 import { addItemToWishlist } from '../../../../../store/wishlist/action';
-
+import {
+    formatCurrency,
+    sliceTitle,
+} from '../../../../../utilities/product-helper';
 class InformationDefault extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +18,7 @@ class InformationDefault extends Component {
         };
     }
 
-    handleAddItemToCart = e => {
+    handleAddItemToCart = (e) => {
         e.preventDefault();
         const { product } = this.props;
         let tempProduct = product;
@@ -22,24 +26,33 @@ class InformationDefault extends Component {
         this.props.dispatch(addItem(product));
     };
 
-    handleAddItemToCompare = e => {
+    handleBuyNow = (e) => {
+        e.preventDefault();
+        const { product } = this.props;
+        let tempProduct = product;
+        tempProduct.quantity = this.state.quantity;
+        this.props.dispatch(addItem(product));
+        Router.push('/account/checkout');
+    };
+
+    handleAddItemToCompare = (e) => {
         e.preventDefault();
         const { product } = this.props;
         this.props.dispatch(addItemToCompare(product));
     };
 
-    handleAddItemToWishlist = e => {
+    handleAddItemToWishlist = (e) => {
         e.preventDefault();
         const { product } = this.props;
         this.props.dispatch(addItemToWishlist(product));
     };
 
-    handleIncreaseItemQty = e => {
+    handleIncreaseItemQty = (e) => {
         e.preventDefault();
         this.setState({ quantity: this.state.quantity + 1 });
     };
 
-    handleDecreaseItemQty = e => {
+    handleDecreaseItemQty = (e) => {
         e.preventDefault();
         if (this.state.quantity > 1) {
             this.setState({ quantity: this.state.quantity - 1 });
@@ -48,31 +61,48 @@ class InformationDefault extends Component {
 
     render() {
         const { product, currency } = this.props;
+        const isSamePrice = product.bestPrice == product.sellingPrice;
         return (
             <div className="ps-product__info">
                 <h1>{product.title}</h1>
                 <div className="ps-product__meta">
-                    <p>
+                    {/* <p>
                         Brand:
                         <Link href="/shop">
                             <a className="ml-2 text-capitalize">
-                                {/* {product.vendor} */}
+                                {product.vendor?.shop_name
+                                    ? product.vendor.shop_name
+                                    : '\u00A0'}
                             </a>
                         </Link>
-                    </p>
+                    </p> */}
                     <div className="ps-product__rating">
                         <Rating />
                         <span>(0 review)</span>
                     </div>
                 </div>
                 <h4 className="ps-product__price sale">
-                        <del className="mr-2">
-                            {currency ? currency.symbol : '$'}
-                            {product.sellingPrice}
+                    {currency ? currency.symbol : '₹'}
+                    {formatCurrency(product.bestPrice)}
+                    {!isSamePrice ? (
+                        <del className="ml-2">
+                            {currency ? currency.symbol : '₹'}
+                            {formatCurrency(product.sellingPrice)}
                         </del>
-                        {currency ? currency.symbol : '$'}
-                        {product.bestPrice}
-                    </h4>
+                    ) : (
+                        <del className="ml-2"></del>
+                    )}
+                    {!isSamePrice ? (
+                        <small>
+                            {product.discountRate
+                                ? product.discountRate + '% off'
+                                : '\u00A0'}
+                        </small>
+                    ) : (
+                        <small>Best price for you!</small>
+                    )}
+    
+                </h4>
                 {/* {product.is_sale === true ? (
                     <h4 className="ps-product__price sale">
                         <del className="mr-2">
@@ -93,11 +123,16 @@ class InformationDefault extends Component {
                         Sold By:
                         <Link href="/shop">
                             <a>
-                                {/* <strong> {product.vendor}</strong> */}
+                                <strong>
+                                    {product.vendor?.shop_name
+                                        ? ' ' + product.vendor.shop_name
+                                        : '\u00A0'}
+                                </strong>
                             </a>
                         </Link>
                     </p>
-                    <ul className="ps-list--dot">
+                    <p>{product.description}</p>
+                    {/* <ul className="ps-list--dot">
                         <li>Unrestrained and portable active stereo speaker</li>
                         <li> Free from the confines of wires and chords</li>
                         <li> 20 hours of portable capabilities</li>
@@ -106,56 +141,70 @@ class InformationDefault extends Component {
                             Included
                         </li>
                         <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                    </ul>
+                    </ul> */}
                 </div>
-                <div className="ps-product__shopping">
-                    <figure>
-                        <figcaption>Quantity</figcaption>
-                        <div className="form-group--number">
-                            <button
-                                className="up"
-                                onClick={this.handleIncreaseItemQty.bind(this)}>
-                                <i className="fa fa-plus"></i>
-                            </button>
-                            <button
-                                className="down"
-                                onClick={this.handleDecreaseItemQty.bind(this)}>
-                                <i className="fa fa-minus"></i>
-                            </button>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder={this.state.quantity}
-                                disabled
-                            />
-                        </div>
-                    </figure>
-                    <a
-                        className="ps-btn ps-btn--black"
-                        href="#"
-                        onClick={this.handleAddItemToCart.bind(this)}>
-                        Add to cart
-                    </a>
-                    <a
-                        className="ps-btn"
-                        href="#"
-                        onClick={this.handleAddItemToCart.bind(this)}>
-                        Buy Now
-                    </a>
-                    <div className="ps-product__actions">
+                {product.quantity > 0 ? (
+                    <div className="ps-product__shopping">
+                        <figure>
+                            <figcaption>Quantity</figcaption>
+                            <div className="form-group--number">
+                                <button
+                                    className="up"
+                                    onClick={this.handleIncreaseItemQty.bind(
+                                        this
+                                    )}>
+                                    <i className="fa fa-plus"></i>
+                                </button>
+                                <button
+                                    className="down"
+                                    onClick={this.handleDecreaseItemQty.bind(
+                                        this
+                                    )}>
+                                    <i className="fa fa-minus"></i>
+                                </button>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    placeholder={this.state.quantity}
+                                    disabled
+                                />
+                            </div>
+                        </figure>
                         <a
+                            className="ps-btn ps-btn--black"
                             href="#"
-                            onClick={this.handleAddItemToWishlist.bind(this)}>
-                            <i className="icon-heart"></i>
+                            onClick={this.handleAddItemToCart.bind(this)}>
+                            Add to cart
                         </a>
                         <a
+                            className="ps-btn"
                             href="#"
-                            onClick={this.handleAddItemToCompare.bind(this)}>
-                            <i className="icon-chart-bars"></i>
+                            onClick={this.handleBuyNow.bind(this)}>
+                            Buy Now
+                        </a>
+
+                        {/* <div className="ps-product__actions">
+                  <a
+                      href="#"
+                      onClick={this.handleAddItemToWishlist.bind(this)}>
+                      <i className="icon-heart"></i>
+                  </a>
+                  <a
+                      href="#"
+                      onClick={this.handleAddItemToCompare.bind(this)}>
+                      <i className="icon-chart-bars"></i>
+                  </a>
+              </div> */}
+                    </div>
+                ) : (
+                    <div className="flexbtn w-100">
+                        <a href="#" className="ps-btn ps-btn--black text-white">
+                            Coming Soon
                         </a>
                     </div>
-                </div>
-                <div className="ps-product__specification">
+                )}
+
+                {/* <div className="ps-product__specification">
                     <Link href="/page/blank">
                         <a className="report">Report Abuse</a>
                     </Link>
@@ -186,8 +235,8 @@ class InformationDefault extends Component {
                             <a>wireless</a>
                         </Link>
                     </p>
-                </div>
-                <div className="ps-product__sharing">
+                </div> */}
+                {/* <div className="ps-product__sharing">
                     <a className="facebook" href="#">
                         <i className="fa fa-facebook"></i>
                     </a>
@@ -203,27 +252,31 @@ class InformationDefault extends Component {
                     <a className="instagram" href="#">
                         <i className="fa fa-instagram"></i>
                     </a>
-                </div>
-                <div className="ps-product__actions-mobile">
-                    <a
-                        className="ps-btn ps-btn--black"
-                        href="#"
-                        onClick={this.handleAddItemToCart.bind(this)}>
-                        Add to cart
-                    </a>
-                    <a
-                        className="ps-btn"
-                        href="#"
-                        onClick={this.handleAddItemToCart.bind(this)}>
-                        Buy Now
-                    </a>
-                </div>
+                </div> */}
+                {product.quantity > 0 ? (
+                    <div className="ps-product__actions-mobile">
+                        <a
+                            className="ps-btn ps-btn--black"
+                            href="#"
+                            onClick={this.handleAddItemToCart.bind(this)}>
+                            Add to cart
+                        </a>
+                        <a
+                            className="ps-btn"
+                            href="#"
+                            onClick={this.handleAddItemToCart.bind(this)}>
+                            Buy Now
+                        </a>
+                    </div>
+                ) : (
+                    <div className="ps-product__actions-mobile"></div>
+                )}
             </div>
         );
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return state.setting;
 };
 

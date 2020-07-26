@@ -27,7 +27,7 @@ const RecentViewedProductsPage = () => {
                 <BreadCrumb breacrumb={breadCrumb} />
                 <RecentViewedProducts />
             </div>
-            <Newsletters layout="container" />
+            {/* <Newsletters layout="container" /> */}
             <FooterDefault />
         </div>
     );

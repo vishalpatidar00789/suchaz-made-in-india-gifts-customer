@@ -22,16 +22,15 @@ class Login extends Component {
     handleFeatureWillUpdate(e) {
         e.preventDefault();
         notification.open({
-            message: 'Opp! Something went wrong.',
-            description: 'This feature has been updated later!',
+            message: 'Coming Soon...',
+            description: '',
             duration: 500,
         });
     }
 
-    handleLoginSubmit = e => {
-        console.log('test');
-        this.props.dispatch(login());
-        Router.push('/');
+    handleLoginSubmit = values => {
+        this.props.dispatch(login(values));
+        
 
     };
 
@@ -59,7 +58,7 @@ class Login extends Component {
                                 <h5>Log In Your Account</h5>
                                 <div className="form-group">
                                     <Form.Item
-                                        name="username"
+                                        name="email"
                                         rules={[
                                             {
                                                 required: true,
@@ -70,7 +69,7 @@ class Login extends Component {
                                         <Input
                                             className="form-control"
                                             type="text"
-                                            placeholder="Username or email address"
+                                            placeholder="Email address"
                                         />
                                     </Form.Item>
                                 </div>
@@ -91,7 +90,7 @@ class Login extends Component {
                                         />
                                     </Form.Item>
                                 </div>
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                     <div className="ps-checkbox">
                                         <input
                                             className="form-control"
@@ -103,7 +102,7 @@ class Login extends Component {
                                             Rememeber me
                                         </label>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group submit">
                                     <button
                                         type="submit"
@@ -113,7 +112,7 @@ class Login extends Component {
                                 </div>
                             </div>
                             <div className="ps-form__footer">
-                                <p>Connect with:</p>
+                                {/* <p>Connect with:</p>
                                 <ul className="ps-list--social">
                                     <li>
                                         <a
@@ -155,7 +154,7 @@ class Login extends Component {
                                             <i className="fa fa-instagram"></i>
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </Form>

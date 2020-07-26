@@ -27,7 +27,6 @@ class StaticProductRepository {
     }
 
     getProductsByCategory(payload) {
-        console.log(payload);
         const category = categories.find(category => category.slug === payload);
         if (category !== undefined) {
             return category.products;

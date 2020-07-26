@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Form, Input } from 'antd';
 import {
     getCart,
     increaseItemQty,
     decreaseItemQty,
     removeItem,
+    giftWrapSelected
 } from '../../../store/cart/action';
 
 import Link from 'next/link';
@@ -13,6 +15,9 @@ import ProductCart from '../../elements/products/ProductCart';
 class ShoppingCart extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            checked: false
+        };
     }
 
     componentDidMount() {
@@ -24,10 +29,18 @@ class ShoppingCart extends Component {
     }
 
     handleDecreaseItemQty(product) {
-        this.props.dispatch(decreaseItemQty(product));
+        if (product.quantity == 1) {
+            this.props.dispatch(removeItem(product));
+        } else {
+            this.props.dispatch(decreaseItemQty(product));
+        }
     }
 
-    handleRemoveCartItem = product => {
+    setChecked(product){
+        this.props.dispatch(giftWrapSelected(product));
+    }
+
+    handleRemoveCartItem = (product) => {
         this.props.dispatch(removeItem(product));
     };
 
@@ -56,11 +69,13 @@ class ShoppingCart extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {currentCartItems.map(product => (
+                                    {currentCartItems.map((product) => (
                                         <tr key={product.id}>
                                             <td>
-                                                <ProductCart product={product}/>
-                                                {/*<div className="ps-product--cart">
+                                                {/* <ProductCart
+                                                    product={product}
+                                                /> */}
+                                                <div className="ps-product--cart">
                                                     <div className="ps-product__thumbnail">
                                                         <Link
                                                             href="/product/[pid]"
@@ -68,9 +83,10 @@ class ShoppingCart extends Component {
                                                             <a>
                                                                 <img
                                                                     src={
-                                                                        product.thumbnail
+                                                                        product
+                                                                            .images[0]
                                                                     }
-                                                                    alt="martfury"
+                                                                    alt="MadeInIndiaGifts"
                                                                 />
                                                             </a>
                                                         </Link>
@@ -86,14 +102,50 @@ class ShoppingCart extends Component {
                                                         <p>
                                                             Sold By:
                                                             <strong>
-                                                                {product.vendor}
+                                                                {product.vendor
+                                                                    ?.shop_name
+                                                                    ? ' ' +product
+                                                                          .vendor
+                                                                          .shop_name
+                                                                    : '\u00A0'}
                                                             </strong>
                                                         </p>
+                                                        <p>
+                                                            {product.gift_wrap_available ==
+                                                            'true' ? (
+                                                                <div className="form-group">
+                                                                    <div className="ps-checkbox">
+                                                                        <input
+                                                                            className="form-control"
+                                                                            type="checkbox"
+                                                                            id={product.id}
+                                                                            name="giftWrapSelected"
+                                                                            checked={product.giftWrapSelected}
+                                                                            onChange={this.setChecked.bind(
+                                                                                this,
+                                                                                product
+                                                                            )}
+                                                                        />
+                                                                        <label htmlFor={product.id}>
+                                                                            Want
+                                                                            to
+                                                                            wrap
+                                                                            your
+                                                                            gift?
+                                                                            <br/>
+                                                                            +additional ₹{product.gift_wrap_price} wrapping charge
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            ) : (
+                                                                ''
+                                                            )}
+                                                        </p>
                                                     </div>
-                                                </div>*/}
+                                                </div>
                                             </td>
                                             <td className="price">
-                                                ${product.bestPrice}
+                                                ₹{product.bestPrice}
                                             </td>
                                             <td>
                                                 <div className="form-group--number">
@@ -123,7 +175,7 @@ class ShoppingCart extends Component {
                                                 </div>
                                             </td>
                                             <td>
-                                                $
+                                                ₹
                                                 {product.quantity *
                                                     product.bestPrice}
                                             </td>
@@ -157,11 +209,11 @@ class ShoppingCart extends Component {
                                 <div className="ps-block--shopping-total">
                                     <div className="ps-block__header">
                                         <p>
-                                            Subtotal <span> ${amount}</span>
+                                            Subtotal <span> ₹{amount}</span>
                                         </p>
                                     </div>
                                     <div className="ps-block__content">
-                                        <ul className="ps-block__product">
+                                        {/* <ul className="ps-block__product">
                                             {cartItems.length > 0
                                                 ? cartItems.map(
                                                       (product, index) => {
@@ -193,9 +245,9 @@ class ShoppingCart extends Component {
                                                       }
                                                   )
                                                 : ''}
-                                        </ul>
+                                        </ul> */}
                                         <h3>
-                                            Total <span>${amount}</span>
+                                            Total <span>₹{amount}</span>
                                         </h3>
                                     </div>
                                 </div>
@@ -213,7 +265,7 @@ class ShoppingCart extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return state.cart;
 };
 export default connect(mapStateToProps)(ShoppingCart);

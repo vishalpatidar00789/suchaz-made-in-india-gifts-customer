@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
-import { login } from '../../../store/auth/action';
+import { login, register } from '../../../store/auth/action';
 
-import { Form, Input } from 'antd';
+import { Form, Input, notification } from 'antd';
 import { connect } from 'react-redux';
 
 class Register extends Component {
@@ -12,16 +12,19 @@ class Register extends Component {
         this.state = {};
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                this.props.dispatch(login());
-                Router.push('/account/login');
-            } else {
-            }
-        });
+    handleSubmit = (values) => {
+        this.props.dispatch(register(values));
+        Router.push('/account/login');
     };
+
+    handleFeatureWillUpdate(e) {
+        e.preventDefault();
+        notification.open({
+            message: 'Coming Soon...',
+            description: '',
+            duration: 500,
+        });
+    }
 
     render() {
         return (
@@ -29,7 +32,7 @@ class Register extends Component {
                 <div className="container">
                     <Form
                         className="ps-form--account"
-                        onSubmit={this.handleSubmit}>
+                        onFinish={this.handleSubmit.bind(this)}>
                         <ul className="ps-tab-list">
                             <li>
                                 <Link href="/account/login">
@@ -45,6 +48,40 @@ class Register extends Component {
                         <div className="ps-tab active" id="register">
                             <div className="ps-form__content">
                                 <h5>Register An Account</h5>
+                                <div className="form-group">
+                                    <Form.Item
+                                        name="name"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message:
+                                                    'Please input your name!',
+                                            },
+                                        ]}>
+                                        <Input
+                                            className="form-control"
+                                            type="text"
+                                            placeholder="Name"
+                                        />
+                                    </Form.Item>
+                                </div>
+                                <div className="form-group">
+                                    <Form.Item
+                                        name="phone_number"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message:
+                                                    'Please input your phone number!',
+                                            },
+                                        ]}>
+                                        <Input
+                                            className="form-control"
+                                            type="number"
+                                            placeholder="Phone Number"
+                                        />
+                                    </Form.Item>
+                                </div>
                                 <div className="form-group">
                                     <Form.Item
                                         name="email"
@@ -88,29 +125,49 @@ class Register extends Component {
                                 </div>
                             </div>
                             <div className="ps-form__footer">
-                                <p>Connect with:</p>
+                                {/* <p>Connect with:</p>
                                 <ul className="ps-list--social">
                                     <li>
-                                        <a className="facebook" href="#">
+                                        <a
+                                            className="facebook"
+                                            href="#"
+                                            onClick={(e) =>
+                                                this.handleFeatureWillUpdate(e)
+                                            }>
                                             <i className="fa fa-facebook"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="google" href="#">
+                                        <a
+                                            className="google"
+                                            href="#"
+                                            onClick={(e) =>
+                                                this.handleFeatureWillUpdate(e)
+                                            }>
                                             <i className="fa fa-google-plus"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="twitter" href="#">
+                                        <a
+                                            className="twitter"
+                                            href="#"
+                                            onClick={(e) =>
+                                                this.handleFeatureWillUpdate(e)
+                                            }>
                                             <i className="fa fa-twitter"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="instagram" href="#">
+                                        <a
+                                            className="instagram"
+                                            href="#"
+                                            onClick={(e) =>
+                                                this.handleFeatureWillUpdate(e)
+                                            }>
                                             <i className="fa fa-instagram"></i>
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </Form>
@@ -120,7 +177,7 @@ class Register extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return state.auth;
 };
 export default connect(mapStateToProps)(Register);

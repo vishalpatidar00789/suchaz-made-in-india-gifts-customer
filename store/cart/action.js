@@ -17,6 +17,10 @@ export const actionTypes = {
     INCREASE_QTY_SUCCESS: 'INCREASE_QTY_SUCCESS',
     INCREASE_QTY_ERROR: 'INCREASE_QTY_ERROR',
 
+    GIFT_WRAP_SELECTED: 'GIFT_WRAP_SELECTED',
+    GIFT_WRAP_SELECTED_SUCCESS: 'GIFT_WRAP_SELECTED_SUCCESS',
+    GIFT_WRAP_SELECTED_ERROR: 'GIFT_WRAP_SELECTED_ERROR',
+
     DECREASE_QTY: 'DECREASE_QTY',
     UPDATE_CART: 'UPDATE_CART',
 
@@ -51,6 +55,10 @@ export function removeItem(product) {
 
 export function increaseItemQty(product) {
     return { type: actionTypes.INCREASE_QTY, product };
+}
+
+export function giftWrapSelected(product) {
+    return { type: actionTypes.GIFT_WRAP_SELECTED, product };
 }
 
 export function decreaseItemQty(product) {

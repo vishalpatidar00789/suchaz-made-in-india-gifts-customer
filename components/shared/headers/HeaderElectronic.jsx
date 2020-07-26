@@ -86,7 +86,7 @@ class HeaderElectronic extends Component {
                                 <a className="ps-logo">
                                     <img
                                         src="/static/img/logo-electronic.png"
-                                        alt="martfury"
+                                        alt="MadeInIndiaGifts"
                                     />
                                 </a>
                             </Link>

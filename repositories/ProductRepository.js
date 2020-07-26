@@ -26,7 +26,7 @@ class ProductRepository {
     }
 
     async getProductCategories() {
-        const reponse = await Repository.get(`${baseUrl}/product-categories`)
+        const reponse = await Repository.post(`${baseUrl}/getCategory`,{parentId: ""})
             .then(response => {
                 return response.data;
             })

@@ -11,58 +11,20 @@ import {
     getProductsByBrand,
     getProductCategories,
     getProductsByCategory,
+    getFilterCategory,
 } from '../../../../store/product/action';
 class ShopWidget extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            priceMin: 0,
-            priceMax: 2000,
-        };
+        // this.state = {
+        //     priceMin: 0,
+        //     priceMax: 2000,
+        //     offerMin: 0,
+        //     offerMax: 100
+        // };
     }
 
-    handleChangeRange(value) {
-        this.setState({
-            priceMin: value[0],
-            priceMax: value[1],
-        });
-        const params = {
-            price_gt: value[0],
-            price_lt: value[1],
-            _start: 1,
-            _limit: 999,
-        };
-        this.props.dispatch(getProductsByPrice(params));
-    }
 
-    handleFilterByBrand(value) {
-        if (value.length > 0) {
-            this.props.dispatch(getProductsByBrand(value));
-            Router.push({ pathname: '/shop', query: { brand: value } });
-        } else {
-            const params = {
-                _start: 1,
-                _limit: 12,
-            };
-            this.props.dispatch(getProducts(params));
-            this.props.dispatch(getTotalProducts());
-        }
-    }
-
-    handleFilterProductsByCategory(e, slug) {
-        e.preventDefault();
-        if (slug !== null) {
-            Router.push({ pathname: '/shop', query: { category: slug } });
-            this.props.dispatch(getProductsByCategory(slug));
-        } else {
-            const params = {
-                _start: 1,
-                _limit: 12,
-            };
-            this.props.dispatch(getProducts(params));
-            this.props.dispatch(getTotalProducts());
-        }
-    }
 
     componentDidMount() {
         this.props.dispatch(getBrands());
@@ -70,7 +32,7 @@ class ShopWidget extends Component {
     }
 
     render() {
-        const { brands, categories } = this.props;
+        const { brands, categories, priceMin, priceMax, offerMin, offerMax } = this.props;
         const brandsGroup = [];
         if (brands.length > 0) {
             brands.forEach(brand => {
@@ -91,7 +53,7 @@ class ShopWidget extends Component {
                                 <a
                                     href="/shop"
                                     onClick={e =>
-                                        this.handleFilterProductsByCategory(
+                                        this.props.handleFilterProductsByCategory(
                                             e,
                                             null
                                         )
@@ -104,12 +66,12 @@ class ShopWidget extends Component {
                                     <a
                                         href={`shop?category=${category.slug}`}
                                         onClick={e =>
-                                            this.handleFilterProductsByCategory(
+                                            this.props.handleFilterProductsByCategory(
                                                 e,
-                                                category.slug
+                                                category.id
                                             )
                                         }>
-                                        {category.name}
+                                        {category.title}
                                     </a>
                                 </li>
                             ))}
@@ -119,24 +81,37 @@ class ShopWidget extends Component {
                     )}
                 </aside>
                 <aside className="widget widget_shop">
-                    <h4 className="widget-title">By Brands</h4>
+                    {/* <h4 className="widget-title">By Brands</h4>
                     <figure>
                         <Checkbox.Group
                             options={brandsGroup}
                             onChange={this.handleFilterByBrand.bind(this)}
                         />
-                    </figure>
+                    </figure> */}
                     <figure>
                         <h4 className="widget-title">By Price</h4>
                         <Slider
                             range
                             defaultValue={[0, 2000]}
                             max={2000}
-                            onAfterChange={this.handleChangeRange.bind(this)}
+                            onAfterChange={this.props.handleChangeRange.bind(this)}
                         />
                         <p>
-                            Price: ${this.state.priceMin} - $
-                            {this.state.priceMax}
+                            Price: ₹{priceMin} - ₹
+                            {priceMax}
+                        </p>
+                    </figure>
+                    <figure>
+                        <h4 className="widget-title">By Offer</h4>
+                        <Slider
+                            range
+                            defaultValue={[0, 100]}
+                            max={100}
+                            onAfterChange={this.props.handleChangeOffer.bind(this)}
+                        />
+                        <p>
+                            Offer: {offerMin}% - 
+                            {offerMax}%
                         </p>
                     </figure>
                 </aside>

@@ -4,6 +4,9 @@ import Rating from '../../../Rating';
 const PartialReview = () => (
     <div className="row">
         <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
+            <p>Coming Soon!</p>
+        </div>
+        {/* <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
             <div className="ps-block--average-rating">
                 <div className="ps-block__header">
                     <h3>0.00</h3>
@@ -81,7 +84,7 @@ const PartialReview = () => (
                     <button className="ps-btn">Submit Review</button>
                 </div>
             </form>
-        </div>
+        </div> */}
     </div>
 );
 

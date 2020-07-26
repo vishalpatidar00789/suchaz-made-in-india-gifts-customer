@@ -60,7 +60,7 @@ class HomeMarketPlacePage extends Component {
                     <MarketPlacePromotion />
                     <MarketPlaceDealOfDay collectionSlug="deal_of_the_day" />
                     <MarketPlaceProductBox />
-                    <Newsletters />
+                    {/* <Newsletters /> */}
                 </main>
                 <FooterDefault />
             </div>

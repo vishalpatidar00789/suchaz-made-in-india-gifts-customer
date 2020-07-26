@@ -80,7 +80,7 @@ class Product extends Component {
                             <LazyLoad>
                                 <img
                                     src={product.thumbnail.url}
-                                    alt="martfury"
+                                    alt="MadeInIndiaGifts"
                                 />
                             </LazyLoad>
                         </a>

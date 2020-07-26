@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
+import { Router } from 'next/router';
 import { getCart, removeItem } from '../../../../store/cart/action';
 import { isStaticData } from '../../../../utilities/app-settings';
 import { baseUrl } from '../../../../repositories/Repository';
@@ -19,7 +20,6 @@ class MiniCart extends Component {
 
     render() {
         const { amount, cartTotal, cartItems } = this.props;
-        console.log(cartItems);
         return (
             <div className="ps-cart--mini">
                 <a className="header__extra" href="#">
@@ -45,12 +45,13 @@ class MiniCart extends Component {
                                                           src={
                                                               isStaticData ===
                                                               false
-                                                                  ? product.images[0]
+                                                                  ? product
+                                                                        .images[0]
                                                                   : product
                                                                         .thumbnail
                                                                         .url
                                                           }
-                                                          alt="martfury"
+                                                          alt="MadeInIndiaGifts"
                                                       />
                                                   </a>
                                               </Link>
@@ -72,11 +73,13 @@ class MiniCart extends Component {
                                                   </a>
                                               </Link>
                                               <p>
-                                                  <strong>Sold by:</strong>{' '}
-                                                  {/* {product.vendor} */}
+                                                  <strong>Sold by:</strong>
+                                                  {product.vendor?.shop_name
+                                                      ? ' ' +product.vendor.shop_name
+                                                      : '\u00A0'}
                                               </p>
                                               <small>
-                                                  {product.quantity} x $
+                                                  {product.quantity} x ₹
                                                   {product.bestPrice}
                                               </small>
                                           </div>
@@ -87,7 +90,7 @@ class MiniCart extends Component {
                         <div className="ps-cart__footer">
                             <h3>
                                 Sub Total:
-                                <strong>${amount ? amount : 0}</strong>
+                                <strong>₹{amount ? amount : 0}</strong>
                             </h3>
                             <figure>
                                 <Link href="/account/shopping-cart">
