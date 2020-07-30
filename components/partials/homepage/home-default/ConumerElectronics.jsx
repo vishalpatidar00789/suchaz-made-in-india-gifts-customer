@@ -19,7 +19,7 @@ class ConsumerElectronics extends Component {
         };
     }
 
-    handleChangeProduct(e, slug) {
+    handleChangeProduct(e, id, slug) {
         e.preventDefault();
         // const { categories } = this.props;
         // const items = getColletionBySubcat(categories, slug);
@@ -27,8 +27,8 @@ class ConsumerElectronics extends Component {
         //     currentCollection: slug
         //     // items: items,
         // });
-        Router.push({ pathname: '/shop', query: {
-            category: slug
+        Router.push({ pathname: '/gift', query: {
+            id: id, by: slug
          } });
     }
     getCategoryBysubCat(categories, currentCollection) {
@@ -91,18 +91,19 @@ class ConsumerElectronics extends Component {
                                     {cat.subcat.map((link) => (
                                         <li
                                             className={
-                                                currentCollection === link._id
+                                                currentCollection === link.id
                                                     ? 'active'
                                                     : ''
                                             }
-                                            key={link._id}>
+                                            key={link.id}>
                                             <a
-                                                // onClick={(e) =>
-                                                //     this.handleChangeProduct(
-                                                //         e,
-                                                //         link._id
-                                                //     )
-                                                // }
+                                                onClick={(e) =>
+                                                    this.handleChangeProduct(
+                                                        e,
+                                                        link.id,
+                                                        link.title
+                                                    )
+                                                }
                                                 >
                                                 {link.title}
                                             </a>
@@ -118,7 +119,8 @@ class ConsumerElectronics extends Component {
                                             onClick={(e) =>
                                                 this.handleChangeProduct(
                                                     e,
-                                                    cat.id
+                                                    cat.id,
+                                                    cat.title
                                                 )
                                             }
                                             >

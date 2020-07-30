@@ -134,7 +134,7 @@ class Product extends Component {
                     </ul>
                 </div>
                 <div className="ps-product__container">
-                    <Link href="/shop">
+                    <Link href="/gift">
                         <a className="ps-product__vendor">Young Shop</a>
                     </Link>
                     <div className="ps-product__content">

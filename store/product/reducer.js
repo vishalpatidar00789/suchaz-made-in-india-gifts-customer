@@ -22,7 +22,7 @@ function reducer(state = initialState, action) {
         case actionTypes.GET_FILTER_CATEGORY_SUCCESS:
             return {
                 ...state,
-                ...{ allProducts: action.payload, productsLoading: false },
+                ...{ allProducts: action.payload, totalProducts: action.payload.length, productsLoading: false },
             };
         case actionTypes.GET_TOTAL_OF_PRODUCTS_SUCCESS:
             return {

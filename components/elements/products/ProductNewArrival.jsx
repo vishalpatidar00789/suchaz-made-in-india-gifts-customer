@@ -150,7 +150,7 @@ class ProductNewArrival extends Component {
                     </ul> */}
                 </div>
                 <div className="ps-product__container">
-                    <Link href="/shop">
+                    <Link href="/gift">
                         <a className="ps-product__vendor">
                             {product.vendor?.shop_name
                                 ? product.vendor.shop_name

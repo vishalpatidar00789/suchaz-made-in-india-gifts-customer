@@ -12,6 +12,7 @@ const ThankYou = () => {
         history.pushState(null, document.title, location.href); window.addEventListener('popstate', function (event) {   history.pushState(null, document.title, location.href); });
     }
     const router = useRouter();
+    console.log(router);
     const { orderID } = router.query;
 
     return (

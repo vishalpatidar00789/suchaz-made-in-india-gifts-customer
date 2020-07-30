@@ -4,6 +4,8 @@ import { getCart, giftWrapSelected } from '../../../store/cart/action';
 import Router from 'next/router';
 import Link from 'next/link';
 import { placeOrder } from '../../../store/order/action';
+import axios from 'axios';
+import post from '../../../pages/utils';
 
 class Shipping extends Component {
     constructor(props) {
@@ -21,8 +23,41 @@ class Shipping extends Component {
         // },500);
     }
 
-    handlePlaceOrder() {
-        this.props.dispatch(placeOrder(this.props));
+    async handlePlaceOrder(cart, shippingAddress) {
+        const {
+            amount,
+            shippingCharges,
+            giftWrapCharges,
+        } = cart;
+        let totalAmount = this.totalCharge(
+            amount,
+            shippingCharges,
+            giftWrapCharges
+        );
+        // Router.push('/account/place-order');
+        // this.props.dispatch(placeOrder(this.props));
+        let time = new Date().getTime();
+        let orderId = 'ORDER_ID' + time;
+        let params = {
+            orderId: orderId,
+            email: shippingAddress.email,
+            amount: totalAmount,
+            phone_number: shippingAddress.contact_no,
+        };
+
+        const reponse = await axios
+            .post('https://suchaz.com/apiv2/admin/order/paytmChecksum', params)
+            .then((res) => {
+                return res.data;
+            })
+            .catch((error) => ({ error: JSON.stringify(error) }));
+
+        const processParam = reponse;
+        let details = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: processParam,
+        };
+        post(details);
     }
 
     totalShippingCharge(cartItems) {
@@ -128,7 +163,9 @@ class Shipping extends Component {
                                         <div className="pr-0 pb-10 col-xl-6 col-lg-6 col-md-6 col-sm-12 text-right">
                                             <a
                                                 onClick={this.handlePlaceOrder.bind(
-                                                    this
+                                                    this,
+                                                    cart,
+                                                    shippingAddress
                                                 )}
                                                 className="ps-btn text-white">
                                                 Place Order

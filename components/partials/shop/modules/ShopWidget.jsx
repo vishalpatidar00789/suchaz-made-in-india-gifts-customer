@@ -17,10 +17,10 @@ class ShopWidget extends Component {
     constructor(props) {
         super(props);
         // this.state = {
-        //     priceMin: 0,
-        //     priceMax: 2000,
-        //     offerMin: 0,
-        //     offerMax: 100
+        //     minPrice: 0,
+        //     maxPrice: 2000,
+        //     minOffer: 0,
+        //     maxOffer: 100
         // };
     }
 
@@ -32,7 +32,7 @@ class ShopWidget extends Component {
     }
 
     render() {
-        const { brands, categories, priceMin, priceMax, offerMin, offerMax } = this.props;
+        const { brands, categories, minPrice, maxPrice, minOffer, maxOffer } = this.props;
         const brandsGroup = [];
         if (brands.length > 0) {
             brands.forEach(brand => {
@@ -51,7 +51,7 @@ class ShopWidget extends Component {
                         <ul className="ps-list--categories">
                             <li>
                                 <a
-                                    href="/shop"
+                                    href="/gift"
                                     onClick={e =>
                                         this.props.handleFilterProductsByCategory(
                                             e,
@@ -64,7 +64,7 @@ class ShopWidget extends Component {
                             {categories.map(category => (
                                 <li key={category.id}>
                                     <a
-                                        href={`shop?category=${category.slug}`}
+                                        href={`gift?category=${category.slug}`}
                                         onClick={e =>
                                             this.props.handleFilterProductsByCategory(
                                                 e,
@@ -93,12 +93,13 @@ class ShopWidget extends Component {
                         <Slider
                             range
                             defaultValue={[0, 2000]}
+                            value={[minPrice, maxPrice]}
                             max={2000}
-                            onAfterChange={this.props.handleChangeRange.bind(this)}
+                            onChange={this.props.handleChangeRange.bind(this)}
                         />
                         <p>
-                            Price: ₹{priceMin} - ₹
-                            {priceMax}
+                            Price: ₹{minPrice} - ₹
+                            {maxPrice}
                         </p>
                     </figure>
                     <figure>
@@ -106,12 +107,13 @@ class ShopWidget extends Component {
                         <Slider
                             range
                             defaultValue={[0, 100]}
+                            value={[minOffer, maxOffer]}
                             max={100}
-                            onAfterChange={this.props.handleChangeOffer.bind(this)}
+                            onChange={this.props.handleChangeOffer.bind(this)}
                         />
                         <p>
-                            Offer: {offerMin}% - 
-                            {offerMax}%
+                            Offer: {minOffer}% - 
+                            {maxOffer}%
                         </p>
                     </figure>
                 </aside>

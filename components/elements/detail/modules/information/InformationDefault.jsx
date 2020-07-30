@@ -121,7 +121,7 @@ class InformationDefault extends Component {
                 <div className="ps-product__desc">
                     <p>
                         Sold By:
-                        <Link href="/shop">
+                        <Link href="/gift">
                             <a>
                                 <strong>
                                     {product.vendor?.shop_name

@@ -17,14 +17,13 @@ class LayoutShop extends Component {
         listView: true,
         sortBy: 'latest',
         page: 1,
-        limit: 20
+        limit: 20,
     };
 
     handleChangeViewMode = (event) => {
         event.preventDefault();
         this.setState({ listView: !this.state.listView });
     };
-
 
     render() {
         const { allProducts, totalProducts, sortBy, page, limit } = this.props;
@@ -48,9 +47,15 @@ class LayoutShop extends Component {
                             value={sortBy}>
                             <option value="latest">Sort by latest</option>
                             <option value="offer">Sort by offer</option>
-                            <option value="popularity">Sort by popularity</option>
-                            <option value="price_asc">Sort by price: low to high</option>
-                            <option value="price_desc">Sort by price: high to low</option>
+                            <option value="popularity">
+                                Sort by popularity
+                            </option>
+                            <option value="price_asc">
+                                Sort by price: low to high
+                            </option>
+                            <option value="price_desc">
+                                Sort by price: high to low
+                            </option>
                         </select>
                         {/* <div className="ps-shopping__view">
                             <p>View</p>
@@ -83,38 +88,45 @@ class LayoutShop extends Component {
                     {viewMode === true ? (
                         <div className="ps-shopping-product">
                             <div className="row">
-                                {products && products.length > 0
-                                    ? products.map((item) => (
-                                          <div
-                                              className="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 "
-                                              key={item.id}>
-                                              <Product product={item} />
-                                          </div>
-                                      ))
-                                    : ''}
+                                {products && products.length > 0 ? (
+                                    products.map((item) => (
+                                        <div
+                                            className="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 "
+                                            key={item.id}>
+                                            <Product product={item} />
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                        <p>No products found.</p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ) : (
                         <div className="ps-shopping-product">
-                            {products && products.length > 0
-                                ? products.map((item) => (
-                                      <ProductWide
-                                          product={item}
-                                          key={item.id}
-                                      />
-                                  ))
-                                : ''}
+                            {products && products.length > 0 ? (
+                                products.map((item) => (
+                                    <ProductWide product={item} key={item.id} />
+                                ))
+                            ) : (
+                                <p>No products found.</p>
+                            )}
                         </div>
                     )}
-                    <div className="ps-shopping__footer text-center pt-40">
-                        <Pagination
-                            total={total}
-                            pageSize={limit}
-                            responsive={true}
-                            defaultCurrent={1}
-                            onChange={this.props.handlePagination}
-                        />
-                    </div>
+                    {products && products.length > 0 ? (
+                        <div className="ps-shopping__footer text-center pt-40">
+                            <Pagination
+                                total={total}
+                                pageSize={limit}
+                                responsive={true}
+                                defaultCurrent={1}
+                                onChange={this.props.handlePagination}
+                            />
+                        </div>
+                    ) : (
+                        ''
+                    )}
                 </div>
             </div>
         );

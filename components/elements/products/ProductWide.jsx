@@ -93,7 +93,7 @@ class ProductWide extends Component {
                         </Link>
                         <p className="ps-product__vendor">
                             Sold by:
-                            <Link href="/shop">
+                            <Link href="/gift">
                                 <a> {product.vendor?.shop_name
                                                       ? product.vendor.shop_name
                                                       : '\u00A0'}</a>

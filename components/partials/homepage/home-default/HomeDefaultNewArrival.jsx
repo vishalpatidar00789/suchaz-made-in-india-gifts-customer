@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import CountDownSimple from '../../../elements/CountDownSimple';
 import Link from 'next/link';
-import Slider from 'react-slick';
-import { carouselFullwidth } from '../../../../utilities/carousel-helpers';
 import { getProductData } from '../../../../utilities/product-helper';
-import ProductNewArrival from '../../../elements/products/ProductNewArrival';
 import CollectionProducts from './modules/CollectionProducts';
 
 class HomeDefaultNewArrival extends Component {
@@ -40,7 +36,7 @@ class HomeDefaultNewArrival extends Component {
                                 </figure>
                             </div> */}
                         </div>
-                        <Link href="/shop">
+                        <Link href="/gift?by=New Arrival">
                             <a>View all</a>
                         </Link>
                     </div>

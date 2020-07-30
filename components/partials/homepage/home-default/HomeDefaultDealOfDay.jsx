@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import CountDownSimple from '../../../elements/CountDownSimple';
 import Link from 'next/link';
 import Slider from 'react-slick';
 import ProductDealOfDay from '../../../elements/products/ProductDealOfDay';
@@ -33,7 +31,7 @@ class HomeDefaultDealOfDay extends Component {
                                 </figure>
                             </div> */}
                         </div>
-                        <Link href="/shop?sort=offer">
+                        <Link href="/gift?by=Deal of the day&id=&sortBy=offer">
                             <a>View all</a>
                         </Link>
                     </div>

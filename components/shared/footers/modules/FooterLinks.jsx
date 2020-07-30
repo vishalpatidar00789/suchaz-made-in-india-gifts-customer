@@ -4,19 +4,19 @@ const Links = {
     consumerElectric: [
         {
             text: 'Gift for Men',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Gift for Women',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Gift for Boys',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Gift for Girls',
-            url: '/shop'
+            url: '/gift'
         },
         // {
         //     text: 'TV Televisions',
@@ -30,11 +30,11 @@ const Links = {
     clothingAndApparel: [
         {
             text: 'Gift for Sporty People',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Gift for Music Lover',
-            url: '/shop'
+            url: '/gift'
         },
         // {
         //     text: '',
@@ -60,15 +60,15 @@ const Links = {
     gardenAndKitchen: [
         {
             text: 'Gift for Rakhi',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Gift for Diwali',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Gift for Birthday',
-            url: '/shop'
+            url: '/gift'
         },
         // {
         //     text: 'Garden Tools',
@@ -90,15 +90,15 @@ const Links = {
     healthAndBeauty: [
         {
             text: 'Gift for Girlfriend',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Gift for Boyfriend',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Gift for Wife',
-            url: '/shop'
+            url: '/gift'
         },
         // {
         //     text: 'Body Shower',
@@ -120,15 +120,15 @@ const Links = {
     jewelryAndWatch: [
         {
             text: 'Novelty',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'A',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'B',
-            url: '/shop'
+            url: '/gift'
         },
         // {
         //     text: 'Sliver Earing',
@@ -146,31 +146,31 @@ const Links = {
     computerAndTechnology: [
         {
             text: 'Desktop PC',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Laptop',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Smartphones',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Tablet',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Game Controller',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Audio & Video',
-            url: '/shop'
+            url: '/gift'
         },
         {
             text: 'Wireless Speaker',
-            url: '/shop'
+            url: '/gift'
         }
     ]
 };
