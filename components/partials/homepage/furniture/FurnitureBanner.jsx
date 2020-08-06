@@ -23,7 +23,7 @@ class FurnitureBanner extends Component {
                         <div
                             className="ps-banner--furniture"
                             style={{ backgroundImage: `url(/static/img/slider/home-8/1.jpg)` }}>
-                            <img src="/static/img/slider/home-8/1.jpg" alt="MadeInIndiaGifts" />
+                            <img src="/static/img/slider/home-8/1.jpg" alt="MadeInIndiaGifts.in" />
                             <div className="ps-banner__content">
                                 <h4>Limit Edition</h4>
                                 <h3>
@@ -38,7 +38,7 @@ class FurnitureBanner extends Component {
                         <div
                             className="ps-banner--furniture"
                             style={{ backgroundImage: `url(/static/img/slider/home-8/2.jpg)` }}>
-                            <img src="/static/img/slider/home-8/2.jpg" alt="MadeInIndiaGifts" />
+                            <img src="/static/img/slider/home-8/2.jpg" alt="MadeInIndiaGifts.in" />
                             <div className="ps-banner__content">
                                 <h4>Version 2018</h4>
                                 <h3>

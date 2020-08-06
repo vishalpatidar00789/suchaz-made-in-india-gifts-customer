@@ -20,47 +20,47 @@ const CategoriesBoxClothings = () => (
         </div>
         <div className="ps-block__content">
             <div className="ps-block__banner">
-                <img src="/static/img/categories/clothing/large.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/clothing/large.jpg" alt="MadeInIndiaGifts.in" />
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/clothing/1.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/clothing/1.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Womens</p>
                 <span>2 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/clothing/2.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/clothing/2.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Mens</p>
                 <span>2 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/clothing/3.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/clothing/3.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Shoes</p>
                 <span>4 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/clothing/4.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/clothing/4.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Bags</p>
                 <span>5 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/clothing/5.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/clothing/5.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Sunglasses</p>
                 <span>10 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/clothing/6.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/clothing/6.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Accessories</p>
                 <span>2 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/clothing/7.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/clothing/7.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Kid's Fashion</p>
                 <span>3 Items</span>
             </div>

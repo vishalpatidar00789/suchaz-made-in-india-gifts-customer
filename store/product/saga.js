@@ -3,7 +3,7 @@ import { polyfill } from 'es6-promise';
 import ProductRepository from '../../repositories/ProductRepository';
 import SuchazProductRepository from '../../repositories/SuchazProductRepository';
 import StaticProductRepository from '../../repositories/static/StaticProductRepository';
-
+import OrderRepository from '../../repositories/SuchazOrdersRepository';
 import {
     actionTypes,
     getProductsError,
@@ -11,7 +11,7 @@ import {
     getSingleProductsSuccess,
     getTotalProductsSuccess,
     getProductCategoriesSuccess,
-    getBrandsSuccess, getProductByKeywordsSuccess, getFilterCategory, getFilterCategorySuccess,
+    getBrandsSuccess, getProductByKeywordsSuccess, getFilterCategory, getFilterCategorySuccess, getOrderHistorySuccess,
 } from './action';
 import { isStaticData } from '../../utilities/app-settings';
 polyfill();
@@ -75,6 +75,22 @@ function* getBrands() {
         }
     } catch (err) {
         console.log(err);
+    }
+}
+
+function* getOrderHistory({ payload }) {
+    try {
+        if (isStaticData === false) {
+            // const data = yield call(ProductRepository.getRecords, payload);
+            // yield put(getProductsSuccess(data));
+            const product = yield call(OrderRepository.getOrderHistory, payload);
+            yield put(getOrderHistorySuccess(product));
+        } else {
+            const data = yield call(StaticProductRepository.getRecords);
+            yield put(getOrderHistorySuccess(data));
+        }
+    } catch (err) {
+        yield put(getOrderHistorySuccess([]));
     }
 }
 
@@ -239,4 +255,5 @@ export default function* rootSaga() {
         takeEvery(actionTypes.GET_PRODUCTS_BY_KEYWORD, getProductByKeyword),
     ]);
     yield all([takeEvery(actionTypes.GET_PRODUCT_BY_ID, getProductById)]);
+    yield all([takeEvery(actionTypes.GET_ORDER_HISTORY, getOrderHistory)]);
 }

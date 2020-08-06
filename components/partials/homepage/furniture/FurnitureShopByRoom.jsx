@@ -60,7 +60,7 @@ class FurnitureShopByRoom extends Component {
                                                 <a>
                                                     <img
                                                         src={room.imagePath}
-                                                        alt="MadeInIndiaGifts"
+                                                        alt="MadeInIndiaGifts.in"
                                                     />
                                                 </a>
                                             </Link>

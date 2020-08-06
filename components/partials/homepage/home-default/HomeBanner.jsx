@@ -22,54 +22,54 @@ class HomeBanner extends Component {
                     <div className="ps-section__left">
                         <Slider {...carouselSetting} className="ps-carousel">
                             <div className="ps-banner">
-                                <Link href="/shop">
+                                {/* <Link href="/shop"> */}
                                     <a>
                                         <img
                                             src="/static/img/slider/home-1/slide-1.jpg"
-                                            alt="MadeInIndiaGifts"
+                                            alt="MadeInIndiaGifts.in"
                                         />
                                     </a>
-                                </Link>
+                                {/* </Link> */}
                             </div>
                             <div className="ps-banner">
-                                <Link href="/shop">
+                                {/* <Link href="/shop"> */}
                                     <a>
                                         <img
                                             src="/static/img/slider/home-1/slide-2.jpg"
-                                            alt="MadeInIndiaGifts"
+                                            alt="MadeInIndiaGifts.in"
                                         />
                                     </a>
-                                </Link>
+                                {/* </Link> */}
                             </div>
                             <div className="ps-banner">
-                                <Link href="/shop">
+                                {/* <Link href="/shop"> */}
                                     <a>
                                         <img
                                             src="/static/img/slider/home-1/slide-3.jpg"
-                                            alt="MadeInIndiaGifts"
+                                            alt="MadeInIndiaGifts.in"
                                         />
                                     </a>
-                                </Link>
+                                {/* </Link> */}
                             </div>
                         </Slider>
                     </div>
                     <div className="ps-section__right">
-                        <Link href="/shop">
+                        {/* <Link href="/shop"> */}
                             <a className="ps-collection">
                                 <img
                                     src="/static/img/slider/home-1/promotion-1.jpg"
-                                    alt="MadeInIndiaGifts"
+                                    alt="MadeInIndiaGifts.in"
                                 />
                             </a>
-                        </Link>
-                        <Link href="/shop">
+                        {/* </Link> */}
+                        {/* <Link href="/shop"> */}
                             <a className="ps-collection">
                                 <img
                                     src="/static/img/slider/home-1/promotion-2.jpg"
-                                    alt="MadeInIndiaGifts"
+                                    alt="MadeInIndiaGifts.in"
                                 />
                             </a>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                 </div>
             </div>

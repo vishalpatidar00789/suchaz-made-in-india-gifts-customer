@@ -24,7 +24,7 @@ const ThankYou = () => {
                     <strong>Your vendor registration request sent successfully.</strong>
                 </h4>
                 <p className="lead">
-                    <strong>MadeInIndiaGifts team review it and come back to you.</strong>
+                    <strong>MadeInIndiaGifts.in team review it and come back to you.</strong>
                 </p>
                 <p className="lead">
                     <strong>You may login and start selling once you get your password from us. We don't usually take long time to send it. Thanks!</strong>

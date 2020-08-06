@@ -95,7 +95,7 @@ class ConsumerElectronics extends Component {
                                                     ? 'active'
                                                     : ''
                                             }
-                                            key={link.id}>
+                                            key={link.title}>
                                             <a
                                                 onClick={(e) =>
                                                     this.handleChangeProduct(

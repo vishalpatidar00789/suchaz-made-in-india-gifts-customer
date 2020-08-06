@@ -27,18 +27,18 @@ class HeaderDefault extends Component {
                     <div className="ps-container">
                         <div className="header__left">
                             <div className="menu--product-categories" style={{display:"block"}}>
-                                <div className="menu__toggle" style={{display:"block"}}>
+                                {/* <div className="menu__toggle" style={{display:"block"}}>
                                     <i className="icon-menu" style={{fontSize:'30px'}}></i>
-                                </div>
+                                </div> */}
                                 <div className="menu__content">
-                                    <MenuCategories />
+                                    {/* <MenuCategories /> */}
                                 </div>
                             </div>
                             <Link href="/">
                                 <a className="ps-logo">
                                     <img
                                         src="/static/img/logo_light.png"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </Link>
@@ -47,12 +47,12 @@ class HeaderDefault extends Component {
                                         <Link href="/">
                                         <img
                                                 src="/static/img/logo_light.png"
-                                                alt="MadeInIndiaGifts"
+                                                alt="MadeInIndiaGifts.in"
                                         />
                                         </Link>
                                     </span>
                                 <div className="menu__content">
-                                    <MenuCategories />
+                                    {/* <MenuCategories /> */}
                                 </div>
                             </div>
                             {/* <div className="menu--product-categories">
@@ -62,7 +62,7 @@ class HeaderDefault extends Component {
                                         <Link href="/">
                                         <img
                                                 src="/static/img/logo_light.png"
-                                                alt="MadeInIndiaGifts"
+                                                alt="MadeInIndiaGifts.in"
                                         />
                                         </Link>
                                     </span>
@@ -80,7 +80,7 @@ class HeaderDefault extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <NavigationDefault /> */}
+                <NavigationDefault />
             </header>
         );
     }

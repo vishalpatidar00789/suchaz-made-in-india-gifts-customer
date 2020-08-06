@@ -99,7 +99,7 @@ class Product extends Component {
                                             ? product.images[0]
                                             : product.thumbnail.url
                                     }
-                                    alt="MadeInIndiaGifts"
+                                    alt="MadeInIndiaGifts.in"
                                 />
                             </LazyLoad>
                         </a>
@@ -153,13 +153,13 @@ class Product extends Component {
                     </ul> */}
                 </div>
                 <div className="ps-product__container">
-                    <Link href="/gift">
+                    {/* <Link href="/gift"> */}
                         <a className="ps-product__vendor">
                             {product.vendor?.shop_name
                                 ? product.vendor.shop_name
                                 : '\u00A0'}
                         </a>
-                    </Link>
+                    {/* </Link> */}
                     <div className="ps-product__content">
                         {/* <p className="ps-product__price sale"> 
                             {currency ? currency.symbol : '₹'}
@@ -211,7 +211,7 @@ class Product extends Component {
 
                         <div className="ps-product__rating">
                             <Rating />
-                            <span>0</span>
+                            <span> 0</span>
                         </div>
                         <div className="product-buybtn">
                             {product.quantity > 0 ? (

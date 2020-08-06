@@ -54,8 +54,8 @@ class ProductDefaultPage extends React.Component {
                 url: '/',
             },
             {
-                text: 'Shop',
-                url: '/shop',
+                text: 'Gift',
+                
             },
             {
                 text: singleProduct ? singleProduct.title : '',

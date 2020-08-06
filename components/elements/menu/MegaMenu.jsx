@@ -12,49 +12,22 @@ class Menu extends Component {
         return (
             <li
                 className={
-                    menuData.megaContent
-                        ? 'menu-item-has-children has-mega-menu'
-                        : ''
+                    menuData.children ? 'menu-item-has-children has-mega-menu' : ''
                 }>
-                {menuData.type === 'dynamic' ? (
-                    <Link
-                        href={`${menuData.url}/[pid]`}
-                        as={`${menuData.url}/${menuData.endPoint}`}>
-                        <a>{menuData.text}</a>
-                    </Link>
-                ) : (
-                    <Link href={menuData.url} as={menuData.url}>
-                        <a>{menuData.text}</a>
-                    </Link>
-                )}
                 <div className="mega-menu">
-                    {menuData &&
-                        menuData.megaContent.map(megaItem => (
-                            <div
-                                className="mega-menu__column"
-                                key={megaItem.heading}>
-                                <h4>{megaItem.heading}</h4>
-                                <ul className="mega-menu__list">
-                                    {megaItem.megaItems.map(megaSubItem => (
-                                        <li key={megaSubItem.text}>
-                                            {megaSubItem.type === 'dynamic' ? (
-                                                <Link
-                                                    href={`${megaSubItem.url}/[pid]`}
-                                                    as={`${megaSubItem.url}/${megaSubItem.endPoint}`}>
-                                                    <a>{megaSubItem.text}</a>
-                                                </Link>
-                                            ) : (
-                                                <Link
-                                                    href={megaSubItem.url}
-                                                    as={megaSubItem.url}>
-                                                    <a>{megaSubItem.text}</a>
-                                                </Link>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
+                    <div className="mega-menu__column">
+                        <ul className="mega-menu__list">
+                            {menuData.children.map((megaSubItem) => (
+                                <li key={megaSubItem.title}>
+                                    <Link
+                                        href={megaSubItem.link}
+                                        as={megaSubItem.link}>
+                                        <a>{megaSubItem.title}</a>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </li>
         );

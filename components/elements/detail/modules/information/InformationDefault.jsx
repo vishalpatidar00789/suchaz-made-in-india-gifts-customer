@@ -77,8 +77,8 @@ class InformationDefault extends Component {
                         </Link>
                     </p> */}
                     <div className="ps-product__rating">
-                        <Rating />
-                        <span>(0 review)</span>
+                        
+                        <Rating />  <span className="pl-2"> (0 review)</span>
                     </div>
                 </div>
                 <h4 className="ps-product__price sale">
@@ -121,7 +121,7 @@ class InformationDefault extends Component {
                 <div className="ps-product__desc">
                     <p>
                         Sold By:
-                        <Link href="/gift">
+                        {/* <Link href="/gift"> */}
                             <a>
                                 <strong>
                                     {product.vendor?.shop_name
@@ -129,7 +129,7 @@ class InformationDefault extends Component {
                                         : '\u00A0'}
                                 </strong>
                             </a>
-                        </Link>
+                        {/* </Link> */}
                     </p>
                     <p>{product.description}</p>
                     {/* <ul className="ps-list--dot">

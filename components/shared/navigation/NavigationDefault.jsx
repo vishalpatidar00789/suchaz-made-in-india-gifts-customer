@@ -3,13 +3,33 @@ import Link from 'next/link';
 import { notification } from 'antd';
 import Menu from '../../elements/menu/Menu';
 
-import menuData from '../../../public/static/data/menu';
 import CurrencyDropdown from '../headers/modules/CurrencyDropdown';
 import LanguageSwicher from '../headers/modules/LanguageSwicher';
+import axios from 'axios';
 
 class NavigationDefault extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            menuData: [],
+        };
+    }
+
+    async componentDidMount() {
+        let self = this;
+        setTimeout(async () => {
+            const reponse = await axios
+                .get('https://www.suchaz.com/apiv2/menu/list')
+                .then((res) => {
+                    return res.data;
+                })
+                .catch((error) => ({ error: JSON.stringify(error) }));
+
+            if (reponse.status == true) {
+                self.setState({ menuData: reponse.data });
+                console.log();
+            }
+        }, 200);
     }
 
     handleFeatureWillUpdate(e) {
@@ -22,6 +42,7 @@ class NavigationDefault extends Component {
     }
 
     render() {
+        const { menuData } = this.state;
         return (
             <nav className="navigation">
                 <div className="ps-container">
@@ -29,11 +50,11 @@ class NavigationDefault extends Component {
                         <div className="menu--product-categories">
                             <div className="menu__toggle">
                                 <i className="icon-menu"></i>
-                                <span> Shop by Department</span>
+                                <span> Shop by Category</span>
                             </div>
                             <div className="menu__content">
                                 <Menu
-                                    data={menuData.product_categories}
+                                    data={menuData}
                                     className="menu--dropdown"
                                 />
                             </div>
@@ -41,10 +62,17 @@ class NavigationDefault extends Component {
                     </div>
                     <div className="navigation__right">
                         <Menu
-                            data={menuData.menuPrimary.menu_1}
+                            data={menuData}
                             className="menu"
                         />
                         <ul className="navigation__extra">
+                            <li>
+                                <Link href="/account/vendor/register">
+                                    <a> Become a seller !</a>
+                                </Link>
+                            </li>
+                        </ul>    
+                        {/* <ul className="navigation__extra">
                             <li>
                                 <Link href="/vendor/become-a-vendor">
                                     <a>Sell on Martfury</a>
@@ -61,7 +89,7 @@ class NavigationDefault extends Component {
                             <li>
                                 <LanguageSwicher />
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </nav>

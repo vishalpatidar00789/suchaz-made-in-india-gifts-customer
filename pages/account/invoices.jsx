@@ -27,7 +27,6 @@ const MyAccountPage = () => {
                 <BreadCrumb breacrumb={breadCrumb} />
                 <Invoices />
             </div>
-            <Newsletters layout="container" />
             <FooterDefault />
         </div>
     );

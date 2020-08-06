@@ -12,70 +12,70 @@ const FurnitureBestSaleBrands = () => (
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-1.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-1.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-2.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-2.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-3.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-3.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-4.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-4.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-5.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-5.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-6.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-6.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-7.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-7.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-8.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-8.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-9.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-9.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>
                     <li>
                         <Link href="/">
                             <a>
-                                <img src="/static/img/brand/2-10.jpg" alt="MadeInIndiaGifts" />{' '}
+                                <img src="/static/img/brand/2-10.jpg" alt="MadeInIndiaGifts.in" />{' '}
                             </a>
                         </Link>{' '}
                     </li>

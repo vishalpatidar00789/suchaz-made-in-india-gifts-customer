@@ -35,11 +35,11 @@ const HeaderActions = (props) => {
                 </span>
             </a>
         </Link> */}
-        <Link href="/account/vendor/register">
+        {/* <Link href="/account/vendor/register">
                             <a className="text-white">
                                 Become a Seller
                             </a>
-                        </Link>
+                        </Link> */}
         {pathname != '/account/checkout' && pathname != '/account/shipping' ? <MiniCart /> : ''}
         
         {auth.isLoggedIn && Boolean(auth.isLoggedIn) === true ? (

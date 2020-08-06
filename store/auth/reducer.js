@@ -4,6 +4,7 @@ export const initState = {
     isLoggedIn: false,
     isRegister: false,
     authUser: {},
+    redirectCheckout: '',
 };
 
 function reducer(state = initState, action) {
@@ -21,6 +22,16 @@ function reducer(state = initState, action) {
             return {
                 ...state,
                 ...{ isLoggedIn: true, authUser: action.payload },
+            };
+        case actionTypes.REDIRECT_CHECKOUT:
+            return {
+                ...state,
+                ...{ redirectCheckout: '/account/checkout' },
+            };
+        case actionTypes.REDIRECT_CHECKOUT_SUCCESS:
+            return {
+                ...state,
+                ...{ redirectCheckout: '' },
             };
         case actionTypes.LOGIN_ERROR:
             return {

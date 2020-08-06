@@ -25,7 +25,7 @@ const modalSuccess = (type) => {
 const modalRegisterSuccess = (type, message) => {
     notification[type]({
         message: 'Success',
-        description: message
+        description: message,
     });
 };
 
@@ -52,7 +52,7 @@ function* loginSaga(payload) {
         if (typeof result.error === 'undefined') {
             yield put(loginSuccess(result));
             modalSuccess('success');
-            Router.push('/');
+           
         } else {
             yield put(loginError(result));
             modalError('error', 'Invalid Email or Password!');
@@ -63,14 +63,24 @@ function* loginSaga(payload) {
     }
 }
 
+ 
 function* registerSaga(payload) {
     try {
         const result = yield call(
             SuchazAuthRepository.registerRequest,
             payload.payload
         );
-        yield put(registerSuccess(result));
-        modalSuccess('success');
+
+        if (result.status == false) {
+            modalError('error', result.message);
+        } else {
+            //yield put(registerSuccess(result));
+            modalSuccess('success');
+               setTimeout(() => {
+                Router.push('/account/login')
+            }, 800);
+            
+        }
     } catch (err) {
         // yield put(registerVendorError(err));
         modalError('error', err.message);
@@ -88,10 +98,10 @@ function* registerVendorSaga(payload) {
             modalError('error', result.message);
         } else {
             yield put(registerVendorSuccess(result));
-           // modalRegisterSuccess('success', result.message);
+            // modalRegisterSuccess('success', result.message);
             setTimeout(() => {
                 Router.push('/account/vendor/thank-you');
-            },800);
+            }, 800);
         }
     } catch (err) {
         yield put(registerVendorError(err));
@@ -103,6 +113,7 @@ function* logOutSaga() {
     try {
         yield put(logOutSuccess());
         modalWarning('warning');
+        Router.push('/');
     } catch (err) {
         console.log(err);
     }

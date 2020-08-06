@@ -41,7 +41,7 @@ class ThumbnailDefault extends Component {
                                 <a href="/static/img/products/detail/deal-hot/a-1.jpg">
                                     <img
                                         src="/static/img/products/detail/deal-hot/a-1.jpg"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </div>
@@ -49,7 +49,7 @@ class ThumbnailDefault extends Component {
                                 <a href="/static/img/products/detail/deal-hot/a-2.jpg">
                                     <img
                                         src="/static/img/products/detail/deal-hot/a-2.jpg"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </div>
@@ -57,7 +57,7 @@ class ThumbnailDefault extends Component {
                                 <a href="/static/img/products/detail/deal-hot/a-3.jpg">
                                     <img
                                         src="/static/img/products/detail/deal-hot/a-3.jpg"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </div>
@@ -75,19 +75,19 @@ class ThumbnailDefault extends Component {
                     <div className="item">
                         <img
                             src="/static/img/products/detail/deal-hot/a-1.jpg"
-                            alt="MadeInIndiaGifts"
+                            alt="MadeInIndiaGifts.in"
                         />
                     </div>
                     <div className="item">
                         <img
                             src="/static/img/products/detail/deal-hot/a-2.jpg"
-                            alt="MadeInIndiaGifts"
+                            alt="MadeInIndiaGifts.in"
                         />
                     </div>
                     <div className="item">
                         <img
                             src="/static/img/products/detail/deal-hot/a-3.jpg"
-                            alt="MadeInIndiaGifts"
+                            alt="MadeInIndiaGifts.in"
                         />
                     </div>
                 </Slider>

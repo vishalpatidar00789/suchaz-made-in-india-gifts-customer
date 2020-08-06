@@ -20,47 +20,47 @@ const CategoriesBoxConsumerElectronics = () => (
         </div>
         <div className="ps-block__content">
             <div className="ps-block__banner">
-                <img src="/static/img/categories/electronic/large.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/electronic/large.jpg" alt="MadeInIndiaGifts.in" />
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/electronic/1.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/electronic/1.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Audios &amp; Theaters </p>
                 <span>2 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/electronic/2.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/electronic/2.jpg" alt="MadeInIndiaGifts.in" />
                 <p>TV Televisions</p>
                 <span>2 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/electronic/3.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/electronic/3.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Washing Machines</p>
                 <span>4 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/electronic/4.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/electronic/4.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Air Conditioners</p>
                 <span>5 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/electronic/5.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/electronic/5.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Refrigerators</p>
                 <span>10 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/electronic/6.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/electronic/6.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Office Electronics</p>
                 <span>2 Items</span>
             </div>
             <div className="ps-block__item">
                 <a className="ps-block__overlay"></a>
-                <img src="/static/img/categories/electronic/7.jpg" alt="MadeInIndiaGifts" />
+                <img src="/static/img/categories/electronic/7.jpg" alt="MadeInIndiaGifts.in" />
                 <p>Car Electronics</p>
                 <span>3 Items</span>
             </div>

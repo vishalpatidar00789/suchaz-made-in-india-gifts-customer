@@ -80,19 +80,19 @@ class MarketConsumerElectronics extends Component {
                         <a>
                             <img
                                 src="/static/img/slider/home-3/electronic-1.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </a>
                         <a>
                             <img
                                 src="/static/img/slider/home-3/electronic-2.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </a>
                         <a>
                             <img
                                 src="/static/img/slider/home-3/electronic-3.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </a>
                     </Slider>

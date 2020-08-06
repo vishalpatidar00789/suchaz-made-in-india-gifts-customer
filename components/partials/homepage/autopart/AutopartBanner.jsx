@@ -23,7 +23,7 @@ class AutopartBanner extends Component {
                         <div
                             className="ps-banner--autopart"
                             style={{ backgroundImage: "url('/static/img/bg/blog-detail.jpg')" }}>
-                            <img src="/static/img/slider/autopart/1.jpg" alt="MadeInIndiaGifts" />
+                            <img src="/static/img/slider/autopart/1.jpg" alt="MadeInIndiaGifts.in" />
                             <div className="ps-banner__content">
                                 <h4>Version 2018</h4>
                                 <h3>
@@ -43,7 +43,7 @@ class AutopartBanner extends Component {
                         <div
                             className="ps-banner--autopart"
                             style={{ backgroundImage: `url(/static/img/bg/blog-detail.jpg)` }}>
-                            <img src="/static/img/slider/autopart/2.jpg" alt="MadeInIndiaGifts" />
+                            <img src="/static/img/slider/autopart/2.jpg" alt="MadeInIndiaGifts.in" />
                             <div className="ps-banner__content">
                                 <h4>Version 2018</h4>
                                 <h3>

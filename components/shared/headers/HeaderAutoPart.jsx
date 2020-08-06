@@ -113,7 +113,7 @@ class HeaderAutoPart extends Component {
                                 <a className="ps-logo">
                                     <img
                                         src="/static/img/logo-autopart.png"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </Link>

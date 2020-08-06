@@ -97,7 +97,7 @@ class ProductNewArrival extends Component {
                     <Link href="/product/[pid]" as={`/product/${product.id}`}>
                         <a>
                             <LazyLoad>
-                                <img src={thumbnail} alt="MadeInIndiaGifts" />
+                                <img src={thumbnail} alt="MadeInIndiaGifts.in" />
                             </LazyLoad>
                         </a>
                     </Link>

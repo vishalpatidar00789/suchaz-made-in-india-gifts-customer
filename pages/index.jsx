@@ -73,7 +73,7 @@ class Index extends Component {
                     {/* <Newletters /> */}
                 </main>
                 <FooterFullwidth />
-                <button className="add-button">Add to home screen</button>
+                {/* <button className="add-button">Add to home screen</button> */}
             </div>
         );
     }

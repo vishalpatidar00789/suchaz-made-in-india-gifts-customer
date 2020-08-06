@@ -66,7 +66,7 @@ class Market3ConsumerElectronics extends Component {
                                     <a>
                                         <img
                                             src="/static/img/promotions/home-5/clothing-1.jpg"
-                                            alt="MadeInIndiaGifts"
+                                            alt="MadeInIndiaGifts.in"
                                         />
                                     </a>
                                 </Link>
@@ -76,7 +76,7 @@ class Market3ConsumerElectronics extends Component {
                                     <a>
                                         <img
                                             src="/static/img/promotions/home-5/clothing-2.jpg"
-                                            alt="MadeInIndiaGifts"
+                                            alt="MadeInIndiaGifts.in"
                                         />
                                     </a>
                                 </Link>

@@ -86,7 +86,7 @@ class ShoppingCart extends Component {
                                                                         product
                                                                             .images[0]
                                                                     }
-                                                                    alt="MadeInIndiaGifts"
+                                                                    alt="MadeInIndiaGifts.in"
                                                                 />
                                                             </a>
                                                         </Link>

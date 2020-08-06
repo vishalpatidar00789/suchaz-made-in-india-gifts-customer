@@ -43,7 +43,7 @@ class HeaderMobileTechnology extends Component {
                             <a className="ps-logo">
                                 <img
                                     src="/static/img/logo-technology.png"
-                                    alt="MadeInIndiaGifts"
+                                    alt="MadeInIndiaGifts.in"
                                 />
                             </a>
                         </Link>

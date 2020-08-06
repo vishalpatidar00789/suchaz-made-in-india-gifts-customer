@@ -43,7 +43,7 @@ class HeaderMobileElectronic extends Component {
                             <a className="ps-logo">
                                 <img
                                     src="/static/img/logo-electronic.png"
-                                    alt="MadeInIndiaGifts"
+                                    alt="MadeInIndiaGifts.in"
                                 />
                             </a>
                         </Link>

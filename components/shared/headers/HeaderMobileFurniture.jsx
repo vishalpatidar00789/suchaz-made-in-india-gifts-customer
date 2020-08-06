@@ -43,7 +43,7 @@ class HeaderMobileFurniture extends Component {
                             <a className="ps-logo">
                                 <img
                                     src="/static/img/logo-furniture.png"
-                                    alt="MadeInIndiaGifts"
+                                    alt="MadeInIndiaGifts.in"
                                 />
                             </a>
                         </Link>

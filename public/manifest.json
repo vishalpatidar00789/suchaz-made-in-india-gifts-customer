@@ -5,7 +5,7 @@
   "background_color": "#c3404e",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "https://www.suchaz.com/",
+  "start_url": "http://suchaz.com/",
   "icons": [
     {
       "src": "icons/icon-72x72.png",

@@ -43,7 +43,7 @@ class OrganicThumbnailDealHot extends Component {
                                 <a href="/static/img/products/home-9/a-1.jpg">
                                     <img
                                         src="/static/img/products/home-9/a-1.jpg"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </div>
@@ -51,7 +51,7 @@ class OrganicThumbnailDealHot extends Component {
                                 <a href="/static/img/products/home-9/a-2.jpg">
                                     <img
                                         src="/static/img/products/home-9/a-2.jpg"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </div>
@@ -59,7 +59,7 @@ class OrganicThumbnailDealHot extends Component {
                                 <a href="/static/img/products/home-9/a-3.jpg">
                                     <img
                                         src="/static/img/products/home-9/a-3.jpg"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </div>
@@ -75,13 +75,13 @@ class OrganicThumbnailDealHot extends Component {
                     focusOnSelect={true}
                     className="ps-product__variants">
                     <div className="item">
-                        <img src="/static/img/products/home-9/a-1.jpg" alt="MadeInIndiaGifts" />
+                        <img src="/static/img/products/home-9/a-1.jpg" alt="MadeInIndiaGifts.in" />
                     </div>
                     <div className="item">
-                        <img src="/static/img/products/home-9/a-2.jpg" alt="MadeInIndiaGifts" />
+                        <img src="/static/img/products/home-9/a-2.jpg" alt="MadeInIndiaGifts.in" />
                     </div>
                     <div className="item">
-                        <img src="/static/img/products/home-9/a-3.jpg" alt="MadeInIndiaGifts" />
+                        <img src="/static/img/products/home-9/a-3.jpg" alt="MadeInIndiaGifts.in" />
                     </div>
                 </Slider>
             </div>

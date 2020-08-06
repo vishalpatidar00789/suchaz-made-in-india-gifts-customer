@@ -16,7 +16,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/1.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/1.png" alt="MadeInIndiaGifts.in" />
                                     <p>Sofas</p>
                                 </div>
                             </div>
@@ -25,7 +25,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/2.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/2.png" alt="MadeInIndiaGifts.in" />
                                     <p>Chairs</p>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/3.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/3.png" alt="MadeInIndiaGifts.in" />
                                     <p>Tables</p>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/4.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/4.png" alt="MadeInIndiaGifts.in" />
                                     <p>TV Boards</p>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/5.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/5.png" alt="MadeInIndiaGifts.in" />
                                     <p>Storages</p>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/6.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/6.png" alt="MadeInIndiaGifts.in" />
                                     <p>Rugs</p>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/7.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/7.png" alt="MadeInIndiaGifts.in" />
                                     <p>Lamp &amp; Lighting</p>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/8.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/8.png" alt="MadeInIndiaGifts.in" />
                                     <p>Furnishings</p>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/9.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/9.png" alt="MadeInIndiaGifts.in" />
                                     <p>Ottomans</p>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/10.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/10.png" alt="MadeInIndiaGifts.in" />
                                     <p>Shelfs</p>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/11.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/11.png" alt="MadeInIndiaGifts.in" />
                                     <p>Kid Furnitures</p>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ class FurnitureCategories extends Component {
                                     <Link href="/shop">
                                         <a></a>
                                     </Link>
-                                    <img src="/static/img/categories/furniture/12.png" alt="MadeInIndiaGifts" />
+                                    <img src="/static/img/categories/furniture/12.png" alt="MadeInIndiaGifts.in" />
                                     <p>Kitchen</p>
                                 </div>
                             </div>

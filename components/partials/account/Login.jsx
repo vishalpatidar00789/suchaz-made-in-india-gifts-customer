@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { login } from '../../../store/auth/action';
-
+import { redirectCheckoutSuccess } from '../../../store/auth/action';
 import { Form, Input, notification } from 'antd';
 import { connect } from 'react-redux';
 
@@ -16,6 +16,7 @@ class Login extends Component {
         if (props.isLoggedIn === true) {
             Router.push('/');
         }
+
         return false;
     }
 
@@ -28,10 +29,18 @@ class Login extends Component {
         });
     }
 
-    handleLoginSubmit = values => {
-        this.props.dispatch(login(values));
-        
+    handleLoginSubmit = (values) => {
+        const redirectCheckout = this.props.redirectCheckout;
 
+        this.props.dispatch(login(values));
+
+        setTimeout(() => {
+            if (redirectCheckout != '') {
+                Router.push(redirectCheckout);
+            } else {
+                Router.push('/');
+            }
+        }, 1200);
     };
 
     render() {
@@ -163,7 +172,7 @@ class Login extends Component {
         );
     }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return state.auth;
 };
 export default connect(mapStateToProps)(Login);

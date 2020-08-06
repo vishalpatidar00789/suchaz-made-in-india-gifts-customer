@@ -38,14 +38,14 @@ class DefaultDescription extends Component {
                         <TabPane tab="Vendor" key="3">
                             <PartialVendor product={product} />
                         </TabPane>
-                        <TabPane tab="Reviews (0)" key="4">
+                        {/* <TabPane tab="Reviews (0)" key="4">
                             <PartialReview />
                         </TabPane>
                         <TabPane tab="Questions and Answers" key="5">
                             <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
                                 <p>Coming Soon!</p>
                             </div>
-                        </TabPane>
+                        </TabPane> */}
                         {/* <TabPane tab="More Offers" key="6">
                             <PartialOffer />
                         </TabPane> */}

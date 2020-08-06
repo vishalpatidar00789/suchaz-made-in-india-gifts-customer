@@ -42,7 +42,7 @@ class HeaderMarketPlace3 extends Component {
                                 <a className="ps-logo">
                                     <img
                                         src="/static/img/logo_light.png"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </Link>

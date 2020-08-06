@@ -5,15 +5,18 @@ class SuchazAuthRepository {
         this.callback = callback;
     }
 
-    async registerRequest(payload) {
-        const reponse = await SuchazRepository.post(
-            `${suchazBaseUrl}/auth/register`,
-            payload
-        )
+  async registerRequest(payload) {
+            const reponse = await SuchazRepository.post(
+                `${suchazBaseUrl}/auth/register`,
+                payload
+            )
             .then((response) => {
                 return response.data;
-            })
-            .catch((error) => ({ error: JSON.stringify(error) }));
+            }).catch((error) => {
+                if (error.response) {
+                    return error.response.data;
+                }
+            });
         return reponse;
     }
 

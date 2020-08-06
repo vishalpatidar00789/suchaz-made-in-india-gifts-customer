@@ -12,7 +12,7 @@ class ShopSidebarBanner extends Component {
                         <Link href="/shop">
                             <img
                                 src="/static/img/slider/shop-sidebar/1.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </Link>
                     </div>
@@ -20,7 +20,7 @@ class ShopSidebarBanner extends Component {
                         <Link href="/shop">
                             <img
                                 src="/static/img/slider/shop-sidebar/2.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </Link>
                     </div>

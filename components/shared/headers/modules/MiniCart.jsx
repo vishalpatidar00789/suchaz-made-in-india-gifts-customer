@@ -51,7 +51,7 @@ class MiniCart extends Component {
                                                                         .thumbnail
                                                                         .url
                                                           }
-                                                          alt="MadeInIndiaGifts"
+                                                          alt="MadeInIndiaGifts.in"
                                                       />
                                                   </a>
                                               </Link>

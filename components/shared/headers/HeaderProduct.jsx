@@ -79,7 +79,7 @@ class HeaderProduct extends Component {
                                 <a className="ps-logo">
                                     <img
                                         src="/static/img/logo_light.png"
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </a>
                             </Link>
@@ -88,7 +88,7 @@ class HeaderProduct extends Component {
                                     <Link href="/">
                                         <img
                                             src="/static/img/logo_light.png"
-                                            alt="MadeInIndiaGifts"
+                                            alt="MadeInIndiaGifts.in"
                                         />
                                     </Link>
                                 </span>
@@ -103,7 +103,7 @@ class HeaderProduct extends Component {
                                         <Link href="/">
                                         <img
                                                 src="/static/img/logo_light.png"
-                                                alt="MadeInIndiaGifts"
+                                                alt="MadeInIndiaGifts.in"
                                         />
                                         </Link>
                                     </span>
@@ -131,7 +131,7 @@ class HeaderProduct extends Component {
                                             ? '/static/img/products/detail/image-swatches/small-2.jpg'
                                             : '/static/img/products/detail/image-swatches/small-2.jpg'
                                     }
-                                    alt="MadeInIndiaGifts"
+                                    alt="MadeInIndiaGifts.in"
                                 />
                             </div>
                             <div className="ps-product__wrapper">

@@ -1,46 +1,61 @@
 import React, { Component } from 'react';
 import AccountMenuSidebar from './modules/AccountMenuSidebar';
 import TableInvoices from './modules/TableInvoices';
+import { connect } from 'react-redux';
+import { getAuth } from '../../../store/auth/action';
 
 class Invoices extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            authUser: null
+        };
+    }
+
+    componentDidMount() {
+        this.props.dispatch(getAuth());
+        setTimeout(() => {
+            const { auth } = this.props;
+            let authUser = auth.authUser.data;
+            this.setState({authUser: authUser});
+        }, 500);
     }
 
     render() {
+        const {authUser} = this.state;
+
         const accountLinks = [
-            {
-                text: 'Account Information',
-                url: '/account/user-information',
-                icon: 'icon-user',
-            },
-            {
-                text: 'Notifications',
-                url: '/account/notifications',
-                icon: 'icon-alarm-ringing',
-            },
+            // {
+            //     text: 'Account Information',
+            //     url: '/account/user-information',
+            //     icon: 'icon-user',
+            // },
+            // {
+            //     text: 'Notifications',
+            //     url: '/account/notifications',
+            //     icon: 'icon-alarm-ringing',
+            // },
             {
                 text: 'Invoices',
                 url: '/account/invoices',
                 icon: 'icon-papers',
                 active: true,
             },
-            {
-                text: 'Address',
-                url: '/account/addresses',
-                icon: 'icon-papers',
-            },
-            {
-                text: 'Recent Viewed Product',
-                url: '/account/recent-viewed-product',
-                icon: 'icon-papers',
-            },
-            {
-                text: 'Wishlist',
-                url: '/account/wishlist',
-                icon: 'icon-papers',
-            },
+            // {
+            //     text: 'Address',
+            //     url: '/account/addresses',
+            //     icon: 'icon-papers',
+            // },
+            // {
+            //     text: 'Recent Viewed Product',
+            //     url: '/account/recent-viewed-product',
+            //     icon: 'icon-papers',
+            // },
+            // {
+            //     text: 'Wishlist',
+            //     url: '/account/wishlist',
+            //     icon: 'icon-papers',
+            // },
         ];
         return (
             <section className="ps-my-account ps-page--account">
@@ -48,7 +63,7 @@ class Invoices extends Component {
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="ps-page__left">
-                                <AccountMenuSidebar data={accountLinks} />
+                                <AccountMenuSidebar data={accountLinks}/>
                             </div>
                         </div>
                         <div className="col-lg-8">
@@ -70,4 +85,7 @@ class Invoices extends Component {
     }
 }
 
-export default Invoices;
+const mapStateToProps = state => {
+    return state;
+};
+export default connect(mapStateToProps)(Invoices);

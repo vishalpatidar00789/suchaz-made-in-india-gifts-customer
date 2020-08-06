@@ -13,6 +13,8 @@ export const actionTypes = {
     GET_AUTH: 'GET_AUTH',
     GET_AUTH_SUCCESS: 'GET_AUTH_SUCCESS',
     GET_AUTH_ERROR: 'GET_AUTH_ERROR',
+    REDIRECT_CHECKOUT: 'REDIRECT_CHECKOUT',
+    REDIRECT_CHECKOUT_SUCCESS: 'REDIRECT_CHECKOUT_SUCCESS',
 };
 
 export function getAuth() {
@@ -28,6 +30,14 @@ export function getAuthError(error) {
         type: actionTypes.GET_AUTH_ERROR,
         error,
     };
+}
+
+export function redirectCheckout() {
+    return { type: actionTypes.REDIRECT_CHECKOUT };
+}
+
+export function redirectCheckoutSuccess() {
+    return { type: actionTypes.REDIRECT_CHECKOUT_SUCCESS };
 }
 
 export function login(payload) {

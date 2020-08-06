@@ -73,19 +73,19 @@ class MarketClothingsAndApparel extends Component {
                         <a>
                             <img
                                 src="/static/img/slider/home-3/clothing-1.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </a>
                         <a>
                             <img
                                 src="/static/img/slider/home-3/clothing-2.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </a>
                         <a>
                             <img
                                 src="/static/img/slider/home-3/clothing-3.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </a>
                     </Slider>

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCart, giftWrapSelected } from '../../../store/cart/action';
+import {
+    getCart,
+    giftWrapSelected,
+    updateCartSuccess,
+} from '../../../store/cart/action';
 import Router from 'next/router';
 import Link from 'next/link';
 import { placeOrder } from '../../../store/order/action';
@@ -14,21 +18,11 @@ class Shipping extends Component {
 
     componentDidMount() {
         this.props.dispatch(getCart());
-        // setInterval(() => {
-        //     const { cartItems } = this.props;
-        //     console.log(cartItems);
-        //     if (!cartItems){
-        //         Router.back();
-        //     }
-        // },500);
     }
 
-    async handlePlaceOrder(cart, shippingAddress) {
-        const {
-            amount,
-            shippingCharges,
-            giftWrapCharges,
-        } = cart;
+    async handlePlaceOrder(auth, cart, shippingAddress) {
+        const { amount, shippingCharges, giftWrapCharges } = cart;
+        const { authUser } = auth;
         let totalAmount = this.totalCharge(
             amount,
             shippingCharges,
@@ -36,28 +30,88 @@ class Shipping extends Component {
         );
         // Router.push('/account/place-order');
         // this.props.dispatch(placeOrder(this.props));
-        let time = new Date().getTime();
-        let orderId = 'ORDER_ID' + time;
-        let params = {
-            orderId: orderId,
-            email: shippingAddress.email,
-            amount: totalAmount,
-            phone_number: shippingAddress.contact_no,
+        // let time = new Date().getTime();
+        // let orderId = 'ORDER_ID' + time;
+        // let params = {
+        //     orderId: orderId,
+        //     email: shippingAddress.email,
+        //     amount: totalAmount,
+        //     phone_number: shippingAddress.contact_no,
+        // };
+
+        let products = cart.cartItems.map((item) => {
+            let totalItemshippingCharge =
+                parseFloat(item.shippingCharge) * parseFloat(item.quantity);
+            let totalItemAmount =
+                parseFloat(item.bestPrice) * parseFloat(item.quantity);
+            let gst =
+                parseFloat(totalItemAmount) -
+                parseFloat(totalItemAmount) / parseFloat('1.' + item.gst);
+            return {
+                productId: item.id,
+                quantity: item.quantity,
+                vendorId: item.vendorId,
+                lineGiftWrapChargesTotal: '0',
+                lineTotal: item.bestPrice,
+                giftWrapCharges: (item.giftWrapSelected) ? item.giftWrapCharges : 0,
+                giftWrapSelected: item.giftWrapSelected,
+                gst: gst.toFixed(2),
+                shippingCharges: totalItemshippingCharge.toFixed(2),
+            };
+        });
+
+        let shipAdd = {
+            recipientFistName: shippingAddress.firstName,
+            recipientLastName: shippingAddress.lastName,
+            addressLine1: shippingAddress.apartment,
+            addressLine2: shippingAddress.address,
+            city: shippingAddress.city,
+            state: shippingAddress.state,
+            pinCode: shippingAddress.postalCode,
         };
 
+        const formData = new FormData();
+        formData.append('userEmail', shippingAddress.email);
+        formData.append('contact_no', shippingAddress.contact_no);
+        formData.append('lineItems[]', JSON.stringify(products));
+        formData.append('shippingAddress', JSON.stringify(shipAdd));
+        formData.append('giftWrapChargesTotal', parseFloat(giftWrapCharges).toFixed(2));
+        formData.append('subTotal', cart.amount);
+        formData.append('shippingCharges', cart.shippingCharges);
+        formData.append('giftWrapCharges', cart.giftWrapCharges);
+        formData.append('totalAmount', totalAmount);
+        formData.append('GST', cart.gst);
+        formData.append('status', '1');
+        formData.append('paymentMethod', 'cod');
+        formData.append('createdBy', '5f04c9ebe076ff31968e7b01');
+        formData.append('lastUpdatedBy', '5f04c9ebe076ff31968e7b01');
+
+        const authorization_prefix = 'Bearer ';
+        const token = authUser.token;
+
+        const headers = {
+            Authorization: authorization_prefix + token,
+        };
+
+        console.log(formData);
+
         const reponse = await axios
-            .post('https://suchaz.com/apiv2/admin/order/paytmChecksum', params)
+            .post('https://suchaz.com/apiv2/order/placeorder', formData, {
+                headers: headers,
+            })
             .then((res) => {
                 return res.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
 
-        const processParam = reponse;
-        let details = {
-            action: 'https://securegw-stage.paytm.in/order/process',
-            params: processParam,
-        };
-        post(details);
+        if (reponse.status == true) {
+            const processParam = reponse.data;
+            let details = {
+                action: 'https://securegw-stage.paytm.in/order/process',
+                params: processParam,
+            };
+            post(details);
+        }
     }
 
     totalShippingCharge(cartItems) {
@@ -87,7 +141,7 @@ class Shipping extends Component {
     }
 
     render() {
-        const { cart, shippingAddress } = this.props;
+        const { auth, cart, shippingAddress } = this.props;
         const {
             amount,
             cartItems,
@@ -164,6 +218,7 @@ class Shipping extends Component {
                                             <a
                                                 onClick={this.handlePlaceOrder.bind(
                                                     this,
+                                                    auth,
                                                     cart,
                                                     shippingAddress
                                                 )}
@@ -335,6 +390,10 @@ class Shipping extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { cart: state.cart, shippingAddress: state.shippingAddress.address };
+    return {
+        auth: state.auth,
+        cart: state.cart,
+        shippingAddress: state.shippingAddress.address,
+    };
 };
 export default connect(mapStateToProps)(Shipping);

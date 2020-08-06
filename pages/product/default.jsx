@@ -42,8 +42,7 @@ class ProductDefaultPage extends Component {
                 url: '/',
             },
             {
-                text: 'Shop',
-                url: '/shop',
+                text: 'Gift',
             },
             {
                 text: 'Product Detail',

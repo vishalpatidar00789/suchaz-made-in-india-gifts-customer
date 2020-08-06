@@ -25,6 +25,9 @@ export const actionTypes = {
 
     GET_PRODUCT_CATEGORIES: 'GET_PRODUCT_CATEGORIES',
     GET_PRODUCT_CATEGORIES_SUCCESS: 'GET_PRODUCT_CATEGORIES_SUCCESS',
+
+    GET_ORDER_HISTORY: 'GET_ORDER_HISTORY',
+    GET_ORDER_HISTORY_SUCCESS: 'GET_ORDER_HISTORY_SUCCESS',
 };
 
 export function getProducts(payload) {
@@ -130,4 +133,12 @@ export function getProductsByPrice(payload) {
         type: actionTypes.GET_PRODUCTS_BY_PRICE_RANGE,
         payload,
     };
+}
+
+export function getOrderHistory(payload) {
+    return { type: actionTypes.GET_ORDER_HISTORY, payload };
+}
+
+export function getOrderHistorySuccess(payload) {
+    return { type: actionTypes.GET_ORDER_HISTORY_SUCCESS, payload };
 }

@@ -15,7 +15,7 @@ class ShopCarouselBanner extends Component {
                         <Link href="/shop">
                             <img
                                 src="/static/img/slider/shop-default/1.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </Link>
                     </div>
@@ -23,7 +23,7 @@ class ShopCarouselBanner extends Component {
                         <Link href="/shop">
                             <img
                                 src="/static/img/slider/shop-default/2.jpg"
-                                alt="MadeInIndiaGifts"
+                                alt="MadeInIndiaGifts.in"
                             />
                         </Link>
                     </div>

@@ -7,48 +7,55 @@ import { getAuth } from '../../../store/auth/action';
 class UserInformation extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            authUser: null
+        };
     }
 
     componentDidMount() {
         this.props.dispatch(getAuth());
+        setTimeout(() => {
+            const { auth } = this.props;
+            let authUser = auth.authUser.data;
+            this.setState({authUser: authUser});
+        }, 500);
     }
 
     render() {
+        const {authUser} = this.state;
 
-        const { auth } = this.props;
-        const authUser = auth.authUser.data;
         const accountLinks = [
-            {
-                text: 'Account Information',
-                url: '/account/user-information',
-                icon: 'icon-user',
-                active: true,
-            },
-            {
-                text: 'Notifications',
-                url: '/account/notifications',
-                icon: 'icon-alarm-ringing',
-            },
+            // {
+            //     text: 'Account Information',
+            //     url: '/account/user-information',
+            //     icon: 'icon-user',
+            //     active: true,
+            // },
+            // {
+            //     text: 'Notifications',
+            //     url: '/account/notifications',
+            //     icon: 'icon-alarm-ringing',
+            // },
             {
                 text: 'Invoices',
                 url: '/account/invoices',
                 icon: 'icon-papers',
             },
-            {
-                text: 'Address',
-                url: '/account/addresses',
-                icon: 'icon-map-marker',
-            },
-            {
-                text: 'Recent Viewed Product',
-                url: '/account/recent-viewed-product',
-                icon: 'icon-store',
-            },
-            {
-                text: 'Wishlist',
-                url: '/account/wishlist',
-                icon: 'icon-heart',
-            },
+            // {
+            //     text: 'Address',
+            //     url: '/account/addresses',
+            //     icon: 'icon-map-marker',
+            // },
+            // {
+            //     text: 'Recent Viewed Product',
+            //     url: '/account/recent-viewed-product',
+            //     icon: 'icon-store',
+            // },
+            // {
+            //     text: 'Wishlist',
+            //     url: '/account/wishlist',
+            //     icon: 'icon-heart',
+            // },
         ];
         return (
             <section className="ps-my-account ps-page--account">
@@ -58,15 +65,21 @@ class UserInformation extends Component {
                             <div className="ps-section__left">
                                 <aside className="ps-widget--account-dashboard">
                                     <div className="ps-widget__header">
-                                        <img src="/static/img/users/3.jpg" />
+                                        {/* <img src="/static/img/users/3.jpg" /> */}
                                         <figure>
-                                            <figcaption>{typeof authUser.userProfile != 'undefined' ? authUser.userProfile.fullName : ''}</figcaption>
-                                            <p>{authUser.email}</p>
+                                            <figcaption>
+                                                {authUser && typeof authUser.userProfile !=
+                                                'undefined'
+                                                    ? authUser.userProfile
+                                                          .fullName
+                                                    : ''}
+                                            </figcaption>
+                                            <p>{authUser ? authUser.email : ''}</p>
                                         </figure>
                                     </div>
                                     <div className="ps-widget__content">
                                         <ul>
-                                            {accountLinks.map(link => (
+                                            {accountLinks.map((link) => (
                                                 <li
                                                     key={link.text}
                                                     className={
@@ -214,7 +227,7 @@ class UserInformation extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return state;
 };
 export default connect(mapStateToProps)(UserInformation);

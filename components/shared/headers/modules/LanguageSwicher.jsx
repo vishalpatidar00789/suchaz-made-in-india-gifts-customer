@@ -18,7 +18,7 @@ class LanguageSwicher extends Component {
         return (
             <div className="ps-dropdown language">
                 <a href="#" onClick={this.handleFeatureWillUpdate.bind(this)}>
-                    <img src="/static/img/flag/en.png" alt="MadeInIndiaGifts" />
+                    <img src="/static/img/flag/en.png" alt="MadeInIndiaGifts.in" />
                     English
                 </a>
                 <ul className="ps-dropdown-menu">
@@ -26,7 +26,7 @@ class LanguageSwicher extends Component {
                         <a
                             href="#"
                             onClick={this.handleFeatureWillUpdate.bind(this)}>
-                            <img src="/static/img/flag/germany.png" alt="MadeInIndiaGifts" />
+                            <img src="/static/img/flag/germany.png" alt="MadeInIndiaGifts.in" />
                             Germany
                         </a>
                     </li>
@@ -34,7 +34,7 @@ class LanguageSwicher extends Component {
                         <a
                             href="#"
                             onClick={this.handleFeatureWillUpdate.bind(this)}>
-                            <img src="/static/img/flag/fr.png" alt="MadeInIndiaGifts" />
+                            <img src="/static/img/flag/fr.png" alt="MadeInIndiaGifts.in" />
                             France
                         </a>
                     </li>

@@ -52,13 +52,13 @@ const PostDetailBackground = () => (
                 </p>
                 <div className="row">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                        <img className="mb-30" src="/static/img/blog/detail/2.jpg" alt="MadeInIndiaGifts" />
+                        <img className="mb-30" src="/static/img/blog/detail/2.jpg" alt="MadeInIndiaGifts.in" />
                     </div>
                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
-                        <img className="mb-30" src="/static/img/blog/detail/3.jpg" alt="MadeInIndiaGifts" />
+                        <img className="mb-30" src="/static/img/blog/detail/3.jpg" alt="MadeInIndiaGifts.in" />
                     </div>
                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
-                        <img className="mb-30" src="/static/img/blog/detail/4.jpg" alt="MadeInIndiaGifts" />
+                        <img className="mb-30" src="/static/img/blog/detail/4.jpg" alt="MadeInIndiaGifts.in" />
                     </div>
                 </div>
                 <h4>Defaulting to Mindfulness: The Third Person Effect</h4>

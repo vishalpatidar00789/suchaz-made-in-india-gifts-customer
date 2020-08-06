@@ -1,92 +1,139 @@
 import React, { Component } from 'react';
+import { withRouter } from 'next/router';
 import AccountMenuSidebar from './modules/AccountMenuSidebar';
-import TableNotifications from './modules/TableNotifications';
 import Link from 'next/link';
 import ProductCart from '../../elements/products/ProductCart';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import post from '../../../pages/utils';
 
 class InvoiceDetail extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            invoiceProducts: [],
+        };
+    }
+
+    async componentDidMount() {
+        setTimeout(async () => {
+            let result = await this.getOrderHistory();
+            if (result.status) {
+                this.setState({ invoiceProducts: result.data.docs });
+            }
+        }, 200);
+    }
+
+    async getOrderHistory() {
+        const { auth } = this.props;
+        const { query } = this.props.router;
+
+        const authorization_prefix = 'Bearer ';
+        const token = auth.authUser.token;
+
+        // console.log(token);
+
+        const headers = {
+            Authorization: authorization_prefix + token,
+        };
+
+        return await axios
+            .get(
+                `https://suchaz.com/apiv2/order/orderHistoryDetails?id=${query.id}`,
+                {
+                    headers: headers,
+                }
+            )
+            .then((res) => {
+                return res.data;
+            })
+            .catch((error) => ({ error: JSON.stringify(error) }));
+    }
+
+    async handleRetryPlaceOrder(orderId) {
+        const { auth } = this.props;
+
+        const { authUser } = auth;
+
+        const authorization_prefix = 'Bearer ';
+        const token = authUser.token;
+
+        const headers = {
+            Authorization: authorization_prefix + token,
+        };
+
+        const reponse = await axios
+            .post(
+                'https://suchaz.com/apiv2/admin/order/paytmRetryChecksum',
+                { orderId: orderId },
+                {
+                    headers: headers,
+                }
+            )
+            .then((res) => {
+                return res.data;
+            })
+            .catch((error) => ({ error: JSON.stringify(error) }));
+
+        if (reponse.status == true) {
+            const processParam = reponse.data;
+            let details = {
+                action: 'https://securegw-stage.paytm.in/order/process',
+                params: processParam,
+            };
+            post(details);
+        }
     }
 
     render() {
+        const { auth } = this.props;
+        const { invoiceProducts } = this.state;
+        // console.log(invoiceProducts);
+
         const accountLinks = [
-            {
-                text: 'Account Information',
-                url: '/account/user-information',
-                icon: 'icon-user',
-            },
-            {
-                text: 'Notifications',
-                url: '/account/notifications',
-                icon: 'icon-alarm-ringing',
-            },
+            // {
+            //     text: 'Account Information',
+            //     url: '/account/user-information',
+            //     icon: 'icon-user',
+            // },
+            // {
+            //     text: 'Notifications',
+            //     url: '/account/notifications',
+            //     icon: 'icon-alarm-ringing',
+            // },
             {
                 text: 'Invoices',
                 url: '/account/invoices',
                 icon: 'icon-papers',
                 active: true,
             },
-            {
-                text: 'Address',
-                url: '/account/addresses',
-                icon: 'icon-papers',
-            },
-            {
-                text: 'Recent Viewed Product',
-                url: '/account/recent-viewed-product',
-                icon: 'icon-papers',
-            },
-            {
-                text: 'Wishlist',
-                url: '/account/wishlist',
-                icon: 'icon-papers',
-            },
+            // {
+            //     text: 'Address',
+            //     url: '/account/addresses',
+            //     icon: 'icon-papers',
+            // },
+            // {
+            //     text: 'Recent Viewed Product',
+            //     url: '/account/recent-viewed-product',
+            //     icon: 'icon-papers',
+            // },
+            // {
+            //     text: 'Wishlist',
+            //     url: '/account/wishlist',
+            //     icon: 'icon-papers',
+            // },
         ];
-        const invoiceProducts = [
-            {
-                id: '6',
-                thumbnail: '/static/img/products/shop/5.jpg',
-                title: 'Grand Slam Indoor Of Show Jumping Novel',
-                vendor: "Robert's Store",
-                sale: true,
-                price: '32.99',
-                salePrice: '41.00',
-                rating: true,
-                ratingCount: '4',
-                badge: [
-                    {
-                        type: 'sale',
-                        value: '-37%',
-                    },
-                ],
-            },
-            {
-                id: '7',
-                thumbnail: '/static/img/products/shop/6.jpg',
-                title: 'Sound Intone I65 Earphone White Version',
-                vendor: 'Youngshop',
-                sale: true,
-                price: '100.99',
-                salePrice: '106.00',
-                rating: true,
-                ratingCount: '5',
-                badge: [
-                    {
-                        type: 'sale',
-                        value: '-5%',
-                    },
-                ],
-            },
-        ];
+
         return (
             <section className="ps-my-account ps-page--account">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="ps-page__left">
-                                <AccountMenuSidebar data={accountLinks} />
+                                <AccountMenuSidebar
+                                    data={accountLinks}
+                                    authUser={auth.authUser.data}
+                                />
                             </div>
                         </div>
                         <div className="col-lg-8">
@@ -94,8 +141,40 @@ class InvoiceDetail extends Component {
                                 <div className="ps-section--account-setting">
                                     <div className="ps-section__header">
                                         <h3>
-                                            Invoice #500884010 -
-                                            <strong>Successful delivery</strong>
+                                            Invoice #
+                                            {invoiceProducts.length
+                                                ? invoiceProducts[0].orderId
+                                                : ''}{' '}
+                                            -
+                                            <strong>
+                                                {invoiceProducts.length
+                                                    ? invoiceProducts[0]
+                                                          .orderStatusMsg ==
+                                                      'Init'
+                                                        ? 'Payment Failed'
+                                                        : invoiceProducts[0]
+                                                              .orderStatusMsg
+                                                    : ''}
+                                            </strong>{' '}
+                                            {invoiceProducts.length &&
+                                            invoiceProducts[0].orderStatusMsg ==
+                                                'Init' ? (
+                                                <React.Fragment>
+                                                    -{' '}
+                                                    <a
+                                                        onClick={this.handleRetryPlaceOrder.bind(
+                                                            this,
+                                                            invoiceProducts[0]
+                                                                .orderId
+                                                        )}
+                                                        className="ps-btn ps-btn--sm text-white"
+                                                        role="button">
+                                                        Try again
+                                                    </a>
+                                                </React.Fragment>
+                                            ) : (
+                                                ''
+                                            )}
                                         </h3>
                                     </div>
                                     <div className="ps-section__content">
@@ -105,31 +184,88 @@ class InvoiceDetail extends Component {
                                                     <figcaption>
                                                         Address
                                                     </figcaption>
-                                                    <div className="ps-block__content">
-                                                        <strong>
-                                                            John Walker
-                                                        </strong>
-                                                        <p>
-                                                            Address: 3481 Poe
-                                                            Lane, Westphalia,
-                                                            Kansas
-                                                        </p>
-                                                        <p>
-                                                            Phone: 913-489-1853
-                                                        </p>
-                                                    </div>
+                                                    {invoiceProducts.length ? (
+                                                        <div className="ps-block__content">
+                                                            <strong>
+                                                                {
+                                                                    invoiceProducts[0]
+                                                                        .shippingAddress
+                                                                        .recipientFirstName
+                                                                }{' '}
+                                                                {
+                                                                    invoiceProducts[0]
+                                                                        .shippingAddress
+                                                                        .recipientLastName
+                                                                }
+                                                            </strong>
+                                                            <p>
+                                                                {
+                                                                    invoiceProducts[0]
+                                                                        .shippingAddress
+                                                                        .addressLine1
+                                                                }
+                                                                ,
+                                                                {
+                                                                    invoiceProducts[0]
+                                                                        .shippingAddress
+                                                                        .addressLine2
+                                                                }
+                                                                ,
+                                                                {
+                                                                    invoiceProducts[0]
+                                                                        .shippingAddress
+                                                                        .city
+                                                                }
+                                                                ,
+                                                                {
+                                                                    invoiceProducts[0]
+                                                                        .shippingAddress
+                                                                        .state
+                                                                }
+                                                            </p>
+                                                            <p>
+                                                                Phone:{' '}
+                                                                {
+                                                                    invoiceProducts[0]
+                                                                        .contact_no
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    ) : (
+                                                        <div></div>
+                                                    )}
                                                 </figure>
                                             </div>
                                             <div className="col-md-4 col-12">
                                                 <figure className="ps-block--invoice">
                                                     <figcaption>
-                                                        Shipping Fee
+                                                        Charges
                                                     </figcaption>
                                                     <div className="ps-block__content">
                                                         <p>
-                                                            Shipping Fee: Free
+                                                            Shipping Fee: ₹
+                                                            {invoiceProducts.length
+                                                                ? invoiceProducts[0]
+                                                                      .shippingCharges
+                                                                : ''}
                                                         </p>
                                                     </div>
+                                                    {invoiceProducts.length &&
+                                                    invoiceProducts[0]
+                                                        .giftWrapCharges > 0 ? (
+                                                        <div className="ps-block__content">
+                                                            <p>
+                                                                Gift Wrap
+                                                                Charge: ₹
+                                                                {invoiceProducts.length
+                                                                    ? invoiceProducts[0]
+                                                                          .giftWrapCharges
+                                                                    : ''}
+                                                            </p>
+                                                        </div>
+                                                    ) : (
+                                                        ''
+                                                    )}
                                                 </figure>
                                             </div>
                                             <div className="col-md-4 col-12">
@@ -139,7 +275,8 @@ class InvoiceDetail extends Component {
                                                     </figcaption>
                                                     <div className="ps-block__content">
                                                         <p>
-                                                            Payment Method: Visa
+                                                            Payment Method:
+                                                            Online
                                                         </p>
                                                     </div>
                                                 </figure>
@@ -156,36 +293,72 @@ class InvoiceDetail extends Component {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {invoiceProducts.map(
-                                                        product => (
-                                                            <tr
-                                                                key={
-                                                                    product.id
-                                                                }>
-                                                                <td>
-                                                                    <ProductCart
-                                                                        product={
-                                                                            product
-                                                                        }
-                                                                    />
-                                                                </td>
-                                                                <td className="price">
-                                                                    $
-                                                                    {
-                                                                        product.bestPrice
-                                                                    }
-                                                                </td>
+                                                    {invoiceProducts.length
+                                                        ? invoiceProducts[0].lineItems.map(
+                                                              (product) => (
+                                                                  <tr
+                                                                      key={
+                                                                          product.productId
+                                                                      }>
+                                                                      <td>
+                                                                          <ProductCart
+                                                                              product={
+                                                                                  product
+                                                                              }
+                                                                          />
+                                                                      </td>
+                                                                      <td className="price">
+                                                                          ₹
+                                                                          {
+                                                                              product
+                                                                                  .vendorItem
+                                                                                  .bestPrice
+                                                                          }
+                                                                      </td>
 
-                                                                <td>1</td>
-                                                                <td className="price">
-                                                                    $
-                                                                    {
-                                                                        product.bestPrice
-                                                                    }
-                                                                </td>
-                                                            </tr>
-                                                        )
-                                                    )}
+                                                                      <td>
+                                                                          {
+                                                                              product.quantity
+                                                                          }
+                                                                      </td>
+                                                                      <td className="price">
+                                                                          ₹
+                                                                          {product
+                                                                              .vendorItem
+                                                                              .bestPrice *
+                                                                              product.quantity +
+                                                                              product.giftWrapCharges}
+                                                                      </td>
+                                                                  </tr>
+                                                              )
+                                                          )
+                                                        : ''}
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colSpan="2">
+                                                            Shipping Fee:
+                                                        </td>
+                                                        <td>
+                                                            ₹
+                                                            {invoiceProducts.length
+                                                                ? invoiceProducts[0]
+                                                                      .shippingCharges
+                                                                : ''}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colSpan="2">
+                                                            <h3>Total</h3>
+                                                        </td>
+                                                        <td>
+                                                            ₹
+                                                            {invoiceProducts.length
+                                                                ? invoiceProducts[0]
+                                                                      .finalTotal
+                                                                : ''}
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -205,4 +378,10 @@ class InvoiceDetail extends Component {
     }
 }
 
-export default InvoiceDetail;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+        product: state.product,
+    };
+};
+export default withRouter(connect(mapStateToProps)(InvoiceDetail));

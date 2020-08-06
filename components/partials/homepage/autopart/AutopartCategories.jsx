@@ -62,7 +62,7 @@ const AutopartCategories = ({ data }) => {
                                 <div className="ps-block__thumbnail">
                                     <img
                                         src={category.thumbnail}
-                                        alt="MadeInIndiaGifts"
+                                        alt="MadeInIndiaGifts.in"
                                     />
                                 </div>
                                 <div className="ps-block__content">

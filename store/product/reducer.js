@@ -1,6 +1,8 @@
 import { actionTypes } from './action';
 
 export const initialState = {
+    orderHistory: null,
+    orderHistorySuccess: null,
     allProducts: null,
     singleProduct: null,
     error: false,
@@ -14,6 +16,16 @@ export const initialState = {
 
 function reducer(state = initialState, action) {
     switch (action.type) {
+        case actionTypes.GET_ORDER_HISTORY:
+            return {
+                ...state,
+                ...{ orderHistory: action.payload },
+            };
+        case actionTypes.GET_ORDER_HISTORY_SUCCESS:
+            return {
+                ...state,
+                ...{ orderHistorySuccess: action.payload },
+            };
         case actionTypes.GET_PRODUCTS_SUCCESS:
             return {
                 ...state,
@@ -22,7 +34,11 @@ function reducer(state = initialState, action) {
         case actionTypes.GET_FILTER_CATEGORY_SUCCESS:
             return {
                 ...state,
-                ...{ allProducts: action.payload, totalProducts: action.payload.length, productsLoading: false },
+                ...{
+                    allProducts: action.payload,
+                    totalProducts: action.payload.length,
+                    productsLoading: false,
+                },
             };
         case actionTypes.GET_TOTAL_OF_PRODUCTS_SUCCESS:
             return {

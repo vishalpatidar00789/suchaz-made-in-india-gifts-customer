@@ -14,7 +14,7 @@ class Register extends Component {
 
     handleSubmit = (values) => {
         this.props.dispatch(register(values));
-        Router.push('/account/login');
+        //Router.push('/account/login');
     };
 
     handleFeatureWillUpdate(e) {

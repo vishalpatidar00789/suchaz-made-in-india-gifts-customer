@@ -4,31 +4,42 @@ import Link from 'next/link';
 import MegaMenu from './MegaMenu';
 import MenuDropdown from './MenuDropdown';
 
-const Menu = ({ data, className }) => (
-    <ul className={className}>
-        {data &&
-            data.map(item => {
-                if (item.subMenu) {
-                    return <MenuDropdown menuData={item} key={item.text} />;
-                } else if (item.megaContent) {
-                    return <MegaMenu menuData={item} key={item.text} />;
-                } else {
+const Menu = (props) => {
+    const { data, className } = props;
+    return (
+        <ul className={className}>
+            {data &&
+                data.map((item, index) => {
                     return (
-                        <li key={item.text}>
-                            {item.type === 'dynamic' ? (
-                                <Link href={`${item.url}/[pid]`} as={`${item.url}/${item.endPoint}`}>
-                                    <a>{item.text}</a>
-                                </Link>
-                            ) : (
-                                <Link href={item.url} as={item.alias}>
-                                    <a>{item.text}</a>
-                                </Link>
-                            )}
+                        <li
+                            key={index}
+                            className={
+                                item.children
+                                    ? 'menu-item-has-children has-mega-menu'
+                                    : ''
+                            }>
+                            <a href={item.link}>{item.title}</a>
+                            <div className="mega-menu">
+                                <div className="mega-menu__column">
+                                    <ul className="mega-menu__list">
+                                        {item.children &&
+                                            item.children.map((item, index) => {
+                                                return (
+                                                    <li key={index}>
+                                                        <a href={item.link} as={item.link}>
+                                                           {item.title}
+                                                        </a>
+                                                    </li>
+                                                );
+                                            })}
+                                    </ul>
+                                </div>
+                            </div>
                         </li>
                     );
-                }
-            })}
-    </ul>
-);
+                })}
+        </ul>
+    );
+};
 
 export default Menu;
