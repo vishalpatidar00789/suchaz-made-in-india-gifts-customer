@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import { notification } from 'antd';
 import Menu from '../../elements/menu/Menu';
+import { connect } from 'react-redux';
+import { getMenus } from '../../../store/collection/action';
 
-import CurrencyDropdown from '../headers/modules/CurrencyDropdown';
-import LanguageSwicher from '../headers/modules/LanguageSwicher';
-import axios from 'axios';
 
 class NavigationDefault extends Component {
     constructor(props) {
@@ -14,22 +13,10 @@ class NavigationDefault extends Component {
             menuData: [],
         };
     }
+    _isMounted = false;
 
     async componentDidMount() {
-        let self = this;
-        setTimeout(async () => {
-            const reponse = await axios
-                .get('https://www.suchaz.com/apiv2/menu/list')
-                .then((res) => {
-                    return res.data;
-                })
-                .catch((error) => ({ error: JSON.stringify(error) }));
-
-            if (reponse.status == true) {
-                self.setState({ menuData: reponse.data });
-                console.log();
-            }
-        }, 200);
+        this._isMounted = true;
     }
 
     handleFeatureWillUpdate(e) {
@@ -41,8 +28,13 @@ class NavigationDefault extends Component {
         });
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     render() {
-        const { menuData } = this.state;
+        const { menuData1 } = this.state;
+        const { menuData } = this.props;
         return (
             <nav className="navigation">
                 <div className="ps-container">
@@ -50,28 +42,25 @@ class NavigationDefault extends Component {
                         <div className="menu--product-categories">
                             <div className="menu__toggle">
                                 <i className="icon-menu"></i>
-                                <span> Shop by Category</span>
+                                <span>Gift by Category</span>
                             </div>
                             <div className="menu__content">
                                 <Menu
-                                    data={menuData}
+                                    data={(menuData.category) ? menuData.category : []}
                                     className="menu--dropdown"
                                 />
                             </div>
                         </div>
                     </div>
                     <div className="navigation__right">
-                        <Menu
-                            data={menuData}
-                            className="menu"
-                        />
+                        <Menu data={(menuData.menuList) ? menuData.menuList : []} className="menu" />
                         <ul className="navigation__extra">
                             <li>
                                 <Link href="/account/vendor/register">
                                     <a> Become a seller !</a>
                                 </Link>
                             </li>
-                        </ul>    
+                        </ul>
                         {/* <ul className="navigation__extra">
                             <li>
                                 <Link href="/vendor/become-a-vendor">
@@ -97,4 +86,7 @@ class NavigationDefault extends Component {
     }
 }
 
-export default NavigationDefault;
+const mapStateToProps = (state) => {
+    return state.collection;
+};
+export default connect(mapStateToProps)(NavigationDefault);

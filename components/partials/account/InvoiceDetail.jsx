@@ -31,15 +31,13 @@ class InvoiceDetail extends Component {
         const authorization_prefix = 'Bearer ';
         const token = auth.authUser.token;
 
-        // console.log(token);
-
         const headers = {
             Authorization: authorization_prefix + token,
         };
 
         return await axios
             .get(
-                `https://suchaz.com/apiv2/order/orderHistoryDetails?id=${query.id}`,
+                `${process.env.API_URL}/order/orderHistoryDetails?id=${query.id}`,
                 {
                     headers: headers,
                 }
@@ -64,7 +62,7 @@ class InvoiceDetail extends Component {
 
         const reponse = await axios
             .post(
-                'https://suchaz.com/apiv2/admin/order/paytmRetryChecksum',
+                `${process.env.API_URL}/admin/order/paytmRetryChecksum`,
                 { orderId: orderId },
                 {
                     headers: headers,
@@ -88,7 +86,6 @@ class InvoiceDetail extends Component {
     render() {
         const { auth } = this.props;
         const { invoiceProducts } = this.state;
-        // console.log(invoiceProducts);
 
         const accountLinks = [
             // {
@@ -283,12 +280,12 @@ class InvoiceDetail extends Component {
                                             </div>
                                         </div>
                                         <div className="table-responsive">
-                                            <table className="table ps-table--shopping-cart">
+                                            <table className="table ps-table--shopping-cart-1">
                                                 <thead>
                                                     <tr>
                                                         <th>Product</th>
                                                         <th>Price</th>
-                                                        <th>Quantity</th>
+                                                        <th>Qty</th>
                                                         <th>Amount</th>
                                                     </tr>
                                                 </thead>

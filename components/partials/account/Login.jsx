@@ -11,6 +11,11 @@ class Login extends Component {
         super(props);
         this.state = {};
     }
+    _isMounted = false;
+
+    componentDidMount() {
+        this._isMounted = true;
+    }
 
     static getDerivedStateFromProps(props) {
         if (props.isLoggedIn === true) {
@@ -30,18 +35,18 @@ class Login extends Component {
     }
 
     handleLoginSubmit = (values) => {
-        const redirectCheckout = this.props.redirectCheckout;
+        if (this._isMounted) {
+            this.props.dispatch(login(values));
 
-        this.props.dispatch(login(values));
-
-        setTimeout(() => {
-            if (redirectCheckout != '') {
-                Router.push(redirectCheckout);
-            } else {
+            setTimeout(() => {
                 Router.push('/');
-            }
-        }, 1200);
+            }, 1200);
+        }
     };
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
 
     render() {
         return (
@@ -118,6 +123,11 @@ class Login extends Component {
                                         className="ps-btn ps-btn--fullwidth">
                                         Login
                                     </button>
+                                </div>
+                                <div className="form-group text-right">
+                                    <Link href="/account/forgot-password">
+                                        <a className="">Forgot Password?</a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="ps-form__footer">

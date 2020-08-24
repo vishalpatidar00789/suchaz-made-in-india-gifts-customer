@@ -27,7 +27,7 @@ function* getWishlistListSaga() {
         ).wishlist;
         yield put(getWishlistListSuccess(localWishlistList));
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 
@@ -49,7 +49,7 @@ function* addItemToWishlistSaga(payload) {
             modalSuccess('success');
         }
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 
@@ -65,7 +65,7 @@ function* removeItemWishlistSaga(payload) {
         yield put(updateWishlistListSuccess(localWishlist));
         modalWarning('warning');
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 
@@ -77,7 +77,7 @@ function* clearWishlistListSaga() {
         };
         yield put(updateWishlistListSuccess(emptyCart));
     } catch (err) {
-        console.log(err);
+        //console.log(err);
     }
 }
 

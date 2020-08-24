@@ -106,7 +106,7 @@ class ProductDetailImageSwatches extends Component {
                                 );
                             }
                         })}
-                    </div>
+                    </div> 
 
                     <div className="ps-product__info">
                         <h1>Sleeve Linen Blend Caro Pane Shirt</h1>
@@ -115,8 +115,8 @@ class ProductDetailImageSwatches extends Component {
                                 Brand:<a href="shop-default.html">Adidas</a>
                             </p>
                             <div className="ps-product__rating">
-                                <Rating/>
-                                <span>(1 review)</span>
+                                {/* <Rating/>
+                                <span>(1 review)</span> */}
                             </div>
                         </div>
                         <h4 className="ps-product__price">

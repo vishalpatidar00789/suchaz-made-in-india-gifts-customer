@@ -60,7 +60,7 @@ function* getTotalOfProducts() {
             yield put(getTotalProductsSuccess(result));
         }
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 
@@ -74,7 +74,7 @@ function* getBrands() {
             yield put(getBrandsSuccess(result));
         }
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 

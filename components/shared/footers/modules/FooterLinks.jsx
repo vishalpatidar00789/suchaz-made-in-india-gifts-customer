@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import Link from 'next/link';
+import { connect } from 'react-redux';
+import { getMenus } from '../../../../store/collection/action';
+let Nlinks = [];
 const Links = {
     consumerElectric: [
         {
             text: 'Gift for Men',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Gift for Women',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Gift for Boys',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Gift for Girls',
-            url: '/gift'
+            url: '/gifts',
         },
         // {
         //     text: 'TV Televisions',
@@ -30,11 +34,11 @@ const Links = {
     clothingAndApparel: [
         {
             text: 'Gift for Sporty People',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Gift for Music Lover',
-            url: '/gift'
+            url: '/gifts',
         },
         // {
         //     text: '',
@@ -60,15 +64,15 @@ const Links = {
     gardenAndKitchen: [
         {
             text: 'Gift for Rakhi',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Gift for Diwali',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Gift for Birthday',
-            url: '/gift'
+            url: '/gifts',
         },
         // {
         //     text: 'Garden Tools',
@@ -90,15 +94,15 @@ const Links = {
     healthAndBeauty: [
         {
             text: 'Gift for Girlfriend',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Gift for Boyfriend',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Gift for Wife',
-            url: '/gift'
+            url: '/gifts',
         },
         // {
         //     text: 'Body Shower',
@@ -120,15 +124,15 @@ const Links = {
     jewelryAndWatch: [
         {
             text: 'Novelty',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'A',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'B',
-            url: '/gift'
+            url: '/gifts',
         },
         // {
         //     text: 'Sliver Earing',
@@ -146,54 +150,89 @@ const Links = {
     computerAndTechnology: [
         {
             text: 'Desktop PC',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Laptop',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Smartphones',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Tablet',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Game Controller',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Audio & Video',
-            url: '/gift'
+            url: '/gifts',
         },
         {
             text: 'Wireless Speaker',
-            url: '/gift'
-        }
-    ]
+            url: '/gifts',
+        },
+    ],
 };
 
-const FooterLinks = () => (
-    <div className="ps-footer__links">
-        <p>
-            <strong>Gift by Recipient:</strong>
-            {Links.consumerElectric.map(item => (
-                <Link href={item.url} key={item.text}>
-                    <a>{item.text}</a>
-                </Link>
-            ))}
-        </p>
-        <p>
-            <strong>Gift by Personality:</strong>
-            {Links.clothingAndApparel.map(item => (
-                <Link href={item.url} key={item.text}>
-                    <a>{item.text}</a>
-                </Link>
-            ))}
-        </p>
-        <p>
+class FooterLinks extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuData: {
+                menuList: []
+            }
+        };
+    }
+    _isMounted = false;
+
+    async componentDidMount() {
+        this._isMounted = true;
+      //  let self = this;
+        // setTimeout(async () => {
+        //     const reponse = await axios
+        //         .get(`${process.env.API_URL}/menu/list`)
+        //         .then((res) => {
+        //             return res.data;
+        //         })
+        //         .catch((error) => ({ error: JSON.stringify(error) }));
+
+        //     if (reponse.status == true) {
+        //         if (this._isMounted) {
+        //             self.setState({ menuData: reponse.data });
+        //             console.log();
+        //         }
+        //     }
+        // }, 200);
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
+    render() {
+        const { menuData } = this.props;
+        return (
+            <div className="ps-footer__links">
+                {menuData && menuData.menuList && menuData.menuList.map((item, index) => {
+                    return (
+                        <p key={index}>
+                            <strong>{item.title} :</strong>
+                            {item.children.map((itemx) => {
+                                return (
+                                    <Link href={itemx.link} key={itemx.title}>
+                                        <a>{itemx.title}</a>
+                                    </Link>
+                                );
+                            })}
+                        </p>
+                    );
+                })}
+                {/* <p>
             <strong>Gift by Occasion:</strong>
             {Links.gardenAndKitchen.map(item => (
                 <Link href={item.url} key={item.text}>
@@ -216,8 +255,8 @@ const FooterLinks = () => (
                     <a>{item.text}</a>
                 </Link>
             ))}
-        </p>
-        {/* <p>
+        </p> */}
+                {/* <p>
             <strong>Computer &amp; Technologies:</strong>
             {Links.computerAndTechnology.map(item => (
                 <Link href={item.url} key={item.text}>
@@ -225,7 +264,12 @@ const FooterLinks = () => (
                 </Link>
             ))}
         </p> */}
-    </div>
-);
+            </div>
+        );
+    }
+}
 
-export default FooterLinks;
+const mapStateToProps = (state) => {
+    return state.collection;
+};
+export default connect(mapStateToProps)(FooterLinks);

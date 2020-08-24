@@ -275,6 +275,9 @@ figure {
         &.fa-star-o {
             color: #999;
         }
+        &.fa-star-half-o {
+            color: $color-warning;
+        }
         &:last-child {
             margin-right: 0;
         }

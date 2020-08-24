@@ -10,6 +10,8 @@ class HomeBanner extends Component {
         const carouselSetting = {
             dots: false,
             infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -25,7 +27,7 @@ class HomeBanner extends Component {
                                 {/* <Link href="/shop"> */}
                                     <a>
                                         <img
-                                            src="/static/img/slider/home-1/slide-1.jpg"
+                                            src="/static/img/slider/ganpati-banner-big.png"
                                             alt="MadeInIndiaGifts.in"
                                         />
                                     </a>
@@ -35,7 +37,7 @@ class HomeBanner extends Component {
                                 {/* <Link href="/shop"> */}
                                     <a>
                                         <img
-                                            src="/static/img/slider/home-1/slide-2.jpg"
+                                            src="/static/img/slider/india-sathi-bappa.png"
                                             alt="MadeInIndiaGifts.in"
                                         />
                                     </a>
@@ -45,7 +47,7 @@ class HomeBanner extends Component {
                                 {/* <Link href="/shop"> */}
                                     <a>
                                         <img
-                                            src="/static/img/slider/home-1/slide-3.jpg"
+                                            src="/static/img/slider/zero-contact-delivery-banner.png"
                                             alt="MadeInIndiaGifts.in"
                                         />
                                     </a>
@@ -57,7 +59,7 @@ class HomeBanner extends Component {
                         {/* <Link href="/shop"> */}
                             <a className="ps-collection">
                                 <img
-                                    src="/static/img/slider/home-1/promotion-1.jpg"
+                                    src="/static/img/slider/ganpati-small-banner-1.png"
                                     alt="MadeInIndiaGifts.in"
                                 />
                             </a>
@@ -65,7 +67,7 @@ class HomeBanner extends Component {
                         {/* <Link href="/shop"> */}
                             <a className="ps-collection">
                                 <img
-                                    src="/static/img/slider/home-1/promotion-2.jpg"
+                                    src="/static/img/slider/ganpati-small-banner-2.png"
                                     alt="MadeInIndiaGifts.in"
                                 />
                             </a>

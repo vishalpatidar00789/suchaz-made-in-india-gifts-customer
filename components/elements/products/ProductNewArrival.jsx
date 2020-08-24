@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addItem } from '../../../store/cart/action';
+import { addItem, updateCartSuccess } from '../../../store/cart/action';
 import { addItemToCompare } from '../../../store/compare/action';
 import { addItemToWishlist } from '../../../store/wishlist/action';
 import Link from 'next/link';
@@ -34,7 +34,7 @@ class ProductNewArrival extends Component {
         const { product } = this.props;
         let tempProduct = product;
         tempProduct.quantity = this.state.quantity;
-        this.props.dispatch(addItem(product));
+        this.props.dispatch(addBuyNowItem(product));
         Router.push('/account/checkout');
     };
 
@@ -94,10 +94,13 @@ class ProductNewArrival extends Component {
         return (
             <div className="ps-product ps-product--inner">
                 <div className="ps-product__thumbnail">
-                    <Link href="/product/[pid]" as={`/product/${product.id}`}>
+                    <Link href="/product/[pid]" as={`/product/${product.slug}`}>
                         <a>
                             <LazyLoad>
-                                <img src={thumbnail} alt="MadeInIndiaGifts.in" />
+                                <img
+                                    src={thumbnail}
+                                    alt="MadeInIndiaGifts.in"
+                                />
                             </LazyLoad>
                         </a>
                     </Link>
@@ -150,7 +153,7 @@ class ProductNewArrival extends Component {
                     </ul> */}
                 </div>
                 <div className="ps-product__container">
-                    <Link href="/gift">
+                    <Link href="/gifts">
                         <a className="ps-product__vendor">
                             {product.vendor?.shop_name
                                 ? product.vendor.shop_name
@@ -197,15 +200,13 @@ class ProductNewArrival extends Component {
                         )} */}
                         <Link
                             href="/product/[pid]"
-                            as={`/product/${product.id}`}>
-                            <a className="ps-product__title">
-                                {product.title}
-                            </a>
+                            as={`/product/${product.slug}`}>
+                            <a className="ps-product__title">{product.title}</a>
                         </Link>
 
                         <div className="ps-product__rating">
                             <Rating rating={product.customerAvgRating} />
-                            <span>0</span>
+                            <span>{product.customerAvgRating}</span>
                         </div>
                         <div className="product-buybtn">
                             {/* <div className="btn-group" role="group" aria-label="Basic example" style={{width:'100%'}}>

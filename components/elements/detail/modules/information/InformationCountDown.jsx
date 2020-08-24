@@ -58,10 +58,10 @@ class InformationCountDown extends Component {
                             <a className="ml-2 text-capitalize">{product.vendor}</a>
                         </Link>
                     </p>
-                    <div className="ps-product__rating">
+                    {/* <div className="ps-product__rating">
                         <Rating />
                         <span>(1 review)</span>
-                    </div>
+                    </div> */}
                 </div>
                 {product.is_sale === true ? (
                     <h4 className="ps-product__price sale">

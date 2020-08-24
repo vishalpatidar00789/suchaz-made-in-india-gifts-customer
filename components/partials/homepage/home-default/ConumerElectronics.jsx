@@ -9,6 +9,7 @@ import {
 } from '../../../../utilities/product-helper';
 import CollectionProducts from './modules/CollectionProducts';
 import { getProductData } from '../../../../utilities/product-helper';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 class ConsumerElectronics extends Component {
     constructor(props) {
@@ -16,7 +17,14 @@ class ConsumerElectronics extends Component {
         this.state = {
             items: null,
             currentCollection: '',
+            isLoading: true,
         };
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ isLoading: false });
+        }, 1500);
     }
 
     handleChangeProduct(e, id, slug) {
@@ -27,9 +35,14 @@ class ConsumerElectronics extends Component {
         //     currentCollection: slug
         //     // items: items,
         // });
-        Router.push({ pathname: '/gift', query: {
-            id: id, by: slug
-         } });
+        Router.push({
+            pathname: '/gifts',
+            query: {
+                id: id,
+                name: slug,
+                by: 'Category',
+            },
+        });
     }
     getCategoryBysubCat(categories, currentCollection) {
         // console.log(currentCollection);
@@ -41,12 +54,11 @@ class ConsumerElectronics extends Component {
         });
         // console.log(filterCategory);
         return filterCategory;
-        
     }
 
     render() {
         // const { collections, collectionSlug } = this.props;
-        const { currentCollection, items } = this.state;
+        const { currentCollection, isLoading } = this.state;
         // const products = getColletionBySlug(collections, collectionSlug);
 
         const { categories } = this.props;
@@ -80,6 +92,17 @@ class ConsumerElectronics extends Component {
         // }
         return (
             <div>
+                {isLoading ? (
+                    <div style={{ width: '100%', textAlign: 'center' }}>
+                        <ClipLoader
+                            size={80}
+                            color={'#c3404e'}
+                            loading={this.state.isLoading}
+                        />
+                    </div>
+                ) : (
+                    ''
+                )}
                 {products.map((cat) => (
                     <div
                         className="ps-product-list ps-garden-kitchen"
@@ -100,11 +123,10 @@ class ConsumerElectronics extends Component {
                                                 onClick={(e) =>
                                                     this.handleChangeProduct(
                                                         e,
-                                                        link.id,
+                                                        link._id,
                                                         link.title
                                                     )
-                                                }
-                                                >
+                                                }>
                                                 {link.title}
                                             </a>
                                         </li>
@@ -122,8 +144,7 @@ class ConsumerElectronics extends Component {
                                                     cat.id,
                                                     cat.title
                                                 )
-                                            }
-                                            >
+                                            }>
                                             View All
                                         </a>
                                     </li>

@@ -20,6 +20,21 @@ class SuchazAuthRepository {
         return reponse;
     }
 
+  async conatctUsRequest(payload) {
+            const reponse = await SuchazRepository.post(
+                `${suchazBaseUrl}/contactus`,
+                payload
+            )
+            .then((response) => {
+                return response.data;
+            }).catch((error) => {
+                if (error.response) {
+                    return error.response.data;
+                }
+            });
+        return reponse;
+    }
+
     async registerVendorRequest(payload) {
         const reponse = await SuchazRepository.post(
             `${suchazBaseUrl}/admin/vendor/vendorRequest`,

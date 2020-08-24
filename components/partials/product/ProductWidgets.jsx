@@ -36,13 +36,13 @@ class ProductWidgets extends Component{
                         </Link>
                     </p>
                 </aside>
-                <aside className="widget widget_ads">
-                    <Link href="/shop">
+                {/* <aside className="widget widget_ads">
+                     <Link href="/shop"> 
                         <a>
                             <img src="/static/img/ads/product-ads.png" alt="MadeInIndiaGifts.in" />
                         </a>
-                    </Link>
-                </aside>
+                     </Link> 
+                </aside> */}
                 {/* <aside className="widget widget_same-brand">
                     <h3>Same Brand</h3>
                     <div className="widget__content">

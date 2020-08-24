@@ -47,9 +47,9 @@ class LayoutShop extends Component {
                             value={sortBy}>
                             <option value="latest">Sort by latest</option>
                             <option value="offer">Sort by offer</option>
-                            <option value="popularity">
+                            {/* <option value="popularity">
                                 Sort by popularity
-                            </option>
+                            </option> */}
                             <option value="price_asc">
                                 Sort by price: low to high
                             </option>
@@ -91,13 +91,13 @@ class LayoutShop extends Component {
                                 {products && products.length > 0 ? (
                                     products.map((item) => (
                                         <div
-                                            className="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 "
+                                            className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
                                             key={item.id}>
                                             <Product product={item} />
                                         </div>
                                     ))
                                 ) : (
-                                    <div className="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                    <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                         <p>No products found.</p>
                                     </div>
                                 )}

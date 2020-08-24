@@ -12,16 +12,16 @@ class Menu extends Component {
         return (
             <li
                 className={
-                    menuData.children ? 'menu-item-has-children has-mega-menu' : ''
+                    menuData.children
+                        ? 'menu-item-has-children has-mega-menu'
+                        : ''
                 }>
                 <div className="mega-menu">
                     <div className="mega-menu__column">
                         <ul className="mega-menu__list">
-                            {menuData.children.map((megaSubItem) => (
-                                <li key={megaSubItem.title}>
-                                    <Link
-                                        href={megaSubItem.link}
-                                        as={megaSubItem.link}>
+                            {menuData.children.map((megaSubItem, index) => (
+                                <li key={index}>
+                                    <Link href={megaSubItem.link}>
                                         <a>{megaSubItem.title}</a>
                                     </Link>
                                 </li>

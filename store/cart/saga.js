@@ -1,6 +1,5 @@
 import { all, put, takeEvery } from 'redux-saga/effects';
 import { notification } from 'antd';
-import { Router } from 'next/router';
 
 import {
     actionTypes,
@@ -9,6 +8,7 @@ import {
     updateCartSuccess,
     updateCartError,
 } from './action';
+import { updateBuyNowSuccess } from '../buynow/action';
 
 const modalSuccess = (type) => {
     notification[type]({
@@ -90,6 +90,18 @@ function* addItemSaga(payload) {
 
         const localCart = JSON.parse(localStorage.getItem('persist:martfury'))
             .cart;
+
+        let buynowcart = JSON.parse(
+            JSON.parse(localStorage.getItem('persist:martfury')).buynow
+        );
+        buynowcart.cartItems = [];
+        buynowcart.amount = 0;
+        buynowcart.shippingCharges = 0;
+        buynowcart.gst = 0;
+        buynowcart.giftWrapCharges = 0;
+        buynowcart.cartTotal = 0;
+        yield put(updateBuyNowSuccess(buynowcart));
+        
         let currentCart = JSON.parse(localCart);
         let existItem = currentCart.cartItems.find(
             (item) => item.id === product.id
@@ -148,7 +160,9 @@ function* removeItemSaga(payload) {
         localCart.amount = calculateAmount(localCart.cartItems);
         localCart.shippingCharges = countShippingCharges(localCart.cartItems);
         localCart.gst = calculateGST(localCart.cartItems);
-        localCart.giftWrapCharges = calculateGiftWrapCharges(localCart.cartItems);
+        localCart.giftWrapCharges = calculateGiftWrapCharges(
+            localCart.cartItems
+        );
         if (localCart.cartItems.length === 0) {
             localCart.cartItems = [];
             localCart.amount = 0;
@@ -179,9 +193,9 @@ function* increaseQtySaga(payload) {
                 let giftWrapCharges =
                     parseFloat(selectedItem.gift_wrap_price) *
                     parseFloat(selectedItem.quantity);
-                    selectedItem.giftWrapCharges = parseFloat(giftWrapCharges).toFixed(
-                    2
-                );
+                selectedItem.giftWrapCharges = parseFloat(
+                    giftWrapCharges
+                ).toFixed(2);
             }
             localCart.cartTotal++;
             localCart.amount = calculateAmount(localCart.cartItems);
@@ -189,7 +203,9 @@ function* increaseQtySaga(payload) {
                 localCart.cartItems
             );
             localCart.gst = calculateGST(localCart.cartItems);
-            localCart.giftWrapCharges = calculateGiftWrapCharges(localCart.cartItems);
+            localCart.giftWrapCharges = calculateGiftWrapCharges(
+                localCart.cartItems
+            );
         }
         yield put(updateCartSuccess(localCart));
     } catch (err) {
@@ -207,9 +223,11 @@ function* giftWrapSelectedSaga(payload) {
             (item) => item.id === product.id
         );
         if (selectedItem) {
-            console.log(selectedItem);
-            selectedItem.giftWrapSelected =  !selectedItem.giftWrapSelected;
-            localCart.giftWrapCharges = calculateGiftWrapCharges(localCart.cartItems);
+            // console.log(selectedItem);
+            selectedItem.giftWrapSelected = !selectedItem.giftWrapSelected;
+            localCart.giftWrapCharges = calculateGiftWrapCharges(
+                localCart.cartItems
+            );
         }
         yield put(updateCartSuccess(localCart));
     } catch (err) {
@@ -235,7 +253,9 @@ function* decreaseItemQtySaga(payload) {
                 localCart.cartItems
             );
             localCart.gst = calculateGST(localCart.cartItems);
-            localCart.giftWrapCharges = calculateGiftWrapCharges(localCart.cartItems);
+            localCart.giftWrapCharges = calculateGiftWrapCharges(
+                localCart.cartItems
+            );
         }
         yield put(updateCartSuccess(localCart));
     } catch (err) {
@@ -262,5 +282,7 @@ export default function* rootSaga() {
     yield all([takeEvery(actionTypes.REMOVE_ITEM, removeItemSaga)]);
     yield all([takeEvery(actionTypes.INCREASE_QTY, increaseQtySaga)]);
     yield all([takeEvery(actionTypes.DECREASE_QTY, decreaseItemQtySaga)]);
-    yield all([takeEvery(actionTypes.GIFT_WRAP_SELECTED, giftWrapSelectedSaga)]);
+    yield all([
+        takeEvery(actionTypes.GIFT_WRAP_SELECTED, giftWrapSelectedSaga),
+    ]);
 }

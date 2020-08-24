@@ -662,4 +662,9 @@
             align-items: center;
         }
     }
+    label {
+        @include media('<md') {
+            display: none;
+        }
+    }
 }

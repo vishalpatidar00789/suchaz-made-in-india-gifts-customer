@@ -3,6 +3,8 @@ import post from './post/reducer';
 import product from './product/reducer';
 import setting from './setting/reducer';
 import cart from './cart/reducer';
+import buynow from './buynow/reducer';
+import customization from './customization/reducer';
 import compare from './compare/reducer';
 import auth from './auth/reducer';
 import wishlist from './wishlist/reducer';
@@ -15,6 +17,8 @@ export default combineReducers({
     product,
     setting,
     cart,
+    buynow,
+    customization,
     compare,
     wishlist,
     collection,

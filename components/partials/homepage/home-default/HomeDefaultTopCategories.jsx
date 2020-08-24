@@ -1,88 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Link from 'next/link';
+import Router from 'next/router';
 
-const HomeDefaultTopCategories = () => (
-    <div className="ps-top-categories">
-        <div className="ps-container">
-            <h3>Top categories of the month</h3>
-            <div className="row">
-                {/* <div className="panel-item" data-url="/rakhi" data-selectioncode="ra-day">
-                <a href="/rakhi">
-                <div className="panel-image">
-                     <img src="https://cdn.igp.com/f_auto,q_auto/banners/rakhi-igp-20200529.jpg" data-original="https://cdn.igp.com/f_auto,q_auto/banners/rakhi-igp-20200529.jpg" alt="Father's day Gifts" className="img-responsive lazy">
-                </div>
-                <div className="panel-info">
-                <p class="panel-info-text">Rakhi</p>
-                </div>
-                </a>
-                </div> */}
-                 
-                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
-                    <div className="ps-block--category">
-                        <Link href="/shop">
-                            <a className="ps-block__overlay"></a>
-                        </Link>
-                        <img src="/static/img/categories/2.jpg" alt="MadeInIndiaGifts.in" />
-                        <p>Clothings</p>
-                    </div>
-                </div>
-                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
-                    <div className="ps-block--category">
-                        <Link href="/shop">
-                            <a className="ps-block__overlay"></a>
-                        </Link>
-                        <img src="/static/img/categories/3.jpg" alt="MadeInIndiaGifts.in" />
-                        <p>Computers</p>
-                    </div>
-                </div>
-                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
-                    <div className="ps-block--category">
-                        <Link href="/shop">
-                            <a className="ps-block__overlay"></a>
-                        </Link>
-                        <img src="/static/img/categories/4.jpg" alt="MadeInIndiaGifts.in" />
-                        <p>Home & Kitchen</p>
-                    </div>
-                </div>
-                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
-                    <div className="ps-block--category">
-                        <Link href="/shop">
-                            <a className="ps-block__overlay"></a>
-                        </Link>
-                        <img src="/static/img/categories/5.jpg" alt="MadeInIndiaGifts.in" />
-                        <p>Health & Beauty</p>
-                    </div>
-                </div>
-                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
-                    <div className="ps-block--category">
-                        <Link href="/shop">
-                            <a className="ps-block__overlay"></a>
-                        </Link>
-                        <img src="/static/img/categories/6.jpg" alt="MadeInIndiaGifts.in" />
-                        <p>Health & Beauty</p>
-                    </div>
-                </div>
-                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
-                    <div className="ps-block--category">
-                        <Link href="/shop">
-                            <a className="ps-block__overlay"></a>
-                        </Link>
-                        <img src="/static/img/categories/7.jpg" alt="MadeInIndiaGifts.in" />
-                        <p>Jewelry & Watch</p>
-                    </div>
-                </div>
-                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
-                    <div className="ps-block--category">
-                        <Link href="/shop">
-                            <a className="ps-block__overlay"></a>
-                        </Link>
-                        <img src="/static/img/categories/8.jpg" alt="MadeInIndiaGifts.in" />
-                        <p>Technology Toys</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-);
+class HomeDefaultTopCategories extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-export default HomeDefaultTopCategories;
+    handleChangeProduct(e, id, slug) {
+        e.preventDefault();
+        Router.push({
+            pathname: '/gifts',
+            query: {
+                id: id,
+                name: slug,
+                by: 'Category',
+            },
+        });
+    }
+    render() {
+        const { menuData } = this.props;
+        const category = menuData.menuList;
+
+        return (
+            <React.Fragment>
+                {category &&
+                    category.map((item, index) => (
+                        <div key={index} className="ps-product-list ps-top-categories">
+                            <div className="ps-container">
+                                <div className="ps-section__header">
+                                    <div className="ps-block--countdown-deal">
+                                        <div className="ps-block__left">
+                                            <h3>{item.title}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="ps-section__content">
+                                    <div className="row">
+                                        {item &&
+                                            item.children.map(
+                                                (child, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
+                                                        <div className="ps-block--category">
+                                                            <Link
+                                                                href={
+                                                                    child.link
+                                                                }
+                                                                as={child.link}>
+                                                                <a className="ps-block__overlay"></a>
+                                                            </Link>
+                                                            <img
+                                                                height="150"
+                                                                src={child.icon}
+                                                                alt="icon"
+                                                            />
+                                                            <p>{child.title}</p>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+            </React.Fragment>
+        );
+    }
+}
+
+export default connect((state) => state.collection)(HomeDefaultTopCategories);

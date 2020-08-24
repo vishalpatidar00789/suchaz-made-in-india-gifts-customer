@@ -3,22 +3,13 @@ import { connect } from 'react-redux';
 import HeaderDefault from '../components/shared/headers/HeaderDefault';
 import FooterFullwidth from '../components/shared/footers/FooterFullwidth';
 import HomeBanner from '../components/partials/homepage/home-default/HomeBanner';
-import SiteFeatures from '../components/partials/homepage/home-default/SiteFeatures';
-import HomeAdsColumns from '../components/partials/homepage/home-default/HomeAdsColumns';
 import ConumerElectronics from '../components/partials/homepage/home-default/ConumerElectronics';
-import Clothings from '../components/partials/homepage/home-default/Clothings';
-import GardenAndKitchen from '../components/partials/homepage/home-default/GardenAndKitchen';
-import HomeAds from '../components/partials/homepage/home-default/HomeAds';
-import DownLoadApp from '../components/partials/commons/DownLoadApp';
-import NewArrivals from '../components/partials/homepage/home-default/NewArrivals';
-import Newletters from '../components/partials/commons/Newletters';
 import HeaderMobile from '../components/shared/headers/HeaderMobile';
 import NavigationList from '../components/shared/navigation/NavigationList';
 import HomeDefaultDealOfDay from '../components/partials/homepage/home-default/HomeDefaultDealOfDay';
 import HomeDefaultNewArrival from '../components/partials/homepage/home-default/HomeDefaultNewArrival';
 import HomeDefaultTopCategories from '../components/partials/homepage/home-default/HomeDefaultTopCategories';
-import SubscribePopup from '../components/shared/SubscribePopup';
-import { getCollections, getNewArrival, getCategories } from '../store/collection/action';
+import { getCollections, getNewArrival, getCategories, getMenus } from '../store/collection/action';
 
 class Index extends Component {
     constructor(props) {
@@ -35,9 +26,6 @@ class Index extends Component {
     componentDidMount() {
         const { query } = this.props;
         if (query) {
-            // const collectionsSlug = [
-            //     'deal_of_the_day'
-            // ];
             this.props.dispatch(getCollections('deal_of_the_day'));
             this.props.dispatch(getNewArrival('new_arrivals'));
             this.props.dispatch(getCategories('get_categories'));
@@ -54,26 +42,15 @@ class Index extends Component {
                 <HeaderDefault />
                 <HeaderMobile />
                 <NavigationList />
-                <SubscribePopup active={subscribe} />
                 <main id="homepage-1">
                     <HomeBanner />
-                    {/* <SiteFeatures /> */}
-                     <HomeDefaultNewArrival collectionSlug="new_arrival" />
-                     
-                   
-                    {/* <HomeDefaultTopCategories /> */}
-                     <HomeAdsColumns />
-                    <ConumerElectronics />
-                    {/* <Clothings collectionSlug="clothings" />
-                    <GardenAndKitchen collectionSlug="garden_and_kitchen" /> */}
+                    <HomeDefaultNewArrival collectionSlug="new_arrival" />
                     <HomeDefaultDealOfDay collectionSlug="deal_of_the_day" />
-                    {/* <HomeAds /> */}
-                   {/* <DownLoadApp />   */}
-                    {/* <NewArrivals collectionSlug="new_arrivals_products" /> */}
-                    {/* <Newletters /> */}
+                    <ConumerElectronics />
+                    <HomeDefaultTopCategories />
                 </main>
+                <button className="add-button" style={{position: 'absolute', top: 1, left: 1, display: 'none'}}>Add to home screen</button>
                 <FooterFullwidth />
-                {/* <button className="add-button">Add to home screen</button> */}
             </div>
         );
     }

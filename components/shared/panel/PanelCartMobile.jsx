@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCart, removeItem } from '../../../store/cart/action';
 import Link from 'next/link';
-import { Router } from 'next/router';
+import Router from 'next/router';
 import { isStaticData } from '../../../utilities/app-settings';
 import { baseUrl } from '../../../repositories/Repository';
 
@@ -13,10 +13,23 @@ class PanelCartMobile extends Component {
 
     componentDidMount() {
         this.props.dispatch(getCart());
+
+        const { cartItems } = this.props;
+        setTimeout(() => {
+            if (cartItems.length === 0) {
+                Router.push('/');
+            }
+        }, 200);
     }
 
     handleRemoveCartItem = (product) => {
         this.props.dispatch(removeItem(product));
+        const { cartItems } = this.props;
+        setTimeout(() => {
+            if (cartItems.length === 0) {
+                Router.push('/');
+            }
+        }, 200);
     };
 
     render() {

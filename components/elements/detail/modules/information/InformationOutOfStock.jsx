@@ -14,8 +14,8 @@ class InformationOnSale extends Component {
                         Brand:<a href="shop-default.html">Sony</a>
                     </p>
                     <div className="ps-product__rating">
-                        <Rating />
-                        <span>(1 review)</span>
+                        {/* <Rating />
+                        <span>(1 review)</span> */}
                     </div>
                 </div>
                 <h4 className="ps-product__price">$92.33</h4>

@@ -1,6 +1,6 @@
 import { all, put, call, takeEvery } from 'redux-saga/effects';
 import { polyfill } from 'es6-promise';
-import { actionTypes, getCategoriesSuccess, getCollectionsSuccess, getNewArrival, getNewArrivalSuccess } from './action';
+import { actionTypes, getCategoriesSuccess, getCollectionsSuccess, getNewArrival, getNewArrivalSuccess, getMenus, getMenusSuccess } from './action';
 import { isStaticData } from '../../utilities/app-settings';
 import CollectionRepository from '../../repositories/CollectionRepository';
 import SuchazCollectionRepository from '../../repositories/SuchazCollectionRepository';
@@ -23,7 +23,30 @@ function* getCollections({ payload }) {
             yield put(getCollectionsSuccess(data));
         }
     } catch (err) {
-        console.log(err);
+       // console.log(err);
+    }
+}
+
+function* getMenuData({ payload }) {
+    try {
+        if (isStaticData === false) {
+            const data = yield call(
+                SuchazCollectionRepository.getMenus,
+                payload
+            );
+            if (data && data.status == true){
+                yield put(getMenusSuccess(data.data));
+            }
+          
+        } else {
+            const data = yield call(
+                StaticCollectionRepository.getMenus,
+                payload
+            );
+            yield put(getMenusSuccess(data));
+        }
+    } catch (err) {
+       // console.log(err);
     }
 }
 
@@ -43,7 +66,7 @@ function* getNewArrivals({ payload }) {
             yield put(getCollectionsSuccess(data));
         }
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 function* getCollectionByCategories({ payload }) {
@@ -62,12 +85,13 @@ function* getCollectionByCategories({ payload }) {
             yield put(getCollectionsSuccess(data));
         }
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.GET_COLLECTIONS, getCollections)]);
+    yield all([takeEvery(actionTypes.GET_MENUS, getMenuData)]);
     yield all([takeEvery(actionTypes.GET_NEWARRIVALS, getNewArrivals)]);
     yield all([takeEvery(actionTypes.GET_CATEGORIES, getCollectionByCategories)]);
 }

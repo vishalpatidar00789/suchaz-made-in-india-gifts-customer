@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
+import Head from 'next/head';
 import FooterDefault from '../../components/shared/footers/FooterDefault';
 import Newletters from '../../components/partials/commons/Newletters';
 import CustomerBought from '../../components/partials/product/CustomerBought';
@@ -11,7 +12,7 @@ import BreadCrumb from '../../components/elements/BreadCrumb';
 import HeaderMobileProduct from '../../components/shared/header-mobile/HeaderMobileProduct';
 import { getProductsById } from '../../store/product/action';
 import HeaderProduct from '../../components/shared/headers/HeaderProduct';
-import { getCollections } from '../../store/collection/action';
+import { getCollections, getMenus } from '../../store/collection/action';
 import RelatedProduct from '../../components/partials/product/RelatedProduct';
 
 class ProductDefaultPage extends React.Component {
@@ -35,6 +36,7 @@ class ProductDefaultPage extends React.Component {
                 'shop-recommend-items',
                 'widget_same_brand',
             ];
+            this.props.dispatch(getMenus(pid));
             this.props.dispatch(getProductsById(pid));
             this.props.dispatch(getCollections(collectionsParams));
         }
@@ -55,7 +57,6 @@ class ProductDefaultPage extends React.Component {
             },
             {
                 text: 'Gift',
-                
             },
             {
                 text: singleProduct ? singleProduct.title : '',
@@ -63,26 +64,61 @@ class ProductDefaultPage extends React.Component {
         ];
 
         return (
-            <div className="layout--product">
-                {singleProduct ? (
-                    <HeaderProduct productData={singleProduct} />
-                ) : (
-                    ''
-                )}
-                <HeaderMobileProduct />
-                <NavigationList />
-                <BreadCrumb breacrumb={breadCrumb} layout="fullwidth" />
-                <div className="ps-page--product">
-                    <div className="ps-container">
-                        <div className="ps-page__container">
-                            <div className="ps-page__left">
+            <div>
+                <div>
+                    {singleProduct ? (
+                        <Head>
+                            <title>{singleProduct.title}</title>
+                            <meta
+                                name="twitter:title"
+                                content={singleProduct.title}
+                            />
+                            <meta
+                                name="twitter:description"
+                                content={singleProduct.description}
+                            />
+                            <meta
+                                property="og:title"
+                                content={singleProduct.title}
+                            />
+                            <meta
+                                property="og:description"
+                                content={singleProduct.description}
+                            />
+                            <meta
+                                name="keywords"
+                                content={singleProduct.title}
+                            />
+                            <meta
+                                name="description"
+                                content={singleProduct.description}
+                            />
+                        </Head>
+                    ) : (
+                        ''
+                    )}
+                </div>
+                <div className="layout--product">
+                    {singleProduct ? (
+                        <HeaderProduct productData={singleProduct} />
+                    ) : (
+                        ''
+                    )}
+                    <HeaderMobileProduct />
+                    <NavigationList />
+                    <BreadCrumb breacrumb={breadCrumb} layout="fullwidth" />
+                    <div className="ps-page--product">
+                        <div className="ps-container">
+                            <div className="ps-page__container">
                                 <ProductDetailFullwidth />
-                            </div>
-                            <div className="ps-page__right">
+                                {/* <div className="ps-page__left">
+                                <ProductDetailFullwidth />
+                            </div> */}
+                                {/* <div className="ps-page__right">
                                 <ProductWidgets collectionSlug="widget_same_brand" />
+                            </div> */}
                             </div>
-                        </div>
-                        {/* <CustomerBought
+                            {/* <CustomerBought
                             layout="fullwidth"
                             collectionSlug="customer_bought"
                         />
@@ -90,10 +126,11 @@ class ProductDefaultPage extends React.Component {
                             layout="fullwidth"
                             collectionSlug="shop-recommend-items"
                         /> */}
+                        </div>
                     </div>
+                    {/* <Newletters /> */}
+                    <FooterDefault />
                 </div>
-                {/* <Newletters /> */}
-                <FooterDefault />
             </div>
         );
     }

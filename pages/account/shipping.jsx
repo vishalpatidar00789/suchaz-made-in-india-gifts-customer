@@ -22,7 +22,7 @@ const ShippingPage = () => {
             url: '/account/checkout',
         },
         {
-            text: 'Shipping',
+            text: 'Shipping Information',
         },
     ];
     return (

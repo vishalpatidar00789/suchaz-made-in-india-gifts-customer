@@ -97,7 +97,7 @@ class SuchazProductRepository {
         formData.append('lastUpdatedBy', '5f04c9ebe076ff31968e7b01');
 
         const reponse = await axios
-            .post('https://www.suchaz.com/apiv2/order/placeorder', formData)
+            .post(`${process.env.API_URL}/order/placeorder`, formData)
             .then((res) => {
                 return res.data.data;
             })

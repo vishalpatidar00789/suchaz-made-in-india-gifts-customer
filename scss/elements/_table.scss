@@ -252,6 +252,71 @@
     }
 }
 
+.ps-table--shopping-cart-1 {
+    thead {
+        tr {
+            th {
+                padding: 10px;
+                text-transform: uppercase;
+                color: $color-heading;
+                text-align: left;
+                font-weight: 600;
+                background-color: #f2f2f2;
+                border: none;
+
+                &:first-child {
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                padding: 20px 10px;
+                vertical-align: middle;
+                font-size: 16px;
+
+                .form-group--number {
+                    max-width: 100px;
+                    display: inline-block;
+
+                    input {
+                        border-radius: 0;
+                    }
+                }
+
+                .ps-product--cart {
+                    max-width: 500px;
+                }
+
+                &:last-child {
+                    text-align: right;
+
+                    a {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include media('<md') {
+        display: none !important;
+    }
+}
+
+.shopping-cart-mobile {
+   display: none;
+
+    @include media('<md') {
+        display: block !important;
+    }
+}
+
+
+
 .ps-table--product-groupped {
     .ps-tag--out-stock {
         color: red;

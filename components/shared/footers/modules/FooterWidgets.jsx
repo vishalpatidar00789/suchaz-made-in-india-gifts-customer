@@ -9,7 +9,7 @@ const FooterWidgets = () => (
                 {/* <p>Call us 24/7</p>
                 <h3>1800 97 97 69</h3> */}
                 <p>
-                   Email : <a href="mailto:contactus@madeinindiagifts.in">contactus@madeinindiagifts.in</a>
+                   Email : <a href="mailto:neelesh@madeinindiagifts.in">neelesh@madeinindiagifts.in </a>
                 </p>
                 {/* <ul className="ps-list--social">
                     <li>
@@ -39,35 +39,41 @@ const FooterWidgets = () => (
             <h4 className="widget-title">Quick links</h4>
             <ul className="ps-list--link">
                 <li>
-                    <Link href="/page/blank">
-                        <a>Policy</a>
+                    <Link href="/page/privacy-policy">
+                        <a>Privacy Policy</a>
                     </Link>
                 </li>
                 <li>
-                    <Link href="/page/blank">
-                        <a>Term & Condition</a>
+                    <Link href="/page/terms-and-conditions">
+                        <a>Terms & Conditions</a>
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link href="/page/blank">
                         <a>Seller Term & Condition</a>
                     </Link>
-                </li>
+                </li> */}
                 <li>
-                    <Link href="/page/blank">
-                        <a>Shipping</a>
+                    <Link href="/page/disclaimer">
+                        <a>Disclaimer</a>
                     </Link>
                 </li>
                 <li>
-                    <Link href="/page/blank">
-                        <a>Return</a>
+                    <Link href="/page/payments-and-logistics">
+                        <a>Payments & Logistics</a>
                     </Link>
                 </li>
+                
                 <li>
+                    <Link href="/page/returns-policy">
+                        <a>Refund,Return & Cancellation Policy</a>
+                    </Link>
+                </li>
+                {/* <li>
                     <Link href="/page/faqs">
                         <a>FAQs</a>
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </aside>
         <aside className="widget widget_footer">
@@ -75,7 +81,7 @@ const FooterWidgets = () => (
             <ul className="ps-list--link">
                 <li>
                     <Link href="/page/about-us">
-                        <a>About Us</a>
+                        <a>Our story</a>
                     </Link>
                 </li>
                 {/* <li>
@@ -93,11 +99,11 @@ const FooterWidgets = () => (
                         <a>Contact Us</a>
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link href="/page/contact-us">
                         <a>Blog</a>
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </aside>
         <aside className="widget widget_footer">
@@ -108,7 +114,7 @@ const FooterWidgets = () => (
                         <a>Become a Seller</a>
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link href="/page/about-us">
                         <a>Our Press</a>
                     </Link>
@@ -127,7 +133,7 @@ const FooterWidgets = () => (
                     <Link href="/account/user-information">
                         <a>Become a Reviewer</a>
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </aside>
     </div>

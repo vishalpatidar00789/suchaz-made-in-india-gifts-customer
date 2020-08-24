@@ -10,15 +10,7 @@ import DefaultLayout from '../components/layouts/DefaultLayout';
 
 import '../scss/style.scss';
 import '../scss/home-default.scss';
-import '../scss/autopart.scss';
-import '../scss/electronic.scss';
-import '../scss/furniture.scss';
-import '../scss/market-place-1.scss';
-import '../scss/market-place-2.scss';
-import '../scss/market-place-3.scss';
-import '../scss/market-place-4.scss';
-import '../scss/organic.scss';
-import '../scss/technology.scss';
+
 
 class MyApp extends App {
     constructor(props) {
@@ -26,17 +18,37 @@ class MyApp extends App {
         this.persistor = persistStore(props.store);
     }
 
+    static async getInitialProps({ Component, ctx }) {
+        let pageProps = {}
+    
+        if (Component.getInitialProps) {
+          pageProps = await Component.getInitialProps(ctx);
+        }
+    
+        return { pageProps };
+      }
+
+    _isMounted = false;
+
     componentDidMount() {
-        setTimeout(function() {
+        this._isMounted = true;
+        setTimeout(function () {
             document.getElementById('__next').classList.add('loaded');
         }, 100);
-
-        this.setState({ open: true });
+        if (this._isMounted) {
+            this.setState({ open: true });
+        }
     }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+    
     render() {
         const { Component, pageProps, store } = this.props;
         const getLayout =
-            Component.getLayout || (page => <DefaultLayout children={page} />);
+            Component.getLayout ||
+            ((page) => <DefaultLayout children={page} />);
         return getLayout(
             <Provider store={store}>
                 <PersistGate

@@ -75,7 +75,7 @@ class Product extends Component {
         return (
             <div className="ps-product">
                 <div className="ps-product__thumbnail">
-                    <Link href="/product/[pid]" as={`/product/${product.id}`}>
+                    <Link href="/product/[pid]" as={`/product/${product.slug}`}>
                         <a>
                             <LazyLoad>
                                 <img
@@ -134,7 +134,7 @@ class Product extends Component {
                     </ul>
                 </div>
                 <div className="ps-product__container">
-                    <Link href="/gift">
+                    <Link href="/gifts">
                         <a className="ps-product__vendor">Young Shop</a>
                     </Link>
                     <div className="ps-product__content">

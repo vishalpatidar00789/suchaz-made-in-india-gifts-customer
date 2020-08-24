@@ -18,7 +18,10 @@ const Menu = (props) => {
                                     ? 'menu-item-has-children has-mega-menu'
                                     : ''
                             }>
-                            <a href={item.link}>{item.title}</a>
+                            <Link href={item.link} as={item.link}>
+                                <a>{item.title}</a>
+                            </Link>
+
                             <div className="mega-menu">
                                 <div className="mega-menu__column">
                                     <ul className="mega-menu__list">
@@ -26,9 +29,9 @@ const Menu = (props) => {
                                             item.children.map((item, index) => {
                                                 return (
                                                     <li key={index}>
-                                                        <a href={item.link} as={item.link}>
-                                                           {item.title}
-                                                        </a>
+                                                        <Link href={item.link} as={item.link}>
+                                                            <a>{item.title}</a>
+                                                        </Link>
                                                     </li>
                                                 );
                                             })}

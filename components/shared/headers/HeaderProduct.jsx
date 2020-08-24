@@ -20,7 +20,7 @@ class HeaderProduct extends Component {
 
     componentDidMount() {
         if (process.browser) {
-          // window.addEventListener('scroll', stickyHeader);
+          window.addEventListener('scroll', stickyHeader);
         }
     }
 
@@ -57,11 +57,11 @@ class HeaderProduct extends Component {
             <header
                 className="header header--1 header--product"
                 // data-sticky="true"
-                id="headerSticky">
+                id="headerSticky1">
                 <div className="header__top">
                     <div className="ps-container">
                         <div className="header__left">
-                            <div
+                            {/* <div
                                 className="menu--product-categories"
                                 style={{ display: 'block' }}>
                                 <div
@@ -74,7 +74,7 @@ class HeaderProduct extends Component {
                                 <div className="menu__content">
                                     <MenuCategories />
                                 </div>
-                            </div>
+                            </div> */}
                             <Link href="/">
                                 <a className="ps-logo">
                                     <img
@@ -92,11 +92,11 @@ class HeaderProduct extends Component {
                                         />
                                     </Link>
                                 </span>
-                                <div className="menu__content">
+                                {/* <div className="menu__content">
                                     <MenuCategories />
-                                </div>
+                                </div> */}
                             </div>
-                            {/* <div className="menu--product-categories">
+                            <div className="menu--product-categories">
                                 <div className="menu__toggle">
                                     <i className="icon-menu"></i>
                                     <span> 
@@ -111,16 +111,17 @@ class HeaderProduct extends Component {
                                 <div className="menu__content">
                                     <MenuCategories />
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                         <div className="header__center">
-                            <SearchHeader />
+                            {/* <SearchHeader /> */}
                         </div>
                         <div className="header__right">
                             <HeaderActions />
                         </div>
                     </div>
                 </div>
+                <NavigationDefault />
                 <nav className="navigation navigation--product" style={{display: 'none'}}>
                     <div className="container">
                         <article className="ps-product--header-sticky">

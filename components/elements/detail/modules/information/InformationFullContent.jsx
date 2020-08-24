@@ -23,8 +23,8 @@ class InformationFullContent extends Component {
                         </Link>
                     </p>
                     <div className="ps-product__rating">
-                        <Rating />
-                        <span>(1 review)</span>
+                        {/* <Rating />
+                        <span>(1 review)</span> */}
                     </div>
                 </div>
                 <div className="ps-product__desc">

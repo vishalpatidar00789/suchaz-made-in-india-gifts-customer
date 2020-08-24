@@ -8,17 +8,18 @@ import ProductDetailQuickView from '../detail/ProductDetailQuickView';
 import Rating from '../Rating';
 import { baseUrl } from '../../../repositories/Repository';
 import { formatCurrency } from '../../../utilities/product-helper';
-import { addItem } from '../../../store/cart/action';
+import { addItem, updateCartSuccess } from '../../../store/cart/action';
 import { addItemToCompare } from '../../../store/compare/action';
 import { addItemToWishlist } from '../../../store/wishlist/action';
 import { isStaticData } from '../../../utilities/app-settings';
+import { addBuyNowItem } from '../../../store/buynow/action';
 
 class Product extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isQuickView: false,
-            quantity: 1,
+            quantity: 1
         };
     }
 
@@ -35,7 +36,7 @@ class Product extends Component {
         const { product } = this.props;
         let tempProduct = product;
         tempProduct.quantity = this.state.quantity;
-        this.props.dispatch(addItem(product));
+        this.props.dispatch(addBuyNowItem(product));
         Router.push('/account/checkout');
     };
 
@@ -90,7 +91,7 @@ class Product extends Component {
         return (
             <div className="ps-product ps-product--inner">
                 <div className="ps-product__thumbnail">
-                    <Link href="/product/[pid]" as={`/product/${product.id}`}>
+                    <Link href="/product/[pid]" as={`/product/${product.slug}`}>
                         <a>
                             <LazyLoad>
                                 <img
@@ -154,11 +155,11 @@ class Product extends Component {
                 </div>
                 <div className="ps-product__container">
                     {/* <Link href="/gift"> */}
-                        <a className="ps-product__vendor">
-                            {product.vendor?.shop_name
-                                ? product.vendor.shop_name
-                                : '\u00A0'}
-                        </a>
+                    <a className="ps-product__vendor">
+                        {product.vendor?.shop_name
+                            ? product.vendor.shop_name
+                            : '\u00A0'}
+                    </a>
                     {/* </Link> */}
                     <div className="ps-product__content">
                         {/* <p className="ps-product__price sale"> 
@@ -203,15 +204,15 @@ class Product extends Component {
 
                         <Link
                             href="/product/[pid]"
-                            as={`/product/${product.id}`}>
-                            <a className="ps-product__title">
-                                {product.title}
-                            </a>
+                            as={`/product/${product.slug}`}>
+                            <a className="ps-product__title">{product.title}</a>
                         </Link>
 
                         <div className="ps-product__rating">
-                            <Rating />
-                            <span> 0</span>
+                            <Rating rating={product.customerAvgRating} />
+                            <span>
+                                {product.customerAvgRating}
+                            </span>
                         </div>
                         <div className="product-buybtn">
                             {product.quantity > 0 ? (

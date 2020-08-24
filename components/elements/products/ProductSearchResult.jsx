@@ -27,10 +27,10 @@ class ProductResult extends Component {
                     <Link href="/product/[pid]" as={`/product/${product.id}`}>
                         <a className="ps-product__title">{product.title}</a>
                     </Link>
-                    <div className="ps-product__rating">
+                    {/* <div className="ps-product__rating">
                         <Rating />
                         <span>{product.ratingCount}</span>
-                    </div>
+                    </div> */}
                     {product.is_sale === true ? (
                         <p className="ps-product__price sale">
                             {currency ? currency.symbol : '₹'}

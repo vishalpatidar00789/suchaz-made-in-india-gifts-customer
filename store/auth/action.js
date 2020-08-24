@@ -1,4 +1,7 @@
 export const actionTypes = {
+    CONTACT_US_REQUEST: 'CONTACT_US_REQUEST',
+    AUTO_LOGIN_REQUEST: 'AUTO_LOGIN_REQUEST',
+    AUTO_LOGIN_REQUEST_SUCCESS: 'AUTO_LOGIN_REQUEST_SUCCESS',
     LOGIN_REQUEST: 'LOGIN_REQUEST',
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
     LOGIN_ERROR: 'LOGIN_ERROR',
@@ -44,6 +47,14 @@ export function login(payload) {
     return { type: actionTypes.LOGIN_REQUEST, payload };
 }
 
+export function autologin(payload) {
+    return { type: actionTypes.AUTO_LOGIN_REQUEST, payload };
+}
+
+export function autologinSuccess(payload) {
+    return { type: actionTypes.AUTO_LOGIN_REQUEST_SUCCESS, payload };
+}
+
 export function loginSuccess(payload) {
     return { type: actionTypes.LOGIN_SUCCESS, payload };
 }
@@ -62,6 +73,10 @@ export function registerSuccess(payload) {
 
 export function registerVendor(payload) {
     return { type: actionTypes.REGISTER_VENDOR_REQUEST, payload };
+}
+
+export function contactus(payload) {
+    return { type: actionTypes.CONTACT_US_REQUEST, payload };
 }
 
 export function registerVendorSuccess(payload) {

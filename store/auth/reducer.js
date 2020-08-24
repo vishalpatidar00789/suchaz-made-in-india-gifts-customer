@@ -3,6 +3,7 @@ import { actionTypes } from './action';
 export const initState = {
     isLoggedIn: false,
     isRegister: false,
+    emailExist: false,
     authUser: {},
     redirectCheckout: '',
 };
@@ -19,6 +20,11 @@ function reducer(state = initState, action) {
                 ...{ error: action.error },
             };
         case actionTypes.LOGIN_SUCCESS:
+            return {
+                ...state,
+                ...{ isLoggedIn: true, emailExist: true, authUser: action.payload },
+            };
+        case actionTypes.AUTO_LOGIN_REQUEST_SUCCESS:
             return {
                 ...state,
                 ...{ isLoggedIn: true, authUser: action.payload },

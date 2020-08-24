@@ -10,6 +10,7 @@ import axios from 'axios';
 import post from '../../pages/utils';
 import { connect, useDispatch } from 'react-redux';
 import { updateCartSuccess } from '../../store/cart/action';
+import { getMenus } from '../../store/collection/action';
 
 class ThankYou extends Component {
     constructor(props) {
@@ -52,7 +53,7 @@ class ThankYou extends Component {
     
         const reponse = await axios
             .post(
-                'https://suchaz.com/apiv2/admin/order/paytmRetryChecksum',
+                `${process.env.API_URL}/admin/order/paytmRetryChecksum`,
                 { orderId: orderId },
                 {
                     headers: headers,

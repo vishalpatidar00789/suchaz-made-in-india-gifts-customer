@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import Link from 'next/link';
 import Router from 'next/router';
 import Rating from '../../../Rating';
-import { addItem } from '../../../../../store/cart/action';
+import { addItem, updateCartSuccess } from '../../../../../store/cart/action';
 import { addItemToCompare } from '../../../../../store/compare/action';
 import { addItemToWishlist } from '../../../../../store/wishlist/action';
 import {
     formatCurrency,
     sliceTitle,
 } from '../../../../../utilities/product-helper';
+import { addBuyNowItem } from '../../../../../store/buynow/action';
 class InformationDefault extends Component {
     constructor(props) {
         super(props);
@@ -31,7 +32,7 @@ class InformationDefault extends Component {
         const { product } = this.props;
         let tempProduct = product;
         tempProduct.quantity = this.state.quantity;
-        this.props.dispatch(addItem(product));
+        this.props.dispatch(addBuyNowItem(product));
         Router.push('/account/checkout');
     };
 
@@ -77,8 +78,11 @@ class InformationDefault extends Component {
                         </Link>
                     </p> */}
                     <div className="ps-product__rating">
-                        
-                        <Rating />  <span className="pl-2"> (0 review)</span>
+                        <Rating rating={product.customerAvgRating} />
+                        {' '}
+                        <span>
+                        {' '} {product.customerAvgRating}
+                        </span>
                     </div>
                 </div>
                 <h4 className="ps-product__price sale">
@@ -101,7 +105,6 @@ class InformationDefault extends Component {
                     ) : (
                         <small>Best price for you!</small>
                     )}
-    
                 </h4>
                 {/* {product.is_sale === true ? (
                     <h4 className="ps-product__price sale">
@@ -122,13 +125,13 @@ class InformationDefault extends Component {
                     <p>
                         Sold By:
                         {/* <Link href="/gift"> */}
-                            <a>
-                                <strong>
-                                    {product.vendor?.shop_name
-                                        ? ' ' + product.vendor.shop_name
-                                        : '\u00A0'}
-                                </strong>
-                            </a>
+                        <a>
+                            <strong>
+                                {product.vendor?.shop_name
+                                    ? ' ' + product.vendor.shop_name
+                                    : '\u00A0'}
+                            </strong>
+                        </a>
                         {/* </Link> */}
                     </p>
                     <p>{product.description}</p>
@@ -264,7 +267,7 @@ class InformationDefault extends Component {
                         <a
                             className="ps-btn"
                             href="#"
-                            onClick={this.handleAddItemToCart.bind(this)}>
+                            onClick={this.handleBuyNow.bind(this)}>
                             Buy Now
                         </a>
                     </div>

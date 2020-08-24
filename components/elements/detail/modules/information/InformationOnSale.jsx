@@ -60,8 +60,8 @@ class InformationOnSale extends Component {
                         </Link>
                     </p>
                     <div className="ps-product__rating">
-                        <Rating />
-                        <span>(1 review)</span>
+                        {/* <Rating />
+                        <span>(1 review)</span> */}
                     </div>
                 </div>
                 <h4 className="ps-product__price sale">

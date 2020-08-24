@@ -81,7 +81,7 @@ export const carouselFullwidth = {
     infinite: true,
     speed: 750,
     slidesToShow: 7,
-    slidesToScroll: 3,
+    slidesToScroll: 5,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,

@@ -5,11 +5,13 @@ import {
     giftWrapSelected,
     updateCartSuccess,
 } from '../../../store/cart/action';
+import { getBuyNow } from '../../../store/buynow/action';
 import Router from 'next/router';
 import Link from 'next/link';
 import { placeOrder } from '../../../store/order/action';
 import axios from 'axios';
 import post from '../../../pages/utils';
+import { customizationEmpty } from '../../../store/customization/action';
 
 class Shipping extends Component {
     constructor(props) {
@@ -17,11 +19,35 @@ class Shipping extends Component {
     }
 
     componentDidMount() {
+        const { cart, buynow } = this.props;
         this.props.dispatch(getCart());
+        this.props.dispatch(getBuyNow());
+
+        setTimeout(() => {
+            if (cart.cartItems.length === 0 && buynow.cartItems.length === 0) {
+                Router.push('/');
+            }
+        }, 200);
     }
 
     async handlePlaceOrder(auth, cart, shippingAddress) {
-        const { amount, shippingCharges, giftWrapCharges } = cart;
+        cart = this.props.cart;
+        let buynow = this.props.buynow;
+        let customization = this.props.customization;
+        cart = buynow.cartItems.length ? buynow : cart;
+        let amount = cart.amount;
+        let cartTotal = cart.cartTotal;
+        let cartItems = cart.cartItems;
+        let giftWrapCharges = cart.giftWrapCharges;
+        let shippingCharges = cart.shippingCharges;
+        if (buynow.cartItems.length > 0) {
+            amount = buynow.amount;
+            cartTotal = buynow.cartTotal;
+            cartItems = buynow.cartItems;
+            giftWrapCharges = buynow.giftWrapCharges;
+            shippingCharges = buynow.shippingCharges;
+        }
+
         const { authUser } = auth;
         let totalAmount = this.totalCharge(
             amount,
@@ -47,16 +73,25 @@ class Shipping extends Component {
             let gst =
                 parseFloat(totalItemAmount) -
                 parseFloat(totalItemAmount) / parseFloat('1.' + item.gst);
+
+            let customizationUrl = customization.imagesUrl.filter((url) => {
+                return url.productId == item.id;
+            })[0];
             return {
                 productId: item.id,
                 quantity: item.quantity,
                 vendorId: item.vendorId,
                 lineGiftWrapChargesTotal: '0',
                 lineTotal: item.bestPrice,
-                giftWrapCharges: (item.giftWrapSelected) ? item.giftWrapCharges : 0,
+                giftWrapCharges: item.giftWrapSelected
+                    ? item.giftWrapCharges
+                    : 0,
                 giftWrapSelected: item.giftWrapSelected,
                 gst: gst.toFixed(2),
                 shippingCharges: totalItemshippingCharge.toFixed(2),
+                customize_selected: (customizationUrl) ? true : false,
+                customize_text: (customization.text) ? customization.text : '',
+                customize_images: (customizationUrl) ? customizationUrl.urls : []
             };
         });
 
@@ -69,13 +104,41 @@ class Shipping extends Component {
             state: shippingAddress.state,
             pinCode: shippingAddress.postalCode,
         };
+        const authorization_prefix = 'Bearer ';
+        let token = authUser.token ? authUser.token : '';
+
+        if (auth.isLoggedIn === false) {
+            let name =
+                shippingAddress.firstName + ' ' + shippingAddress.lastName;
+            let email = shippingAddress.email;
+            let randomPass = this.generateP();
+
+            const reponse = await axios
+                .post(`${process.env.API_URL}/auth/register`, {
+                    name: name,
+                    email: email,
+                    password: randomPass,
+                })
+                .then((res) => {
+                    return res.data;
+                })
+                .catch((error) => {
+                    return error.response.data;
+                });
+            if (reponse && reponse.status == true) {
+                token = reponse.token;
+            }
+        }
 
         const formData = new FormData();
         formData.append('userEmail', shippingAddress.email);
         formData.append('contact_no', shippingAddress.contact_no);
         formData.append('lineItems[]', JSON.stringify(products));
         formData.append('shippingAddress', JSON.stringify(shipAdd));
-        formData.append('giftWrapChargesTotal', parseFloat(giftWrapCharges).toFixed(2));
+        formData.append(
+            'giftWrapChargesTotal',
+            parseFloat(giftWrapCharges).toFixed(2)
+        );
         formData.append('subTotal', cart.amount);
         formData.append('shippingCharges', cart.shippingCharges);
         formData.append('giftWrapCharges', cart.giftWrapCharges);
@@ -86,17 +149,14 @@ class Shipping extends Component {
         formData.append('createdBy', '5f04c9ebe076ff31968e7b01');
         formData.append('lastUpdatedBy', '5f04c9ebe076ff31968e7b01');
 
-        const authorization_prefix = 'Bearer ';
-        const token = authUser.token;
-
         const headers = {
             Authorization: authorization_prefix + token,
         };
 
-        console.log(formData);
+        // console.log(formData);
 
         const reponse = await axios
-            .post('https://suchaz.com/apiv2/order/placeorder', formData, {
+            .post(`${process.env.API_URL}/order/placeorder`, formData, {
                 headers: headers,
             })
             .then((res) => {
@@ -105,13 +165,29 @@ class Shipping extends Component {
             .catch((error) => ({ error: JSON.stringify(error) }));
 
         if (reponse.status == true) {
+            this.props.dispatch(customizationEmpty());
             const processParam = reponse.data;
             let details = {
-                action: 'https://securegw-stage.paytm.in/order/process',
+                action: `https://securegw-stage.paytm.in/order/process`,
                 params: processParam,
             };
             post(details);
         }
+    }
+
+    generateP() {
+        var pass = '';
+        var str =
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+            'abcdefghijklmnopqrstuvwxyz0123456789@#$';
+        let i;
+        for (i = 1; i <= 8; i++) {
+            var char = Math.floor(Math.random() * str.length + 1);
+
+            pass += str.charAt(char);
+        }
+
+        return pass;
     }
 
     totalShippingCharge(cartItems) {
@@ -141,20 +217,27 @@ class Shipping extends Component {
     }
 
     render() {
-        const { auth, cart, shippingAddress } = this.props;
-        const {
-            amount,
-            cartItems,
-            shippingCharges,
-            gst,
-            giftWrapCharges,
-        } = cart;
+        const { auth, cart, buynow, shippingAddress } = this.props;
+        let amount = cart.amount;
+        let cartTotal = cart.cartTotal;
+        let cartItems = cart.cartItems;
+        let giftWrapCharges = cart.giftWrapCharges;
+        let shippingCharges = cart.shippingCharges;
+        let gst = cart.gst;
+        if (buynow.cartItems.length > 0) {
+            amount = buynow.amount;
+            cartTotal = buynow.cartTotal;
+            cartItems = buynow.cartItems;
+            giftWrapCharges = buynow.giftWrapCharges;
+            shippingCharges = buynow.shippingCharges;
+            gst = buynow.gst;
+        }
         return (
             <div className="ps-checkout ps-section--shopping">
                 <div className="container">
-                    <div className="ps-section__header">
+                    {/* <div className="ps-section__header">
                         <h1>Shipping Information</h1>
-                    </div>
+                    </div> */}
                     <div className="ps-section__content">
                         <div className="row">
                             <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12">
@@ -214,7 +297,7 @@ class Shipping extends Component {
                                                 </a>
                                             </Link>
                                         </div>
-                                        <div className="pr-0 pb-10 col-xl-6 col-lg-6 col-md-6 col-sm-12 text-right">
+                                        <div className="pr-0 pt-20 pb-20 col-xl-6 col-lg-6 col-md-6 col-sm-12 text-right">
                                             <a
                                                 onClick={this.handlePlaceOrder.bind(
                                                     this,
@@ -249,7 +332,7 @@ class Shipping extends Component {
                                                 {cartItems &&
                                                     cartItems.map((product) => (
                                                         <React.Fragment
-                                                            key={product.id}>
+                                                            key={product.slug}>
                                                             <Link href="/">
                                                                 <a>
                                                                     <strong>
@@ -393,7 +476,9 @@ const mapStateToProps = (state) => {
     return {
         auth: state.auth,
         cart: state.cart,
+        buynow: state.buynow,
         shippingAddress: state.shippingAddress.address,
+        customization: state.customization,
     };
 };
 export default connect(mapStateToProps)(Shipping);

@@ -28,11 +28,11 @@ const ContactUsPage = () => {
             <NavigationList />
             <div className="ps-page--single" id="contact-us">
                 <BreadCrumb breacrumb={breadCrumb} />
-                <ContactMap />
-                <ContactInfo />
+                {/* <ContactMap />
+                <ContactInfo /> */}
                 <ContactForm />
             </div>
-            <Newsletter layout="container" />
+            {/* <Newsletter layout="container" /> */}
             <FooterDefault />
         </div>
     );

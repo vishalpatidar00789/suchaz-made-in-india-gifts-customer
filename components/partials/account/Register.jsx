@@ -68,13 +68,38 @@ class Register extends Component {
                                 <div className="form-group">
                                     <Form.Item
                                         name="phone_number"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message:
-                                                    'Please input your phone number!',
-                                            },
-                                        ]}>
+                                         rules={[
+                                                    {
+                                                        required: true,
+                                                        maxLength: 10,
+                                                        message:
+                                                            'Please input your phone number!',
+                                                    },
+                                                    ({ getFieldValue }) => ({
+                                                        async validator(
+                                                            rule,
+                                                            value
+                                                        ) {
+                                                            if (
+                                                                typeof value !=
+                                                                'undefined' && value != ''
+                                                            ) {
+                                                                if (
+                                                                    typeof value !=
+                                                                        'undefined' &&
+                                                                    value.length ==
+                                                                        10
+                                                                ) {
+                                                                    return Promise.resolve();
+                                                                } else {
+                                                                    return Promise.reject(
+                                                                        'Invalid phone number.'
+                                                                    );
+                                                                }
+                                                            }
+                                                        },
+                                                    }),
+                                                ]}>
                                         <Input
                                             className="form-control"
                                             type="number"

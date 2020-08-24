@@ -5,16 +5,26 @@ import Slider from 'react-slick';
 import ProductDealOfDay from '../../../elements/products/ProductDealOfDay';
 import { carouselFullwidth } from '../../../../utilities/carousel-helpers';
 import { getProductData } from '../../../../utilities/product-helper';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 class HomeDefaultDealOfDay extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isLoading: true,
+        };
+    }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ isLoading: false });
+        }, 1500);
     }
     render() {
+        const { isLoading } = this.state; 
         const { collections } = this.props; 
         const products = getProductData(collections);
         return (
-            <div className="ps-deal-of-day">
+            <div className="ps-product-list">
                 <div className="ps-container">
                     <div className="ps-section__header">
                         <div className="ps-block--countdown-deal">
@@ -31,11 +41,22 @@ class HomeDefaultDealOfDay extends Component {
                                 </figure>
                             </div> */}
                         </div>
-                        <Link href="/gift?by=Deal of the day&id=&sortBy=offer">
+                        <Link href="/gifts?by=Deal of the day&id=&sortBy=offer">
                             <a>View all</a>
                         </Link>
                     </div>
                     <div className="ps-section__content">
+                    {isLoading ? (
+                    <div style={{ width: '100%', textAlign: 'center' }}>
+                        <ClipLoader
+                            size={80}
+                            color={'#c3404e'}
+                            loading={this.state.isLoading}
+                        />
+                    </div>
+                ) : (
+                    ''
+                )}
                         <Slider
                             {...carouselFullwidth}
                             className="ps-carousel outside">

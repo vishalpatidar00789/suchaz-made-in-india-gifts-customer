@@ -30,15 +30,19 @@ class SuchazCollectionRepository {
             .catch((error) => ({ error: JSON.stringify(error) }));
         return reponse;
     }
+
+    async getMenus(payload) {
+        const reponse = await SuchazRepository.get(
+            `${suchazBaseUrl}/menu/list`
+        )
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => ({ error: JSON.stringify(error) }));
+        return reponse;
+    }
+
     async getNewArrivals(payload) {
-        // let query = '';
-        // payload.forEach((item) => {
-        //     if (query === '') {
-        //         query = `slug_in=${item}`;
-        //     } else {
-        //         query = query + `&slug_in=${item}`;
-        //     }
-        // });
 
         const reponse = await SuchazRepository.post(
             `${suchazBaseUrl}/searchitem`,

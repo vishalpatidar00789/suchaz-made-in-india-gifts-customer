@@ -28,7 +28,7 @@ function* getCompareListSaga() {
         ).cart;
         yield put(getCompareListSuccess(localCompareList));
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 
@@ -50,7 +50,7 @@ function* addItemSaga(payload) {
             yield put(updateCompareListSuccess(localCompare));
         }
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 
@@ -66,7 +66,7 @@ function* removeItemSaga(payload) {
         yield put(updateCompareListSuccess(localCompare));
         modalWarning('warning');
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 
@@ -78,7 +78,7 @@ function* clearCompareListSaga() {
         };
         yield put(updateCompareListSuccess(emptyCart));
     } catch (err) {
-        console.log(err);
+       // console.log(err);
     }
 }
 

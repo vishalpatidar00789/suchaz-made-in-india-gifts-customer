@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import { Tabs } from 'antd';
 const { TabPane } = Tabs;
 
@@ -14,18 +14,21 @@ class DefaultDescription extends Component {
         super(props);
     }
     render() {
-        const { product, currency } = this.props;
+        const { product, currency, singleProduct } = this.props;
         const specification = JSON.parse(product.specification).filter((spec) => {
             return spec.key != '';
         });
-        let specificationTab = '';
-        if (specification.lenght) {
-            return (specificationTab = (
-                <TabPane tab="Specification" key="2">
-                    <PartialSpecification product={product} />
-                </TabPane>
-            ));
-        }
+             let specificationTab = '';
+            if(specification!=""){
+                specificationTab =   (
+                    <TabPane tab="Specification" key="2">
+                         
+                        <PartialSpecification product={product} />
+                    </TabPane>
+                );
+            }
+            let totalRating = (singleProduct.totalRating)  ? singleProduct.totalRating : 0;
+            const totalReviews = `Reviews (`+totalRating+`)`;
         return (
             <div>
                 <div className="ps-product__content ps-tab-root">
@@ -33,15 +36,15 @@ class DefaultDescription extends Component {
                         <TabPane tab="Description" key="1">
                             <PartialDescription product={product} />
                         </TabPane>
-
+                      
                         {specificationTab}
                         <TabPane tab="Vendor" key="3">
                             <PartialVendor product={product} />
                         </TabPane>
-                        {/* <TabPane tab="Reviews (0)" key="4">
+                        <TabPane tab={totalReviews} key="4">
                             <PartialReview />
                         </TabPane>
-                        <TabPane tab="Questions and Answers" key="5">
+                        {/* <TabPane tab="Questions and Answers" key="5">
                             <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
                                 <p>Coming Soon!</p>
                             </div>
@@ -56,4 +59,4 @@ class DefaultDescription extends Component {
     }
 }
 
-export default DefaultDescription;
+export default connect((state) => state.product)(DefaultDescription);

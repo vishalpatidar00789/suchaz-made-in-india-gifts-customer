@@ -2,7 +2,7 @@ import axios from 'axios';
 //live
 /*const baseDomain = 'http://45.76.97.89:1337';*/
 //beta
-const baseDomain = 'https://www.suchaz.com/apiv2';
+const baseDomain = `${process.env.API_URL}`;
 //local
 /*const baseDomain = 'http://localhost:1337';*/
 const authorization_prefix = 'Bearer ';

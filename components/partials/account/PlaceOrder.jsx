@@ -1,7 +1,7 @@
 import React from "react";
 
 const PlaceOrder = ({ mid, orderid, txntoken }) => {
-    console.log(mid, orderid, txntoken);
+   // console.log(mid, orderid, txntoken);
   
 
     return (

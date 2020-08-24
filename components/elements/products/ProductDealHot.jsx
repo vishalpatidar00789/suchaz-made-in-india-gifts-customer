@@ -24,7 +24,7 @@ class ProductDealHot extends React.Component {
                         <h3 className="ps-product__name">
                             <Link
                                 href="/product/[pid]"
-                                as={`/product/${product.id}`}>
+                                as={`/product/${product.slug}`}>
                                 <a>{product.title}</a>
                             </Link>
                         </h3>

@@ -140,8 +140,8 @@ class ProductSimple extends Component {
                             <a className="ps-product__title">{product.title}</a>
                         </Link>
                         <div className="ps-product__rating">
-                            <Rating />
-                            <span>{product.ratingCount}</span>
+                            {/* <Rating />
+                            <span>{product.ratingCount}</span> */}
                         </div>
                         {product.is_sale === true ? (
                             <p className="ps-product__price sale">

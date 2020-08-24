@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Newsletters from '../../components/partials/commons/Newletters';
 import FooterDefault from '../../components/shared/footers/FooterDefault';
 import HeaderDefault from '../../components/shared/headers/HeaderDefault';
 import BreadCrumb from '../../components/elements/BreadCrumb';
@@ -33,7 +32,6 @@ class MyAccountPage2 extends Component {
                     <BreadCrumb breacrumb={this.state.breadCrumb} />
                     <MyAccount2 />
                 </div>
-                <Newsletters layout="container" />
                 <FooterDefault />
             </div>
         );

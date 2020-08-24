@@ -3,8 +3,9 @@ import Link from 'next/link';
 import NavigationDefault from '../navigation/NavigationDefault';
 import HeaderActions from './modules/HeaderActions';
 import MenuCategories from './modules/MenuCategories';
-import SearchHeader from './modules/SearchHeader';
 import { stickyHeader } from '../../../utilities/common-helpers';
+import { connect } from 'react-redux';
+import { getMenus } from '../../../store/collection/action';
 
 class HeaderDefault extends Component {
     constructor({ props }) {
@@ -12,6 +13,7 @@ class HeaderDefault extends Component {
     }
 
     componentDidMount() {
+        this.props.dispatch(getMenus());
         if (process.browser) {
             window.addEventListener('scroll', stickyHeader);
         }
@@ -26,12 +28,11 @@ class HeaderDefault extends Component {
                 <div className="header__top">
                     <div className="ps-container">
                         <div className="header__left">
-                            <div className="menu--product-categories" style={{display:"block"}}>
-                                {/* <div className="menu__toggle" style={{display:"block"}}>
-                                    <i className="icon-menu" style={{fontSize:'30px'}}></i>
-                                </div> */}
+                            <div
+                                className="menu--product-categories"
+                                style={{ display: 'block' }}>
                                 <div className="menu__content">
-                                    {/* <MenuCategories /> */}
+                                    <MenuCategories />
                                 </div>
                             </div>
                             <Link href="/">
@@ -43,38 +44,23 @@ class HeaderDefault extends Component {
                                 </a>
                             </Link>
                             <div className="menu--product-categories">
-                                    <span> 
-                                        <Link href="/">
-                                        <img
-                                                src="/static/img/logo_light.png"
-                                                alt="MadeInIndiaGifts.in"
-                                        />
-                                        </Link>
-                                    </span>
-                                <div className="menu__content">
-                                    {/* <MenuCategories /> */}
-                                </div>
-                            </div>
-                            {/* <div className="menu--product-categories">
                                 <div className="menu__toggle">
                                     <i className="icon-menu"></i>
-                                    <span> 
+                                    <span>
                                         <Link href="/">
-                                        <img
+                                            <img
                                                 src="/static/img/logo_light.png"
                                                 alt="MadeInIndiaGifts.in"
-                                        />
+                                            />
                                         </Link>
                                     </span>
                                 </div>
                                 <div className="menu__content">
                                     <MenuCategories />
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
-                        <div className="header__center">
-                            {/* <SearchHeader /> */}
-                        </div>
+                        <div className="header__center"></div>
                         <div className="header__right">
                             <HeaderActions />
                         </div>
@@ -86,4 +72,8 @@ class HeaderDefault extends Component {
     }
 }
 
-export default HeaderDefault;
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps)(HeaderDefault);

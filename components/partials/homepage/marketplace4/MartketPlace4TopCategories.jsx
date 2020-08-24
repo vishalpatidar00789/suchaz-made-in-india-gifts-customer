@@ -17,10 +17,7 @@ class MartketPlace4TopCategories extends Component {
                                 <Link href="/shop">
                                     <a className="ps-block__overlay"></a>
                                 </Link>
-                                <img
-                                    src="/static/img/categories/1.jpg"
-                                    alt="MadeInIndiaGifts.in"
-                                />
+                                <i className="icon-gift"></i>
 
                                 <p>Electronics</p>
                             </div>
@@ -30,10 +27,7 @@ class MartketPlace4TopCategories extends Component {
                                 <Link href="/shop">
                                     <a className="ps-block__overlay"></a>
                                 </Link>
-                                <img
-                                    src="/static/img/categories/2.jpg"
-                                    alt="MadeInIndiaGifts.in"
-                                />
+                                <i className="icon-gift"></i>
                                 <p>Clothings</p>
                             </div>
                         </div>

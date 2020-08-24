@@ -128,7 +128,7 @@ class UserInformation extends Component {
                                                     {
                                                         required: false,
                                                         message:
-                                                            'Please input your name!',
+                                                            'Please input your name',
                                                     },
                                                 ]}>
                                                 <Input
@@ -148,7 +148,7 @@ class UserInformation extends Component {
                                                             {
                                                                 required: false,
                                                                 message:
-                                                                    'Please input your name!',
+                                                                    'Please input your name',
                                                             },
                                                         ]}>
                                                         <Input
@@ -168,7 +168,7 @@ class UserInformation extends Component {
                                                             {
                                                                 required: false,
                                                                 message:
-                                                                    'Please input your username!',
+                                                                    'Please input your username',
                                                             },
                                                         ]}>
                                                         <Input
@@ -196,7 +196,7 @@ class UserInformation extends Component {
                                                             {
                                                                 required: false,
                                                                 message:
-                                                                    'Please input your username!',
+                                                                    'Please input your username',
                                                             },
                                                         ]}>
                                                         <Radio.Group>

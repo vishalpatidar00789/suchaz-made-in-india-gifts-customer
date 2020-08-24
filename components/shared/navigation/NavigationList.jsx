@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { isStaticData } from '../../../utilities/app-settings';
 import { baseUrl } from '../../../repositories/Repository';
 import Login from '../../../components/partials/account/Login';
+import Invoices from '../../../components/partials/account/Invoices';
+import { withRouter } from 'next/router';
 
 class NavigationList extends Component {
     constructor(props) {
@@ -72,6 +74,8 @@ class NavigationList extends Component {
             categoriesDrawer,
         } = this.state;
 
+        const { auth, router } = this.props;
+        let pathname = router.pathname;
         return (
             <div className="navigation--list">
                 <Drawer
@@ -90,8 +94,11 @@ class NavigationList extends Component {
                             </span>
                         </div>
                         <div className="ps-panel__content">
-                            {/* <PanelMenu /> */}
-                            <Login />
+                            {auth.isLoggedIn == false ? (
+                                <Login />
+                            ) : (
+                                <Invoices />
+                            )}
                         </div>
                     </div>
                 </Drawer>
@@ -156,11 +163,16 @@ class NavigationList extends Component {
                     </div>
                 </Drawer>
                 <div className="navigation__content">
-                    <Link href="/account/login">
-                    <a className="navigation__item">
-                        <i className="icon-user"></i>
-                        <span> Account</span>
-                    </a>
+                    <Link
+                        href={
+                            auth.isLoggedIn == false
+                                ? '/account/login'
+                                : '/account/invoices'
+                        }>
+                        <a className="navigation__item">
+                            <i className="icon-user"></i>
+                            <span> Account</span>
+                        </a>
                     </Link>
                     <a
                         className={`navigation__item ${
@@ -170,22 +182,34 @@ class NavigationList extends Component {
                         <i className="icon-list4"></i>
                         <span> Categories</span>
                     </a>
-                    <a
+                    {/* <a
                         className={`navigation__item ${
                             searchDrawer === true ? 'active' : ''
                         }`}
                         onClick={this.handleShowSearchDrawer}>
                         <i className="icon-magnifier"></i>
                         <span> Search</span>
-                    </a>
-                    <a
-                        className={`navigation__item ${
-                            cartDrawer === true ? 'active' : ''
-                        }`}
-                        onClick={this.handleShowCartDrawer}>
-                        <i className="icon-bag2"></i>
-                        <span> Cart</span>
-                    </a>
+                    </a> */}
+                    {pathname != '/account/checkout' &&
+                    pathname != '/account/shipping' ? (
+                        <a
+                            className={`navigation__item ${
+                                cartDrawer === true ? 'active' : ''
+                            }`}
+                            onClick={this.handleShowCartDrawer}>
+                            <i className="icon-bag2"></i>
+                            <span> Cart</span>
+                        </a>
+                    ) : (
+                        <a
+                            className={`navigation__item ${
+                                cartDrawer === true ? 'active' : ''
+                            }`}
+                            disabled>
+                            <i className="icon-bag2"></i>
+                            <span> Cart</span>
+                        </a>
+                    )}
                 </div>
             </div>
         );
@@ -193,6 +217,6 @@ class NavigationList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return state.setting;
+    return { auth: state.auth, setting: state.setting };
 };
-export default connect(mapStateToProps)(NavigationList);
+export default withRouter(connect(mapStateToProps)(NavigationList));

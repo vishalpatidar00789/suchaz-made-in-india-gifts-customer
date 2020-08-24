@@ -51,10 +51,11 @@ class ShopWidget extends Component {
                         <ul className="ps-list--categories">
                             <li>
                                 <a
-                                    href="/gift"
+                                    href="/gifts"
                                     onClick={e =>
                                         this.props.handleFilterProductsByCategory(
                                             e,
+                                            null,
                                             null
                                         )
                                     }>
@@ -68,7 +69,8 @@ class ShopWidget extends Component {
                                         onClick={e =>
                                             this.props.handleFilterProductsByCategory(
                                                 e,
-                                                category.id
+                                                category.id,
+                                                category.title
                                             )
                                         }>
                                         {category.title}

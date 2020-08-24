@@ -21,6 +21,19 @@ const modalSuccess = (type) => {
         description: 'You are login successful!',
     });
 };
+const modalRegSuccess = (type) => {
+    notification[type]({
+        message: 'Registered successful!',
+        description: 'Welcome to MadeInIndiaGifts.in!',
+    });
+};
+const modalShow = (type) => {
+    notification[type]({
+        message: 'Thank you for getting in touch!',
+        description:
+            'We appreciate you contacting us [MadeInIndiaGifts.in]. we will get back in touch with you soon!',
+    });
+};
 
 const modalRegisterSuccess = (type, message) => {
     notification[type]({
@@ -52,7 +65,6 @@ function* loginSaga(payload) {
         if (typeof result.error === 'undefined') {
             yield put(loginSuccess(result));
             modalSuccess('success');
-           
         } else {
             yield put(loginError(result));
             modalError('error', 'Invalid Email or Password!');
@@ -63,7 +75,24 @@ function* loginSaga(payload) {
     }
 }
 
- 
+function* autoLoginSaga(payload) {
+    try {
+        const result = yield call(
+            SuchazAuthRepository.loginRequest,
+            payload.payload
+        );
+        if (typeof result.error === 'undefined') {
+            yield put(loginSuccess(result));
+            modalSuccess('success');
+        } else {
+            yield put(loginError(result));
+            modalError('error', 'Invalid Email or Password!');
+        }
+    } catch (err) {
+        yield put(loginError(err));
+    }
+}
+
 function* registerSaga(payload) {
     try {
         const result = yield call(
@@ -74,13 +103,30 @@ function* registerSaga(payload) {
         if (result.status == false) {
             modalError('error', result.message);
         } else {
+            yield put(loginSuccess(result));
             //yield put(registerSuccess(result));
-            modalSuccess('success');
-               setTimeout(() => {
-                Router.push('/account/login')
-            }, 800);
-            
+            modalRegSuccess('success');
+            setTimeout(() => {
+                Router.push('/');
+            }, 500);
         }
+    } catch (err) {
+        // yield put(registerVendorError(err));
+        modalError('error', err.message);
+    }
+}
+
+function* contactUsSaga(payload) {
+    try {
+        yield call(
+            SuchazAuthRepository.conatctUsRequest,
+            payload.payload
+        );
+
+        modalShow('success');
+        setTimeout(() => {
+            Router.push('/');
+        }, 500);
     } catch (err) {
         // yield put(registerVendorError(err));
         modalError('error', err.message);
@@ -130,7 +176,9 @@ function* getAuthSaga() {
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.GET_AUTH, getAuthSaga)]);
     yield all([takeEvery(actionTypes.LOGIN_REQUEST, loginSaga)]);
+    yield all([takeEvery(actionTypes.AUTO_LOGIN_REQUEST, autoLoginSaga)]);
     yield all([takeEvery(actionTypes.REGISTER_REQUEST, registerSaga)]);
+    yield all([takeEvery(actionTypes.CONTACT_US_REQUEST, contactUsSaga)]);
     yield all([
         takeEvery(actionTypes.REGISTER_VENDOR_REQUEST, registerVendorSaga),
     ]);

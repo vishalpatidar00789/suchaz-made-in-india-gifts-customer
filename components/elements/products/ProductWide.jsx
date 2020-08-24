@@ -71,7 +71,7 @@ class ProductWide extends Component {
         return (
             <div className="ps-product ps-product--wide">
                 <div className="ps-product__thumbnail">
-                    <Link href="/product/[pid]" as={`/product/${product.id}`}>
+                    <Link href="/product/[pid]" as={`/product/${product.slug}`}>
                         <a>
                             <img
                                 src={
@@ -88,12 +88,12 @@ class ProductWide extends Component {
                     <div className="ps-product__content">
                         <Link
                             href="/product/[pid]"
-                            as={`/product/${product.id}`}>
+                            as={`/product/${product.slug}`}>
                             <a className="ps-product__title">{product.title}</a>
                         </Link>
                         <p className="ps-product__vendor">
                             Sold by:
-                            {/* <Link href="/gift"> */}
+                            {/* <Link href="/gifts"> */}
                                 <a> {product.vendor?.shop_name
                                                       ? product.vendor.shop_name
                                                       : '\u00A0'}</a>

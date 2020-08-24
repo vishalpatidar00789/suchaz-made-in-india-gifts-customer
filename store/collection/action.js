@@ -1,4 +1,6 @@
 export const actionTypes = {
+    GET_MENUS: 'GET_MENUS',
+    GET_MENUS_SUCCESS: 'GET_MENUS_SUCCESS',
     GET_COLLECTIONS: 'GET_COLLECTIONS',
     GET_COLLECTIONS_SUCCESS: 'GET_COLLECTIONS_SUCCESS',
 
@@ -19,6 +21,16 @@ export function getCollections(payload) {
 export function getCollectionsSuccess(payload) {
     return {
         type: actionTypes.GET_COLLECTIONS_SUCCESS,
+        payload,
+    };
+}
+export function getMenus(payload) {
+    return { type: actionTypes.GET_MENUS, payload };
+}
+
+export function getMenusSuccess(payload) {
+    return {
+        type: actionTypes.GET_MENUS_SUCCESS,
         payload,
     };
 }
