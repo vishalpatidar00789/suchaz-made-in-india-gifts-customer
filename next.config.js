@@ -13,7 +13,7 @@ const settings = {
     runtimeCaching
   },
   env: {
-    API_URL: 'https://suchaz.com/apiv2',
+    API_URL: 'http://localhost:3005/apiv2',
   },
   distDir: 'build'
 };

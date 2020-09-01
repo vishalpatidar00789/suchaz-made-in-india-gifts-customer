@@ -55,14 +55,15 @@ class FormCheckoutInformation extends Component {
             await setTimeout(async () => {
                 if (this.props.auth && this.props.auth.isLoggedIn) {
                     const { authUser } = this.props.auth;
-                    if (this._isMounted) {
+                    if (this._isMounted && authUser && authUser.data && authUser.data.email) {
+
                         await this.setState({
                             email:
                                 authUser.data && authUser.data.email
                                     ? authUser.data.email
                                     : '',
                             contact_no:
-                                authUser.data.userProfile &&
+                                authUser.data && authUser.data.userProfile &&
                                 authUser.data.userProfile.contact
                                     ? authUser.data.userProfile.contact
                                     : '',
@@ -71,11 +72,11 @@ class FormCheckoutInformation extends Component {
                         // this.formRef.current.setFieldsValue({
                         //     contact_no: this.state.contact_no,
                         // });
-                        this.formRef.current.setFieldsValue({
-                            email: this.state.email,
-                        });
+                        
                     }
-
+                    this.formRef.current.setFieldsValue({
+                        email: this.state.email,
+                    });
                     // console.log(this.state.contact_no);
 
                     //  this.formRef.getFieldDecorator().setFieldsValue(props.shippingAddress);
@@ -577,14 +578,14 @@ class FormCheckoutInformation extends Component {
                                                     <Input
                                                         placeholder="Email"
                                                         type="email"
-                                                        initialValues={email}
+                                                        initialvalues={email}
                                                         disabled
                                                     />
                                                 ) : (
                                                     <Input
                                                         placeholder="Email"
                                                         type="email"
-                                                        initialValues={email}
+                                                        initialvalues={email}
                                                     />
                                                 )}
                                             </Form.Item>

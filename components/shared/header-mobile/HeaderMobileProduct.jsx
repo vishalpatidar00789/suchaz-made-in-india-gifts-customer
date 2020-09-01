@@ -21,13 +21,13 @@ class HeaderMobileProduct extends React.Component {
                 >
                 <div className="navigation--mobile">
                     <div className="navigation__left">
-                        <Link href="/shop">
+                        <Link href="/">
                             <a
                                 href="/"
                                 className="header__back"
                             >
                                 <i className="icon-chevron-left"></i>
-                                <strong>Back to previous</strong>
+                                <strong>Back</strong>
                             </a>
                         </Link>
 

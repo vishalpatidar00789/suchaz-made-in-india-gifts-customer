@@ -39,7 +39,7 @@ class HomeDefaultNewArrival extends Component {
             if (products && products.length > 0) {
                 sectionItems = <CollectionProducts products={products} />;
             } else {
-                sectionItems = <p>No Record(s)</p>;
+                sectionItems = <p>Loading...</p>;
             }
         }
 
