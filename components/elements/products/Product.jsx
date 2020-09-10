@@ -211,7 +211,7 @@ class Product extends Component {
                         <div className="ps-product__rating">
                             <Rating rating={product.customerAvgRating} />
                             <span>
-                                {product.customerAvgRating}
+                            {' '}  {product.customerAvgRating}
                             </span>
                         </div>
                         <div className="product-buybtn">

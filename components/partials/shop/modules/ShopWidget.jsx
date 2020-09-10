@@ -94,9 +94,9 @@ class ShopWidget extends Component {
                         <h4 className="widget-title">By Price</h4>
                         <Slider
                             range
-                            defaultValue={[0, 2000]}
+                            defaultValue={[0, 5000]}
                             value={[minPrice, maxPrice]}
-                            max={2000}
+                            max={20000}
                             onChange={this.props.handleChangeRange.bind(this)}
                         />
                         <p>

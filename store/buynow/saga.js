@@ -92,7 +92,7 @@ function* addItemSaga(payload) {
             let currentCart = JSON.parse(
                 JSON.parse(localStorage.getItem('persist:martfury')).buynow
             );
-            product.quantity = 1;
+            product.quantity = product.quantity ? product.quantity : 1;
             product.giftWrapSelected = false;
             product.giftWrapCharges = 0;
             currentCart.amount = 0;

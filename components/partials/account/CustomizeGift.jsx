@@ -173,7 +173,7 @@ class CustomizeGift extends Component {
         };
         return (
             <React.Fragment>
-                {product.customization_available === 'true' ? (
+                {product.customization_available === true ? (
                     <a
                         className="customize-gift"
                         onClick={this.showModal.bind(this, product)}>

@@ -7,7 +7,7 @@ class PlaceOrderPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mid: 'oRonfz63859628320641',
+            mid: 'XrcTwG76068208798468',
             orderId: '',
             txnToken: '',
             isLoading: true,
