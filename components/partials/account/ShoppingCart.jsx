@@ -74,9 +74,9 @@ class ShoppingCart extends Component {
             <React.Fragment>
                 <div className="ps-section--shopping ps-shopping-cart">
                     <div className="container">
-                        <div className="ps-section__header">
+                        {/* <div className="ps-section__header">
                             <h1>Shopping Cart</h1>
-                        </div>
+                        </div> */}
                         <div className="ps-section__content">
                             <table className="table ps-table--shopping-cart-1">
                                 <thead>

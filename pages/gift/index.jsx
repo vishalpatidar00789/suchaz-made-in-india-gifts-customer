@@ -29,7 +29,7 @@ class ShopDefaultPage extends React.Component {
     state = {
         by: '',
         minPrice: 0,
-        maxPrice: 2000,
+        maxPrice: 5000,
         minOffer: 0,
         maxOffer: 100,
         listView: true,

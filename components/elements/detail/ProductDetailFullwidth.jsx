@@ -22,7 +22,7 @@ class ProductDetailFullwidth extends Component {
                 </div>
             );
         } else {
-            return <p>No Data</p>;
+            return <p>Loading...</p>;
         }
     }
 }

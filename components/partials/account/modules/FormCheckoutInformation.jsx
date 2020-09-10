@@ -600,7 +600,7 @@ class FormCheckoutInformation extends Component {
                                                             {
                                                                 required: true,
                                                                 message:
-                                                                    'Enter an password',
+                                                                    'Enter your password',
                                                             },
                                                         ]}>
                                                         <Input
@@ -697,7 +697,7 @@ class FormCheckoutInformation extends Component {
                                                     {
                                                         required: true,
                                                         message:
-                                                            'Enter an address',
+                                                            `Enter recipient's address`,
                                                     },
                                                 ]}>
                                                 <Input
@@ -713,7 +713,7 @@ class FormCheckoutInformation extends Component {
                                                     {
                                                         required: true,
                                                         message:
-                                                            'Enter an Apartment',
+                                                            'Enter apartment number',
                                                     },
                                                 ]}>
                                                 <Input
@@ -731,7 +731,7 @@ class FormCheckoutInformation extends Component {
                                                             {
                                                                 required: true,
                                                                 message:
-                                                                    'Enter a postal code',
+                                                                    'Enter postal code',
                                                             },
                                                             ({
                                                                 getFieldValue,
@@ -811,7 +811,7 @@ class FormCheckoutInformation extends Component {
                                                             {
                                                                 required: true,
                                                                 message:
-                                                                    'Enter a city',
+                                                                    'Enter city',
                                                             },
                                                         ]}>
                                                         <Input
@@ -829,7 +829,7 @@ class FormCheckoutInformation extends Component {
                                                             {
                                                                 required: true,
                                                                 message:
-                                                                    'Enter a state',
+                                                                    'Enter state',
                                                             },
                                                         ]}>
                                                         <Input

@@ -50,6 +50,8 @@ class ProductDefaultPage extends React.Component {
 
     render() {
         const { singleProduct } = this.props;
+        console.log('single product ')
+        console.log(singleProduct)
         const breadCrumb = [
             {
                 text: 'Home',

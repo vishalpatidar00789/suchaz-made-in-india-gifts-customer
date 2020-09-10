@@ -167,6 +167,9 @@ class Shipping extends Component {
         if (reponse.status == true) {
             this.props.dispatch(customizationEmpty());
             const processParam = reponse.data;
+
+            console.log('process params :: ')
+            console.log(processParam)
             let details = {
                 action: `https://securegw-stage.paytm.in/order/process`,
                 params: processParam,

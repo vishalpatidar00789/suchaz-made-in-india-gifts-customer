@@ -27,8 +27,8 @@ class HomeBanner extends Component {
                                 {/* <Link href="/shop"> */}
                                     <a>
                                         <img
-                                            src="/static/img/slider/ganpati-banner-big.png"
-                                            alt="MadeInIndiaGifts.in"
+                                            src="/static/img/slider/made-in-india-gifts-vocal-for-local.png"
+                                            alt="Vocal for Local with MadeInIndiaGifts.in"
                                         />
                                     </a>
                                 {/* </Link> */}
@@ -37,8 +37,8 @@ class HomeBanner extends Component {
                                 {/* <Link href="/shop"> */}
                                     <a>
                                         <img
-                                            src="/static/img/slider/india-sathi-bappa.png"
-                                            alt="MadeInIndiaGifts.in"
+                                            src="/static/img/slider/offer-clock.png"
+                                            alt="Hot deals on decorative wall clocks at MadeInIndiaGifts.in"
                                         />
                                     </a>
                                 {/* </Link> */}
@@ -47,32 +47,28 @@ class HomeBanner extends Component {
                                 {/* <Link href="/shop"> */}
                                     <a>
                                         <img
-                                            src="/static/img/slider/zero-contact-delivery-banner.png"
-                                            alt="MadeInIndiaGifts.in"
+                                            src="/static/img/slider/zero-contact-delivery-indiagifts.png"
+                                            alt="We deliver gits with zero contact at MadeInIndiaGifts.in"
                                         />
                                     </a>
                                 {/* </Link> */}
                             </div>
                         </Slider>
                     </div>
-                    <div className="ps-section__right">
-                        {/* <Link href="/shop"> */}
+                    {/* <div className="ps-section__right">
                             <a className="ps-collection">
                                 <img
                                     src="/static/img/slider/ganpati-small-banner-1.png"
                                     alt="MadeInIndiaGifts.in"
                                 />
                             </a>
-                        {/* </Link> */}
-                        {/* <Link href="/shop"> */}
                             <a className="ps-collection">
                                 <img
                                     src="/static/img/slider/ganpati-small-banner-2.png"
                                     alt="MadeInIndiaGifts.in"
                                 />
                             </a>
-                        {/* </Link> */}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );
