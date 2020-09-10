@@ -124,3 +124,9 @@
     transform: translateY(-100%);
     transition: all 0.3s 1s ease-out;
 }
+
+/* Customize style */
+.disableElement {
+    pointer-events: none;
+    opacity: 0.4;
+}

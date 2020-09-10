@@ -7,31 +7,50 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import createStore from '../store/store';
 import DefaultLayout from '../components/layouts/DefaultLayout';
+import Router from 'next/router';
+import Loader from '../components/shared/loader';
 
 import '../scss/style.scss';
 import '../scss/home-default.scss';
-
 
 class MyApp extends App {
     constructor(props) {
         super(props);
         this.persistor = persistStore(props.store);
+        this.state = {
+            loading: false,
+        };
+        Router.onRouteChangeStart = (url) => {
+            // Some page has started loading
+            this.setState({ loading: true });
+        };
+
+        Router.onRouteChangeComplete = (url) => {
+            // Some page has finished loading
+            this.setState({ loading: false });
+        };
+
+        Router.onRouteChangeError = (err, url) => {
+            // Getting error while page routing
+            this.setState({ loading: false });
+        };
     }
 
     static async getInitialProps({ Component, ctx }) {
-        let pageProps = {}
-    
+        let pageProps = {};
+
         if (Component.getInitialProps) {
-          pageProps = await Component.getInitialProps(ctx);
+            pageProps = await Component.getInitialProps(ctx);
         }
-    
+
         return { pageProps };
-      }
+    }
 
     _isMounted = false;
 
     componentDidMount() {
         this._isMounted = true;
+        this.setState({ loading: false });
         setTimeout(function () {
             document.getElementById('__next').classList.add('loaded');
         }, 100);
@@ -43,7 +62,7 @@ class MyApp extends App {
     componentWillUnmount() {
         this._isMounted = false;
     }
-    
+
     render() {
         const { Component, pageProps, store } = this.props;
         const getLayout =
@@ -51,10 +70,20 @@ class MyApp extends App {
             ((page) => <DefaultLayout children={page} />);
         return getLayout(
             <Provider store={store}>
+                <Loader loading={this.state.loading} />
                 <PersistGate
-                    loading={<Component {...pageProps} />}
+                    loading={
+                        <div
+                            className={
+                                this.state.loading ? 'disableElement' : ''
+                            }>
+                            <Component {...pageProps} />
+                        </div>
+                    }
                     persistor={this.persistor}>
-                    <Component {...pageProps} />
+                    <div className={this.state.loading ? 'disableElement' : ''}>
+                        <Component {...pageProps} />
+                    </div>
                 </PersistGate>
             </Provider>
         );
