@@ -3,7 +3,7 @@ import { BeatLoader } from 'react-spinners';
 import { css } from '@emotion/core';
 
 const configCSS = css`
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: calc(50% - 35px);
 `;

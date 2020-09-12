@@ -73,12 +73,15 @@ class MyApp extends App {
                 <Loader loading={this.state.loading} />
                 <PersistGate
                     loading={
-                        <div
-                            className={
-                                this.state.loading ? 'disableElement' : ''
-                            }>
-                            <Component {...pageProps} />
-                        </div>
+                        <>
+                            <Loader loading={this.state.loading} />
+                            <div
+                                className={
+                                    this.state.loading ? 'disableElement' : ''
+                                }>
+                                <Component {...pageProps} />
+                            </div>
+                        </>
                     }
                     persistor={this.persistor}>
                     <div className={this.state.loading ? 'disableElement' : ''}>
