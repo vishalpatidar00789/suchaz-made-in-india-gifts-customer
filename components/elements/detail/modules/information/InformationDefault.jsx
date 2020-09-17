@@ -80,7 +80,7 @@ class InformationDefault extends Component {
                     <div className="ps-product__rating">
                         <Rating rating={product.customerAvgRating} />
                         {' '}
-                        <span>
+                        <span className="ps-review-num">
                         {' '} {product.customerAvgRating}
                         </span>
                     </div>

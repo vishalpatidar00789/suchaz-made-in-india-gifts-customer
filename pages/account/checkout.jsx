@@ -13,7 +13,7 @@ const OrderTrackingPage = () => {
         },
         {
             text: 'Shopping Cart',
-            url: '/account/shopping-cart',
+            // url: '/account/shopping-cart',
         },
         {
             text: 'Checkout Information',

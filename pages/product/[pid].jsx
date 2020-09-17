@@ -1,19 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
-import Head from 'next/head';
 import FooterDefault from '../../components/shared/footers/FooterDefault';
-import Newletters from '../../components/partials/commons/Newletters';
-import CustomerBought from '../../components/partials/product/CustomerBought';
 import ProductDetailFullwidth from '../../components/elements/detail/ProductDetailFullwidth';
-import ProductWidgets from '../../components/partials/product/ProductWidgets';
 import NavigationList from '../../components/shared/navigation/NavigationList';
 import BreadCrumb from '../../components/elements/BreadCrumb';
 import HeaderMobileProduct from '../../components/shared/header-mobile/HeaderMobileProduct';
 import { getProductsById } from '../../store/product/action';
 import HeaderProduct from '../../components/shared/headers/HeaderProduct';
 import { getCollections, getMenus } from '../../store/collection/action';
-import RelatedProduct from '../../components/partials/product/RelatedProduct';
+import { NextSeo } from 'next-seo';
 
 class ProductDefaultPage extends React.Component {
     constructor(props) {
@@ -69,7 +65,11 @@ class ProductDefaultPage extends React.Component {
             <div>
                 <div>
                     {singleProduct ? (
-                        <Head>
+                        <NextSeo
+                        title={singleProduct.title}
+                        description={singleProduct.description}
+                      />
+                        /*<Head>
                             <title>{singleProduct.title}</title>
                             <meta
                                 name="twitter:title"
@@ -95,7 +95,7 @@ class ProductDefaultPage extends React.Component {
                                 name="description"
                                 content={singleProduct.description}
                             />
-                        </Head>
+                        </Head>*/
                     ) : (
                         ''
                     )}

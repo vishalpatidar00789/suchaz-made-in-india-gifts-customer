@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Drawer } from 'antd';
-import PanelMenu from '../panel/PanelMenu';
 import PanelCartMobile from '../panel/PanelCartMobile';
 import PanelSearch from '../panel/PanelSearch';
 import PanelCategories from '../panel/PanelCategories';
 import Link from 'next/link';
-import { isStaticData } from '../../../utilities/app-settings';
-import { baseUrl } from '../../../repositories/Repository';
 import Login from '../../../components/partials/account/Login';
 import Invoices from '../../../components/partials/account/Invoices';
 import { withRouter } from 'next/router';
@@ -74,7 +71,7 @@ class NavigationList extends Component {
             categoriesDrawer,
         } = this.state;
 
-        const { auth, router } = this.props;
+        const { auth, router, cartTotal } = this.props;
         let pathname = router.pathname;
         return (
             <div className="navigation--list">
@@ -198,6 +195,9 @@ class NavigationList extends Component {
                             }`}
                             onClick={this.handleShowCartDrawer}>
                             <i className="icon-bag2"></i>
+                            <span className="cart-nums">
+                                <i className="num">{cartTotal ? cartTotal : 0}</i>
+                            </span>
                             <span> Cart</span>
                         </a>
                     ) : (
@@ -207,6 +207,9 @@ class NavigationList extends Component {
                             }`}
                             disabled>
                             <i className="icon-bag2"></i>
+                            <span className="cart-nums">
+                                <i className="num">{cartTotal ? cartTotal : 0}</i>
+                            </span>
                             <span> Cart</span>
                         </a>
                     )}
@@ -217,6 +220,6 @@ class NavigationList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { auth: state.auth, setting: state.setting };
+    return { auth: state.auth, setting: state.setting, cartTotal: state.cart.cartTotal };
 };
 export default withRouter(connect(mapStateToProps)(NavigationList));

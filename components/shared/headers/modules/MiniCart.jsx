@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
-import { Router } from 'next/router';
 import { getCart, removeItem } from '../../../../store/cart/action';
 import { isStaticData } from '../../../../utilities/app-settings';
-import { baseUrl } from '../../../../repositories/Repository';
 class MiniCart extends Component {
     constructor(props) {
         super(props);

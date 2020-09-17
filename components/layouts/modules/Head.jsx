@@ -1,9 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 
+
 const StyleSheets = () => (
     <Head>
-        <title>MadeInIndiaGifts the gift store</title>
+        <title>MadeInIndiaGifts.in - India's First Made In India Gifts Marketplace</title>
         <link rel="shortcut icon" href="/static/icons/icon-72x72.png" />
         <link rel="icon" href="/static/icons/icon-72x72.png" sizes="32x32" />
         <link rel="icon" href="/static/icons/icon-72x72.png" sizes="192x192" />
@@ -57,31 +58,29 @@ const StyleSheets = () => (
         />
         <link rel="shortcut icon" href="/static/icons/icon-72x72.png" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:url" content="https://MadeInIndiaGifts.com" />
-        <meta name="twitter:title" content="MadeInIndiaGifts" />
-        <meta name="twitter:description" content="Best PWA App in the world" />
+        <meta name="twitter:url" content="https://MadeInIndiaGifts.in" />
+        <meta name="twitter:title" content="MadeInIndiaGifts.in - India's First Made In India Gifts Marketplace" />
+        <meta name="twitter:description" content="MadeInIndiaGifts.in - India's First Made In India Gifts Marketplace" />
         <meta
             name="twitter:image"
             content="https://MadeInIndiaGifts.com/static/icons/icon-512x512.png"
         />
-        <meta name="twitter:creator" content="@DavidWShadow" />
+        <meta name="twitter:creator" content="@hiptulla_times" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Best online store" />
+        <meta property="og:title" content="MadeInIndiaGifts.in - India's First Made In India Gifts Marketplace" />
         <meta
             property="og:description"
             content="Best online store in the world"
         />
         <meta property="og:site_name" content="MadeInIndiaGifts App" />
-        <meta property="og:url" content="https://MadeInIndiaGifts.com" />
+        <meta property="og:url" content="https://MadeInIndiaGifts.in" />
         <meta
             property="og:image"
-            content="https://MadeInIndiaGifts.com/static/icons/icon-512x512.png"
+            content="https://MadeInIndiaGifts.in/static/icons/icon-512x512.png"
         />
-        <meta name="author" content="nouthemes" />
-        <meta name="keywords" content="Sculptures, Idols, Statues, Ganesha Statues, Handmade Ganesha, Madeinindia Ganesha
-Ganapati Bappa Idols" />
-        <meta name="description" content="Sculptures, Idols, Statues, Ganesha Statues, Handmade Ganesha, Madeinindia Ganesha
-Ganapati Bappa Idols" />
+        <meta name="author" content="MadeInIndiaGifts" />
+        <meta name="keywords" content="Made In India Gifts, Handy Crafts, Home Decor, Home Decorative Wall Clocks, Wooden Wall Clocks, Decorative Wooden Wall Clocks" />
+        <meta name="description" content="Made In India Gifts, Handy Crafts, Home Decor, Home Decorative Wall Clocks, Wooden Wall Clocks, Decorative Wooden Wall Clocks" />
         <link
             href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext"
             rel="stylesheet"

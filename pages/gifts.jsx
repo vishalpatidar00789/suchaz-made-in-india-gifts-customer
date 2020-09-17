@@ -11,12 +11,10 @@ import NavigationList from '../components/shared/navigation/NavigationList';
 import ShopWidget from '../components/partials/shop/modules/ShopWidget';
 import {
     getProducts,
-    getTotalProducts,
-    getProductsByCategory,
-    getProductsById,
     getFilterCategory,
 } from '../store/product/action';
-import { getCollections, getMenus } from '../store/collection/action';
+import { getCollections } from '../store/collection/action';
+import { NextSeo } from 'next-seo';
 
 class ShopDefaultPage extends React.Component {
     constructor(props) {
@@ -439,6 +437,8 @@ class ShopDefaultPage extends React.Component {
         return (
             <div className="site-content">
                 <HeaderDefault />
+                <NextSeo title={query.name}
+                description={query.name}/>
                 <HeaderMobile />
                 <NavigationList />
                 <div className="ps-page--shop">

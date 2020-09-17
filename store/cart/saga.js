@@ -88,8 +88,7 @@ function* addItemSaga(payload) {
     try {
         const { product } = payload;
 
-        const localCart = JSON.parse(localStorage.getItem('persist:martfury'))
-            .cart;
+        const localCart = JSON.parse(localStorage.getItem('persist:martfury')).cart;
 
         let buynowcart = JSON.parse(
             JSON.parse(localStorage.getItem('persist:martfury')).buynow
@@ -138,7 +137,8 @@ function* addItemSaga(payload) {
         currentCart.giftWrapCharges = calculateGiftWrapCharges(
             currentCart.cartItems
         );
-        currentCart.cartTotal++;
+        currentCart.cartTotal = (currentCart.cartTotal) ? (currentCart.cartTotal + product.quantity) : product.quantity
+        // currentCart.cartTotal++
         yield put(updateCartSuccess(currentCart));
         modalSuccess('success');
     } catch (err) {
