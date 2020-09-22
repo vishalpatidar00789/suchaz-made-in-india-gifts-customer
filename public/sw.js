@@ -81,7 +81,7 @@ if (!self.define) {
     });
   };
 }
-define("./sw.js",['./workbox-03c7b0dd'], function (workbox) { 'use strict';
+define("./sw.js",['./workbox-6ad3eee9'], function (workbox) { 'use strict';
 
   /**
   * Welcome to your Workbox-powered service worker!
@@ -95,7 +95,7 @@ define("./sw.js",['./workbox-03c7b0dd'], function (workbox) { 'use strict';
   * See https://goo.gl/2aRDsh
   */
 
-  importScripts("worker-development.js");
+  importScripts();
   self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
       self.skipWaiting();

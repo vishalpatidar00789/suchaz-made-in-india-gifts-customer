@@ -1,0 +1,7 @@
+@import "~antd/dist/antd.css";
+
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
