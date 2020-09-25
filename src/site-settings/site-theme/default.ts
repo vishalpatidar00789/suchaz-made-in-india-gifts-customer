@@ -1,12 +1,18 @@
-const baseColor = {
-    miig: {
-        primary: {
-            regular: '#c3404e',
-        },
-        text: {
-            regular: '#666',
-        },
+const palette = {
+    primary: {
+        regular: '#c3404e', // primary color
+        light: '#c9535f',
+        dark: '#75262e',
+        text: '#666',
+        hover: '#019376',
+        alternate: '#028489',
     },
+    secondary: {
+        regular: '#ff5b60',
+        hover: '#FF282F',
+        alternate: '#fc5c63',
+    },
+    transparent: 'transparent',
     white: '#ffffff',
     black: '#000000',
     gray: {
@@ -26,18 +32,6 @@ const baseColor = {
         regular: '#77798C', // regular text color
         light: '#909090',
         label: '#767676',
-    },
-    transparent: 'transparent',
-    primary: {
-        regular: '#009E7F', // primary color
-        hover: '#019376',
-        alternate: '#028489',
-        light: '#b7dbdd',
-    },
-    secondary: {
-        regular: '#ff5b60',
-        hover: '#FF282F',
-        alternate: '#fc5c63',
     },
     yellow: {
         regular: '#FFAD5E',
@@ -59,7 +53,7 @@ const baseColor = {
 
 export const defaultTheme = {
     colors: {
-        ...baseColor,
+        ...palette,
         body: {
             bg: '',
             text: '',

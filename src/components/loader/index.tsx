@@ -38,7 +38,7 @@ const Loader: FC<LoaderProps> = ({ type, color, loading }) => {
                 <BeatLoader
                     margin={4}
                     size={25}
-                    color={themeContext.colors.miig.primary.regular}
+                    color={themeContext.colors.primary.regular}
                     loading={loading}
                 />
             );
@@ -51,7 +51,7 @@ const Loader: FC<LoaderProps> = ({ type, color, loading }) => {
                 <BeatLoader
                     margin={4}
                     size={25}
-                    color={themeContext.colors.miig.primary.regular}
+                    color={themeContext.colors.primary.regular}
                     loading={loading}
                 />
             );
