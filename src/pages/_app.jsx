@@ -78,10 +78,7 @@ class MyApp extends App {
             ((page) => {
                 return (
                     <ThemeProvider theme={defaultTheme}>
-                        <Loader
-                            type={'page-loader'}
-                            loading={this.state.pageLoading}
-                        />
+                        <Loader loading={this.state.loading} />
                         <SEO {...siteMetadata} />
                         <AppLayout
                             children={page}
@@ -95,12 +92,7 @@ class MyApp extends App {
         return getLayout(
             <Provider store={store}>
                 <PersistGate
-                    loading={
-                        <Loader
-                            type={'page-loader'}
-                            loading={this.state.loading}
-                        />
-                    }
+                    loading={<Loader loading={true} />}
                     persistor={this.persistor}>
                     <Component {...pageProps} />
                 </PersistGate>

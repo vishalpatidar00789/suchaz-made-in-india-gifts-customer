@@ -37,6 +37,7 @@ const palette = {
         regular: '#FFAD5E',
         hover: '#FFB369',
         alternate: '#f4c243',
+        light: '#ffd55e',
     },
     blue: {
         a: '#2e70fa',

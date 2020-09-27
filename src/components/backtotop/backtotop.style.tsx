@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 import { centerMixin } from '../../assets/styles/mixins.style';
+import media from 'styled-media-query';
 
 export const BacktoTopDiv = styled.div`
     position: fixed;
@@ -33,6 +34,7 @@ export const BacktoTopDiv = styled.div`
             color: ${themeGet('colors.primary.regular', '#c3404e')};
         }
     }
-
-    /* ${mediaQueries('lg')(`display: none;`)}; */
+    ${media.lessThan('large')`{
+    display: none;
+    `}
 `;

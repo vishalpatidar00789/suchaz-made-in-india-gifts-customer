@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
+import { ThreeBounce } from 'styled-spinkit';
 
 // Spinner Styled component
 const rotateSpinner = keyframes`
@@ -22,6 +23,18 @@ export const Spinner = styled.div<{ color: string }>`
     animation-duration: 1.2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+`;
+
+// Bounce Loader Styled Components
+
+export const LoadingArea = styled.div`
+    position: fixed !important;
+    top: 50% !important;
+    left: calc(50% - 35px) !important;
+    z-index: 9999;
+    div:first-child {
+        margin: 0 auto;
+    }
 `;
 
 // Page loader Styled component

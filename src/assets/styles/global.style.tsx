@@ -30,6 +30,19 @@ export const GlobalStyle = createGlobalStyle(({ theme }) =>
         },
         a: {
             color: 'inherit',
+            position: 'relative',
+            textDecoration: 'none',
+            transition: 'all 0.4s ease',
+        },
+        'article, aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary': {
+            display: 'block',
+        },
+        'a, input, textarea, button, select': {
+            outline: 'none',
+        },
+        img: {
+            maxWidth: '100%',
+            borderStyle: 'none',
         },
         // h1: {
         //     fontFamily: 'heading',

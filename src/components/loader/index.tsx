@@ -1,23 +1,16 @@
-import React, { FC } from 'react';
-import { BeatLoader } from 'react-spinners';
-import { css as emtionCSS } from '@emotion/core';
-import { useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import {
     PageOpenLoaderSectionLeft,
     PageOpenLoaderSectionRight,
     PageOpenLoaderWrapper,
+    LoadingArea,
     Spinner,
 } from './loader.style';
-
-// const configPageLoaderCSS = emtionCSS`
-//     position: fixed !important;
-//     top: 50% !important;
-//     left: calc(50% - 35px) !important;
-// `;
+import { ThreeBounce } from 'styled-spinkit';
 
 type LoaderProps = {
-    type: string;
+    type?: string;
     color?: string;
     loading?: boolean;
 };
@@ -32,28 +25,26 @@ const Loader: FC<LoaderProps> = ({ type, color, loading }) => {
                     <PageOpenLoaderSectionRight></PageOpenLoaderSectionRight>
                 </PageOpenLoaderWrapper>
             );
-            break;
-        case 'page-loader':
-            return (
-                <BeatLoader
-                    margin={4}
-                    size={25}
-                    color={themeContext.colors.primary.regular}
-                    loading={loading}
-                />
-            );
-            break;
         case 'spinner':
-            return <Spinner color={color} />;
-
+            return (
+                <>
+                    {loading ? (
+                        <Spinner color={themeContext.colors.primary.regular} />
+                    ) : null}
+                </>
+            );
         default:
             return (
-                <BeatLoader
-                    margin={4}
-                    size={25}
-                    color={themeContext.colors.primary.regular}
-                    loading={loading}
-                />
+                <>
+                    {loading ? (
+                        <LoadingArea>
+                            <ThreeBounce
+                                size={75}
+                                color={themeContext.colors.primary.regular}
+                            />
+                        </LoadingArea>
+                    ) : null}
+                </>
             );
     }
 };
