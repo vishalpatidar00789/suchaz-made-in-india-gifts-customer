@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 const StyleSheets = () => (
     <Head>
-        <title>MadeInIndiaGifts.in - India's First Made In India Gifts Marketplace</title>
+        {/* <title>MadeInIndiaGifts.in - India's First Made In India Gifts Marketplace</title> */}
         <link rel="shortcut icon" href="/static/icons/icon-72x72.png" />
         <link rel="icon" href="/static/icons/icon-72x72.png" sizes="32x32" />
         <link rel="icon" href="/static/icons/icon-72x72.png" sizes="192x192" />
@@ -57,7 +57,7 @@ const StyleSheets = () => (
             color="#5bbad5"
         />
         <link rel="shortcut icon" href="/static/icons/icon-72x72.png" />
-        <meta name="twitter:card" content="summary" />
+        {/* <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content="https://MadeInIndiaGifts.in" />
         <meta name="twitter:title" content="MadeInIndiaGifts.in - India's First Made In India Gifts Marketplace" />
         <meta name="twitter:description" content="MadeInIndiaGifts.in - India's First Made In India Gifts Marketplace" />
@@ -80,7 +80,7 @@ const StyleSheets = () => (
         />
         <meta name="author" content="MadeInIndiaGifts" />
         <meta name="keywords" content="Made In India Gifts, Handy Crafts, Home Decor, Home Decorative Wall Clocks, Wooden Wall Clocks, Decorative Wooden Wall Clocks" />
-        <meta name="description" content="Made In India Gifts, Handy Crafts, Home Decor, Home Decorative Wall Clocks, Wooden Wall Clocks, Decorative Wooden Wall Clocks" />
+        <meta name="description" content="Made In India Gifts, Handy Crafts, Home Decor, Home Decorative Wall Clocks, Wooden Wall Clocks, Decorative Wooden Wall Clocks" /> */}
         <link
             href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext"
             rel="stylesheet"
@@ -119,7 +119,7 @@ const StyleSheets = () => (
               `,
             }}
         />
-        <script
+        {/* <script
             dangerouslySetInnerHTML={{
                 __html: `
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -133,7 +133,7 @@ s0.parentNode.insertBefore(s1,s0);
 })();
               `,
             }}
-        />
+        /> */}
           <script
             dangerouslySetInnerHTML={{
                 __html: `

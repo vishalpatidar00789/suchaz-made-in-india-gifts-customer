@@ -171,7 +171,7 @@ class Shipping extends Component {
             console.log('process params :: ')
             console.log(processParam)
             let details = {
-                action: `https://securegw-stage.paytm.in/order/process`,
+                action: `${process.env.PAYTM_URL}`,
                 params: processParam,
             };
             post(details);

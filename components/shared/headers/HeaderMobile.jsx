@@ -13,7 +13,7 @@ class HeaderMobile extends Component {
         return (
             <header className="header header--mobile">
                 <div className="navigation--mobile">
-                    <div className="navigation__left" style={{margin: "auto"}}>
+                    <div className="navigation__left">
                         <Link href="/">
                             <a className="ps-logo">
                                 <img
@@ -23,11 +23,13 @@ class HeaderMobile extends Component {
                             </a>
                         </Link>
                     </div>
-                    <Link href="/account/vendor/register">
-                            <a >
-                                Become a Seller
-                            </a>
-                        </Link>
+                    <div style={{padding: "20px 0px"}}>
+                    <Link href="/account/vendor/register" >
+                        <a >
+                            Become a Seller
+                        </a>
+                    </Link>
+                    </div>
                 </div>
                 {/* <div className="ps-search--mobile">
                     <form

@@ -67,7 +67,7 @@ class ThankYou extends Component {
         if (reponse.status == true) {
             const processParam = reponse.data;
             let details = {
-                action: 'https://securegw-stage.paytm.in/order/process',
+                action: `${process.env.PAYTM_URL}`,
                 params: processParam,
             };
             post(details);

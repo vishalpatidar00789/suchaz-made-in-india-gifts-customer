@@ -63,43 +63,6 @@ class ProductDefaultPage extends React.Component {
 
         return (
             <div>
-                <div>
-                    {singleProduct ? (
-                        <NextSeo
-                        title={singleProduct.title}
-                        description={singleProduct.description}
-                      />
-                        /*<Head>
-                            <title>{singleProduct.title}</title>
-                            <meta
-                                name="twitter:title"
-                                content={singleProduct.title}
-                            />
-                            <meta
-                                name="twitter:description"
-                                content={singleProduct.description}
-                            />
-                            <meta
-                                property="og:title"
-                                content={singleProduct.title}
-                            />
-                            <meta
-                                property="og:description"
-                                content={singleProduct.description}
-                            />
-                            <meta
-                                name="keywords"
-                                content={singleProduct.title}
-                            />
-                            <meta
-                                name="description"
-                                content={singleProduct.description}
-                            />
-                        </Head>*/
-                    ) : (
-                        ''
-                    )}
-                </div>
                 <div className="layout--product">
                     {singleProduct ? (
                         <HeaderProduct productData={singleProduct} />
@@ -132,6 +95,31 @@ class ProductDefaultPage extends React.Component {
                     </div>
                     {/* <Newletters /> */}
                     <FooterDefault />
+                </div>
+                <div>
+                    {singleProduct ? (
+                        <NextSeo
+                        title = {singleProduct.pageTitle}
+                        description = {singleProduct.pageDescription}
+                        keywords = {singleProduct.keywords}
+                        openGraph={{ 
+                            type: 'website',
+                            url: `https://www.madeinindiagifts.in/product/${singleProduct.slug}`,
+                            title: `${singleProduct.pageTitle}`,
+                            description: `${singleProduct.pageDescription}`,
+                            images: [
+                                {
+                                    url: `${singleProduct.images[0]}`,
+                                    width: 800,
+                                    height: 600,
+                                    alt: `${singleProduct.pageTitle}`,
+                                },
+                            ]
+                        }}
+                      />
+                    ) : (
+                        ''
+                    )}
                 </div>
             </div>
         );

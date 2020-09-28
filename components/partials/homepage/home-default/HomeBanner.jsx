@@ -34,14 +34,14 @@ class HomeBanner extends Component {
                                 {/* </Link> */}
                             </div>
                             <div className="ps-banner">
-                                {/* <Link href="/shop"> */}
+                                <Link href="/gifts?by=Category&name=Decorative Wall Clock">
                                     <a>
                                         <img
                                             src="/static/img/slider/offer-clock.png"
                                             alt="Hot deals on decorative wall clocks at MadeInIndiaGifts.in"
                                         />
                                     </a>
-                                {/* </Link> */}
+                                </Link>
                             </div>
                             <div className="ps-banner">
                                 {/* <Link href="/shop"> */}

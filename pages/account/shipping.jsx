@@ -1,5 +1,4 @@
 import React from 'react';
-import Newsletters from '../../components/partials/commons/Newletters';
 import FooterDefault from '../../components/shared/footers/FooterDefault';
 import HeaderDefault from '../../components/shared/headers/HeaderDefault';
 import BreadCrumb from '../../components/elements/BreadCrumb';
@@ -15,7 +14,7 @@ const ShippingPage = () => {
         },
         {
             text: 'Shopping Cart',
-            url: '/account/shopping-cart',
+            // url: '/account/shopping-cart',
         },
         {
             text: 'Checkout Information',

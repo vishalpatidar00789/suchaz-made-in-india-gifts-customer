@@ -14,6 +14,8 @@ const settings = {
   },
   env: {
     API_URL: 'http://localhost:3005/apiv2',
+    PAYTM_URL: 'https://securegw-stage.paytm.in/order/process', 
+    // https://securegw-stage.paytm.in/order/process, https://securegw.paytm.in/order/process
   },
   distDir: 'build'
 };

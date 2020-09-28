@@ -7,6 +7,8 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import createStore from '../store/store';
 import DefaultLayout from '../components/layouts/DefaultLayout';
+import { DefaultSeo } from 'next-seo';
+import _DEFAULT_SEO from '../next-seo.config'
 
 import '../scss/style.scss';
 import '../scss/home-default.scss';
@@ -50,10 +52,12 @@ class MyApp extends App {
             Component.getLayout ||
             ((page) => <DefaultLayout children={page} />);
         return getLayout(
+            
             <Provider store={store}>
                 <PersistGate
                     loading={<Component {...pageProps} />}
                     persistor={this.persistor}>
+                    <DefaultSeo {..._DEFAULT_SEO} />
                     <Component {...pageProps} />
                 </PersistGate>
             </Provider>

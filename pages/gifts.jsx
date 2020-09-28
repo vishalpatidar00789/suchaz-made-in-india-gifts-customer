@@ -19,22 +19,23 @@ import { NextSeo } from 'next-seo';
 class ShopDefaultPage extends React.Component {
     constructor(props) {
         super(props);
+        this._isMounted = false;
+        this.state = {
+            by: '',
+            name: 'All',
+            minPrice: 0,
+            maxPrice: 5000,
+            minOffer: 0,
+            maxOffer: 100,
+            listView: true,
+            id: '',
+            sortBy: 'latest',
+            page: 1,
+            limit: 20,
+            filterDrawer: false,
+        };
     }
-    _isMounted = false;
-    state = {
-        by: '',
-        name: '',
-        minPrice: 0,
-        maxPrice: 5000,
-        minOffer: 0,
-        maxOffer: 100,
-        listView: true,
-        id: '',
-        sortBy: 'latest',
-        page: 1,
-        limit: 20,
-        filterDrawer: false,
-    };
+    
 
     static async getInitialProps(ctx) {
         return { query: ctx.query };
@@ -422,23 +423,33 @@ class ShopDefaultPage extends React.Component {
 
     render() {
         const { query } = this.props;
+        // console.log('state on cat page :: ', this.state)
+        const _breadcrumb_title = (query.name && query.name !='null') ? query.name : 'All'
+        const _page_title = `Gifts By ${query.by} | ${_breadcrumb_title}`
         const breadCrumb = [
             {
                 text: 'Home',
                 url: '/',
             },
             {
-                text: 'Gifts',
-            },
+                text: `Gifts By ${query.by}`,
+            }
         ];
         if (query.name) {
-            breadCrumb.push({ text: query.name });
+            breadCrumb.push({ text: _breadcrumb_title});
         }
         return (
             <div className="site-content">
                 <HeaderDefault />
-                <NextSeo title={query.name}
-                description={query.name}/>
+                <NextSeo title={_page_title}
+                description="Buy Indian Handy Crafts, black roman numeral wall clock, retro industrial wall clock, black and white wall clock, night vision with neon wall clock, black roman numeral clock, mustard yellow wall clock, timber wall clock, hexagon wall clock, best radium wall clock, dark wood wall clock Made In India Flat 10% Discount ✓Perfect Gift ✓HandMade ✓Natural Wood ✓6 month warranty on Material."
+                keywords = "Indian Handy Crafts, black roman numeral wall clock, retro industrial wall clock, black and white wall clock, night vision with neon wall clock, black roman numeral clock, mustard yellow wall clock, timber wall clock, hexagon wall clock, best radium wall clock, dark wood wall clock"
+                openGraph = {{
+                    title: "Buy Indian Handy Crafts, black roman numeral wall clock, retro industrial wall clock, black and white wall clock, night vision with neon wall clock, black roman numeral clock, mustard yellow wall clock, timber wall clock, hexagon wall clock, best radium wall clock, dark wood wall clock Made In India Flat 10% Discount ✓Perfect Gift ✓HandMade ✓Natural Wood ✓6 month warranty on Material.",
+                    description: "Indian Handy Crafts, black roman numeral wall clock, retro industrial wall clock, black and white wall clock, night vision with neon wall clock, black roman numeral clock, mustard yellow wall clock, timber wall clock, hexagon wall clock, best radium wall clock, dark wood wall clock",
+                    type: 'website',
+                    site_name: 'MadeInIndiaGifts.in',
+                }}/>
                 <HeaderMobile />
                 <NavigationList />
                 <div className="ps-page--shop">
