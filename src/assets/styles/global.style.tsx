@@ -4,6 +4,12 @@ import css from '@styled-system/css';
 
 export const GlobalStyle = createGlobalStyle(({ theme }) =>
     css({
+        // '@font-face': {
+        //     fontFamily: 'Linearicons',
+        //     src: `url(/static/fonts/Linearicons/Font/Linearicons.ttf) format('truetype')`,
+        //     fontWeight: '400',
+        //     fontStyle: 'normal',
+        // },
         '*, *::before, *::after': {
             boxSizing: get(theme, 'boxSizing'),
         },
@@ -43,6 +49,9 @@ export const GlobalStyle = createGlobalStyle(({ theme }) =>
         img: {
             maxWidth: '100%',
             borderStyle: 'none',
+        },
+        figure: {
+            margin: '1em 40px',
         },
         // h1: {
         //     fontFamily: 'heading',

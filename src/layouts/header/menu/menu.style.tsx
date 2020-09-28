@@ -13,7 +13,7 @@ export const MenuToggle = styled.div`
     i {
         font-size: 20px;
         margin-right: 10px;
-        color: #fff;
+        color: ${themeGet('colors.white', '#fff')};
     }
 
     span {

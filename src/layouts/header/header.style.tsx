@@ -1,19 +1,35 @@
 import styled, { keyframes } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import { ContainerMixin, listResetMixin } from 'assets/styles/mixins.style';
+import { listResetMixin } from 'assets/styles/mixins.style';
 import { MenuToggle, MenuWrapper, MenuWrapperSticky } from './menu/menu.style';
 
-export const HeaderDefaultTop = styled.div`
+export const HeaderTop = styled.div`
     padding: 25px 0;
     background-color: ${themeGet('colors.primary.regular', '#009e7f')};
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 `;
 
-export const HeaderDefaultContainer = styled.div`
-    ${ContainerMixin};
+export const HeaderContainer = styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+
+    > * {
+        width: 100%;
+    }
+
+    max-width: 1650px;
+    margin: 0 auto;
+    padding: 0 15px;
+    @media (max-width: 1680px) {
+        padding: 0 30px;
+        max-width: 100%;
+    }
+    @media (max-width: 479px) {
+        padding: 0 15px;
+    }
 `;
 
-export const HeaderDefaultLeft = styled.div`
+export const HeaderLeft = styled.div`
     max-width: 300px;
     display: flex;
     align-items: center;
@@ -22,16 +38,16 @@ export const HeaderDefaultLeft = styled.div`
     }
 `;
 
-export const HeaderDefaultCenter = styled.div``;
+export const HeaderCenter = styled.div``;
 
-export const HeaderDefaultRight = styled.div`
+export const HeaderRight = styled.div`
     max-width: 370px;
 `;
 
-const HeaderDefaultWrapper = styled.header`
+const HeaderWrapper = styled.header`
     ${listResetMixin}
     &.header--sticky {
-        ${HeaderDefaultTop} {
+        ${HeaderTop} {
             position: fixed;
             top: 0;
             width: 100%;
@@ -40,7 +56,7 @@ const HeaderDefaultWrapper = styled.header`
             padding: 10px 0;
         }
 
-        ${HeaderDefaultLeft} {
+        ${HeaderLeft} {
             .ps-logo {
                 display: none;
             }
@@ -72,4 +88,4 @@ const HeaderDefaultWrapper = styled.header`
     }
 `;
 
-export default HeaderDefaultWrapper;
+export default HeaderWrapper;

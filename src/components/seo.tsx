@@ -1,3 +1,5 @@
+import React, { FC } from 'react';
+import Head from 'next/head';
 export type SeoProps = {
     title: string;
     author: any;
@@ -17,10 +19,7 @@ export type SeoProps = {
     external_services?: Array<any>;
 };
 
-import React from 'react';
-import Head from 'next/head';
-
-const SEO: React.FC<SeoProps> = (seoProps) => (
+const SEO: FC<SeoProps> = (seoProps) => (
     <Head>
         <title>{seoProps?.title}</title>
         <meta name="description" content={seoProps.description} />

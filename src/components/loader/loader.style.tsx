@@ -94,7 +94,7 @@ export const PageOpenLoaderSection = styled.div`
     top: 0;
     width: 51%;
     height: 100%;
-    background: #ffffff;
+    background: ${themeGet('colors.white', '#fff')};
     z-index: 999;
 `;
 

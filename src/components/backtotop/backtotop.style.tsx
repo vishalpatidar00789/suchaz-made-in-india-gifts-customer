@@ -26,8 +26,8 @@ export const BacktoTopDiv = styled.div`
 
     &:hover {
         cursor: pointer;
-        background-color: #fff;
-        border-color: #fff;
+        background-color: ${themeGet('colors.white', '#fff')};
+        border-color: ${themeGet('colors.white', '#fff')};
         box-shadow: 0 0 10px 2px
             rgba(${themeGet('colors.primary.regular', '#c3404e')}, 0.5);
         i {

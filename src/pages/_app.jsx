@@ -78,26 +78,22 @@ class MyApp extends App {
             ((page) => {
                 return (
                     <ThemeProvider theme={defaultTheme}>
-                        <Loader loading={this.state.loading} />
-                        <SEO {...siteMetadata} />
-                        <AppLayout
-                            children={page}
-                            disableLayout={this.state.pageLoading}
-                            openLoading={this.state.openLoaded}
-                        />
-                        <GlobalStyle />
+                        <Provider store={store}>
+                            <PersistGate loading={<Loader loading={true} />} persistor={this.persistor}>
+                                <GlobalStyle />
+                                <Loader loading={this.state.loading} />
+                                <SEO {...siteMetadata} />
+                                <AppLayout
+                                    children={page}
+                                    disableLayout={this.state.pageLoading}
+                                    openLoading={this.state.openLoaded}
+                                />
+                            </PersistGate>
+                        </Provider>
                     </ThemeProvider>
                 );
             });
-        return getLayout(
-            <Provider store={store}>
-                <PersistGate
-                    loading={<Loader loading={true} />}
-                    persistor={this.persistor}>
-                    <Component {...pageProps} />
-                </PersistGate>
-            </Provider>
-        );
+        return getLayout(<Component {...pageProps} />);
     }
 }
 

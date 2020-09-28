@@ -110,8 +110,8 @@ const MenuDefault = css`
 
                 > a {
                     &:after {
-                        content: '\e93a';
-                        font: normal normal normal 12px/1 linearicons;
+                        content: '\f078';
+                        font: normal normal normal 12px/1 FontAwesome;
                         ${verticalAlignMixin()};
                         right: 0;
                     }
@@ -120,7 +120,7 @@ const MenuDefault = css`
                         content: '';
                         width: 13px;
                         height: 13px;
-                        background-color: #fff;
+                        background-color: ${themeGet('colors.white', '#fff')};
                         position: absolute;
                         top: 100%;
                         left: 50%;
@@ -158,7 +158,7 @@ const MenuDefault = css`
 
             &:hover {
                 .sub-toggle {
-                    color: #ffffff;
+                    color: ${themeGet('colors.white', '#fff')};
                 }
 
                 > .sub-menu {
@@ -183,7 +183,7 @@ const MegaMenu = css`
         flex-flow: row nowrap;
         justify-content: space-between;
         padding: 10px 10px 10px;
-        background-color: #fff;
+        background-color: ${themeGet('colors.white', '#fff')};
         transition: all 0.4s ease;
         border: 1px solid #ccc;
 
@@ -226,7 +226,7 @@ const MegaMenu = css`
                             top: 5px;
                             right: 0;
                             font-size: 9px;
-                            color: #ffffff;
+                            color: ${themeGet('colors.white', '#fff')};
                             padding: 0px 8px;
                             line-height: 2em;
                             border-radius: 10px;

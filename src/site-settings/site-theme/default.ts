@@ -29,7 +29,7 @@ const palette = {
     text: {
         bold: '#0D1136', // heading color
         medium: '#424561',
-        regular: '#77798C', // regular text color
+        regular: '#666', // regular text color
         light: '#909090',
         label: '#767676',
     },

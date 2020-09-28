@@ -1,4 +1,4 @@
-import HeaderDefault from 'layouts/header/header-default';
+import Header from 'layouts/header/header';
 import React, { FC, useEffect } from 'react';
 import {
     getCollections,
@@ -16,7 +16,7 @@ const Index: FC = () => {
     }, []);
     return (
         <>
-            <HeaderDefault />
+            <Header />
             <h2>Main Content</h2>
             <p>
                 Contrary to popular belief, Lorem Ipsum is not simply random
