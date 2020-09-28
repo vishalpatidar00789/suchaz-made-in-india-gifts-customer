@@ -25,9 +25,7 @@ const boxShadowMixin = css`
 `;
 
 const boxShadowMixinFunc = (top, left, blur, color, inset = false) => {
-    return `box-shadow: ${
-        inset ? 'inset' : ''
-    } ${top}px ${left}px ${blur}px ${color};`;
+    return `box-shadow: ${inset ? 'inset' : ''} ${top}px ${left}px ${blur}px ${color};`;
 };
 
 // const StyledComp = styled.div`
@@ -63,13 +61,7 @@ export const transition = (width = null, height = null) => css`
 //     }
 // }
 
-export const sampleflexUnit = (
-    amount,
-    min,
-    max,
-    unit = 'vw',
-    prop = 'font-size'
-) => {
+export const sampleflexUnit = (amount, min, max, unit = 'vw', prop = 'font-size') => {
     const minBreakpoint = (min / amount) * 100;
     const maxBreakpoint = max ? (max / amount) * 100 : false;
     const dimension = unit === 'vw' ? 'width' : 'height';
@@ -186,4 +178,11 @@ export const verticalAlignMixin = (position = 'absolute') => css`
     position: ${position};
     top: 50%;
     transform: translateY(-50%);
+`;
+export const clearfixMixin = () => css`
+    &::after {
+        clear: both;
+        content: '';
+        display: table;
+    }
 `;

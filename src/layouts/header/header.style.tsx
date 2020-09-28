@@ -4,7 +4,7 @@ import { listResetMixin } from 'assets/styles/mixins.style';
 import { MenuToggle, MenuWrapper, MenuWrapperSticky } from './menu/menu.style';
 
 export const HeaderTop = styled.div`
-    padding: 25px 0;
+    padding: 5px 0;
     background-color: ${themeGet('colors.primary.regular', '#009e7f')};
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 `;
@@ -82,9 +82,6 @@ const HeaderWrapper = styled.header`
 
     @media (max-width: 1199px) {
         display: none;
-        &.header--mobile {
-            display: block;
-        }
     }
 `;
 

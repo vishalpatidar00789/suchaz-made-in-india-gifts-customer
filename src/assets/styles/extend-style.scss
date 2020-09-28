@@ -5,3 +5,17 @@ html [type="button"],
 [type="submit"] {
     -webkit-appearance: button;
 }
+
+// Override Ant Design Component
+.ant-drawer {
+    z-index: 9999 !important;
+    @media screen and (max-width: 768px) {
+        .ant-drawer-content-wrapper {
+            min-width: 100%;
+        }
+    }
+}
+
+.ant-drawer-body {
+    padding: 0 !important;
+}

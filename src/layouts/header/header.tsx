@@ -1,11 +1,5 @@
 import React, { useEffect, FC } from 'react';
-import HeaderWrapper, {
-    HeaderCenter,
-    HeaderContainer,
-    HeaderLeft,
-    HeaderRight,
-    HeaderTop,
-} from './header.style';
+import HeaderWrapper, { HeaderCenter, HeaderContainer, HeaderLeft, HeaderRight, HeaderTop } from './header.style';
 import { stickyHeader } from '../../utilities/common-helpers';
 import { useDispatch } from 'react-redux';
 import { getMenus } from '../../store/collection/action';
@@ -13,11 +7,7 @@ import MenuDefault from './menu';
 import NavigationHeader from './navigation';
 import HeaderActions from './actions';
 
-type HeaderProps = {
-    className?: string;
-};
-
-const Header: FC<HeaderProps> = ({ className }) => {
+const Header: FC = () => {
     const showSearch = true;
     const dispatch = useDispatch();
     useEffect(() => {
@@ -28,15 +18,15 @@ const Header: FC<HeaderProps> = ({ className }) => {
     }, []);
 
     return (
-        <HeaderWrapper className={className} id="headerSticky">
+        <HeaderWrapper id="headerSticky">
             <HeaderTop>
                 <HeaderContainer>
                     <HeaderLeft>
-                        <MenuDefault></MenuDefault>
+                        <MenuDefault />
                     </HeaderLeft>
                     <HeaderCenter></HeaderCenter>
                     <HeaderRight>
-                        <HeaderActions></HeaderActions>
+                        <HeaderActions />
                     </HeaderRight>
                 </HeaderContainer>
             </HeaderTop>
