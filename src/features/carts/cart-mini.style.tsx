@@ -110,20 +110,20 @@ export const CartMiniProductContent = styled.div`
         color: #06c;
 
         &:hover {
-            color: ${themeGet('colors.primary.regular', '#c3404e')};
+            color: ${themeGet('colors.majorColor', '#c3404e')};
         }
     }
 
     p {
         strong {
-            color: ${themeGet('colors.text.bold', '#0D1136')};
+            color: ${themeGet('colors.headingsColor', '#0D1136')};
             font-weight: 500;
         }
     }
 
     small {
         font-size: 14px;
-        color: ${themeGet('colors.text.bold', '#0D1136')};
+        color: ${themeGet('colors.headingsColor', '#0D1136')};
     }
 `;
 
@@ -132,7 +132,7 @@ export const CartMiniRemove = styled.a`
     top: 0;
     right: 0;
     font-size: 18px;
-    color: ${themeGet('colors.text.regular', '#c3404e')};
+    color: ${themeGet('colors.textColor', '#c3404e')};
 `;
 export const CartMiniFooter = styled.div`
     padding: 10px 20px 20px;

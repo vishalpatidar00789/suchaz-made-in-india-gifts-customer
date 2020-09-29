@@ -21,11 +21,11 @@ export const NavigationMobileContainerItem = styled.a.attrs((props: ItemProps) =
         isActive &&
         css`
             i {
-                color: ${themeGet('colors.primary.regular', '#009e7f')};
+                color: ${themeGet('colors.majorColor', '#c3404e')};
             }
 
             span {
-                color: ${themeGet('colors.primary.regular', '#009e7f')};
+                color: ${themeGet('colors.majorColor', '#c3404e')};
             }
         `}
 `;
@@ -49,7 +49,7 @@ export const NavigationMobileDrawerHeader = styled.div`
     position: relative;
     text-align: center;
     padding: 15px 20px;
-    background-color: ${themeGet('colors.primary.regular', '#009e7f')};
+    background-color: ${themeGet('colors.majorColor', '#c3404e')};
     h3 {
         margin-bottom: 0;
         font-weight: 600;
@@ -63,6 +63,7 @@ export const NavigationMobileDrawerHeader = styled.div`
 
 export const NavigationMobileDrawerContent = styled.div`
     height: calc(100vh - 50px);
+    padding: 0 20px;
 `;
 
 export const NavigationMobileContainer = styled.div`
@@ -75,7 +76,7 @@ export const NavigationMobileContainer = styled.div`
 `;
 
 export const NavigationMobileCartCount = styled.span`
-    background-color: ${themeGet('colors.text.bold', '#000')};
+    background-color: ${themeGet('colors.headingsColor', '#000')};
     position: absolute;
     bottom: 36px;
     right: -6px;

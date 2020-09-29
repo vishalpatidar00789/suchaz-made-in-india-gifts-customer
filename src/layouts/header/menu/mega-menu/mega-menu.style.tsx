@@ -18,7 +18,7 @@ const MenuDropdown = css`
             > a {
                 display: block;
                 padding: 10px 0;
-                color: ${themeGet('colors.text.bold', '#000')};
+                color: ${themeGet('colors.headingsColor', '#000')};
 
                 i {
                     margin-right: 10px;
@@ -40,8 +40,8 @@ const MenuDropdown = css`
 
             &:hover {
                 background-color: ${themeGet(
-                    'colors.primary.regular',
-                    '#009e7f'
+                    'colors.majorColor',
+                    '#c3404e'
                 )};
 
                 &.has-mega-menu {
@@ -70,7 +70,7 @@ const MenuDefault = css`
                 color: ${themeGet('colors.white', '#fff')};
 
                 &:hover {
-                    color: ${themeGet('colors.text.bold', '#000')};
+                    color: ${themeGet('colors.headingsColor', '#000')};
                 }
             }
 
@@ -197,7 +197,7 @@ const MegaMenu = css`
             margin-bottom: 10px;
             font-size: 16px;
             font-weight: 600;
-            color: ${themeGet('colors.text.bold', '#000')};
+            color: ${themeGet('colors.headingsColor', '#000')};
         }
 
         .mega-menu__column {
@@ -210,7 +210,7 @@ const MegaMenu = css`
             li {
                 a {
                     display: block;
-                    color: ${themeGet('colors.text.bold', '#000')};
+                    color: ${themeGet('colors.headingsColor', '#000')};
                     line-height: 20px;
                     padding: 5px 0;
                     font-size: 14px;
@@ -231,8 +231,8 @@ const MegaMenu = css`
                             line-height: 2em;
                             border-radius: 10px;
                             background-color: ${themeGet(
-                                'colors.primary.regular',
-                                '#009e7f'
+                                'colors.majorColor',
+                                '#c3404e'
                             )};
                         }
 
@@ -247,7 +247,7 @@ const MegaMenu = css`
                     }
 
                     &:hover {
-                        color: ${themeGet('colors.primary.regular', '#009e7f')};
+                        color: ${themeGet('colors.majorColor', '#c3404e')};
                     }
                 }
             }

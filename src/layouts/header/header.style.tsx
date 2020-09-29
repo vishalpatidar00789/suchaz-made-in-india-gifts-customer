@@ -5,7 +5,7 @@ import { MenuToggle, MenuWrapper, MenuWrapperSticky } from './menu/menu.style';
 
 export const HeaderTop = styled.div`
     padding: 5px 0;
-    background-color: ${themeGet('colors.primary.regular', '#009e7f')};
+    background-color: ${themeGet('colors.majorColor', '#c3404e')};
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 `;
 

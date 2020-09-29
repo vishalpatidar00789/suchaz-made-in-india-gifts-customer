@@ -3,7 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 import { centerMixin } from '../../assets/styles/mixins.style';
 import media from 'styled-media-query';
 
-export const BacktoTopDiv = styled.div`
+export const ScrollTopDiv = styled.div`
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -21,17 +21,16 @@ export const BacktoTopDiv = styled.div`
         font-size: 16px;
         z-index: 10001;
         font-size: 16px;
-        color: ${themeGet('colors.text.regular', '#c3404e')};
+        color: ${themeGet('colors.textColor', '#c3404e')};
     }
 
     &:hover {
         cursor: pointer;
         background-color: ${themeGet('colors.white', '#fff')};
         border-color: ${themeGet('colors.white', '#fff')};
-        box-shadow: 0 0 10px 2px
-            rgba(${themeGet('colors.primary.regular', '#c3404e')}, 0.5);
+        box-shadow: 0 0 10px 2px rgba(${themeGet('colors.majorColor', '#c3404e')}, 0.5);
         i {
-            color: ${themeGet('colors.primary.regular', '#c3404e')};
+            color: ${themeGet('colors.majorColor', '#c3404e')};
         }
     }
     ${media.lessThan('large')`{

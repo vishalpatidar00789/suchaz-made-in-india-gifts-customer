@@ -17,7 +17,7 @@ export const SignInHeaderRight = styled.div`
         line-height: 18px;
         color: ${themeGet('colors.white', '#fff')};
         &:hover {
-            color: ${themeGet('colors.text.bold', '#000')};
+            color: ${themeGet('colors.headingsColor', '#000')};
         }
     }
 `;
@@ -48,14 +48,14 @@ export const UserHeaderLinkList = styled.ul`
     li {
         a {
             padding-left: 0;
-            color: ${themeGet('colors.text.bold', '#000')};
+            color: ${themeGet('colors.headingsColor', '#000')};
 
             &:before {
                 display: none;
             }
 
             &:hover {
-                color: ${themeGet('colors.primary.regular', '#009e7f')};
+                color: ${themeGet('colors.majorColor', '#c3404e')};
             }
         }
     }

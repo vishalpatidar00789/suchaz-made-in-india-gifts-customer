@@ -12,6 +12,8 @@ import NavigationMobileWrapper, {
 } from './navigation-mobile.style';
 import { withRouter } from 'next/router';
 import { Drawer } from 'antd';
+import PanelCategories from '../panel/panel-categories';
+import PanelCart from '../panel/panel-cart';
 
 type NavigationMobileProps = {
     router: any;
@@ -86,7 +88,25 @@ const NavigationMobileHeader: FC<NavigationMobileProps> = ({ router }) => {
                         </NavigationMobileDrawerClose>
                     </NavigationMobileDrawerHeader>
                     <NavigationMobileDrawerContent>
-                        <h3>Categories Lsit</h3>
+                        <PanelCategories />
+                    </NavigationMobileDrawerContent>
+                </NavigationMobileDrawerWrapper>
+            </Drawer>
+            <Drawer
+                className="ps-panel--mobile"
+                placement="right"
+                closable={false}
+                onClose={handleDrawerClose}
+                visible={cartDrawer}>
+                <NavigationMobileDrawerWrapper>
+                    <NavigationMobileDrawerHeader>
+                        <h3>Shopping Cart</h3>
+                        <NavigationMobileDrawerClose onClick={handleDrawerClose}>
+                            <i className="icon-cross"></i>
+                        </NavigationMobileDrawerClose>
+                    </NavigationMobileDrawerHeader>
+                    <NavigationMobileDrawerContent>
+                        <PanelCart />
                     </NavigationMobileDrawerContent>
                 </NavigationMobileDrawerWrapper>
             </Drawer>

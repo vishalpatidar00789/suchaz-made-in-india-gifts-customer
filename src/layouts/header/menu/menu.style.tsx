@@ -30,7 +30,7 @@ export const MenuToggle = styled.div`
         left: 0;
         width: 100%;
         height: 1px;
-        background-color: ${themeGet('colors.text.bold', '#000')};
+        background-color: ${themeGet('colors.headingsColor', '#000')};
         transition: transform 0.75s cubic-bezier(0.7, 0, 0.3, 1);
         transform: scale3d(0, 1, 1);
         transform-origin: 100% 50%;

@@ -29,7 +29,7 @@ const Loader: FC<LoaderProps> = ({ type, color, loading }) => {
             return (
                 <>
                     {loading ? (
-                        <Spinner color={themeContext.colors.primary.regular} />
+                        <Spinner color={themeContext.colors.majorColor} />
                     ) : null}
                 </>
             );
@@ -40,7 +40,7 @@ const Loader: FC<LoaderProps> = ({ type, color, loading }) => {
                         <LoadingArea>
                             <ThreeBounce
                                 size={75}
-                                color={themeContext.colors.primary.regular}
+                                color={themeContext.colors.majorColor}
                             />
                         </LoadingArea>
                     ) : null}

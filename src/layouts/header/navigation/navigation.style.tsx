@@ -79,7 +79,7 @@ export const NavigationExtraWrapper = styled.ul`
 `;
 
 const NavigationWrapper = styled.nav`
-    background-color: ${themeGet('colors.primary.regular', '#009e7f')};
+    background-color: ${themeGet('colors.majorColor', '#c3404e')};
     transition: all 0.25s ease;
 `;
 

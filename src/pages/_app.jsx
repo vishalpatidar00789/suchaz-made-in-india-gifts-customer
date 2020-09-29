@@ -14,6 +14,7 @@ import { siteMetadata } from '../site-settings/site-metadata';
 import AppLayout from '../layouts/app-layout';
 import Router from 'next/router';
 import Loader from '../components/loader';
+import ScrollTop from '../components/scroll-element';
 
 // External CSS import here
 import '../assets/styles/extend-style.scss';
@@ -83,6 +84,7 @@ class MyApp extends App {
                                 <GlobalStyle />
                                 <Loader loading={this.state.loading} />
                                 <SEO {...siteMetadata} />
+                                <ScrollTop />
                                 <AppLayout
                                     children={page}
                                     disableLayout={this.state.pageLoading}

@@ -34,7 +34,7 @@ export const HeaderMobileContainer = styled.div`
     text-align: center;
     color: ${themeGet('colors.white', '#fff')};
     border-bottom: 0 none;
-    background-color: ${themeGet('colors.primary.regular', '#009e7f')};
+    background-color: ${themeGet('colors.majorColor', '#c3404e')};
     transition: all 0.4s $ease-in-out-quad;
     ${clearfixMixin};
 `;
