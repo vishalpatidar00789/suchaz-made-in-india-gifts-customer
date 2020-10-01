@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-export const LayoutWrapper = styled.div<{ disable: boolean }>`
+export const DefaultLayoutWrapper = styled.div<{ disable: boolean }>`
     ${(props) =>
         props.disable &&
         css`

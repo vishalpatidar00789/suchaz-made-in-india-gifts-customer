@@ -39,12 +39,18 @@ export const GlobalStyle = createGlobalStyle(({ theme }) =>
             position: 'relative',
             textDecoration: 'none',
             transition: 'all 0.4s ease',
+            '&:hover': {
+                color: get(theme, 'colors.majorColor'),
+            },
         },
         'article, aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary': {
             display: 'block',
         },
         'a, input, textarea, button, select': {
             outline: 'none',
+        },
+        'a: hover,h1:focus,h2:focus,h3:focus,h4:focus,h5:focus,h6:focus': {
+            textDecoration: 'none',
         },
         img: {
             maxWidth: '100%',

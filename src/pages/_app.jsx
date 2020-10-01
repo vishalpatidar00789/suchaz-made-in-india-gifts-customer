@@ -7,14 +7,14 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import createStore from '../store/store';
 import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from '../site-settings/site-theme/default';
+import { defaultTheme } from '../assets/styles/theme/default';
 import { GlobalStyle } from '../assets/styles/global.style';
-import SEO from '../components/seo';
-import { siteMetadata } from '../site-settings/site-metadata';
-import AppLayout from '../layouts/app-layout';
+import DefaultLayout from '../layouts/default-layout';
 import Router from 'next/router';
 import Loader from '../components/loader';
 import ScrollTop from '../components/scroll-element';
+import { DefaultSeo } from 'next-seo';
+import _DEFAULT_SEO from '../../next-seo.config';
 
 // External CSS import here
 import '../assets/styles/extend-style.scss';
@@ -82,10 +82,10 @@ class MyApp extends App {
                         <Provider store={store}>
                             <PersistGate loading={<Loader loading={true} />} persistor={this.persistor}>
                                 <GlobalStyle />
+                                <DefaultSeo {..._DEFAULT_SEO} />
                                 <Loader loading={this.state.loading} />
-                                <SEO {...siteMetadata} />
                                 <ScrollTop />
-                                <AppLayout
+                                <DefaultLayout
                                     children={page}
                                     disableLayout={this.state.pageLoading}
                                     openLoading={this.state.openLoaded}

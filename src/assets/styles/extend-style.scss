@@ -6,6 +6,12 @@ html [type="button"],
     -webkit-appearance: button;
 }
 
+#tawkchat-container {
+    @media (max-width: 767px) {
+        bottom: 60px !important;
+    }
+}
+
 // Override Ant Design Component
 .ant-drawer {
     z-index: 9999 !important;

@@ -1,18 +1,21 @@
 import React, { FC } from 'react';
-import { LayoutWrapper } from './app-layout.style';
+import { DefaultLayoutWrapper } from './layout.style';
 import Loader from '../components/loader';
 type LayoutProps = {
     children: any;
     disableLayout: boolean;
     openLoading: boolean;
 };
-const Layout: FC<LayoutProps> = ({ children, disableLayout, openLoading }) => (
-    <LayoutWrapper disable={disableLayout}>
+import HeadTag from './seo/head-tag';
+import Header from './header';
+const DefaultLayout: FC<LayoutProps> = ({ children, disableLayout, openLoading }) => (
+    <DefaultLayoutWrapper disable={disableLayout}>
+        <HeadTag />
         <Loader type={'page-open-loader'} loading={openLoading} />
         {children}
-    </LayoutWrapper>
+    </DefaultLayoutWrapper>
 );
-export default Layout;
+export default DefaultLayout;
 
 // 'tn': 320px,
 // 'xs': 480px,
