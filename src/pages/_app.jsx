@@ -26,7 +26,6 @@ class MyApp extends App {
         this.persistor = persistStore(props.store);
         this.state = {
             pageLoading: false,
-            openLoaded: false,
         };
 
         Router.events.on('routeChangeStart', () => {
@@ -55,17 +54,9 @@ class MyApp extends App {
         return { pageProps };
     }
 
-    _isMounted = false;
-
     componentDidMount() {
         this._isMounted = true;
         this.setState({ pageLoading: false });
-        setTimeout(() => {
-            this.setState({ openLoaded: true });
-        }, 200);
-        if (this._isMounted) {
-            this.setState({ open: true });
-        }
     }
 
     componentWillUnmount() {
@@ -74,28 +65,24 @@ class MyApp extends App {
 
     render() {
         const { Component, pageProps, store } = this.props;
-        const getLayout =
+        const AppLayout =
             Component.getLayout ||
-            ((page) => {
-                return (
-                    <ThemeProvider theme={defaultTheme}>
-                        <Provider store={store}>
-                            <PersistGate loading={<Loader loading={true} />} persistor={this.persistor}>
-                                <GlobalStyle />
-                                <DefaultSeo {..._DEFAULT_SEO} />
-                                <Loader loading={this.state.loading} />
-                                <ScrollTop />
-                                <DefaultLayout
-                                    children={page}
-                                    disableLayout={this.state.pageLoading}
-                                    openLoading={this.state.openLoaded}
-                                />
-                            </PersistGate>
-                        </Provider>
-                    </ThemeProvider>
-                );
-            });
-        return getLayout(<Component {...pageProps} />);
+            (({ children }) => <DefaultLayout disableLayout={this.state.pageLoading}>{children}</DefaultLayout>);
+        return (
+            <ThemeProvider theme={defaultTheme}>
+                <Provider store={store}>
+                    <PersistGate loading={<Loader loading={true} />} persistor={this.persistor}>
+                        <GlobalStyle />
+                        <DefaultSeo {..._DEFAULT_SEO} />
+                        <Loader loading={this.state.loading} />
+                        <ScrollTop />
+                        <AppLayout>
+                            <Component {...pageProps} />
+                        </AppLayout>
+                    </PersistGate>
+                </Provider>
+            </ThemeProvider>
+        );
     }
 }
 

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import HeaderActionsWrapper from './header-actions.style';
 import { useRouter } from 'next/router';
-import CartMini from 'features/carts/cart-mini';
+import CartMini from 'features/cart/cart-mini';
 import AccountQuickLinks from './account-quick-links';
 import { useSelector } from 'react-redux';
 const HeaderActions: FC = () => {
