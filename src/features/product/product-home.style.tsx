@@ -213,7 +213,7 @@ export const ProductHomeContainer = styled.div`
         margin-bottom: 13px;
         line-height: 1.2;
         font-size: 12px;
-        color: #000;
+        color: ${themeGet('colors.black', '#000000')};
         text-transform: uppercase;
         border-bottom: 1px solid #e1e1e1;
     }

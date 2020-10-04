@@ -25,7 +25,7 @@ export const CartMiniIcon = styled.a`
         vertical-align: top;
         width: 20px;
         height: 20px;
-        color: #000;
+        color: ${themeGet('colors.black', '#000000')};
         background-color: ${themeGet('colors.white', '#fff')};
         border-radius: 50%;
 
@@ -39,7 +39,7 @@ export const CartMiniIcon = styled.a`
 
     &:hover {
         i {
-            color: #000;
+            color: ${themeGet('colors.black', '#000000')};
         }
     }
 `;
@@ -86,8 +86,6 @@ export const CartMiniProduct = styled.div`
 `;
 
 export const CartMiniProductThumbnail = styled.div`
-    ${flexRowMixin};
-    margin-bottom: 30px;
     max-width: 56px;
 `;
 
@@ -95,15 +93,6 @@ export const CartMiniProductContent = styled.div`
     position: relative;
     padding-right: 30px;
     padding-left: 20px;
-
-    a {
-        color: #06c;
-
-        &:hover {
-            color: ${themeGet('colors.majorColor', '#c3404e')};
-        }
-    }
-
     p {
         strong {
             color: ${themeGet('colors.headingsColor', '#0D1136')};
@@ -123,6 +112,10 @@ export const CartMiniRemove = styled.a`
     right: 0;
     font-size: 18px;
     color: ${themeGet('colors.textColor', '#c3404e')};
+
+    &:hover {
+        color: ${themeGet('colors.majorColor', '#c3404e')} !important;
+    }
 `;
 export const CartMiniFooter = styled.div`
     padding: 10px 20px 20px;
@@ -146,9 +139,25 @@ export const CartMiniFooter = styled.div`
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
+        margin: 0;
 
         .ps-btn {
             padding: 12px 25px;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            color: ${themeGet('colors.black', '#000000')};
+            border: none;
+            font-weight: 600;
+            border-radius: 4px;
+            background-color: ${themeGet('colors.majorColor', '#c3404e')};
+            transition: all 0.4s ease;
+            cursor: pointer;
+            &:hover {
+                background-color: #222;
+                color: ${themeGet('colors.white', '#000000')};
+            }
         }
     }
 `;
