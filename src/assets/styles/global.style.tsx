@@ -52,6 +52,14 @@ export const GlobalStyle = createGlobalStyle(({ theme }) =>
         'a: hover,h1:focus,h2:focus,h3:focus,h4:focus,h5:focus,h6:focus': {
             textDecoration: 'none',
         },
+        'a:hover,h1:focus,h2:focus,h3:focus,h4:focus,h5:focus,h6:focus': {
+            textDecoration: 'none',
+        },
+
+        'a:focus,button:focus,select:focus,input:focus,textarea:focus': {
+            outline: 'none',
+            textDecoration: 'none',
+        },
         img: {
             maxWidth: '100%',
             borderStyle: 'none',
@@ -207,3 +215,15 @@ export const GlobalStyle = createGlobalStyle(({ theme }) =>
         ...theme.globals,
     })
 );
+
+
+// 'tn': 320px,
+// 'xs': 480px,
+// 'sm': 768px,
+// 'md': 992px,
+// 'lg': 1200px,
+
+// @include media('<xs') - @media (max-width: 479px)
+// @include media('<sm') - @media (max-width: 767px)
+// @include media('<md') - @media (max-width: 991px)
+// @include media('<lg') - @media (max-width: 1199px)

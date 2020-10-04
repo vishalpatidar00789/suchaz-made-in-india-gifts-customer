@@ -186,3 +186,11 @@ export const clearfixMixin = () => css`
         display: table;
     }
 `;
+export const flexRowMixin = () => css`
+    display: flex;
+    flex-flow: row nowrap;
+
+    > * {
+        width: 100%;
+    }
+`;

@@ -11,7 +11,7 @@ import {
     PanelCartProductItems,
     PanelCartProductFooter,
 } from './panel.style';
-import { isStaticData } from '../../../utilities/app-settings';
+import { isStaticData } from 'utilities/app-settings';
 import Link from 'next/link';
 
 const PanelCart: FC = () => {

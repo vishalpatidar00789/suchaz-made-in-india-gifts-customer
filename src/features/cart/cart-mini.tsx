@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart, removeItem } from 'store/cart/action';
-import { isStaticData } from '../../utilities/app-settings';
+import { isStaticData } from 'utilities/app-settings';
 import CartMiniWrapper, {
     CartMiniIcon,
     CartMiniContainer,

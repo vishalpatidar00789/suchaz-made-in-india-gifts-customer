@@ -7,7 +7,7 @@ import {
     LoadingArea,
     Spinner,
 } from './loader.style';
-import { ThreeBounce } from 'styled-spinkit';
+import { ThreeBounce, Circle } from 'styled-spinkit';
 
 type LoaderProps = {
     type?: string;
@@ -26,22 +26,15 @@ const Loader: FC<LoaderProps> = ({ type, color, loading }) => {
                 </PageOpenLoaderWrapper>
             );
         case 'spinner':
-            return (
-                <>
-                    {loading ? (
-                        <Spinner color={themeContext.colors.majorColor} />
-                    ) : null}
-                </>
-            );
+            return <>{loading ? <Spinner color={themeContext.colors.majorColor} /> : null}</>;
+        case 'multi-slide-loader':
+            return <>{loading ? <Circle size={75} color={themeContext.colors.majorColor} /> : null}</>;
         default:
             return (
                 <>
                     {loading ? (
                         <LoadingArea>
-                            <ThreeBounce
-                                size={75}
-                                color={themeContext.colors.majorColor}
-                            />
+                            <ThreeBounce size={75} color={themeContext.colors.majorColor} />
                         </LoadingArea>
                     ) : null}
                 </>

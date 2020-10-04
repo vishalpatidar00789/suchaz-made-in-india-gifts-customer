@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
+import { flexRowMixin } from 'assets/styles/mixins.style';
 export const PanelCategoriesWrapper = styled.div`
     .ant-menu-inline {
         border-right: none !important;
@@ -41,12 +42,7 @@ export const PanelCartContent = styled.div`
 `;
 
 export const PanelCartProduct = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-
-    > * {
-        width: 100%;
-    }
+    ${flexRowMixin};
 
     margin-bottom: 10px;
     padding-bottom: 10px;

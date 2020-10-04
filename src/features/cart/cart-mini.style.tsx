@@ -1,6 +1,6 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import { hiddenMixin, showMixin } from 'assets/styles/mixins.style';
+import { flexRowMixin, hiddenMixin, showMixin } from 'assets/styles/mixins.style';
 
 export const CartMiniIcon = styled.a`
     display: inline-block;
@@ -81,22 +81,12 @@ export const CartMiniItems = styled.div`
 `;
 
 export const CartMiniProduct = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-
-    > * {
-        width: 100%;
-    }
+    ${flexRowMixin};
     margin-bottom: 30px;
 `;
 
 export const CartMiniProductThumbnail = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-
-    > * {
-        width: 100%;
-    }
+    ${flexRowMixin};
     margin-bottom: 30px;
     max-width: 56px;
 `;

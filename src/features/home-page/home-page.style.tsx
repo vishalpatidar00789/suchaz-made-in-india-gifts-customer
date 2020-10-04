@@ -1,7 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
-const HomePageWrapper = styled.div`
-    
-`;
+import styled from 'styled-components';
+const HomePageWrapper = styled.main``;
 
 export default HomePageWrapper;

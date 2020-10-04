@@ -1,5 +1,4 @@
-import NextArrow from '../components/elements/carousel/NextArrow';
-import PrevArrow from '../components/elements/carousel/PrevArrow';
+import ArrowButton from 'components/carousel/arrow-button';
 import React from 'react';
 
 export const carouselStandard = {
@@ -9,8 +8,8 @@ export const carouselStandard = {
     speed: 1000,
     slidesToShow: 5,
     slidesToScroll: 2,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <ArrowButton directionType="next" icon="icon-chevron-right" />,
+    prevArrow: <ArrowButton directionType="prev" icon="icon-chevron-left" />,
     responsive: [
         {
             breakpoint: 1024,
@@ -46,8 +45,8 @@ export const carouselInSidebar = {
     speed: 1000,
     slidesToShow: 4,
     slidesToScroll: 2,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <ArrowButton directionType="next" icon="icon-chevron-right" />,
+    prevArrow: <ArrowButton directionType="prev" icon="icon-chevron-left" />,
     responsive: [
         {
             breakpoint: 1024,
@@ -80,70 +79,37 @@ export const carouselFullwidth = {
     dots: true,
     infinite: true,
     speed: 750,
-    slidesToShow: 7,
-    slidesToScroll: 5,
+    slidesToShow: 5,
+    slidesToScroll: 2,
     arrows: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <ArrowButton directionType="next" icon="icon-chevron-right" />,
+    prevArrow: <ArrowButton directionType="prev" icon="icon-chevron-left" />,
     lazyload: true,
     autoplay: true,
     autoplaySpeed: 10000,
     responsive: [
         {
-            breakpoint: 1750,
-            settings: {
-                slidesToShow: 6,
-                slidesToScroll: 3,
-                dots: true,
-                arrows: true,
-            },
-        },
-
-        {
-            breakpoint: 1366,
-            settings: {
-                slidesToShow: 5,
-                slidesToScroll: 2,
-                infinite: true,
-                dots: true,
-                arrows: true,
-            },
-        },
-        {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                infinite: true,
-                dots: true,
-
-            },
-        },
-        {
             breakpoint: 1024,
             settings: {
-                slidesToShow: 4,
-                slidesToScroll: 1,
+                slidesToShow: 3,
+                slidesToScroll: 3,
                 infinite: true,
                 dots: true,
-                arrows: true,
             },
         },
         {
-            breakpoint: 768,
+            breakpoint: 600,
             settings: {
-                slidesToShow: 3,
+                slidesToShow: 2,
                 slidesToScroll: 2,
-                dots: true,
-                arrows: true,
+                initialSlide: 2,
             },
         },
         {
             breakpoint: 480,
             settings: {
                 slidesToShow: 2,
-                dots: true,
-                arrows: true,
+                slidesToScroll: 2,
             },
         },
     ],
@@ -156,6 +122,6 @@ export const carouselSingle = {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />
+    nextArrow: <ArrowButton directionType="next" icon="icon-chevron-right" />,
+    prevArrow: <ArrowButton directionType="prev" icon="icon-chevron-left" />,
 };

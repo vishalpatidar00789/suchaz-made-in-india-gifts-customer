@@ -7,12 +7,12 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import createStore from '../store/store';
 import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from '../assets/styles/theme/default';
-import { GlobalStyle } from '../assets/styles/global.style';
-import DefaultLayout from '../layouts/default-layout';
+import { defaultTheme } from 'assets/styles/theme/default';
+import { GlobalStyle } from 'assets/styles/global.style';
+import DefaultLayout from 'layouts/default-layout';
 import Router from 'next/router';
-import Loader from '../components/loader';
-import ScrollTop from '../components/scroll-element';
+import Loader from 'components/loader';
+import ScrollTop from 'components/scroll-element';
 import { DefaultSeo } from 'next-seo';
 import _DEFAULT_SEO from '../../next-seo.config';
 

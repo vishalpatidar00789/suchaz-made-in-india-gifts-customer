@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { DefaultLayoutWrapper } from './layout.style';
-import Loader from '../components/loader';
+import Loader from 'components/loader';
 type LayoutProps = {
     children: any;
     disableLayout: boolean;
@@ -12,7 +12,7 @@ import HeaderMobile from './header/header-mobile';
 import NavigationMobileHeader from './header/navigation/navigation-mobile';
 import Footer from './footer';
 const DefaultLayout: FC<LayoutProps> = ({ children, disableLayout }) => {
-    const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState<boolean>(false);
     useEffect(() => {
         setTimeout(() => {
             setLoaded(true);
@@ -31,9 +31,3 @@ const DefaultLayout: FC<LayoutProps> = ({ children, disableLayout }) => {
     );
 };
 export default DefaultLayout;
-
-// 'tn': 320px,
-// 'xs': 480px,
-// 'sm': 768px,
-// 'md': 992px,
-// 'lg': 1200px,

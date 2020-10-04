@@ -1,18 +1,14 @@
 import styled, { keyframes } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 import {
+    flexRowMixin,
     showMixin,
     verticalAlignMixin,
 } from 'assets/styles/mixins.style';
 import { MenuToggle, MenuWrapper } from '../menu/menu.style';
 
 export const NavigationContainer = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-
-    > * {
-        width: 100%;
-    }
+    ${flexRowMixin};
 
     max-width: 1650px;
     margin: 0 auto;

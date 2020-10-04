@@ -20,8 +20,8 @@ type NavigationMobileProps = {
 };
 
 const NavigationMobileHeader: FC<NavigationMobileProps> = ({ router }) => {
-    const [cartDrawer, setCartDrawer] = useState(false);
-    const [categoriesDrawer, setCategoriesDrawer] = useState(false);
+    const [cartDrawer, setCartDrawer] = useState<boolean>(false);
+    const [categoriesDrawer, setCategoriesDrawer] = useState<boolean>(false);
     const { cartTotal } = useSelector((state) => state.cart);
     const { auth } = useSelector((state) => state);
     let pathname = router.pathname;

@@ -1,6 +1,6 @@
 import React, { useEffect, FC } from 'react';
 import HeaderWrapper, { HeaderCenter, HeaderContainer, HeaderLeft, HeaderRight, HeaderTop } from './header.style';
-import { stickyHeader } from '../../utilities/common-helpers';
+import { stickyHeader } from 'utilities/common-helpers';
 import MenuDefault from './menu';
 import NavigationHeader from './navigation';
 import HeaderActions from './actions';

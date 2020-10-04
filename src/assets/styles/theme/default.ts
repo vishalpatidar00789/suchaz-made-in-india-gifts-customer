@@ -46,8 +46,9 @@ const palette = {
         link: '#4285f4',
     },
     red: '#ea4d4a',
-    success: '',
-    warning: '',
+    success: '#669900',
+    danger: '#ec0101',
+    warning: '#faa806',
     muted: '',
     highlight: '',
 };
