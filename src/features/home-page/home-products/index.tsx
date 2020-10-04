@@ -24,7 +24,7 @@ type HomeProductDisplayProps = {
 const HomeProductDisplay: FC<HomeProductDisplayProps> = ({ collectionSlug, categoryProducts }) => {
     const { newarrivals, collections } = useSelector((state) => state.collection);
     const [displayProducts, setDisplayProducts] = useState<boolean>(true);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const [items, setItems] = useState<any>(null);
     const [currentCollection, setCurrentCollection] = useState<string>('');
     let productSectionItems;
@@ -96,23 +96,15 @@ const HomeProductDisplay: FC<HomeProductDisplayProps> = ({ collectionSlug, categ
         }
     }
 
-    // useEffect(() => {
-    //     if (homeProducts && homeProducts.length > 0) {
-    //         productSectionItems = (
-    //             <HomeSlider {...carouselFullwidth}>
-    //                 {homeProducts.map((product) => (
-    //                     <div key={product.id}>
-    //                         <ProductHome product={product} />
-    //                     </div>
-    //                 ))}
-    //             </HomeSlider>
-    //         );
-    //     }
-    // }, [loading]);
-
-    const isProductsAvailable = homeProducts && homeProducts.length > 0;
-    // setDisplayProducts(isProductsAvailable);
-    // setLoading(!isProductsAvailable);
+    useEffect(() => {
+        const isProductsAvailable = homeProducts && homeProducts.length > 0;
+        // setTimeout(() => {
+        //     setDisplayProducts(isProductsAvailable);
+        //     setLoading(!isProductsAvailable);
+        // }, 2000);
+        setDisplayProducts(isProductsAvailable);
+        setLoading(!isProductsAvailable);
+    }, [homeProducts]);
 
     if (!loading) {
         if (homeProducts && homeProducts.length > 0) {
