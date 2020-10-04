@@ -5,6 +5,7 @@ import HomeProductDisplay from './home-products';
 import { getCollections, getNewArrival, getCategories } from 'store/collection/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategoriesData } from 'utilities/product-helper';
+import HomeTopCategory from './home-top-category';
 const HomePage: FC = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -16,15 +17,18 @@ const HomePage: FC = () => {
     const products = getCategoriesData(categories);
     return (
         <HomePageWrapper>
-            <HomeBanner></HomeBanner>
-            <HomeProductDisplay collectionSlug="new_arrivals"></HomeProductDisplay>
-            <HomeProductDisplay collectionSlug="deal_of_the_day"></HomeProductDisplay>
+            <HomeBanner />
+            <HomeProductDisplay collectionSlug="new_arrivals" />
+            <HomeProductDisplay collectionSlug="deal_of_the_day" />
             {products &&
                 products.map((categoryProducts) => (
                     <HomeProductDisplay
-                        key={categoryProducts.id} categoryProducts={categoryProducts}
-                        collectionSlug="individual_category"></HomeProductDisplay>
+                        key={categoryProducts.id}
+                        categoryProducts={categoryProducts}
+                        collectionSlug="individual_category"
+                    />
                 ))}
+            <HomeTopCategory />
         </HomePageWrapper>
     );
 };

@@ -128,7 +128,7 @@ export const HomeProductsSectionWrapper = styled.div`
 `;
 export const HomeProductsContainer = styled.div`
     ${listResetMixin};
-    padding-bottom: 80px;
+    padding-bottom: 40px;
     @media (max-width: 1199px) {
         ${HomeProductsSectionHeader} {
             flex-flow: row wrap;

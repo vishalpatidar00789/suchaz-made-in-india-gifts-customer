@@ -194,3 +194,11 @@ export const flexRowMixin = () => css`
         width: 100%;
     }
 `;
+export const maxAreaMixin = (index = 10) => css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: ${index};
+`;

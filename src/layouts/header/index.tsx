@@ -4,10 +4,14 @@ import { stickyHeader } from 'utilities/common-helpers';
 import MenuDefault from './menu';
 import NavigationHeader from './navigation';
 import HeaderActions from './actions';
+import { useDispatch } from 'react-redux';
+import { getMenus } from 'store/collection/action';
 
 const Header: FC = () => {
     const showSearch = true;
+    const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(getMenus());
         if (process.browser) {
             window.addEventListener('scroll', stickyHeader);
         }
