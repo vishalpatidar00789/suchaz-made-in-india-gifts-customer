@@ -14,7 +14,7 @@ import { isStaticData } from 'utilities/app-settings';
 import { addBuyNowItem } from 'store/buynow/action';
 import { formatCurrency } from 'utilities/product-helper';
 import Link from 'next/link';
-import Rating from 'components/rating/rating';
+import Rating from 'components/rating';
 type ProductHomeProps = {
     product: any;
 };

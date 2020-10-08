@@ -1,7 +1,11 @@
-import Header from 'layouts/header';
-import React, { FC } from 'react';
+import React from 'react';
 import HomePage from 'features/home-page';
+import { NextPage } from 'next';
+import DefaultLayout from 'layouts/default-layout';
+type Page = NextPage & { Layout?: React.FC };
 
-const Index: FC = () => <HomePage />;
+const IndexPage: Page = () => <HomePage />;
 
-export default Index;
+IndexPage.Layout = DefaultLayout;
+
+export default IndexPage;

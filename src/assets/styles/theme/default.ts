@@ -1,4 +1,8 @@
+import { DefaultTheme } from 'styled-components';
 const palette = {
+    black: '#000000',
+    white: '#ffffff',
+    transparent: 'transparent',
     primary: {
         regular: '#c3404e', // primary color
         light: '#c9535f',
@@ -12,26 +16,8 @@ const palette = {
         hover: '#FF282F',
         alternate: '#fc5c63',
     },
-    transparent: 'transparent',
-    white: '#ffffff',
-    black: '#000000',
-    gray: {
-        100: '#f9f9f9',
-        200: '#F7F7F7',
-        300: '#f4f4f4',
-        400: '#F3F3F3',
-        500: '#f1f1f1', // border alt color
-        600: '#EdEdEd',
-        700: '#E6E6E6', // border color
-        800: '#C2C3CC',
-        900: '#bdbdbd',
-    },
-    text: {
-        bold: '#0D1136', // heading color
-        medium: '#424561',
-        regular: '#666', // regular text color
-        light: '#909090',
-        label: '#767676',
+    red: {
+        regular: '#ea4d4a',
     },
     yellow: {
         regular: '#FFAD5E',
@@ -45,15 +31,30 @@ const palette = {
         light: '#666D92',
         link: '#4285f4',
     },
-    red: '#ea4d4a',
+    text: {
+        bold: '#0D1136', // heading color
+        medium: '#424561',
+        regular: '#666', // regular text color
+        light: '#909090',
+        label: '#767676',
+    },
+    gray: {
+        100: '#f9f9f9',
+        200: '#F7F7F7',
+        300: '#f4f4f4',
+        400: '#F3F3F3',
+        500: '#f1f1f1', // border alt color
+        600: '#EdEdEd',
+        700: '#E6E6E6', // border color
+        800: '#C2C3CC',
+        900: '#bdbdbd',
+    },
     success: '#669900',
     danger: '#ec0101',
     warning: '#faa806',
-    muted: '',
-    highlight: '',
 };
 
-export const defaultTheme = {
+export const defaultTheme: DefaultTheme = {
     colors: {
         ...palette,
         body: {
@@ -65,7 +66,7 @@ export const defaultTheme = {
         headingsColor: palette['text']['bold'],
         subheadingsColor: '',
         textColor: palette['text']['regular'],
-        buttonColor: 'white',
+        buttonColor: palette['white'],
         buttonBgColor: palette['primary']['regular'],
         buttonBgHoverColor: palette['primary']['hover'],
         buttonBorderColor: palette['primary']['regular'],
@@ -78,18 +79,21 @@ export const defaultTheme = {
             placeholder: '',
         },
     },
-    // btnBorderRadius: '',
+    fonts: {
+        body: 'Work Sans, sans-serif',
+        heading: 'Poppins, sans-serif',
+        monospace: 'Menlo, monospace',
+    },
+    boxSizing: 'border-box',
+    borderRadius: '4px',
     breakpoints: ['767px', '991px', '70em', '90em'],
-    // space: [0, 4, 8, 10, 15, 20, 25, 30, 40, 56],
     space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-    // export const space = [0, 0.25, 0.5, 1, 1.5, 3].map(n => n + 'rem')
-
     // fontSizes: [10, 13, 15, 19, 21, 30, 45],
     // fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
     fontSizes: {
         xs: 12,
         sm: 13,
-        base: 15,
+        base: 14,
         md: 19,
         lg: 21,
         xl: 24,
@@ -109,43 +113,24 @@ export const defaultTheme = {
         bold: 700,
         bolder: 900,
     },
-    fonts: {
-        body: 'Work Sans, sans-serif',
-        heading: 'Poppins, sans-serif',
-        monospace: 'Menlo, monospace',
-    },
-
-    // Custom Theme keys
-    customs: {
-        // transitions: {
-        //   base: '.3s ease-out',
-        // },
-        transition: 'all 0.35s ease',
-    },
-    // lineHeights: {
-    //   solid: 1,
-    //   title: 1.25,
-    //   copy: 1.5,
-    // },
     lineHeights: {
         body: 1.5,
         // body: 1.625,
         heading: 1.125,
         // heading: 1.25,
     },
-
-    boxSizing: 'border-box',
-    radii: {
-        base: '6px',
-        small: '3px',
-        medium: '12px',
-        big: '18px',
-    },
     shadows: {
         base: '0 3px 6px rgba(0, 0, 0, 0.16)',
         medium: '0 6px 12px rgba(0, 0, 0, 0.16)',
         big: '0 21px 36px rgba(0, 0, 0, 0.16)',
         header: '0 1px 2px rgba(0, 0, 0, 0.06)',
+    },
+    // Custom Theme keys
+    customs: {
+        // transitions: {
+        //   base: '.3s ease-out',
+        // },
+        transition: 'all 0.35s ease',
     },
     // letterSpacings: {
     //   normal: 'normal',
@@ -175,6 +160,7 @@ export const defaultTheme = {
         // },
     },
 };
+
 // xs: 0,
 // sm: 576px,
 // md: 768px,

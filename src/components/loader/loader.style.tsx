@@ -12,11 +12,7 @@ export const Spinner = styled.div<{ color: string }>`
     width: 24px;
     height: 24px;
     border: 4px solid ${themeGet('colors.white', '#ffffff')};
-    border-top: 3px solid
-        ${(props) =>
-            props.color
-                ? props.color
-                : themeGet('colors.majorColor', '#c3404e')};
+    border-top: 3px solid ${(props) => (props.color ? props.color : themeGet('colors.majorColor', '#c3404e'))};
     border-radius: 50%;
     transition-property: transform;
     animation-name: ${rotateSpinner};

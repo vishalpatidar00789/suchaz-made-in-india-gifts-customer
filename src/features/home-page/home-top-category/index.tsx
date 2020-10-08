@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import HomeTopCategoryWrapper, {
     HomeTopCategorySectionWrapper,

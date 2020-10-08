@@ -13,9 +13,10 @@ type LoaderProps = {
     type?: string;
     color?: string;
     loading?: boolean;
+    disable?: boolean;
 };
 
-const Loader: FC<LoaderProps> = ({ type, color, loading }) => {
+const Loader: FC<LoaderProps> = ({ type, color, loading, disable }) => {
     const themeContext = useContext(ThemeContext);
     switch (type) {
         case 'page-open-loader':

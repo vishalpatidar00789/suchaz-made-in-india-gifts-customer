@@ -65,9 +65,7 @@ class MyApp extends App {
 
     render() {
         const { Component, pageProps, store } = this.props;
-        const AppLayout =
-            Component.getLayout ||
-            (({ children }) => <DefaultLayout disableLayout={this.state.pageLoading}>{children}</DefaultLayout>);
+        const AppLayout = Component.Layout ? Component.Layout : React.Fragment;
         return (
             <ThemeProvider theme={defaultTheme}>
                 <Provider store={store}>
@@ -83,6 +81,24 @@ class MyApp extends App {
                 </Provider>
             </ThemeProvider>
         );
+        // const AppLayout =
+        //     Component.getLayout ||
+        //     (({ children }) => <DefaultLayout disableLayout={this.state.pageLoading}>{children}</DefaultLayout>);
+        // return (
+        //     <ThemeProvider theme={defaultTheme}>
+        //         <Provider store={store}>
+        //             <PersistGate loading={<Loader loading={true} />} persistor={this.persistor}>
+        //                 <GlobalStyle />
+        //                 <DefaultSeo {..._DEFAULT_SEO} />
+        //                 <Loader loading={this.state.loading} />
+        //                 <ScrollTop />
+        //                 <AppLayout>
+        //                     <Component {...pageProps} />
+        //                 </AppLayout>
+        //             </PersistGate>
+        //         </Provider>
+        //     </ThemeProvider>
+        // );
     }
 }
 

@@ -1,17 +1,50 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { get } from 'styled-system';
 import css from '@styled-system/css';
+import { themeGet } from '@styled-system/theme-get';
+// export const GlobalStyle = createGlobalStyle(
+//     ({ theme }) =>
+//         css`
+//             *,
+//             :after,
+//             :before {
+//                 box-sizing: ${get(theme, 'boxSizing')};
+//             }
+
+//             html {
+//                 min-height: 100%;
+//                 position: relative;
+//                 font-family: ${get(theme, 'fonts.body')};
+//                 font-weight: ${get(theme, 'fontWeights.regular')};
+//                 font-size: 62.5%;
+//                 -ms-text-size-adjust: 100%;
+//                 -webkit-text-size-adjust: 100%;
+//             }
+
+//             body {
+//                 margin: 0;
+//                 min-height: 100%;
+//                 position: relative;
+//                 font-family: ${themeGet('fonts.body', 'Menlo, monospace')};
+//                 /* font-family: ${get(theme, 'fonts.body')}; */
+//                 font-weight: ${get(theme, 'fontWeights.regular')};
+//                 font-size: ${get(theme, 'fontSizes.base')};
+//                 line-height: ${get(theme, 'lineHeights.body')};
+//                 overflow-x: hidden;
+//                 background-color: ${get(theme, 'colors.white')};
+//                 transition: ${get(theme, 'customs.transition')};
+//             }
+//         `
+// );
 
 export const GlobalStyle = createGlobalStyle(({ theme }) =>
     css({
-        // '@font-face': {
-        //     fontFamily: 'Linearicons',
-        //     src: `url(/static/fonts/Linearicons/Font/Linearicons.ttf) format('truetype')`,
-        //     fontWeight: '400',
-        //     fontStyle: 'normal',
-        // },
         '*, *::before, *::after': {
             boxSizing: get(theme, 'boxSizing'),
+        },
+        '*': {
+            fontFamily: 'body',
+            fontWeight: 'regular',
         },
         html: {
             minHeight: '100%',
@@ -215,7 +248,6 @@ export const GlobalStyle = createGlobalStyle(({ theme }) =>
         ...theme.globals,
     })
 );
-
 
 // 'tn': 320px,
 // 'xs': 480px,

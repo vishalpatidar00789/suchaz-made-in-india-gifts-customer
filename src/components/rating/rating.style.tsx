@@ -1,4 +1,3 @@
-import { hiddenMixin, listResetMixin, showMixin } from 'assets/styles/mixins.style';
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 

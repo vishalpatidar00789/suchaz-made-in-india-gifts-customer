@@ -11,12 +11,24 @@ import Header from './header';
 import HeaderMobile from './header/header-mobile';
 import NavigationMobileHeader from './header/navigation/navigation-mobile';
 import Footer from './footer';
+import { useRouter } from 'next/router';
 const DefaultLayout: FC<LayoutProps> = ({ children, disableLayout }) => {
+    const { query } = useRouter();
     const [loaded, setLoaded] = useState<boolean>(false);
+    const [disable, setDisable] = useState<boolean>(false);
+
     useEffect(() => {
-        setTimeout(() => {
-            setLoaded(true);
-        }, 200);
+        let mounted = true;
+        if (Object.keys(query).length > 0) {
+            setDisable(true);
+        } else {
+            if (mounted) {
+                setTimeout(() => {
+                    setLoaded(true);
+                }, 200);
+            }
+        }
+        return () => (mounted = false);
     }, []);
     return (
         <DefaultLayoutWrapper disable={disableLayout}>
