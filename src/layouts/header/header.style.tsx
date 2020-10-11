@@ -37,6 +37,7 @@ export const HeaderCenter = styled.div``;
 
 export const HeaderRight = styled.div`
     max-width: 370px;
+    padding: 10px 0px;
 `;
 
 const HeaderWrapper = styled.header`

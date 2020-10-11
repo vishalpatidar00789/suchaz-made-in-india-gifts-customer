@@ -7,16 +7,17 @@ import {
     LoadingArea,
     Spinner,
 } from './loader.style';
-import { ThreeBounce, Circle } from 'styled-spinkit';
+import { ThreeBounce, Circle, FoldingCube } from 'styled-spinkit';
 
 type LoaderProps = {
     type?: string;
     color?: string;
     loading?: boolean;
     disable?: boolean;
+    spinnerType?: string;
 };
 
-const Loader: FC<LoaderProps> = ({ type, color, loading, disable }) => {
+const Loader: FC<LoaderProps> = ({ type, color, loading, disable, spinnerType }) => {
     const themeContext = useContext(ThemeContext);
     switch (type) {
         case 'page-open-loader':
@@ -31,15 +32,20 @@ const Loader: FC<LoaderProps> = ({ type, color, loading, disable }) => {
         case 'multi-slide-loader':
             return <>{loading ? <Circle size={75} color={themeContext.colors.majorColor} /> : null}</>;
         default:
-            return (
-                <>
-                    {loading ? (
-                        <LoadingArea>
-                            <ThreeBounce size={75} color={themeContext.colors.majorColor} />
-                        </LoadingArea>
-                    ) : null}
-                </>
-            );
+            let loaderContent: React.ReactNode;
+            switch (spinnerType) {
+                case 'ThreeBounce':
+                    loaderContent = <ThreeBounce size={75} color={themeContext.colors.majorColor} />;
+                    break;
+                case 'FoldingCube':
+                    loaderContent = <FoldingCube size={75} color={themeContext.colors.majorColor} />;
+                    break;
+                default:
+                    loaderContent = <ThreeBounce size={75} color={themeContext.colors.majorColor} />;
+                    break;
+            }
+
+            return <>{loading ? <LoadingArea>{loaderContent}</LoadingArea> : null}</>;
     }
 };
 

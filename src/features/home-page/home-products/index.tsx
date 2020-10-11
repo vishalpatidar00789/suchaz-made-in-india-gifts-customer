@@ -27,7 +27,7 @@ const HomeProductDisplay: FC<HomeProductDisplayProps> = ({ collectionSlug, categ
     const [loading, setLoading] = useState<boolean>(true);
     const [items, setItems] = useState<any>(null);
     const [currentCollection, setCurrentCollection] = useState<string>('');
-    let productSectionItems;
+    let productSectionItems : React.ReactNode;
     productSectionItems = <Loader type={'multi-slide-loader'} loading={loading} />;
     let products;
     let title;

@@ -1,5 +1,5 @@
-import App from 'next/app';
 import React from 'react';
+import App from 'next/app';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
@@ -9,15 +9,17 @@ import createStore from '../store/store';
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from 'assets/styles/theme/default';
 import { GlobalStyle } from 'assets/styles/global.style';
-import DefaultLayout from 'layouts/default-layout';
 import Router from 'next/router';
 import Loader from 'components/loader';
 import ScrollTop from 'components/scroll-element';
 import { DefaultSeo } from 'next-seo';
 import _DEFAULT_SEO from '../../next-seo.config';
+import HeadTag from 'layouts/seo/head-tag';
+import AppLayoutWrapper from 'layouts/layout.style';
 
 // External CSS import here
 import '../assets/styles/extend-style.scss';
+import 'react-image-lightbox/style.css';
 // External CSS import here
 
 class MyApp extends App {
@@ -26,6 +28,7 @@ class MyApp extends App {
         this.persistor = persistStore(props.store);
         this.state = {
             pageLoading: false,
+            pageOpenLoaded: false,
         };
 
         Router.events.on('routeChangeStart', () => {
@@ -34,6 +37,16 @@ class MyApp extends App {
         });
 
         Router.events.on('routeChangeComplete', () => {
+            try {
+                window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth',
+                });
+            } catch (error) {
+                // just a fallback for older browsers
+                window.scrollTo(0, 0);
+            }
             // Some page has finished loading
             this.setState({ pageLoading: false });
         });
@@ -56,7 +69,12 @@ class MyApp extends App {
 
     componentDidMount() {
         this._isMounted = true;
-        this.setState({ pageLoading: false });
+        if (this._isMounted) {
+            setTimeout(() => {
+                this.setState({ pageLoading: false });
+                this.setState({ pageOpenLoaded: true });
+            }, 200);
+        }
     }
 
     componentWillUnmount() {
@@ -69,36 +87,24 @@ class MyApp extends App {
         return (
             <ThemeProvider theme={defaultTheme}>
                 <Provider store={store}>
-                    <PersistGate loading={<Loader loading={true} />} persistor={this.persistor}>
+                    <PersistGate
+                        loading={<Loader loading={true} spinnerType={'FoldingCube'} />}
+                        persistor={this.persistor}>
+                        <Loader loading={this.state.pageLoading} spinnerType={'FoldingCube'} />
+                        <Loader type={'page-open-loader'} loading={this.state.pageOpenLoaded} />
+                        <HeadTag />
                         <GlobalStyle />
                         <DefaultSeo {..._DEFAULT_SEO} />
-                        <Loader loading={this.state.loading} />
                         <ScrollTop />
-                        <AppLayout>
-                            <Component {...pageProps} />
-                        </AppLayout>
+                        <AppLayoutWrapper disable={this.state.pageLoading}>
+                            <AppLayout>
+                                <Component {...pageProps} />
+                            </AppLayout>
+                        </AppLayoutWrapper>
                     </PersistGate>
                 </Provider>
             </ThemeProvider>
         );
-        // const AppLayout =
-        //     Component.getLayout ||
-        //     (({ children }) => <DefaultLayout disableLayout={this.state.pageLoading}>{children}</DefaultLayout>);
-        // return (
-        //     <ThemeProvider theme={defaultTheme}>
-        //         <Provider store={store}>
-        //             <PersistGate loading={<Loader loading={true} />} persistor={this.persistor}>
-        //                 <GlobalStyle />
-        //                 <DefaultSeo {..._DEFAULT_SEO} />
-        //                 <Loader loading={this.state.loading} />
-        //                 <ScrollTop />
-        //                 <AppLayout>
-        //                     <Component {...pageProps} />
-        //                 </AppLayout>
-        //             </PersistGate>
-        //         </Provider>
-        //     </ThemeProvider>
-        // );
     }
 }
 

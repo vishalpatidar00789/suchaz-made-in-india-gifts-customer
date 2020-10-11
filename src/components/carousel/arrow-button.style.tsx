@@ -1,9 +1,9 @@
-import { verticalAlignMixin } from 'assets/styles/mixins.style';
+import { centerMixin, hiddenMixin, showMixin, verticalAlignMixin } from 'assets/styles/mixins.style';
 import styled, { css } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 import Slider from 'react-slick';
 
-export const ArrowStyledButton = styled.button<{ directionType: string }>`
+export const ArrowStyledButton = styled.button`
     ${verticalAlignMixin()};
     width: 40px;
     height: 40px;
@@ -21,16 +21,14 @@ export const ArrowStyledButton = styled.button<{ directionType: string }>`
     &:hover {
         background-color: ${themeGet('colors.majorColor', '#c3404e')};
     }
-    ${({ directionType }) =>
-        directionType === 'next' &&
-        css`
-            right: 0;
-        `}
-    ${({ directionType }) =>
-        directionType === 'prev' &&
-        css`
-            left: 0;
-        `}
+`;
+
+export const PrevArrowStyledButton = styled(ArrowStyledButton)`
+    left: 0;
+`;
+
+export const NextArrowStyledButton = styled(ArrowStyledButton)`
+    right: 0;
 `;
 
 export const StyledSlider = styled(Slider)`
@@ -84,7 +82,11 @@ export const StyledSlider = styled(Slider)`
 
 export const HomeSlider = styled(StyledSlider)`
     @media screen and (min-width: 1440px) {
-        ${ArrowStyledButton} {
+        ${PrevArrowStyledButton} {
+            display: none;
+        }
+
+        ${NextArrowStyledButton} {
             display: none;
         }
     }

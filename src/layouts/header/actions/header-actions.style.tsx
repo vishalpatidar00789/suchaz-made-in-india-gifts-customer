@@ -1,6 +1,58 @@
 import styled, { keyframes } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import { hiddenMixin, showMixin } from 'assets/styles/mixins.style';
+import { centerMixin, hiddenMixin, showMixin } from 'assets/styles/mixins.style';
+
+export const HeaderMobileActionsWrapper = styled.div`
+    .header__extra {
+        margin-right: 10px;
+        display: inline-block;
+        position: relative;
+        width: 40px;
+        height: 42px;
+        transition: all 0.4s ease;
+        color: ${themeGet('colors.white', '#fff')};
+        i {
+            font-size: 30px;
+            line-height: 42px;
+        }
+        span {
+            background-color: ${themeGet('colors.black', '#000000')};
+            position: absolute;
+            bottom: 0;
+            right: -6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            vertical-align: top;
+            width: 20px;
+            height: 20px;
+            color: ${themeGet('colors.black', '#000000')};
+            border-radius: 50%;
+
+            i {
+                font-size: 12px;
+                font-style: normal;
+                line-height: 1em;
+                color: ${themeGet('colors.white', '#fff')};
+                font-weight: 600;
+            }
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .ps-user--mobile {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        min-width: 40px;
+        height: 40px;
+        i {
+            ${centerMixin()};
+        }
+    }
+`;
 
 export const SignInHeaderWrapper = styled.div`
     display: flex;

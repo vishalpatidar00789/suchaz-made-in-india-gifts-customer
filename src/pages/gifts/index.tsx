@@ -12,7 +12,7 @@ import GiftsPageWrapper, {
     GiftsPageMobileDrawerContent,
     GiftsPageMobileDrawerClose,
 } from './gifts.style';
-import DefaultLayout from 'layouts/default-layout';
+import MainLayout from 'layouts/main-layout';
 import BreadCrumb from 'components/bread-crumb';
 import { IBreadCrumb } from 'components/bread-crumb/types';
 import FilterShop from 'features/shop/filter';
@@ -33,6 +33,13 @@ const GiftsPage: Page = () => {
     nextSeoProps.title = pageTitle;
     nextSeoProps.description =
         'Buy Indian Handy Crafts, black roman numeral wall clock, retro industrial wall clock, black and white wall clock, night vision with neon wall clock, black roman numeral clock, mustard yellow wall clock, timber wall clock, hexagon wall clock, best radium wall clock, dark wood wall clock Made In India Flat 10% Discount ✓Perfect Gift ✓HandMade ✓Natural Wood ✓6 month warranty on Material.';
+    nextSeoProps.additionalMetaTags = [
+        {
+            name: 'keywords',
+            content:
+                'Indian Handy Crafts, black roman numeral wall clock, retro industrial wall clock, black and white wall clock, night vision with neon wall clock, black roman numeral clock, mustard yellow wall clock, timber wall clock, hexagon wall clock, best radium wall clock, dark wood wall clock',
+        },
+    ];
     openGraph.title =
         'Buy Indian Handy Crafts, black roman numeral wall clock, retro industrial wall clock, black and white wall clock, night vision with neon wall clock, black roman numeral clock, mustard yellow wall clock, timber wall clock, hexagon wall clock, best radium wall clock, dark wood wall clock Made In India Flat 10% Discount ✓Perfect Gift ✓HandMade ✓Natural Wood ✓6 month warranty on Material.';
     openGraph.description =
@@ -396,6 +403,6 @@ const GiftsPage: Page = () => {
     );
 };
 
-GiftsPage.Layout = DefaultLayout;
+GiftsPage.Layout = MainLayout;
 
 export default GiftsPage;

@@ -1,11 +1,11 @@
 import React from 'react';
 import HomePage from 'features/home-page';
 import { NextPage } from 'next';
-import DefaultLayout from 'layouts/default-layout';
+import MainLayout from 'layouts/main-layout';
 type Page = NextPage & { Layout?: React.FC };
 
 const IndexPage: Page = () => <HomePage />;
 
-IndexPage.Layout = DefaultLayout;
+IndexPage.Layout = MainLayout;
 
 export default IndexPage;
