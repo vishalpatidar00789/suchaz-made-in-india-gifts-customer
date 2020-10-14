@@ -1,7 +1,8 @@
 import Thumbnail from 'components/thumbnail';
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import ProductInfo from './info';
+import ProductDescription from './description';
+import ProductInformation from './information';
 import ProductDetatilWrapper, { ProductDetatilHeader } from './product-detail.style';
 const ProductDetail: FC = () => {
     const { singleProduct } = useSelector((state) => state.product);
@@ -11,9 +12,9 @@ const ProductDetail: FC = () => {
                 <ProductDetatilWrapper>
                     <ProductDetatilHeader>
                         <Thumbnail product={singleProduct} />
-                        <ProductInfo product={singleProduct} />
+                        <ProductInformation product={singleProduct} />
                     </ProductDetatilHeader>
-                    {/* <DefaultDescription product={singleProduct} /> */}
+                    <ProductDescription product={singleProduct} />
                 </ProductDetatilWrapper>
             ) : (
                 <p>Loading...</p>

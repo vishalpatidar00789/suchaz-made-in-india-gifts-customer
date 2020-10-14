@@ -10,21 +10,17 @@ import NavigationMobileWrapper, {
     NavigationMobileDrawerContent,
     NavigationMobileDrawerClose,
 } from './navigation-mobile.style';
-import { withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { Drawer } from 'antd';
 import PanelCategories from '../panel/panel-categories';
 import PanelCart from '../panel/panel-cart';
 
-type NavigationMobileProps = {
-    router: any;
-};
-
-const NavigationMobileHeader: FC<NavigationMobileProps> = ({ router }) => {
+const NavigationMobileHeader: FC = () => {
     const [cartDrawer, setCartDrawer] = useState<boolean>(false);
     const [categoriesDrawer, setCategoriesDrawer] = useState<boolean>(false);
     const { cartTotal } = useSelector((state) => state.cart);
     const { auth } = useSelector((state) => state);
-    let pathname = router.pathname;
+    const { pathname } = useRouter();
 
     const handleShowCartDrawer = () => {
         setCartDrawer(!cartDrawer);
@@ -113,4 +109,4 @@ const NavigationMobileHeader: FC<NavigationMobileProps> = ({ router }) => {
         </>
     );
 };
-export default withRouter(NavigationMobileHeader);
+export default NavigationMobileHeader;
