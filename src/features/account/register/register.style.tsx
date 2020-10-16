@@ -16,7 +16,7 @@ const RegisterWrapper = styled.div`
 
     .ps-tab-list {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 30px !important;
 
         li {
             display: inline-block;
@@ -55,6 +55,7 @@ const RegisterWrapper = styled.div`
             margin: 0 0 25px;
             font-size: 16px;
             font-weight: 400;
+            color: rgba(0, 0, 0, 0.85);
         }
     }
 
@@ -72,6 +73,16 @@ const RegisterWrapper = styled.div`
     .form-control {
         border-radius: 0;
         background-color: ${themeGet('colors.white', '#fff')};
+        &.ant-input {
+            height: 50px;
+            border-radius: 0;
+            border: 1px solid #dddddd;
+            &:focus {
+                border-color: ${themeGet('colors.majorColor', '#c3404e')};
+                outline: none;
+                box-shadow: 0 0 0 transparent;
+            }
+        }
     }
 
     .ps-btn {
@@ -104,6 +115,7 @@ const RegisterWrapper = styled.div`
 
     .submit {
         text-align: center;
+        padding-bottom: 20px;
 
         button {
             height: 50px;
@@ -111,6 +123,7 @@ const RegisterWrapper = styled.div`
         }
     }
 
+   
     @media (max-width: 991px) {
         h3 {
             font-size: 24px;

@@ -90,7 +90,7 @@ function* addItemSaga(payload) {
      
         try {
             let currentCart = JSON.parse(
-                JSON.parse(localStorage.getItem('persist:martfury')).buynow
+                JSON.parse(localStorage.getItem('persist:suchaz')).buynow
             );
             product.quantity = product.quantity ? product.quantity : 1;
             product.giftWrapSelected = false;
@@ -133,7 +133,7 @@ function* removeItemSaga(payload) {
     try {
         const { product } = payload;
         let localCart = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:martfury')).buynow
+            JSON.parse(localStorage.getItem('persist:suchaz')).buynow
         );
         let index = localCart.cartItems.findIndex(
             (item) => item.id === product.id
@@ -165,7 +165,7 @@ function* increaseQtySaga(payload) {
     try {
         const { product } = payload;
         let localCart = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:martfury')).buynow
+            JSON.parse(localStorage.getItem('persist:suchaz')).buynow
         );
         let selectedItem = localCart.cartItems.find(
             (item) => item.id === product.id
@@ -200,7 +200,7 @@ function* giftWrapSelectedSaga(payload) {
     try {
         const { product } = payload;
         let localCart = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:martfury')).buynow
+            JSON.parse(localStorage.getItem('persist:suchaz')).buynow
         );
         let selectedItem = localCart.cartItems.find(
             (item) => item.id === product.id
@@ -222,7 +222,7 @@ function* decreaseItemQtySaga(payload) {
     try {
         const { product } = payload;
         const localCart = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:martfury')).buynow
+            JSON.parse(localStorage.getItem('persist:suchaz')).buynow
         );
         let selectedItem = localCart.cartItems.find(
             (item) => item.id === product.id

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import HeaderActionsWrapper from './header-actions.style';
 import { useRouter } from 'next/router';
-import CartMini from 'features/cart/cart-mini';
+import MiniCart from 'features/cart/mini';
 import AccountQuickLinks from './account-quick-links';
 import { useSelector } from 'react-redux';
 const HeaderActions: FC = () => {
@@ -42,7 +42,7 @@ const HeaderActions: FC = () => {
             ) : (
                 ''
             )} */}
-            {pathname != '/account/checkout' && pathname != '/account/shipping' ? <CartMini /> : ''}
+            {pathname != '/account/checkout' && pathname != '/account/shipping' ? <MiniCart /> : ''}
             {auth.isLoggedIn && Boolean(auth.isLoggedIn) === true ? (
                 <AccountQuickLinks isLoggedIn={true} />
             ) : (

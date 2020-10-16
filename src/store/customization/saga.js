@@ -11,7 +11,7 @@ function* getCustomizationSaga() {
     try {
         console.log('getCustomizationSaga');
         const localCustomization = JSON.parse(
-            localStorage.getItem('persist:martfury')
+            localStorage.getItem('persist:suchaz')
         ).customization;
         console.log(localCustomization);
         yield put(getCustomizationSuccess(localCustomization));
@@ -23,7 +23,7 @@ function* getCustomizationSaga() {
 function* beforeUplaodCustomizationSaga(payload) {
     try {
         let localCustomization = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:martfury')).customization
+            JSON.parse(localStorage.getItem('persist:suchaz')).customization
         );
         console.log(localCustomization);
         const newFileList = [...localCustomization.fileList, payload.payload];
@@ -38,7 +38,7 @@ function* beforeUplaodCustomizationSaga(payload) {
 function* onRemoveImageSage(payload) {
     try {
         let localCustomization = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:martfury')).customization
+            JSON.parse(localStorage.getItem('persist:suchaz')).customization
         );
 
         const index = localCustomization.fileList.indexOf(payload.payload);
@@ -59,7 +59,7 @@ function* customizationUploadSuccessDataSaga(payload) {
         let imgurls = payload.payload.imgurls;
         let productId = payload.payload.product.id;
         let localCustomization = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:martfury')).customization
+            JSON.parse(localStorage.getItem('persist:suchaz')).customization
         );
         let filteredProduct = localCustomization.imagesUrl.filter((image) => {
             return image.productId == productId;

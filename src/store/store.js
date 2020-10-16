@@ -15,7 +15,7 @@ const bindMiddleware = middleware => {
 };
 
 const persistConfig = {
-    key: 'martfury',
+    key: 'suchaz',
     storage,
     whitelist: ['cart', 'buynow', 'customization', 'compare', 'auth', 'wishlist', 'shippingAddress'],
 };

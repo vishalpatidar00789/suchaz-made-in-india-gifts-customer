@@ -3,17 +3,17 @@ import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart, removeItem } from 'store/cart/action';
 import { isStaticData } from 'utilities/app-settings';
-import CartMiniWrapper, {
-    CartMiniIcon,
-    CartMiniContainer,
-    CartMiniItems,
-    CartMiniFooter,
-    CartMiniProduct,
-    CartMiniProductThumbnail,
-    CartMiniProductContent,
-    CartMiniRemove,
-} from './cart-mini.style';
-const CartMini: FC = () => {
+import MiniCartWrapper, {
+    MiniCartIcon,
+    MiniCartContainer,
+    MiniCartItems,
+    MiniCartFooter,
+    MiniCartProduct,
+    MiniCartProductThumbnail,
+    MiniCartProductContent,
+    MiniCartRemove,
+} from './mini-cart.style';
+const MiniCart: FC = () => {
     const dispatch = useDispatch();
     const { amount, cartTotal, cartItems } = useSelector((state) => state.cart);
     useEffect(() => {
@@ -25,20 +25,20 @@ const CartMini: FC = () => {
     };
 
     return (
-        <CartMiniWrapper>
-            <CartMiniIcon href="#">
+        <MiniCartWrapper>
+            <MiniCartIcon href="#">
                 <i className="icon-bag2"></i>
                 <span>
                     <i>{cartTotal ? cartTotal : 0}</i>
                 </span>
-            </CartMiniIcon>
+            </MiniCartIcon>
             {cartItems && cartItems.length > 0 ? (
-                <CartMiniContainer>
-                    <CartMiniItems>
+                <MiniCartContainer>
+                    <MiniCartItems>
                         {cartItems && cartItems.length > 0
                             ? cartItems.map((product) => (
-                                  <CartMiniProduct key={product.id}>
-                                      <CartMiniProductThumbnail>
+                                  <MiniCartProduct key={product.id}>
+                                      <MiniCartProductThumbnail>
                                           <Link href="/product/[pid]" as={`/product/${product.id}`}>
                                               <a>
                                                   <img
@@ -51,11 +51,11 @@ const CartMini: FC = () => {
                                                   />
                                               </a>
                                           </Link>
-                                      </CartMiniProductThumbnail>
-                                      <CartMiniProductContent>
-                                          <CartMiniRemove onClick={() => handleRemoveCartItem(product)}>
+                                      </MiniCartProductThumbnail>
+                                      <MiniCartProductContent>
+                                          <MiniCartRemove onClick={() => handleRemoveCartItem(product)}>
                                               <i className="icon-cross"></i>
-                                          </CartMiniRemove>
+                                          </MiniCartRemove>
                                           <Link href="/product/[pid]" as={`/product/${product.id}`}>
                                               <a className="ps-product__title">{product.title}</a>
                                           </Link>
@@ -66,12 +66,12 @@ const CartMini: FC = () => {
                                           <small>
                                               {product.quantity} x ₹{product.bestPrice}
                                           </small>
-                                      </CartMiniProductContent>
-                                  </CartMiniProduct>
+                                      </MiniCartProductContent>
+                                  </MiniCartProduct>
                               ))
                             : ''}
-                    </CartMiniItems>
-                    <CartMiniFooter>
+                    </MiniCartItems>
+                    <MiniCartFooter>
                         <h3>
                             Sub Total:
                             <strong>₹{amount ? amount : 0}</strong>
@@ -84,17 +84,17 @@ const CartMini: FC = () => {
                                 <a className="ps-btn">Checkout</a>
                             </Link>
                         </figure>
-                    </CartMiniFooter>
-                </CartMiniContainer>
+                    </MiniCartFooter>
+                </MiniCartContainer>
             ) : (
-                <CartMiniContainer>
-                    <CartMiniItems>
+                <MiniCartContainer>
+                    <MiniCartItems>
                         <span>No products in cart</span>
-                    </CartMiniItems>
-                </CartMiniContainer>
+                    </MiniCartItems>
+                </MiniCartContainer>
             )}
-        </CartMiniWrapper>
+        </MiniCartWrapper>
     );
 };
 
-export default CartMini;
+export default MiniCart;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 import { flexRowMixin, hiddenMixin, showMixin } from 'assets/styles/mixins.style';
 
-export const CartMiniIcon = styled.a`
+export const MiniCartIcon = styled.a`
     display: inline-block;
     position: relative;
     width: 30px;
@@ -44,7 +44,7 @@ export const CartMiniIcon = styled.a`
     }
 `;
 
-export const CartMiniContainer = styled.div`
+export const MiniCartContainer = styled.div`
     position: absolute;
     min-width: 370px;
     right: -30px;
@@ -55,7 +55,7 @@ export const CartMiniContainer = styled.div`
     ${hiddenMixin};
 `;
 
-export const CartMiniItems = styled.div`
+export const MiniCartItems = styled.div`
     position: relative;
     padding: 20px;
     max-height: 300px;
@@ -80,16 +80,16 @@ export const CartMiniItems = styled.div`
     }
 `;
 
-export const CartMiniProduct = styled.div`
+export const MiniCartProduct = styled.div`
     ${flexRowMixin};
     margin-bottom: 30px;
 `;
 
-export const CartMiniProductThumbnail = styled.div`
+export const MiniCartProductThumbnail = styled.div`
     max-width: 56px;
 `;
 
-export const CartMiniProductContent = styled.div`
+export const MiniCartProductContent = styled.div`
     position: relative;
     padding-right: 30px;
     padding-left: 20px;
@@ -106,7 +106,7 @@ export const CartMiniProductContent = styled.div`
     }
 `;
 
-export const CartMiniRemove = styled.a`
+export const MiniCartRemove = styled.a`
     position: absolute;
     top: 0;
     right: 0;
@@ -117,7 +117,7 @@ export const CartMiniRemove = styled.a`
         color: ${themeGet('colors.majorColor', '#c3404e')} !important;
     }
 `;
-export const CartMiniFooter = styled.div`
+export const MiniCartFooter = styled.div`
     padding: 10px 20px 20px;
     background-color: ${themeGet('colors.white', '#fff')};
     border: 1px solid #e1e1e1;
@@ -162,14 +162,14 @@ export const CartMiniFooter = styled.div`
     }
 `;
 
-const CartMiniWrapper = styled.div`
+const MiniCartWrapper = styled.div`
     position: relative;
     &:hover {
-        ${CartMiniContainer} {
+        ${MiniCartContainer} {
             transform: translate(0, 0px);
             ${showMixin};
         }
     }
 `;
 
-export default CartMiniWrapper;
+export default MiniCartWrapper;

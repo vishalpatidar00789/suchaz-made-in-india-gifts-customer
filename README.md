@@ -1,4 +1,4 @@
-## MARTFURY TEMPLATE - REACT VERSION
+## SUCHAZ TEMPLATE - REACT VERSION
 ###### Version 1.2.0
 ### Installation
 ```bash

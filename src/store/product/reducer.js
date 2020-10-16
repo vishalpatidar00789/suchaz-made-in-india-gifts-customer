@@ -35,8 +35,8 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 ...{
-                    allProducts: action.payload,
-                    totalProducts: action.payload.length,
+                    allProducts: action.payload.docs,
+                    totalProducts: action.payload.totalDocs,
                     productsLoading: false,
                 },
             };

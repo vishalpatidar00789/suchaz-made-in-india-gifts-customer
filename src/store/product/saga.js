@@ -40,7 +40,7 @@ function* getFilterCategories({ payload }) {
             // yield put(getProductsSuccess(data));
 
             const data = yield call(SuchazProductRepository.getFilterCategories, payload);
-            yield put(getFilterCategorySuccess(data.data.docs));
+            yield put(getFilterCategorySuccess(data.data));
         } else {
             const data = yield call(StaticProductRepository.getRecords);
             yield put(getProductsSuccess(data));

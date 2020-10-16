@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBuyNowItem } from 'store/buynow/action';
-import { addItem, getCart, removeItem } from 'store/cart/action';
+import { addItem } from 'store/cart/action';
 import ProductInfoWrapper, {
     ProductInfoMeta,
     ProductInfoRatingWrapper,
@@ -21,34 +21,30 @@ const ProductInformation: FC<ProductInfoProps> = ({ product }) => {
     const { currency } = useSelector((state) => state.setting);
     const [quantity, setQuantity] = useState<number>(1);
 
-    const handleRemoveCartItem = (product) => {
-        dispatch(removeItem(product));
-    };
-
     const handleAddItemToCart = (e) => {
         e.preventDefault();
         let tempProduct = product;
         tempProduct.quantity = quantity;
-        dispatch(addItem(product));
+        dispatch(addItem(tempProduct));
     };
 
     const handleBuyNow = (e) => {
         e.preventDefault();
         let tempProduct = product;
         tempProduct.quantity = quantity;
-        dispatch(addBuyNowItem(product));
+        dispatch(addBuyNowItem(tempProduct));
         Router.push('/account/checkout');
     };
 
     const handleIncreaseItemQty = (e) => {
         e.preventDefault();
-        setQuantity(quantity + 1);
+        setQuantity((prevQuantity) => prevQuantity + 1);
     };
 
     const handleDecreaseItemQty = (e) => {
         e.preventDefault();
         if (quantity > 1) {
-            setQuantity(quantity - 1);
+            setQuantity((prevQuantity) => prevQuantity - 1);
         }
     };
     const isSamePrice = product.bestPrice == product.sellingPrice;

@@ -37,7 +37,7 @@ function* addAddressSaga(payload) {
     try {
         const { address } = payload;
         let localAddress = JSON.parse(
-            localStorage.getItem('persist:martfury')
+            localStorage.getItem('persist:suchaz')
         ).shippingAddress;
         localAddress = address;
         yield put(updateAddress(localAddress));
