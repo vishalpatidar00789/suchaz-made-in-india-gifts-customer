@@ -16,6 +16,7 @@ import { DefaultSeo } from 'next-seo';
 import _DEFAULT_SEO from '../../next-seo.config';
 import HeadTag from 'layouts/seo/head-tag';
 import AppLayoutWrapper from 'layouts/layout.style';
+import { Normalize } from 'styled-normalize';
 
 // External CSS import here
 import '../assets/styles/extend-style.scss';
@@ -96,6 +97,7 @@ class MyApp extends App {
                         <GlobalStyle />
                         <DefaultSeo {..._DEFAULT_SEO} />
                         <ScrollTop />
+                        <Normalize />
                         <AppLayoutWrapper disable={this.state.pageLoading}>
                             <AppLayout>
                                 <Component {...pageProps} />
