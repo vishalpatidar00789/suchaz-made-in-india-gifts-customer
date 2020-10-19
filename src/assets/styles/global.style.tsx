@@ -97,9 +97,6 @@ export const GlobalStyle = createGlobalStyle(({ theme }) =>
             maxWidth: '100%',
             borderStyle: 'none',
         },
-        figure: {
-            margin: '1em 40px',
-        },
         // h1: {
         //     fontFamily: 'heading',
         //     fontSize: '5xl',

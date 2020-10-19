@@ -5,6 +5,7 @@ import { decreaseItemQty, getCart, giftWrapSelected, increaseItemQty, removeItem
 import { isStaticData } from 'utilities/app-settings';
 import ShoppingCartWrapper, { ShoppingCartSection, ShoppingCartSectionFooter } from './shopping-cart.style';
 import Router from 'next/router';
+import CustomizeGift from 'features/gift';
 const ShoppingCart: FC = () => {
     const dispatch = useDispatch();
     const { amount, cartItems } = useSelector((state) => state.cart);
@@ -86,7 +87,7 @@ const ShoppingCart: FC = () => {
                                                     </strong>
                                                 </p>
 
-                                                {/* <CustomizeGift product={product} /> */}
+                                                <CustomizeGift product={product} />
 
                                                 {product.gift_wrap_available == 'true' ? (
                                                     <div className="form-group">
@@ -201,13 +202,14 @@ const ShoppingCart: FC = () => {
                                             </div>{' '}
                                             x ₹{product.bestPrice} = ₹{product.quantity * product.bestPrice}
                                         </small>
+                                        <CustomizeGift product={product} />
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
                     <div className="ps-section__cart-actions">
-                        <Link href="/shop">
+                        <Link href="/gifts">
                             <a>
                                 <i className="icon-arrow-left mr-2"></i>
                                 Back to Shop

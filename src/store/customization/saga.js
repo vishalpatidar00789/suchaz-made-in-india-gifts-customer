@@ -4,16 +4,12 @@ import {
     getCustomizationSuccess,
     beforeUplaodCustomizationSuccess,
     onRemoveImageSuccess,
-    customizationUploadingSuccess
+    customizationUploadingSuccess,
 } from './action';
 
 function* getCustomizationSaga() {
     try {
-        console.log('getCustomizationSaga');
-        const localCustomization = JSON.parse(
-            localStorage.getItem('persist:suchaz')
-        ).customization;
-        console.log(localCustomization);
+        const localCustomization = JSON.parse(localStorage.getItem('persist:suchaz')).customization;
         yield put(getCustomizationSuccess(localCustomization));
     } catch (err) {
         // console.log(err);
@@ -22,9 +18,7 @@ function* getCustomizationSaga() {
 
 function* beforeUplaodCustomizationSaga(payload) {
     try {
-        let localCustomization = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:suchaz')).customization
-        );
+        let localCustomization = JSON.parse(JSON.parse(localStorage.getItem('persist:suchaz')).customization);
         console.log(localCustomization);
         const newFileList = [...localCustomization.fileList, payload.payload];
         console.log(newFileList);
@@ -37,9 +31,7 @@ function* beforeUplaodCustomizationSaga(payload) {
 
 function* onRemoveImageSage(payload) {
     try {
-        let localCustomization = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:suchaz')).customization
-        );
+        let localCustomization = JSON.parse(JSON.parse(localStorage.getItem('persist:suchaz')).customization);
 
         const index = localCustomization.fileList.indexOf(payload.payload);
         const newFileList = localCustomization.fileList.slice();
@@ -58,30 +50,26 @@ function* customizationUploadSuccessDataSaga(payload) {
     try {
         let imgurls = payload.payload.imgurls;
         let productId = payload.payload.product.id;
-        let localCustomization = JSON.parse(
-            JSON.parse(localStorage.getItem('persist:suchaz')).customization
-        );
+        let localCustomization = JSON.parse(JSON.parse(localStorage.getItem('persist:suchaz')).customization);
         let filteredProduct = localCustomization.imagesUrl.filter((image) => {
             return image.productId == productId;
         })[0];
-        if(filteredProduct){
+        if (filteredProduct) {
             imgurls.forEach((url) => {
                 filteredProduct.urls.push(url);
             });
-            
-        }else{
+        } else {
             let newImgObj = {
                 productId: productId,
-                urls: []
+                urls: [],
             };
             imgurls.forEach((url) => {
                 newImgObj.urls.push(url);
             });
-            
+
             localCustomization.imagesUrl.push(newImgObj);
         }
         console.log(localCustomization.imagesUrl);
-        
 
         // const index = localCustomization.fileList.indexOf(payload.payload);
         // const newFileList = localCustomization.fileList.slice();
@@ -98,18 +86,8 @@ function* customizationUploadSuccessDataSaga(payload) {
 
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.GET_CUSTOMIZATION, getCustomizationSaga)]);
-    yield all([
-        takeEvery(
-            actionTypes.BEFORE_UPLOAD_CUSTOMIZATION,
-            beforeUplaodCustomizationSaga
-        ),
-    ]);
+    yield all([takeEvery(actionTypes.BEFORE_UPLOAD_CUSTOMIZATION, beforeUplaodCustomizationSaga)]);
     yield all([takeEvery(actionTypes.ON_REMOVE_IMAGE, onRemoveImageSage)]);
-    yield all([
-        takeEvery(
-            actionTypes.CUSTOMIZATION_UPLOADING_SUCCESS_DATA,
-            customizationUploadSuccessDataSaga
-        ),
-    ]);
+    yield all([takeEvery(actionTypes.CUSTOMIZATION_UPLOADING_SUCCESS_DATA, customizationUploadSuccessDataSaga)]);
     // yield all([takeEvery(actionTypes.ON_UPLOAD_CUSTOMIZATION, removeItemSaga)]);
 }

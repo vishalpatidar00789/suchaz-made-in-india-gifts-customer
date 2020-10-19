@@ -80,7 +80,7 @@ const PanelCart: FC = () => {
                 </PanelCartProductFooter>
             ) : (
                 <PanelCartProductFooter>
-                    <Link href="/shop">
+                    <Link href="/gifts">
                         <a className="ps-btn ps-btn--fullwidth">Shop now</a>
                     </Link>
                 </PanelCartProductFooter>
