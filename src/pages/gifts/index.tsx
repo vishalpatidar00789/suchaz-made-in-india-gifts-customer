@@ -21,6 +21,7 @@ import { getFilterCategory } from 'store/product/action';
 import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import { Drawer } from 'antd';
 import LayoutShop from 'features/shop/layout';
+import useStateCallback from 'utils/use-state-callback';
 type Page = NextPage & { Layout?: React.FC };
 
 const GiftsPage: Page = () => {
@@ -47,7 +48,7 @@ const GiftsPage: Page = () => {
     openGraph.type = 'website';
     openGraph.site_name = 'MadeInIndiaGifts.in';
     nextSeoProps.openGraph = openGraph;
-    const [filterParams, setFilterParams] = useStateWithCallbackLazy<any>({
+    const [filterParams, setFilterParams] = useStateCallback<any>({
         category: '',
         by: '',
         name: 'All',

@@ -89,9 +89,9 @@ class MyApp extends App {
 
     render() {
         const { Component, pageProps, store } = this.props;
-        const mobile = useMedia('(max-width: 580px)');
-        const tablet = useMedia('(max-width: 991px)');
-        const desktop = useMedia('(min-width: 992px)');
+        // const mobile = useMedia('(max-width: 580px)');
+        // const tablet = useMedia('(max-width: 991px)');
+        // const desktop = useMedia('(min-width: 992px)');
         const AppLayout = Component.Layout ? Component.Layout : React.Fragment;
         return (
             <ThemeProvider theme={defaultTheme}>

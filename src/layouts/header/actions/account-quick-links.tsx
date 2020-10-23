@@ -61,7 +61,7 @@ const AccountQuickLinks: FC<AccountQuickProps> = ({ isLoggedIn }) => {
                                 </li>
                             ))}
                             <li className="ps-block__footer">
-                                <a href="#" onClick={() => handleLogout(e)}>
+                                <a href="#" onClick={handleLogout}>
                                     Logout
                                 </a>
                             </li>
