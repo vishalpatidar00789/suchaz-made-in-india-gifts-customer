@@ -7,7 +7,7 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import createStore from '../store/store';
 import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from 'assets/styles/theme/default';
+import { defaultTheme } from 'site-settings/site-theme/default';
 import { GlobalStyle } from 'assets/styles/global.style';
 import Router from 'next/router';
 import Loader from 'components/loader';
@@ -17,6 +17,11 @@ import _DEFAULT_SEO from '../../next-seo.config';
 import HeadTag from 'layouts/seo/head-tag';
 import AppLayoutWrapper from 'layouts/layout.style';
 import { Normalize } from 'styled-normalize';
+import { LanguageProvider } from 'contexts/language/language.provider';
+import { useMedia } from 'utils/use-media';
+
+// Language translation messages
+import { messages } from 'site-settings/site-translation/messages';
 
 // External CSS import here
 import '../assets/styles/extend-style.scss';
@@ -84,27 +89,32 @@ class MyApp extends App {
 
     render() {
         const { Component, pageProps, store } = this.props;
+        const mobile = useMedia('(max-width: 580px)');
+        const tablet = useMedia('(max-width: 991px)');
+        const desktop = useMedia('(min-width: 992px)');
         const AppLayout = Component.Layout ? Component.Layout : React.Fragment;
         return (
             <ThemeProvider theme={defaultTheme}>
-                <Provider store={store}>
-                    <PersistGate
-                        loading={<Loader loading={true} spinnerType={'FoldingCube'} />}
-                        persistor={this.persistor}>
-                        <Loader loading={this.state.pageLoading} spinnerType={'FoldingCube'} />
-                        <Loader type={'page-open-loader'} loading={this.state.pageOpenLoaded} />
-                        <HeadTag />
-                        <GlobalStyle />
-                        <DefaultSeo {..._DEFAULT_SEO} />
-                        <ScrollTop />
-                        <Normalize />
-                        <AppLayoutWrapper disable={this.state.pageLoading}>
-                            <AppLayout>
-                                <Component {...pageProps} />
-                            </AppLayout>
-                        </AppLayoutWrapper>
-                    </PersistGate>
-                </Provider>
+                <LanguageProvider messages={messages}>
+                    <Provider store={store}>
+                        <PersistGate
+                            loading={<Loader loading={true} spinnerType={'FoldingCube'} />}
+                            persistor={this.persistor}>
+                            <Loader loading={this.state.pageLoading} spinnerType={'FoldingCube'} />
+                            <Loader type={'page-open-loader'} loading={this.state.pageOpenLoaded} />
+                            <HeadTag />
+                            <GlobalStyle />
+                            <DefaultSeo {..._DEFAULT_SEO} />
+                            <ScrollTop />
+                            <Normalize />
+                            <AppLayoutWrapper disable={this.state.pageLoading}>
+                                <AppLayout>
+                                    <Component {...pageProps} />
+                                </AppLayout>
+                            </AppLayoutWrapper>
+                        </PersistGate>
+                    </Provider>
+                </LanguageProvider>
             </ThemeProvider>
         );
     }
