@@ -18,7 +18,7 @@ import HeadTag from 'layouts/seo/head-tag';
 import AppLayoutWrapper from 'layouts/layout.style';
 import { Normalize } from 'styled-normalize';
 import { LanguageProvider } from 'contexts/language/language.provider';
-import { useMedia } from 'utils/use-media';
+// import { useMedia } from 'utils/use-media';
 
 // Language translation messages
 import { messages } from 'site-settings/site-translation/messages';
@@ -26,6 +26,10 @@ import { messages } from 'site-settings/site-translation/messages';
 // External CSS import here
 import '../assets/styles/extend-style.scss';
 import 'react-image-lightbox/style.css';
+import '../../public/static/css/bootstrap.min.css';
+import '../../public/static/fonts/Linearicons/Font/demo-files/demo.css';
+import '../../public/static/fonts/font-awesome/css/font-awesome.min.css';
+import '../../public/static/css/slick.min.css';
 // External CSS import here
 
 class MyApp extends App {

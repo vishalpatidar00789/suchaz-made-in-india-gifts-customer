@@ -8,7 +8,6 @@ import { IBreadCrumb } from 'components/bread-crumb/types';
 import FilterShop from 'features/shop/filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilterCategory, getProductsById } from 'store/product/action';
-import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import { Drawer } from 'antd';
 import LayoutShop from 'features/shop/layout';
 import { getMenus } from 'store/collection/action';

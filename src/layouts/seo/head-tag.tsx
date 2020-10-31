@@ -60,12 +60,6 @@ const HeadTag: FC = () => (
             href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext"
             rel="stylesheet"
         />
-
-        <link rel="stylesheet" href="/static/fonts/Linearicons/Font/demo-files/demo.css" />
-        <link rel="stylesheet" href="/static/fonts/font-awesome/css/font-awesome.min.css" />
-
-        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/slick.min.css" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145433032-2"></script>
         <script
             dangerouslySetInnerHTML={{

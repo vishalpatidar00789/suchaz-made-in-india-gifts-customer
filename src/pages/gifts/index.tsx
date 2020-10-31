@@ -18,7 +18,6 @@ import { IBreadCrumb } from 'components/bread-crumb/types';
 import FilterShop from 'features/shop/filter';
 import { useDispatch } from 'react-redux';
 import { getFilterCategory } from 'store/product/action';
-import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import { Drawer } from 'antd';
 import LayoutShop from 'features/shop/layout';
 import useStateCallback from 'utils/use-state-callback';
